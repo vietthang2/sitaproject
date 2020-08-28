@@ -134,7 +134,7 @@ ENDBSM",
             // listener.BeginAccept(OnSocketAccepted, null);
             Console.WriteLine("StartListening");
             Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
-
+           
             Thread T = new Thread(checkTimeOut);
             T.IsBackground = true;
             T.Start();
@@ -156,11 +156,13 @@ ENDBSM",
             Console.WriteLine($"OnSocketAccepted");
             Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
             // Pass in the client socket as the state object, so you can access it in the callback.
-            client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, listener);
+            client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
             // Start receiving data from this client.
-            
+
             //listener.Listen(20);
             //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
+            Console.WriteLine("Send data....");
+            SendData(MsgHelper.LoginAcept());
 
         }
         public void SocketAsync(SocketAsyncEventArgs e)
