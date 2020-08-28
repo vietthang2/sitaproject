@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+@{
+    Func<string, HtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
+    var hideNav = (string)Context.Request.Query["hideNav"] == "1";
+    var logged = Serenity.Authorization.Username;
+    var themeCookie = Context.Request.Cookies["ThemePreference"];
+    var theme = !themeCookie.IsEmptyOrNull() ? themeCookie : "blue";
+    var darkSidebar = theme != null && theme.IndexOf("light") < 0;
+    var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
+    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+    var userImage = System.Web.VirtualPathUtility.ToAbsolute(
+        (user == null || string.IsNullOrEmpty(user.UserImage)) ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAkCAYAAAAeor16AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAA9SSURBVGhD3VoJfFXVnf7e/pK85CUhgawkhhASkE12SaEUJIIz1gKDWlBHO461Y61IVbRSfjoFmQrS0cYy7Q9wEGm0lhlaFjFhkSUkBshKEEI2sicvycvb9zv//73vQTYwinagH5z37j3n3LN857++XJlAwN8QJqsXlTVWXLpiQ22zA/UtDrQYXLA5vHB5BDhcXnjo2+n2we0V4HIL8PkEuKnOS/deH6DXKREZpkTMMDVio9RIitEiOU6LMUnBSE8OpjaVf7ZvH98qgeerrfi0sBtNHQ5Y7B5Y7V7ERKloo0HihpNiNYiLViNEzRuWSQ+J6H09EAI8aO1yoaHNSQfgRHWjAxfrbSivsqG0ygpPvR0hqSHInBSO707R454ZkZiSHup/+pvFN0pg1RU7yqstMNncJGlujB0VjMyJYdAqFdTamxSekiSLPn00PQnYV4KMhlJQkYtjBgojcC3giwYLThT34GhRDw7md8NYacHIqeF4KGs4Vt47AuNTdeITN4ubJrCzx40Oo1MsSfEajIzS+Fukjbhp+G9PxgcHz6yUy+ibr+T+Gi8OnO5EziED3v9rG9DjwbJl8fj5ykTMuDOM2r8evjaBLg+ppNODIK0MKhIH/udjqWKxugVBfEIpYzKlUt9uwTs5zdj8342Aw4cXf3wHNj6TQtLNZA8dX4lAn+CDV/CK33yo0gnfnlCJEspkKlB62Y7VWy7i8MfNuPehBLz/WgaiwofmiHiELwUT5vK54Pa5xWuFQg6NXE5qIp3s7UijmwyvR5BWLtPvQ152HBzNC8nJKRGdnov7nisT274MNySwN3EsqCzeTJ7b7sIhCkUu9/hgchGhMoFO1P/QbQClXA01FbvbiI8qVuODc6tgsDugUSiwY206nM3zyRjRfmMOYNOuK/6nBsd1VTggbYzedoEnfmTNbpTLozE1awbcTjeZEAHrpgcjI1JJz/k73oJg4vic64zncKJuK6q78hGqHg6ry4Bn7j6IME0s7dkDkhFSbDXKaoyYuPQcEijkath/tzRIPwyQG+bT6XWK5DFxfclTkPE1YNeB82goKUWQWgElTaglD/fnS7Zb2ibywdd1f453Ti/C+8WPo9VcSURpMS3hYRhdVkRo42nPXrEvB+useRNSdBCK5yEtOQiylEMUptnE9t7oQ2BAZRmDeyMF5r/0MVRJ4ehx2lB9sY4dGGUMPuQ3OmH3eEWbeKuBydt7YR22n3scJrcNgiIKBqcXSZFZ6HTaoVCO8h99X2V0UUjhEdw4nD0Zq5+7A2nTjuHsBbO/VcJVApk8VlseaTDyeBEfHC9HdWs35DoNZJEhKCo8ByulWhzOsHf+4wULhQq3FoO87jMt+5FXtwceWSy6XSq0WB0Q5COwfNxabCt9G5lJK/29B4KDfBaqTc+m4YVXR2PqgpOUWTn9rX4byGorSh6TN4gayokUlizFA28BuiCuALptKNy0DBsqVTCTU1GQV6Z0FsdXJNFYkioEoKa2gdaCo0Yy1CTVfcHe0UsHofTfX4Pb55HWIQtkNhSo01yDGfFrc8qx5uhidNlJ8miuLocRY4ZNwoa52/DwX+6BzePG3iXHROHh9dwIfBhzniL7ebYHwpl5Yp1IIJPHJA6uthwzyXGm3oCcs3W40mlC6RUD4nRqHHtpGbaXtuE/P+8mAyxHD+nzO4tGYG6ijkiUFsMbyS5swY4Sw9WjsZKnWTVzBO4bE4H7P7gEObHC83vIHMSHqrBvZTpm/b7iWqrHD9F4Z5+eQPbJiyf31pJU2ZCVEoaNWSNFKem9dbVchT0Vbfh1fisSQvVwKFZDq24gswOsmfU6psV8B1kffY/2q0Lu8jwEqTQ0t8f/9PUhORdKIMccxdNPJOHdl9IgZ9W9EXkMgR7SGJuwPNqG7MWpuPTvS0XyvHDjsYkRMFicsLl4AV78trCTvntLlRxbi9pR3GxFSoQWsaFqxFGJoQP45JKRbEo3YnUqxIWpqU2FpHANKtqsKCjvRJBShgQ91VN7gp5TRHJav/wcu8s6SYq02PS/tTheYxKD4gDY0f36eD2Wvl2GUDrU8vZO7M9fi/HDnkLug4Uo6ShCxnvpWDF+CfJXnEKIKkgkjw+aiZdKf22RwM5FlOifJeN3/1Ur1sHldQkOj0Mgz3vd4qF/zW3NwqIF84XlP3hAuG/hPcKWtzaz8BI8wmN7qoTkLSXC2OwyIXzjWcFgswteQXpWoKvJ754VJr1zRureC38oahTwk1z/3TUUNnSJ9e0mi79GQkO3Wax/fM8Ffw3DfXWdLnE+j9jntcM1UjNhxu8qhMg3jghp76UKeHmfsCznjBC5oUKYlH1O6LbZqIdXOHCxTdD/Kl/QvnZK2FXcJNYFxu1dfIJLaO6yCLjjE2Hn/hZBTj0lc3IDsNrEDo/FtFmzoI+MQGJyEgoLCvytAn42MxoNZgcsJIVKuYBNpDryXlLIEnK+04GFO8sxZ3sp7tpajOO1ndCShJGYYd6OMsylMvMPJVh98DL0GnpWq8Di3ZfEttnbSnH/rgokhOsQEReCHceaIXv2MBa8V0bmQIrbAvNUtJKXJJ1+fEq0WHew/hDkQcfR1a7GxceqAFsoPm8QsOY7OpTU9mB5ThXaLHYs3lyCJ+mZdfPisfL3ldhb2TGoJHIGExsRDESocOSMEXKBsoihxm/3L3mA1B3QaLXQ6UJw+Gge1SoxOTYMMVo5LDY32wT85lQ71fcdlZei4RSQilohg4rJ84PvNWKRQ0spjWjP6ENNhKipn9jOeSM86PrFTOT9dAKWzIrBYVLlSdnlrNj8hPic2I8uPGwYqf+9SbPxxNhlRKrfc7pc2LI4ES9kJuEfxg9Dq92DtwvagKgg1JlcKGi0AGQ21n/WRJ0HEihBhqhIFWqa7OTsKB8cConsaKZMmoLgkGDavAphYWE4knsY8+ctoFYfnr97BFbvrYMyRAUPuePdpa344cTh4rN8amOjtPjrinHifQDn2xpBwSMOPTreXyOhqLEbFM1j3w/TEEHzXYMHJocD81OjxJLSQukkSXZAhXie0VGhQIgSr+Q24I/Lx1KLDqsPlSHzzkixD8PmT5e8xDGnwxEk7byOf5s2QjzYp6YOR2ok29y+0cQ1COixcqJBFIvOgw9riFiQlQUZSUZQcDBMPUY0NHOuKMOq2TFYOHYYEaWBQgU8vbeG6qUTdNCCi69YELWxAOEbTkP92ims2l8lSQuVyDe4vgCh608j/s1CySlQSdxSighq09Mz2tfzcaXLBv2TRyF78TNxjNoqE966dyTNIBEiwYu8p+9ETl4j5OtOQvbCMZi6nPjk0XRqI0dHRNnZ3RPMdEjtZjd+nkljEHHztlbgwQ8vY/GbxXjvbAf1GCiBvGSzwwl3pwspcZShkH0TOAa6kRcOQE42we124Zdr1iJMH0ba4ER6RgZWrHiEtuCBy0R2LSyCeqrF/i5SG7YjR2p68JeLRppcmsNB7mzRKD3mpejxSl7D1Xov2Ydwsn/r5iXixU/rxfCEwdsl640ti5JR2W7Fn853wUSbX0EqeFe8nubpG4KwJ27qsePtwjaEk3S9PCfe3yLH2rx68bAjg9TIrTZS9ODF9zOiqM2HN443odPuxdKMCMwaGT5gXAaPvSWnEc+/XoWdm+6U4kAn2wda7FBI5GByx/btaGlqgUKhgNlixq82rMep06dwrugsVCo1DSVg1KgULFyYJao+27KBp8m/LVJoKwbFvcHBsY+ksH89q6jXH7IExuLUc3D14X7S730cmPuuHgYfqJfuWX2ldfFBU6BGl9IPrlw3+LhMj4oC/KDME3B0UexceY+0EhUFlEMFLQVzvjdXnEatUSM0NBR5h/NQcPI0DSaHz+uF1WQR+7gpj2TwYjg76VsEcRMD6zlDGaxeyjj6jjVwkwGwPZT6XCOPwfc8r3TNfaQb/uK2G42rkqnxLxsuwmF04yf/nCTWiQTKiXmlXCkG1F8GDjpHJY9CaHgY1Go19Ho98k+cgsvthNlqRke7AdNnz6AQRTuk8W4XcIC9+9NmbNvVBK1ehewX08T6gC6IqhQgcSgbnzZzOpRKJaw2KyxWE8xmE0wmI528A3My59ApSr/q/D2AzdZHR1qx4rlKkbHL/zPT39KLQAaTqCKmJVyfRFbNyVMmk9gLqCgvI/LMYmluasLKRx/197r9wc6NyXt162U8+Mx50Tye+dN0xA8P/OWxH4EMVme1Qg0PhUAc4Q/mV1hCeeDUtFSkp6cjTKeDqduI5JQUpKdl3PbSx3tWkza6KNy565EirP9tPWVMclw8eDemZPT9E+h1f9JnVNSaEROlQBQl/27xRwd/gx9MYn/czuRJXpa9vxwbd9bh5c21nMdiTHoovvh4htSpH25IIKOo0oxT5V341yUjEKxSiV5YSpP+fsCaphBzdzl27GvCT9+sgZUCZWb0rVfSsOrhRKnjIPhSAgNYv70e1c1WvPJEAlLj+D0TL4XORGfvJOA2wrW4TwEnJRL/saMR67c1UDJAoRcJyLL7Y/HhG+Oo3yA2rBeGTGAAz2+5jIP5BvzoByPw7ENxfjUW30kQY69bGewUpPdpWNp8+PNnHcjOacbRE5R7s9Ok/8v+MQZb14zBsCH+Yf0rExjAtr0t+MW7NRTKAE8uicHKxcMxKpYlU0y8xG8PDf3/xalkz5gsLixpcnSa7dhzxICcTw04cpJI45yY1hcSpcYLjyTi1R8lkzrfWOL642sTGICBovLNuxrwG8oPHR0OZM4dhkWzI7Bgejimix6LT5unCBT+pCyEys2qP+9VQSRJWw6QFSg+lJMTPFlsxtEzRuQWGmFscvADtAABSgqGH7svBj9eGo+pGV//1bebJrA3LDYvdh5oxYe57Tj+mUF8A0qRFITp43SYNEaHCaNDMHpkEFLiNUiM0UCJwdTkesthUvrDg4YOJ2qbnahusONCrR3na20o+cKC5np736FICCdP0uP7c6PxTwuiMfaOEH/DzeEbJbA/2rtdyC3oxrFzRpwsMeKLChNgpQBT5II+VCQ9w1SIJnsTEaaCXqdASJACQRpKLUlSWAO9ZANcLkF8g9VMB9Rt8qCLiqWLjL2LRLg3r4FrEs3k1BDMGBeGWRPC8N0pEZg4+pt5H7A/vlUCrwd+vbe60Y66ZgeutDnRYnCijcIGQ48bPRav+CYrEya+1ksE8l/t+JdpLRGrI4LFV3xJBYdHUIlUI55s2MgYLVISgpBKhdv/NgD+D3ozsmh2atvMAAAAAElFTkSuQmCC" :
+        "~/upload/" + user.UserImage);
+}
+<!--[if IE 8]> <html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" class="no-js@(hideNav ? " no-navigation" : "")">
+<!--<![endif]-->
+<head>
+    <partial name="@MVC.Views.Shared._LayoutHead" />
+    @RenderSection("Head", false)
+    <title>@(ViewData["Title"]) - ECNET</title>
+</head>
+<body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) fixed sidebar-mini hold-transition skin-@theme @(darkSidebar ? "dark-sidebar" : "light-sidebar")@(hideNav ? " no-navigation" : " has-layout-event")@(rtl ? " rtl" : "")">
+<div id="PageBackground" style="display: none"></div>
+@if (hideNav)
+{
+    <script type="text/javascript">
+        $(function () {
+            @RenderSection("PageInitScript", false)
+        });
+    </script>
+    <div id="page-outer-nonav">
+        <div id="page-container" class="page-container-common">
+            @RenderBody()
+        </div>
+    </div>
+}
+else
+{
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="~/" class="logo">
+                <span class="logo-mini"><i></i></span>
+                <span class="logo-lg"><i></i><b>@*@LocalText.Get("Navigation.SiteTitle")*@</b></span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="@userImage" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@Serenity.Authorization.Username</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="@userImage" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        @(user != null ? user.DisplayName : "")
+                                    </p>
+                                </li>
+
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat"><i class="fa fa-lock fa-fw"></i> @Texts.Forms.Membership.ChangePassword.FormTitle</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="~/Account/Signout" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> @LocalText.Get("Navigation.LogoutLink")</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-sliders"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" id="SidebarSearch" name="q" class="form-control" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button type="button" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <ul class="sidebar-menu" id="SidebarMenu">
+                    <partial name="@MVC.Views.Shared.LeftNavigation" model="new ECNET.Navigation.NavigationModel()" />
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            @if (IsSectionDefined("ContentHeader"))
+            {
+                <section class="content-header">
+                    @RenderSection("ContentHeader")
+                </section>
+            }
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                @Texts.Site.Layout.FooterInfo  Version: @GetType().Assembly.GetName().Version.ToString()
+            </div>
+            <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights 
+        </footer>
+
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="tab-content">
+                <div class="tab-pane active" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
+                            <select id="LanguageSelect" class="form-control"></select>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label class="control-sidebar-subheading">@Texts.Site.Layout.Theme</label>
+                            <select id="ThemeSelect" class="form-control"></select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </aside>
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script type="text/javascript">
+        $().ready(function () {
+            new ECNET.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
+            new ECNET.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
+            new ECNET.Common.ThemeSelection($('#ThemeSelect'));
+            @RenderSection("PageInitScript", false);
+
+            var doLayout = function () {
+                height = (this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height;
+                height -= $('header.main-header').outerHeight() || 0;
+                height -= $('section.content-header').outerHeight() || 0;
+                height -= $('footer.main-footer').outerHeight() || 0;
+                if (height < 200) height = 200;
+                $("section.content").css("min-height", (height) + "px");
+
+                $('body').triggerHandler('layout');
+            };
+
+            $(window).bind("load resize layout", doLayout);
+            doLayout();
+        });
+    </script>
+}
+</body>
+</html>

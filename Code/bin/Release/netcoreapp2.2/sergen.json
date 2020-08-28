@@ -1,0 +1,216 @@
+{
+  "RootNamespace": "ECNET",
+  "ServerTypings": {
+    "Assemblies": [],
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "dbo.EmailAccounts",
+          "Identifier": "EmailAccounts",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.QueuedEmail",
+          "Identifier": "QueuedEmail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.SysParameters",
+          "Identifier": "SysParameters",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblApprovalCenter",
+          "Identifier": "TblApprovalCenter",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblArea",
+          "Identifier": "TblArea",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAsset",
+          "Identifier": "TblAsset",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssetGroup",
+          "Identifier": "TblAssetGroup",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssetTemp",
+          "Identifier": "AssetTemp",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssignAssetToPlace",
+          "Identifier": "TblAssignAssetToPlace",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssignCampaing",
+          "Identifier": "TblAssignCampaing",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblBranch",
+          "Identifier": "TblBranch",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCampaign",
+          "Identifier": "TblCampaign",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCampaignType",
+          "Identifier": "TblCampaignType",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCity",
+          "Identifier": "TblCity",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContract",
+          "Identifier": "TblContract",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractDetail",
+          "Identifier": "TblContractDetail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractItems",
+          "Identifier": "TblContractItems",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractPayment",
+          "Identifier": "TblContractPayment",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractSchedule",
+          "Identifier": "TblContractSchedule",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractType",
+          "Identifier": "TblContractType",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblDistrict",
+          "Identifier": "TblDistrict",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblItems",
+          "Identifier": "TblItems",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblPlaceDetails",
+          "Identifier": "TblPlaceDetails",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblPlaceOfBussiness",
+          "Identifier": "TblPlaceOfBussiness",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TblProject",
+          "Identifier": "TblProject",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblProjectItem",
+          "Identifier": "TblProjectItem",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatus",
+          "Identifier": "TblStatus",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatusDetail",
+          "Identifier": "TblStatusDetail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatusDetailLevel2",
+          "Identifier": "TblStatusDetailLevel2",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblTransactionLocation",
+          "Identifier": "TblTransactionLocation",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblUnit",
+          "Identifier": "TblUnit",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblWards",
+          "Identifier": "TblWards",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TemplateEmail",
+          "Identifier": "TemplateEmail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [],
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
+}

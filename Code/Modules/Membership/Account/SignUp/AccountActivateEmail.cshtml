@@ -1,0 +1,21 @@
+﻿@model ECNET.Membership.ActivateEmailModel
+
+<html>
+<head>
+    <title>Kích hoạt tài khoản ECNET</title>
+</head>
+<body>
+    <p>Xin chào @Model.DisplayName,</p>
+
+    <p>Chúng tôi nhận được một yêu cầu tạo mới tài khoản ECNET với địa chỉ email này.</p>
+
+    <p>Vui lòng click vào link bên dưới để kích hoạt tài khoản</p>
+
+    <p><a href="@Model.ActivateLink">@Model.ActivateLink</a></p>
+
+    <p>Nếu như bạn không không phải là người đăng ký có thể bỏ qua email này</p>
+
+    <p>Thanks,</p>
+    <p>Phòng quản lý ECNET.</p>
+</body>
+</html>

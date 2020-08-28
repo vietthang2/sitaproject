@@ -1,0 +1,443 @@
+{
+  "RootNamespace": "ECNET",
+  "ServerTypings": {
+    "Assemblies": [],
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "dbo.EmailAccounts",
+          "Identifier": "EmailAccounts",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.QueuedEmail",
+          "Identifier": "QueuedEmail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.SysParameters",
+          "Identifier": "SysParameters",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblApprovalCenter",
+          "Identifier": "TblApprovalCenter",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblArea",
+          "Identifier": "TblArea",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAsset",
+          "Identifier": "TblAsset",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssetGroup",
+          "Identifier": "TblAssetGroup",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssetTemp",
+          "Identifier": "AssetTemp",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssignAssetToPlace",
+          "Identifier": "TblAssignAssetToPlace",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblAssignCampaing",
+          "Identifier": "TblAssignCampaing",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblBranch",
+          "Identifier": "TblBranch",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCampaign",
+          "Identifier": "TblCampaign",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCampaignType",
+          "Identifier": "TblCampaignType",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblCity",
+          "Identifier": "TblCity",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContract",
+          "Identifier": "TblContract",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractDetail",
+          "Identifier": "TblContractDetail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractItems",
+          "Identifier": "TblContractItems",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractPayment",
+          "Identifier": "TblContractPayment",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractSchedule",
+          "Identifier": "TblContractSchedule",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblContractType",
+          "Identifier": "TblContractType",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblDistrict",
+          "Identifier": "TblDistrict",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblItems",
+          "Identifier": "TblItems",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblPlaceDetails",
+          "Identifier": "TblPlaceDetails",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblPlaceOfBussiness",
+          "Identifier": "TblPlaceOfBussiness",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TblProject",
+          "Identifier": "TblProject",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblProjectItem",
+          "Identifier": "TblProjectItem",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatus",
+          "Identifier": "TblStatus",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatusDetail",
+          "Identifier": "TblStatusDetail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblStatusDetailLevel2",
+          "Identifier": "TblStatusDetailLevel2",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblTransactionLocation",
+          "Identifier": "TblTransactionLocation",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblUnit",
+          "Identifier": "TblUnit",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tblWards",
+          "Identifier": "TblWards",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TemplateEmail",
+          "Identifier": "TemplateEmail",
+          "Module": "Office",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    },
+    {
+      "Key": "EsssOne",
+      "Tables": [
+        {
+          "Tablename": "dbo.HR_City",
+          "Identifier": "HrCity",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_DependentPerson",
+          "Identifier": "HrDependentPerson",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_DisciplineAction",
+          "Identifier": "HrDisciplineAction",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_DisciplineAssign",
+          "Identifier": "HrDisciplineAssign",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_EmpContract",
+          "Identifier": "HrEmpContract",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_Equipment",
+          "Identifier": "HrEquipment",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_EquipmentGroup",
+          "Identifier": "HrEquipmentGroup",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_EvaluationByYear",
+          "Identifier": "HrEvaluationByYear",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_Hospital",
+          "Identifier": "HrHospital",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_InsuranceApply",
+          "Identifier": "HrInsuranceApply",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_InsuranceTrans",
+          "Identifier": "HrInsuranceTrans",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_InsuranseSummary",
+          "Identifier": "HrInsuranseSummary",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_RecruitmentCandResult",
+          "Identifier": "HrRecruitmentCandResult",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_RecruitmentCourse",
+          "Identifier": "HrRecruitmentCourse",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_ResignAssign",
+          "Identifier": "HrResignAssign",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_ResignStatus",
+          "Identifier": "HrResignStatus",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_ResignType",
+          "Identifier": "HrResignType",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_ResulItem",
+          "Identifier": "HrResulItem",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_SalProHistory",
+          "Identifier": "HrSalProHistory",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_Subject",
+          "Identifier": "HrSubject",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_TrainingAbsence",
+          "Identifier": "HrTrainingAbsence",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_TrainingAssign",
+          "Identifier": "HrTrainingAssign",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_TrainingCourse",
+          "Identifier": "HrTrainingCourse",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.HR_TrainingEmpResult",
+          "Identifier": "HrTrainingEmpResult",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ST_Organization",
+          "Identifier": "StOrganization",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tbl_M_pCompanyProfile",
+          "Identifier": "TblMPCompanyProfile",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tbl_tEmp_ForeignerInfor",
+          "Identifier": "TblTEmpForeignerInfor",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tbl_tEmp_OtherInfor",
+          "Identifier": "TblTEmpOtherInfor",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tbl_tEmp_PersonalInfor",
+          "Identifier": "TblTEmpPersonalInfor",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tCompanies",
+          "Identifier": "TCompanies",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tEmployees",
+          "Identifier": "TEmployees",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tEmployeesShifts",
+          "Identifier": "TEmployeesShifts",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tHolidays",
+          "Identifier": "THolidays",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tLeaveRegistrations",
+          "Identifier": "TLeaveRegistrations",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tPositions",
+          "Identifier": "TPositions",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tShifts",
+          "Identifier": "TShifts",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.tTransactions",
+          "Identifier": "TTransactions",
+          "Module": "EsssOne",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [],
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
+}
