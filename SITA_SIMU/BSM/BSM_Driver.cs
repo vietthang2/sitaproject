@@ -162,7 +162,7 @@ ENDBSM",
             //listener.Listen(20);
             //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
             Console.WriteLine("Send data....");
-            SendData(MsgHelper.LoginAcept());
+            SendData(MsgHelper.LoginRequest());
 
         }
         public void SocketAsync(SocketAsyncEventArgs e)

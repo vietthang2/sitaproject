@@ -12,7 +12,7 @@ namespace CXR1B_SAC.BSM
         static string application = "BHS_CXR";
         static ushort version = 2;//version 2
         static string username;
-        static string password;
+        static string password="password";
         static ushort msg_id = 1;
 
         public static SitaMsg GetBaseMsg()
