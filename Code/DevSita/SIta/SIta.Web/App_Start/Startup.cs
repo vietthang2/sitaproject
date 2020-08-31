@@ -34,6 +34,7 @@ namespace Sita
                         UsePageLocksOnDequeue = true,
                         DisableGlobalLocks = true
                     });
+            
 
             yield return new BackgroundJobServer();
         }
@@ -53,7 +54,7 @@ namespace Sita
 
             app.UseHangfireAspNet(GetHangfireServers);
             app.UseHangfireDashboard("/jobs", options);
-
+            
             // Setting up some example jobs
             BackgroundJob.Enqueue<MSMQJob>(job => job.Run());
             RecurringJob.AddOrUpdate<MSMQJob>(job => job.Run(), Cron.Hourly);
