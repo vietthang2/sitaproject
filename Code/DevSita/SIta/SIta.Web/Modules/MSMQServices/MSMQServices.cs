@@ -6,12 +6,12 @@ using System.Web;
 
 namespace Sita.Modules.MSMQServices
 {
-    public class MSMQJob
+    public class MSMQServices
     {
         public void Run()
         {
             new Exception("StartMSMQThread").Log();
-            Sita.MSMQServices.MSMQServices.StartMSMQServicesThread();
+            Sita.Modules.MSMQServices.MSMQJob.StartMSMQServicesThread();
         }
     }
 }

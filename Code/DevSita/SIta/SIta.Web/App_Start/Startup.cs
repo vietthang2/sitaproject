@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using Serenity;
 using Serenity.Data;
+using Sita.Modules.BSMServices;
 using Sita.Modules.MSMQServices;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace Sita
                         UsePageLocksOnDequeue = true,
                         DisableGlobalLocks = true
                     });
+            
 
             yield return new BackgroundJobServer();
         }
@@ -53,11 +55,14 @@ namespace Sita
 
             app.UseHangfireAspNet(GetHangfireServers);
             app.UseHangfireDashboard("/jobs", options);
-
+            
             // Setting up some example jobs
-            BackgroundJob.Enqueue<MSMQJob>(job => job.Run());
-            RecurringJob.AddOrUpdate<MSMQJob>(job => job.Run(), Cron.Hourly);
-            RecurringJob.AddOrUpdate<MSMQJob>(job => job.Run(), "0 * * * *");
+            BackgroundJob.Enqueue<MSMQServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
+            BackgroundJob.Enqueue<BSMServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
         }
     }
 }

@@ -880,6 +880,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="wkhtmltopdf-license.txt" />
+    <Content Include="ServerConfig.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
@@ -1735,6 +1736,12 @@
     <Compile Include="Modules\AdminLTE\Tables\TablesController.cs" />
     <Compile Include="Modules\AdminLTE\Forms\FormsController.cs" />
     <Compile Include="Modules\AdminLTE\UIElements\UIElementsController.cs" />
+    <Compile Include="Modules\BSMServices\BsmDriver.cs" />
+    <Compile Include="Modules\BSMServices\BSMServices.cs" />
+    <Compile Include="Modules\BSMServices\BSMServiceJob.cs" />
+    <Compile Include="Modules\BSMServices\DTO\BSMServerModel.cs" />
+    <Compile Include="Modules\BSMServices\ErrorCode.cs" />
+    <Compile Include="Modules\BSMServices\MsgHelper.cs" />
     <Compile Include="Modules\Common\Helpers\EmailHelper.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />
@@ -1794,7 +1801,9 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
-    <Compile Include="Modules\MSMQServices\MSMQJob.cs" />
+    <Compile Include="Modules\MSMQServices\DTO\DailyModel.cs" />
+    <Compile Include="Modules\MSMQServices\DTO\ServerModel.cs" />
+    <Compile Include="Modules\MSMQServices\MSMQServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServicesJob.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />

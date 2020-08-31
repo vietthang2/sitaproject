@@ -1,0 +1,18 @@
+{
+  "MsmqServer": {
+    "Ip": "57.47.209.61",
+    "Port": 1801,
+    "Host": "",
+    "QueuePath": "",
+    "QueueName": "bsh",
+    "Type": "TCP"
+
+  },
+  "BSMServer": {
+    "Ip": "27.71.237.68",
+    "Port": 1000
+
+
+  }
+
+}
