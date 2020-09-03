@@ -31,8 +31,8 @@ namespace Sita.Modules.MSMQServices
 
                 _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
             }
-            else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
-                _MSMQServices.Start();
+            //else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
+            //    _MSMQServices.Start();
 
 
         }

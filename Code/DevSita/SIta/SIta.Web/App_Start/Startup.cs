@@ -1,6 +1,7 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.Owin;
+using Modules.Common;
 using Owin;
 using Serenity;
 using Serenity.Data;
@@ -63,6 +64,7 @@ namespace Sita
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
+            Logging.InitLogging();
         }
     }
 }

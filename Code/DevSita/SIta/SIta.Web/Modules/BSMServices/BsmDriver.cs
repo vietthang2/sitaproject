@@ -5,7 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Web;
-using Serenity;
+using Modules.Common;
+
 
 namespace SIta.Modules.BSMServices
 {
@@ -119,6 +120,7 @@ ENDBSM",
             //IPHostEntry host = Dns.GetHostEntry("27.71.237.68");
             //IPAddress ipAddress = host.AddressList[0];
             remoteEP = new IPEndPoint(IPAddress.Parse("27.71.237.68"), 1000);
+            RabbitMQ.RabbitPublish.Run("test");
 
             listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
@@ -131,7 +133,7 @@ ENDBSM",
 
             // listener.BeginAccept(OnSocketAccepted, null);
             Console.WriteLine("StartListening");
-            Log.Info($"Time:{DateTime.Now} : StartListening");
+            Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
 
             Thread T = new Thread(checkTimeOut);
             T.IsBackground = true;
@@ -146,21 +148,29 @@ ENDBSM",
 
             // Complete the connection.  
             // client.EndConnect(result);
-
-            Console.WriteLine("Socket connected to {0}",
+            if (client.Connected)
+            {
+                Logging.Logger.Information("Socket connected to {0}",
                 client.RemoteEndPoint.ToString());
+                Console.WriteLine($"OnSocketAccepted");
+                Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
+                // Pass in the client socket as the state object, so you can access it in the callback.
+                client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+                // Start receiving data from this client.
+
+                //listener.Listen(20);
+                //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
+                Logging.Logger.Information("Send data....");
+                SendData(MsgHelper.LoginRequest());
+            }
+            else
+            {
+                listener.Listen(10);
+            }
+            
 
 
-            Console.WriteLine($"OnSocketAccepted");
-            Log.Info($"Time:{DateTime.Now} : OnSocketAccepted");
-            // Pass in the client socket as the state object, so you can access it in the callback.
-            client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
-            // Start receiving data from this client.
-
-            //listener.Listen(20);
-            //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
-            Console.WriteLine("Send data....");
-            SendData(MsgHelper.LoginRequest());
+            
 
         }
         public void SocketAsync(SocketAsyncEventArgs e)
@@ -211,7 +221,7 @@ ENDBSM",
             SitaMsg msg = new SitaMsg();
             msg.PraseData(recData);
             Console.WriteLine($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()} - Raw Data: {msg.HexString}");
-            Log.Info($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
+            Logging.Logger.Information($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
 
 
 
@@ -311,7 +321,7 @@ ENDBSM",
             socketAsyncData.SetBuffer(data, 0, data.Length);
             client.SendAsync(socketAsyncData);
             Console.WriteLine($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
-            Log.Info($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
+            Logging.Logger.Information($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
         }
     }
 }
