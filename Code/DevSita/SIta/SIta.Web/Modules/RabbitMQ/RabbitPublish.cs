@@ -12,13 +12,13 @@ namespace SIta.Modules.RabbitMQ
     {
         public static void Run(string mess)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "localhost",UserName="guest",Password="guest" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 channel.ExchangeDeclare(exchange: "logs", type: ExchangeType.Fanout);
 
-                var message = "Hello World!";//GetMessage(mess);
+                var message = mess;
                 var body = Encoding.UTF8.GetBytes(message);
                 channel.BasicPublish(exchange: "logs",
                                      routingKey: "123",
