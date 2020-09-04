@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
 
+
 [assembly: OwinStartup(typeof(Sita.Startup))]
 
 namespace Sita
@@ -65,6 +66,8 @@ namespace Sita
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
             Logging.InitLogging();
+            Sita.Modules.RabbitMQ.RabbitSubscribe.Subscribe();
+
         }
     }
 }
