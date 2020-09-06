@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System;
 using System.IO;
 
 namespace Modules.Common
@@ -6,7 +7,7 @@ namespace Modules.Common
     public static class Logging
     {
         public static Serilog.Core.Logger Logger;
-        private static readonly string _logFileName = "Log\\SITA_LOG.log";
+        private static readonly string _logFileName = AppDomain.CurrentDomain.BaseDirectory + "Log\\SITA_LOG.log";
         private static readonly string _logLevel = "info";
 
         public static void InitLogging()
@@ -50,10 +51,10 @@ namespace Modules.Common
 
         public static void CreateDirectoryIfMissing(string FolderPath)
         {
-            bool folderExists = Directory.Exists(FolderPath);
+            bool folderExists = Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + FolderPath);
             if (!folderExists)
             {
-                Directory.CreateDirectory(FolderPath);
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + FolderPath);
             }
         }
     }

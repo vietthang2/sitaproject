@@ -57,15 +57,16 @@ namespace Sita
 
             app.UseHangfireAspNet(GetHangfireServers);
             app.UseHangfireDashboard("/jobs", options);
-
+            Logging.InitLogging();
             // Setting up some example jobs
             BackgroundJob.Enqueue<MSMQServices>(job => job.Run());
             RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), Cron.Minutely);
-            RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
+            //RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
+
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
-            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
-            Logging.InitLogging();
+            //RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
+            
             Sita.Modules.RabbitMQ.RabbitSubscribe.StartSubscribeThread();
 
         }

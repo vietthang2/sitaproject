@@ -31,8 +31,8 @@ namespace Sita.Modules.BSMServices
 
                 _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
             }
-            else if (_BSMServices.ThreadState == ThreadState.Unstarted)
-                _BSMServices.Start();
+            //else if (_BSMServices.ThreadState == ThreadState.Unstarted)
+            //    _BSMServices.Start();
 
 
         }
@@ -50,8 +50,8 @@ namespace Sita.Modules.BSMServices
             {
 
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
-                while (true)
-                {
+               // while (true)
+                //{
                     Thread.Sleep(1000); // 10 sec
                     BsmDriver driver = new BsmDriver();
                     var bsmServer = BSMServer();
@@ -61,7 +61,7 @@ namespace Sita.Modules.BSMServices
 
                     Console.Read();
 
-                }
+                //}
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }

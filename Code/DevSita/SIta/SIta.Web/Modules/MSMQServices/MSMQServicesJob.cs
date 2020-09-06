@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Modules.Common;
+using Newtonsoft.Json;
 using Serenity;
 using Serenity.Abstractions;
 using Serenity.Web;
@@ -53,46 +54,33 @@ namespace Sita.Modules.MSMQServices
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 while (true)
                 {
-                    Thread.Sleep(1000); // 10 sec
-                    MessageQueue messageQueue = new MessageQueue(BuildPath());
-                    //System.Messaging.Message[] messages = messageQueue.GetAllMessages();
-                    //Test data
-                    var daily = (@"<?xml version='1.0' encoding='utf-8'?>
-                                <connect version='1.0' name='AMS'>
-                                <daily action='replace' adi='A' linecode='DL' number='1397' schedule_date='2016-10-26' softreplace='true' site_iata='DEN' date_boundary='0'>
-                                <field name='schedule' instance='1' value='2016-10-26T10:18:00' />
-                                <field name='estimated' instance='1' value='2016-10-26T10:18:00' />
-                                <field name='actual' instance='1' value='2016-10-26T10:18:00' />
-                                <field name='domesticintcode' instance='1' value='I' />
-                                <field name='aircrafttype' instance='1' value='73H' />
-                                <field name='aircrafttypeicao' instance='1' value='B738' />
-                                <field name='allparkingbays' instance='1' value='' />
-                                <field name='gate' instance='1' value='' />
-                                <field name='claim' instance='1' value='' />
-                                <field name='displayfltno' instance='11' value='' />
-                                <field name='status' instance='1' value='ON' />
-                                <field name='totpax' instance='1' value='156' />
-                                <field name='mtow' instance='1' value='79016' />
-                                <field name='city' instance='1' value='CVG' />
-                                </daily>
-                                </connect>
-                                ");
-                    XmlDocument doc = new XmlDocument();
-                    doc.LoadXml(daily);
-                    //doc.RemoveChild(doc.FirstChild);
-                    string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
-                    var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@",""));
-                    RabbitPublish.Publish(dailyModel.ToString());
-                    break;
-                    //Nhận tin nhắn
-                    //foreach (System.Messaging.Message message in messages)
-                    //{
-                    //// chuyển xml về json sau đó chuyển về model
-                    //    var daily = JsonConvert.DeserializeObject<ServerModel>(message.ToJson(false)) ;
-                    //}
-                    // after all processing, delete all the messages
-                    //messageQueue.Purge();
-                    // new Exception("Hello Serenity from Hangfire!").Log();
+                    Thread.Sleep(2000); // 10 sec
+                    try
+                    {
+                        var path = BuildPath();
+                        Logging.Logger.Information("Begin connect to: "+ path);
+                        MessageQueue messageQueue = new MessageQueue(path);
+                        System.Messaging.Message[] messages = messageQueue.GetAllMessages();
+                        
+                        //Nhận tin nhắn
+                        foreach (System.Messaging.Message message in messages)
+                        {
+                            // chuyển xml về json sau đó chuyển về model
+                            XmlDocument doc = new XmlDocument();
+                            doc.LoadXml(message.ToString());
+                            //doc.RemoveChild(doc.FirstChild);
+                            string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
+                            var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
+                            RabbitPublish.Publish(dailyModel.ToString());
+                        }
+                        
+                        messageQueue.Purge();
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        Logging.Logger.Error("MSMQ Error:" + ex.Message);
+                    }
 
                 }
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();

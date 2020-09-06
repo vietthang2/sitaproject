@@ -117,66 +117,132 @@ ENDBSM",
         IPEndPoint remoteEP;
         public void StartListening()
         {
-            //IPHostEntry host = Dns.GetHostEntry("27.71.237.68");
-            //IPAddress ipAddress = host.AddressList[0];
-            remoteEP = new IPEndPoint(IPAddress.Parse("27.71.237.68"), 1000);
-            
+            Logging.Logger.Information($"Begin StartListening Ip: {IP} and port:{Port}");
+            try
+            {
+                if (listener == null)
+                {
+                    remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
 
-            listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
-            //listener.Listen(20);
-            // Connect to the remote endpoint.  
-            listener.BeginConnect(remoteEP,
-                new AsyncCallback(OnSocketAccepted), listener);
-            // connectDone.WaitOne();
-            //listener.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+                    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
+                    //listener.Listen(20);
+                    // Connect to the remote endpoint.  
+                    listener.BeginConnect(remoteEP,
+                        new AsyncCallback(OnSocketAccepted), listener);
+                   
+                    Console.WriteLine("StartListening");
+                    Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
 
-            // listener.BeginAccept(OnSocketAccepted, null);
-            Console.WriteLine("StartListening");
-            Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
+                    Thread T = new Thread(checkTimeOut);
+                    T.IsBackground = true;
+                    T.Start();
+                }
+                else
+                {
+                    listener.BeginAccept(OnSocketAccepted, null);
+                }
+                
+            }
+            catch (Exception e)
+            {
 
-            Thread T = new Thread(checkTimeOut);
-            T.IsBackground = true;
-            T.Start();
+                Logging.Logger.Error(e.Message + e.StackTrace + e.Source);
+                listener.Shutdown(SocketShutdown.Receive);
+            }
         }
 
         private void OnSocketAccepted(IAsyncResult result)
         {
             // This is the client socket, where you send/receive data from after accepting. Keep it in a List<Socket> collection if you need to.
-
-            client = (Socket)result.AsyncState;
-
-            // Complete the connection.  
-            // client.EndConnect(result);
-            if (client.Connected)
+            try
             {
-                Logging.Logger.Information("Socket connected to {0}",
-                client.RemoteEndPoint.ToString());
-                Console.WriteLine($"OnSocketAccepted");
-                Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
-                // Pass in the client socket as the state object, so you can access it in the callback.
-                client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
-                // Start receiving data from this client.
-
-                //listener.Listen(20);
-                //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
-                Logging.Logger.Information("Send data....");
-                SendData(MsgHelper.LoginRequest());
-            }
-            else
-            {
-                listener.Listen(10);
-            }
-            
-
+                client = (Socket)result.AsyncState;
 
             
+                if (client.Connected)
+                {
+                    Console.WriteLine("Socket connected to {0}",
+                    client.RemoteEndPoint.ToString());
 
-        }
-        public void SocketAsync(SocketAsyncEventArgs e)
-        {
 
+                    Console.WriteLine($"OnSocketAccepted");
+                    Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
+                    
+                    client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+                    Console.WriteLine("Send data....");
+                    SendData(MsgHelper.LoginRequest());
+                }
+                else
+                {
+                    listener.BeginConnect(remoteEP,
+                       new AsyncCallback(OnSocketAccepted), listener);
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+
+                Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
+            }
         }
+        //    //IPHostEntry host = Dns.GetHostEntry("27.71.237.68");
+        //    //IPAddress ipAddress = host.AddressList[0];
+        //    remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
+
+
+        //    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //    listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
+        //    //listener.Listen(20);
+        //    // Connect to the remote endpoint.  
+        //    listener.BeginConnect(remoteEP,
+        //        new AsyncCallback(OnSocketAccepted), listener);
+        //    // connectDone.WaitOne();
+        //    //listener.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+
+        //    // listener.BeginAccept(OnSocketAccepted, null);
+        //    Console.WriteLine("StartListening");
+        //    Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
+
+        //    Thread T = new Thread(checkTimeOut);
+        //    T.IsBackground = true;
+        //    T.Start();
+        //}
+
+        //private void OnSocketAccepted(IAsyncResult result)
+        //{
+        //    // This is the client socket, where you send/receive data from after accepting. Keep it in a List<Socket> collection if you need to.
+
+        //    client = (Socket)result.AsyncState;
+
+        //    // Complete the connection.  
+        //    // client.EndConnect(result);
+        //    if (client.Connected)
+        //    {
+        //        Logging.Logger.Information("Socket connected to {0}",
+        //        client.RemoteEndPoint.ToString());
+        //        Console.WriteLine($"OnSocketAccepted");
+        //        Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
+        //        // Pass in the client socket as the state object, so you can access it in the callback.
+        //        client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+        //        // Start receiving data from this client.
+
+        //        //listener.Listen(20);
+        //        //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
+        //        Logging.Logger.Information("Send data....");
+        //        SendData(MsgHelper.LoginRequest());
+        //    }
+        //    else
+        //    {
+        //        listener.Listen(10);
+        //    }
+
+
+
+
+
+        //}
+        
 
         Socket client;
         private void OnDataReceived(IAsyncResult result)

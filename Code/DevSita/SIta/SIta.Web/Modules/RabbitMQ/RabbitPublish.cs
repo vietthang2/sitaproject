@@ -75,22 +75,21 @@ namespace Sita.Modules.RabbitMQ
                                   exchange: "BagMessage",
                                   routingKey: "Server");
 
-                Console.WriteLine(" [*] Waiting for logs.");
+                
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(" [x] {0}", message);
+                   
                     Logging.Logger.Information("Rabbit recieve:{0}", message);
                 };
                 channel.BasicConsume(queue: queueName,
                                      autoAck: true,
                                      consumer: consumer);
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
+              
             }
         }
     }
