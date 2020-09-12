@@ -1,6 +1,7 @@
 ﻿using Modules.Common;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Sita.Modules.Default.TblBags;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,6 +132,7 @@ namespace Sita.Modules.RabbitMQ
                 MessageReceived?.Invoke(this, message);
                 Logging.Logger.Information("Rabbit recieve:{0}", message);
                 //Hàm lưu bag sẽ nhận tham số message
+                StoreBag.Save(message);
             };
             _channel.BasicConsume(queue: queueName,
                                      autoAck: true,
