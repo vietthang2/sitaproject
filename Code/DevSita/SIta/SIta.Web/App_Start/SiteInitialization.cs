@@ -22,7 +22,7 @@
                 registrar.RegisterInstance<IAuthenticationService>(new Administration.AuthenticationService());
                 registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Administration.PermissionService()));
                 registrar.RegisterInstance<IUserRetrieveService>(new Administration.UserRetrieveService());
-
+                registrar.RegisterInstance<IAuthorizationService>(new ImpersonatingAuthorizationService(new Administration.AuthorizationService()));
                 if (!ConfigurationManager.AppSettings["LDAP"].IsTrimmedEmpty())
                     registrar.RegisterInstance<IDirectoryService>(new LdapDirectoryService());
 
