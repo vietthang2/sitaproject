@@ -154,10 +154,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2019 05:25:34</publishTime>
     </File>
     <File Include="bin/SIta.Web.dll">
-      <publishTime>09/06/2020 19:42:27</publishTime>
+      <publishTime>09/07/2020 22:04:11</publishTime>
     </File>
     <File Include="bin/SIta.Web.pdb">
-      <publishTime>09/06/2020 19:42:27</publishTime>
+      <publishTime>09/07/2020 22:04:11</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
       <publishTime>08/30/2020 20:15:25</publishTime>

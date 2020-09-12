@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SIta.Modules.BSMServices
+namespace Sita.Modules.BSMServices
 {
     public enum ErrorCode
     {

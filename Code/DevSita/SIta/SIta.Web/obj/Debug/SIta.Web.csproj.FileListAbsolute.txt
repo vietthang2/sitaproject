@@ -186,3 +186,5 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Runtime.CompilerServices.U
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Threading.Channels.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Threading.Tasks.Extensions.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.csprojAssemblyReference.cache
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.xml

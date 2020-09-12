@@ -7,7 +7,7 @@ namespace Modules.Common
     public static class Logging
     {
         public static Serilog.Core.Logger Logger;
-        private static readonly string _logFileName = AppDomain.CurrentDomain.BaseDirectory + "Log\\SITA_LOG.log";
+        private static readonly string _logFileName = AppDomain.CurrentDomain.BaseDirectory + "Log\\Sita_LOG.log";
         private static readonly string _logLevel = "info";
 
         public static void InitLogging()

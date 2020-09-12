@@ -439,6 +439,201 @@ declare namespace Sita.Common {
         Value?: string;
     }
 }
+declare namespace SIta.Default {
+    class TblBagsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblBagsForm {
+        BaggageTag: Serenity.StringEditor;
+        FlightRef: Serenity.StringEditor;
+        Processed: Serenity.BooleanEditor;
+        Bsm: Serenity.StringEditor;
+        Bpm: Serenity.StringEditor;
+        TimeRcvBsm: Serenity.DateEditor;
+        TimeRcvBpm: Serenity.DateEditor;
+    }
+}
+declare namespace SIta.Default {
+    interface TblBagsRow {
+        BaggageTag?: string;
+        FlightRef?: string;
+        Processed?: boolean;
+        Bsm?: string;
+        Bpm?: string;
+        TimeRcvBsm?: string;
+        TimeRcvBpm?: string;
+        Id?: number;
+    }
+    namespace TblBagsRow {
+        const idProperty = "Id";
+        const nameProperty = "BaggageTag";
+        const localTextPrefix = "Default.TblBags";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const BaggageTag: any;
+            const FlightRef: any;
+            const Processed: any;
+            const Bsm: any;
+            const Bpm: any;
+            const TimeRcvBsm: any;
+            const TimeRcvBpm: any;
+            const Id: any;
+        }
+    }
+}
+declare namespace SIta.Default {
+    namespace TblBagsService {
+        const baseUrl = "Default/TblBags";
+        function Create(request: Serenity.SaveRequest<TblBagsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblBagsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblBagsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblBagsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace SIta.Default {
+    class TblFieldForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblFieldForm {
+        Name: Serenity.StringEditor;
+        Instance: Serenity.StringEditor;
+        Value: Serenity.StringEditor;
+        FlightRef: Serenity.StringEditor;
+    }
+}
+declare namespace SIta.Default {
+    interface TblFieldRow {
+        Id?: string;
+        Name?: string;
+        Instance?: string;
+        Value?: string;
+        FlightRef?: string;
+    }
+    namespace TblFieldRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Default.TblField";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Id: any;
+            const Name: any;
+            const Instance: any;
+            const Value: any;
+            const FlightRef: any;
+        }
+    }
+}
+declare namespace SIta.Default {
+    namespace TblFieldService {
+        const baseUrl = "Default/TblField";
+        function Create(request: Serenity.SaveRequest<TblFieldRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblFieldRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblFieldRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblFieldRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace SIta.Default {
+    class TblFlightForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblFlightForm {
+        Adi: Serenity.StringEditor;
+        LineCode: Serenity.StringEditor;
+        Number: Serenity.StringEditor;
+        ScheduleDate: Serenity.StringEditor;
+        SoftReplace: Serenity.StringEditor;
+        SiteIata: Serenity.StringEditor;
+        DateBoundảy: Serenity.StringEditor;
+        Chute: Serenity.IntegerEditor;
+        LastChanged: Serenity.DateEditor;
+        DateCreated: Serenity.DateEditor;
+        UserCreated: Serenity.StringEditor;
+        UserUpdate: Serenity.StringEditor;
+        DateUpdated: Serenity.DateEditor;
+    }
+}
+declare namespace SIta.Default {
+    interface TblFlightRow {
+        Identify?: string;
+        Adi?: string;
+        LineCode?: string;
+        Number?: string;
+        ScheduleDate?: string;
+        SoftReplace?: string;
+        SiteIata?: string;
+        DateBoundảy?: string;
+        Chute?: number;
+        LastChanged?: string;
+        DateCreated?: string;
+        UserCreated?: string;
+        UserUpdate?: string;
+        DateUpdated?: string;
+    }
+    namespace TblFlightRow {
+        const idProperty = "Identify";
+        const nameProperty = "Identify";
+        const localTextPrefix = "Default.TblFlight";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Identify: any;
+            const Adi: any;
+            const LineCode: any;
+            const Number: any;
+            const ScheduleDate: any;
+            const SoftReplace: any;
+            const SiteIata: any;
+            const DateBoundảy: any;
+            const Chute: any;
+            const LastChanged: any;
+            const DateCreated: any;
+            const UserCreated: any;
+            const UserUpdate: any;
+            const DateUpdated: any;
+        }
+    }
+}
+declare namespace SIta.Default {
+    namespace TblFlightService {
+        const baseUrl = "Default/TblFlight";
+        function Create(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
 declare namespace Sita {
     interface ExcelImportRequest extends Serenity.ServiceRequest {
         FileName?: string;
@@ -994,6 +1189,78 @@ declare namespace Sita.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace SIta.Default {
+    class TblBagsDialog extends Serenity.EntityDialog<TblBagsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblBagsForm;
+    }
+}
+declare namespace SIta.Default {
+    class TblBagsGrid extends Serenity.EntityGrid<TblBagsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblBagsDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SIta.Default {
+    class TblFieldDialog extends Serenity.EntityDialog<TblFieldRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblFieldForm;
+    }
+}
+declare namespace SIta.Default {
+    class TblFieldGrid extends Serenity.EntityGrid<TblFieldRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblFieldDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SIta.Default {
+    class TblFlightDialog extends Serenity.EntityDialog<TblFlightRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblFlightForm;
+    }
+}
+declare namespace SIta.Default {
+    class TblFlightGrid extends Serenity.EntityGrid<TblFlightRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblFlightDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Sita.Membership {

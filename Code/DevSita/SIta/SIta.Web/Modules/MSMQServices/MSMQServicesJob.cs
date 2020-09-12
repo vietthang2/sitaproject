@@ -5,7 +5,7 @@ using Serenity.Abstractions;
 using Serenity.Web;
 using Sita.Modules.MSMQServices.DTO;
 using Sita.Modules.RabbitMQ;
-using SIta.Modules.MSMQServices.DTO;
+using Sita.Modules.MSMQServices.DTO;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -71,7 +71,7 @@ namespace Sita.Modules.MSMQServices
                             //doc.RemoveChild(doc.FirstChild);
                             string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
                             var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
-                            RabbitPublish.Publish(dailyModel.ToString());
+                            
                         }
                         
                         messageQueue.Purge();

@@ -97,6 +97,9 @@
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -1722,6 +1725,43 @@
     <TypeScriptCompile Include="Scripts\serenity\slick\serenity-slick.d.ts" />
     <TypeScriptCompile Include="Scripts\serenity\widget\serenity-widget.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblBags\TblBagsIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblBags\TblBagsDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblBags\TblBagsGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Content\site\site.default.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFieldRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFieldService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblField\TblFieldIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblField\TblFieldDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblField\TblFieldGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFieldForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFlightRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFlightService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblFlight\TblFlightIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblFlight\TblFlightDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblFlight\TblFlightGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFlightForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1818,6 +1858,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceModels.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
+    <Compile Include="Modules\Default\TblBags\StoreBag.cs" />
     <Compile Include="Modules\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
     <Compile Include="Modules\Membership\Account\EnvironmentSettings.cs" />
     <Compile Include="Modules\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
@@ -1877,6 +1918,25 @@
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRow.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRepository.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionEndpoint.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsRow.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsRepository.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsEndpoint.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsPage.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsColumns.cs" />
+    <Compile Include="Modules\Default\TblBags\TblBagsForm.cs" />
+    <Compile Include="Modules\Default\DefaultNavigation.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldRow.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldRepository.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldEndpoint.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldPage.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldColumns.cs" />
+    <Compile Include="Modules\Default\TblField\TblFieldForm.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightRow.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightRepository.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightEndpoint.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightPage.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightColumns.cs" />
+    <Compile Include="Modules\Default\TblFlight\TblFlightForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

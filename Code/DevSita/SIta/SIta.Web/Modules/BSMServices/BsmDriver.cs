@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using System.Web;
 using Modules.Common;
 using Sita.Modules.RabbitMQ;
 
-namespace SIta.Modules.BSMServices
+namespace Sita.Modules.BSMServices
 {
   
     public class BsmDriver
@@ -115,7 +116,8 @@ ENDBSM",
        new ManualResetEvent(false);
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         IPEndPoint remoteEP;
-        public void StartListening()
+        bool statusConnect = false;
+        public void StartListening(ref bool _statusConnect)
         {
             Logging.Logger.Information($"Begin StartListening Ip: {IP} and port:{Port}");
             try
@@ -130,7 +132,7 @@ ENDBSM",
                     // Connect to the remote endpoint.  
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
-                   
+                    _statusConnect = statusConnect;
                     Console.WriteLine("StartListening");
                     Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
 
@@ -146,8 +148,9 @@ ENDBSM",
             }
             catch (Exception e)
             {
-
-                Logging.Logger.Error(e.Message + e.StackTrace + e.Source);
+                
+               // Logging.Logger.Error(e.Message + e.StackTrace + e.Source);
+                return;
                 listener.Shutdown(SocketShutdown.Receive);
             }
         }
@@ -162,6 +165,7 @@ ENDBSM",
             
                 if (client.Connected)
                 {
+                    statusConnect = true;
                     Console.WriteLine("Socket connected to {0}",
                     client.RemoteEndPoint.ToString());
 
@@ -175,8 +179,8 @@ ENDBSM",
                 }
                 else
                 {
-                    listener.BeginConnect(remoteEP,
-                       new AsyncCallback(OnSocketAccepted), listener);
+                    Logging.Logger.Error("Can not connect to Socket" );
+                    client.Close();
                 }
                     
             }
@@ -186,62 +190,6 @@ ENDBSM",
                 Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
             }
         }
-        //    //IPHostEntry host = Dns.GetHostEntry("27.71.237.68");
-        //    //IPAddress ipAddress = host.AddressList[0];
-        //    remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
-
-
-        //    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        //    listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
-        //    //listener.Listen(20);
-        //    // Connect to the remote endpoint.  
-        //    listener.BeginConnect(remoteEP,
-        //        new AsyncCallback(OnSocketAccepted), listener);
-        //    // connectDone.WaitOne();
-        //    //listener.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
-
-        //    // listener.BeginAccept(OnSocketAccepted, null);
-        //    Console.WriteLine("StartListening");
-        //    Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
-
-        //    Thread T = new Thread(checkTimeOut);
-        //    T.IsBackground = true;
-        //    T.Start();
-        //}
-
-        //private void OnSocketAccepted(IAsyncResult result)
-        //{
-        //    // This is the client socket, where you send/receive data from after accepting. Keep it in a List<Socket> collection if you need to.
-
-        //    client = (Socket)result.AsyncState;
-
-        //    // Complete the connection.  
-        //    // client.EndConnect(result);
-        //    if (client.Connected)
-        //    {
-        //        Logging.Logger.Information("Socket connected to {0}",
-        //        client.RemoteEndPoint.ToString());
-        //        Console.WriteLine($"OnSocketAccepted");
-        //        Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
-        //        // Pass in the client socket as the state object, so you can access it in the callback.
-        //        client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
-        //        // Start receiving data from this client.
-
-        //        //listener.Listen(20);
-        //        //listener.BeginAccept(OnDataReceived, null); // Start a new async accept operation to accept incoming connections from other clients.
-        //        Logging.Logger.Information("Send data....");
-        //        SendData(MsgHelper.LoginRequest());
-        //    }
-        //    else
-        //    {
-        //        listener.Listen(10);
-        //    }
-
-
-
-
-
-        //}
         
 
         Socket client;
@@ -288,7 +236,7 @@ ENDBSM",
             msg.PraseData(recData);
             Console.WriteLine($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()} - Raw Data: {msg.HexString}");
             Logging.Logger.Information($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
-
+            
 
 
             if (msg.Type == MsgType.LOGIN_RQST)
@@ -341,7 +289,25 @@ ENDBSM",
                 SendData(MsgHelper.AckDataMsg(s_msg));
                 timeOut = 0;
             }
+            if (msg.Type == MsgType.ACK_DATA)
+            {
+                //Lưu data
+                try
+                {
+                    var DataObject = msg.Data.Split(Convert.ToChar("."));
 
+                    var keyRabbit1 = DataObject.Where(i => i.Substring(0, 1) == "V").FirstOrDefault();
+                    var keyRabbit2 = DataObject.Where(i => i.Substring(0, 1) == "N").FirstOrDefault();
+                    string _keyQueue = (keyRabbit1 + "_" + keyRabbit2).Replace(@"\", "").Replace(System.Environment.NewLine, "");
+                    RabbitPublish.Publish(_keyQueue, msg.Data.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
+               
+            }
             msgidx++;
             if (msgidx > 6)
             {

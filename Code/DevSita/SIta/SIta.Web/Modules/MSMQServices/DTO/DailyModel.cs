@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SIta.Modules.MSMQServices.DTO
+namespace Sita.Modules.MSMQServices.DTO
 {
     public class DailyModel
     {

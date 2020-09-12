@@ -2,8 +2,8 @@
 using Serenity;
 using Serenity.Abstractions;
 using Serenity.Web;
-using SIta.Modules.BSMServices;
-using SIta.Modules.BSMServices.DTO;
+using Sita.Modules.BSMServices;
+using Sita.Modules.BSMServices.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,18 +50,22 @@ namespace Sita.Modules.BSMServices
             {
 
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
-               // while (true)
-                //{
-                    Thread.Sleep(1000); // 10 sec
-                    BsmDriver driver = new BsmDriver();
-                    var bsmServer = BSMServer();
-                    driver.IP = bsmServer.BSMServer.Ip;
-                    driver.Port = bsmServer.BSMServer.Port;
-                    driver.StartListening();
+                bool isConnected = false;
+                while (true && !isConnected)
+                {
+                   
+                        Thread.Sleep(5000); // 10 sec
+                        BsmDriver driver = new BsmDriver();
+                        var bsmServer = BSMServer();
+                        driver.IP = bsmServer.BSMServer.Ip;
+                        driver.Port = bsmServer.BSMServer.Port;
+                        driver.StartListening(ref isConnected);
+                    
+                    
+                    
 
-                    Console.Read();
 
-                //}
+                }
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace SIta.Modules.BSMServices
+namespace Sita.Modules.BSMServices
 {
 
     public static class MsgHelper
