@@ -15,7 +15,7 @@ namespace Sita.Default.Entities
     [ModifyPermission("Administration:General")]
     public sealed class TblBagsRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch]
+        [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch, Unique(CheckBeforeSave =true,ErrorMessage ="Bagtag đã tồn tại")]
         public String BaggageTag
         {
             get { return Fields.BaggageTag[this]; }
