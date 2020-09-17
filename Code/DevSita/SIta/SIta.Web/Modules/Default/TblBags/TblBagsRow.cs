@@ -15,7 +15,7 @@ namespace Sita.Default.Entities
     [ModifyPermission("Administration:General")]
     public sealed class TblBagsRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch]
+        [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch, Unique]
         public String BaggageTag
         {
             get { return Fields.BaggageTag[this]; }
@@ -64,7 +64,7 @@ namespace Sita.Default.Entities
             set { Fields.TimeRcvBpm[this] = value; }
         }
 
-        [DisplayName("Id"), Identity]
+        [DisplayName("Id"), PrimaryKey,Identity]
         public Int32? Id
         {
             get { return Fields.Id[this]; }

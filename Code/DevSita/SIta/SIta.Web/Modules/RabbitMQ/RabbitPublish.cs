@@ -132,6 +132,8 @@ namespace Sita.Modules.RabbitMQ
                 MessageReceived?.Invoke(this, message);
                 Logging.Logger.Information("Rabbit recieve:{0}", message);
                 //Hàm lưu bag sẽ nhận tham số message
+
+
                 StoreBag.Save(message);
             };
             _channel.BasicConsume(queue: queueName,
