@@ -64,7 +64,7 @@ namespace Sita.Default.Entities
             set { Fields.TimeRcvBpm[this] = value; }
         }
 
-        [DisplayName("Id"), Identity]
+        [DisplayName("Id"), PrimaryKey,Identity]
         public Int32? Id
         {
             get { return Fields.Id[this]; }
