@@ -1,22 +1,25 @@
 ﻿using Modules.Common;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Serilog;
 using Sita.Modules.Default.TblBags;
+using SIta.Modules.RabbitMQ;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading;
-using System.Web;
 
 namespace Sita.Modules.RabbitMQ
 {
     public class RabbitPublish
     {
+        public static RabbitServer ServerConfig =  Common.GetRabbitConfig();
         public static void Publish(string key, string mess)
         {
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = "171.244.18.171", UserName = "admin", Password = "admin" };
+            
+            var factory = new ConnectionFactory() { HostName = ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -30,7 +33,7 @@ namespace Sita.Modules.RabbitMQ
                                      body: body);
                 Console.WriteLine(" [x] Sent {0}", message);
                 Logging.Logger.Information(" [x] Sent Rabbit {0}", message);
-                
+
 
             }
         }
@@ -39,7 +42,7 @@ namespace Sita.Modules.RabbitMQ
     public class RabbitSubscribe
     {
         private static Thread _Subscribe = null;
-        
+
 
         public static void StartSubscribeThread()
         {
@@ -72,7 +75,7 @@ namespace Sita.Modules.RabbitMQ
         public static void SubscribeEvent()
         {
             RabbitEvent rabbitEvent = new RabbitEvent();
-            string messRbc="";
+            string messRbc = "";
             rabbitEvent.MessageReceived += (sender, msg) => messRbc = msg;
             rabbitEvent.RabbitMQManager();
             Logging.Logger.Information("Rabbit MessageReceived :" + messRbc);
@@ -106,10 +109,11 @@ namespace Sita.Modules.RabbitMQ
         private static IModel _channel;
         private static IConnection _connection;
         public event EventHandler<string> MessageReceived;
+        public static RabbitServer ServerConfig = Common.GetRabbitConfig();
         public void RabbitMQManager()
         {
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = "171.244.18.171", UserName = "admin", Password = "admin" };
+            var factory = new ConnectionFactory() { HostName = ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
@@ -142,6 +146,28 @@ namespace Sita.Modules.RabbitMQ
 
 
 
+        }
+    }
+    public static class Common
+    {
+        public static RabbitServer GetRabbitConfig()
+        {
+            try
+            {
+                using (var reader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "ServerConfig.json"))
+                {
+                    var appSettings = JsonConvert.DeserializeObject<RabbitServerModel>(reader.ReadToEnd());
+                   // var sq = new RabbitServer();
+                    return appSettings.RabbitServer;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                throw;
+            }
         }
     }
 }

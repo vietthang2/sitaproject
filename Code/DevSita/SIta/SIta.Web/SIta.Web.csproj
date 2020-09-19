@@ -1762,6 +1762,12 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Default.TblFlightForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsHistoryRow.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsHistoryService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <Content Include="Modules\Default\TblBagsHistory\TblBagsHistoryIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblBagsHistory\TblBagsHistoryDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblBagsHistory\TblBagsHistoryGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsHistoryForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1880,6 +1886,7 @@
     <Compile Include="Modules\MSMQServices\MSMQServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServicesJob.cs" />
     <Compile Include="Modules\RabbitMQ\RabbitPublish.cs" />
+    <Compile Include="Modules\RabbitMQ\ServerModel.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -1937,6 +1944,12 @@
     <Compile Include="Modules\Default\TblFlight\TblFlightPage.cs" />
     <Compile Include="Modules\Default\TblFlight\TblFlightColumns.cs" />
     <Compile Include="Modules\Default\TblFlight\TblFlightForm.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryRow.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryRepository.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryEndpoint.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryPage.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryColumns.cs" />
+    <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

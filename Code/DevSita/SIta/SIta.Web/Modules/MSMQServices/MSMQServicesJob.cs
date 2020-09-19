@@ -51,7 +51,7 @@ namespace Sita.Modules.MSMQServices
             if (enableEmailService)
             {
 
-                //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
+                (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 while (true)
                 {
                     Thread.Sleep(2000); // 10 sec
@@ -83,7 +83,7 @@ namespace Sita.Modules.MSMQServices
                     }
 
                 }
-                //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
+                (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }
         public static string BuildPath()

@@ -41,18 +41,22 @@ namespace Sita.Modules.Default.TblBags
                         //.....
                         // Gán thêm các giá trị khác
                         //
+                        UnitOfWork unitOfWork = new UnitOfWork(connection);
                         try
                         {
-                            UnitOfWork unitOfWork = new UnitOfWork(connection);
+                            
                             SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
                             saveRequest.Entity = newBagtag;
                             new TblBagsController().Create(unitOfWork, saveRequest);
+                            unitOfWork.Commit();
                             //connection.Insert<MyRow>(newBagtag);
                         }
                         catch (Exception ex)
                         {
                             //Update lai
-                            
+
+                            unitOfWork.Commit();
+
                         }
                         
 
