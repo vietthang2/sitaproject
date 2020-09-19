@@ -14,12 +14,16 @@ namespace Sita.Default.Columns
     public class TblBagsHistoryColumns
     {
         [EditLink]
+        [QuickFilter(CssClass = "hidden-xs")]
         public String BaggageTag { get; set; }
+        [QuickFilter(CssClass = "hidden-xs")]
         public String FlightRef { get; set; }
         public Boolean Processed { get; set; }
         public String Bsm { get; set; }
         public String Bpm { get; set; }
+        [QuickFilter(CssClass = "hidden-xs")]
         public DateTime TimeRcvBsm { get; set; }
+        [QuickFilter(CssClass = "hidden-xs")]
         public DateTime TimeRcvBpm { get; set; }
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 Id { get; set; }

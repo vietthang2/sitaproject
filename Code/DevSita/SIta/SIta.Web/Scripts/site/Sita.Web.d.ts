@@ -440,8 +440,6 @@ declare namespace Sita.Common {
     }
 }
 declare namespace Sita.Default {
-}
-declare namespace Sita.Default {
     interface TblBagsForm {
         BaggageTag: Serenity.StringEditor;
         FlightRef: Serenity.StringEditor;
@@ -458,8 +456,6 @@ declare namespace Sita.Default {
         private static init;
         constructor(prefix: string);
     }
-}
-declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblBagsHistoryForm {
@@ -587,8 +583,6 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
-}
-declare namespace Sita.Default {
     interface TblFieldForm {
         Name: Serenity.StringEditor;
         Instance: Serenity.StringEditor;
@@ -642,8 +636,6 @@ declare namespace Sita.Default {
             List = "Default/TblField/List"
         }
     }
-}
-declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblFlightForm {

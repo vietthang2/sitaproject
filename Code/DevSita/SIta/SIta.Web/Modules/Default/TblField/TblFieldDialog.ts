@@ -1,7 +1,7 @@
 ﻿
 namespace Sita.Default {
 
-    @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class TblFieldDialog extends Serenity.EntityDialog<TblFieldRow, any> {
         protected getFormKey() { return TblFieldForm.formKey; }
         protected getIdProperty() { return TblFieldRow.idProperty; }
