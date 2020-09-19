@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Pages
+namespace Sita.Default.Pages
 {
     using Serenity;
     using Serenity.Web;

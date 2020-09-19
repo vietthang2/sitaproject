@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export interface TblFlightRow {
         Identify?: string;
         Adi?: string;
@@ -26,38 +25,22 @@ namespace Sita.Default {
         export const readPermission = 'Administration:General';
         export const updatePermission = 'Administration:General';
 
-        export namespace Fields {
-            export declare const Identify;
-            export declare const Adi;
-            export declare const LineCode;
-            export declare const Number;
-            export declare const ScheduleDate;
-            export declare const SoftReplace;
-            export declare const SiteIata;
-            export declare const DateBoundảy;
-            export declare const Chute;
-            export declare const LastChanged;
-            export declare const DateCreated;
-            export declare const UserCreated;
-            export declare const UserUpdate;
-            export declare const DateUpdated;
+        export declare const enum Fields {
+            Identify = "Identify",
+            Adi = "Adi",
+            LineCode = "LineCode",
+            Number = "Number",
+            ScheduleDate = "ScheduleDate",
+            SoftReplace = "SoftReplace",
+            SiteIata = "SiteIata",
+            DateBoundảy = "DateBoundảy",
+            Chute = "Chute",
+            LastChanged = "LastChanged",
+            DateCreated = "DateCreated",
+            UserCreated = "UserCreated",
+            UserUpdate = "UserUpdate",
+            DateUpdated = "DateUpdated"
         }
-
-        [
-            'Identify',
-            'Adi',
-            'LineCode',
-            'Number',
-            'ScheduleDate',
-            'SoftReplace',
-            'SiteIata',
-            'DateBoundảy',
-            'Chute',
-            'LastChanged',
-            'DateCreated',
-            'UserCreated',
-            'UserUpdate',
-            'DateUpdated'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

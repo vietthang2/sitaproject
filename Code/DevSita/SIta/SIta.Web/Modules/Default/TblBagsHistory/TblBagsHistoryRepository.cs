@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Repositories
+namespace Sita.Default.Repositories
 {
     using Serenity;
     using Serenity.Data;

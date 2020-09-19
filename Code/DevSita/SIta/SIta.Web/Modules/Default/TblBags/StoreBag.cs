@@ -9,6 +9,7 @@ using System.Web;
 using Sita.Default.Endpoints;
 using Serenity.Services;
 using Serenity.Data;
+using Modules.Common;
 
 namespace Sita.Modules.Default.TblBags
 {
@@ -51,9 +52,10 @@ namespace Sita.Modules.Default.TblBags
                         }
                         catch (Exception ex)
                         {
-                            throw;
+                            //new throw();
                             //Update lai
-                            
+                            Logging.Logger.Error("Luu Bag tag:" + ex.Message);
+
                         }
                     }
                 }

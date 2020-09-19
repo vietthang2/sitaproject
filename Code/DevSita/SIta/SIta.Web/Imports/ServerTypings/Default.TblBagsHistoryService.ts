@@ -1,5 +1,4 @@
-﻿
-namespace SIta.Default {
+﻿namespace Sita.Default {
     export namespace TblBagsHistoryService {
         export const baseUrl = 'Default/TblBagsHistory';
 
@@ -9,12 +8,12 @@ namespace SIta.Default {
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblBagsHistoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblBagsHistoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
-        export namespace Methods {
-            export declare const Create: string;
-            export declare const Update: string;
-            export declare const Delete: string;
-            export declare const Retrieve: string;
-            export declare const List: string;
+        export declare const enum Methods {
+            Create = "Default/TblBagsHistory/Create",
+            Update = "Default/TblBagsHistory/Update",
+            Delete = "Default/TblBagsHistory/Delete",
+            Retrieve = "Default/TblBagsHistory/Retrieve",
+            List = "Default/TblBagsHistory/List"
         }
 
         [
@@ -24,10 +23,10 @@ namespace SIta.Default {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>TblBagsHistoryService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>TblBagsHistoryService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
-            (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }
+

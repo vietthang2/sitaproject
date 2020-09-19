@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Entities
+namespace Sita.Default.Entities
 {
     using Serenity;
     using Serenity.ComponentModel;

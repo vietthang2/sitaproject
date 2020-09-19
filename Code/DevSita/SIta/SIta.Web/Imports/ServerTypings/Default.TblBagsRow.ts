@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export interface TblBagsRow {
         BaggageTag?: string;
         FlightRef?: string;
@@ -9,6 +8,8 @@ namespace Sita.Default {
         TimeRcvBsm?: string;
         TimeRcvBpm?: string;
         Id?: number;
+        DDMM?: string;
+        YYYY?: string;
     }
 
     export namespace TblBagsRow {
@@ -20,26 +21,18 @@ namespace Sita.Default {
         export const readPermission = 'Administration:General';
         export const updatePermission = 'Administration:General';
 
-        export namespace Fields {
-            export declare const BaggageTag;
-            export declare const FlightRef;
-            export declare const Processed;
-            export declare const Bsm;
-            export declare const Bpm;
-            export declare const TimeRcvBsm;
-            export declare const TimeRcvBpm;
-            export declare const Id;
+        export declare const enum Fields {
+            BaggageTag = "BaggageTag",
+            FlightRef = "FlightRef",
+            Processed = "Processed",
+            Bsm = "Bsm",
+            Bpm = "Bpm",
+            TimeRcvBsm = "TimeRcvBsm",
+            TimeRcvBpm = "TimeRcvBpm",
+            Id = "Id",
+            DDMM = "DDMM",
+            YYYY = "YYYY"
         }
-
-        [
-            'BaggageTag',
-            'FlightRef',
-            'Processed',
-            'Bsm',
-            'Bpm',
-            'TimeRcvBsm',
-            'TimeRcvBpm',
-            'Id'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

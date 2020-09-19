@@ -14,7 +14,7 @@
 
   },
   "RabbitServer": {
-    "RabbitIp": "171.244.42.72",
+    "RabbitIp": "171.244.18.171",
     "RabbitUsername": "admin",
     "RabbitPassword": "admin"
 

@@ -375,28 +375,105 @@ var Sita;
     (function (Default) {
         var TblBagsForm = /** @class */ (function (_super) {
             __extends(TblBagsForm, _super);
-            function TblBagsForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function TblBagsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TblBagsForm.init) {
+                    TblBagsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.BooleanEditor;
+                    var w2 = s.DateEditor;
+                    Q.initFormType(TblBagsForm, [
+                        'BaggageTag', w0,
+                        'FlightRef', w0,
+                        'Processed', w1,
+                        'Bsm', w0,
+                        'Bpm', w0,
+                        'TimeRcvBsm', w2,
+                        'TimeRcvBpm', w2,
+                        'DDMM', w0,
+                        'YYYY', w0
+                    ]);
+                }
+                return _this;
             }
             TblBagsForm.formKey = 'Default.TblBags';
             return TblBagsForm;
         }(Serenity.PrefixedContext));
         Default.TblBagsForm = TblBagsForm;
-        [
-            ['BaggageTag', function () { return Serenity.StringEditor; }],
-            ['FlightRef', function () { return Serenity.StringEditor; }],
-            ['Processed', function () { return Serenity.BooleanEditor; }],
-            ['Bsm', function () { return Serenity.StringEditor; }],
-            ['Bpm', function () { return Serenity.StringEditor; }],
-            ['TimeRcvBsm', function () { return Serenity.DateEditor; }],
-            ['TimeRcvBpm', function () { return Serenity.DateEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(TblBagsForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblBagsHistoryForm = /** @class */ (function (_super) {
+            __extends(TblBagsHistoryForm, _super);
+            function TblBagsHistoryForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TblBagsHistoryForm.init) {
+                    TblBagsHistoryForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.BooleanEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.IntegerEditor;
+                    Q.initFormType(TblBagsHistoryForm, [
+                        'BaggageTag', w0,
+                        'FlightRef', w0,
+                        'Processed', w1,
+                        'Bsm', w0,
+                        'Bpm', w0,
+                        'TimeRcvBsm', w2,
+                        'TimeRcvBpm', w2,
+                        'Ddmm', w0,
+                        'Yyyy', w0,
+                        'TblBagsId', w3
+                    ]);
+                }
+                return _this;
+            }
+            TblBagsHistoryForm.formKey = 'Default.TblBagsHistory';
+            return TblBagsHistoryForm;
+        }(Serenity.PrefixedContext));
+        Default.TblBagsHistoryForm = TblBagsHistoryForm;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblBagsHistoryRow;
+        (function (TblBagsHistoryRow) {
+            TblBagsHistoryRow.idProperty = 'Id';
+            TblBagsHistoryRow.nameProperty = 'BaggageTag';
+            TblBagsHistoryRow.localTextPrefix = 'Default.TblBagsHistory';
+            TblBagsHistoryRow.deletePermission = 'Administration:General';
+            TblBagsHistoryRow.insertPermission = 'Administration:General';
+            TblBagsHistoryRow.readPermission = 'Administration:General';
+            TblBagsHistoryRow.updatePermission = 'Administration:General';
+        })(TblBagsHistoryRow = Default.TblBagsHistoryRow || (Default.TblBagsHistoryRow = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblBagsHistoryService;
+        (function (TblBagsHistoryService) {
+            TblBagsHistoryService.baseUrl = 'Default/TblBagsHistory';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TblBagsHistoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TblBagsHistoryService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TblBagsHistoryService = Default.TblBagsHistoryService || (Default.TblBagsHistoryService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -412,19 +489,6 @@ var Sita;
             TblBagsRow.insertPermission = 'Administration:General';
             TblBagsRow.readPermission = 'Administration:General';
             TblBagsRow.updatePermission = 'Administration:General';
-            var Fields;
-            (function (Fields) {
-            })(Fields = TblBagsRow.Fields || (TblBagsRow.Fields = {}));
-            [
-                'BaggageTag',
-                'FlightRef',
-                'Processed',
-                'Bsm',
-                'Bpm',
-                'TimeRcvBsm',
-                'TimeRcvBpm',
-                'Id'
-            ].forEach(function (x) { return Fields[x] = x; });
         })(TblBagsRow = Default.TblBagsRow || (Default.TblBagsRow = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
@@ -435,9 +499,6 @@ var Sita;
         var TblBagsService;
         (function (TblBagsService) {
             TblBagsService.baseUrl = 'Default/TblBags';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TblBagsService.Methods || (TblBagsService.Methods = {}));
             [
                 'Create',
                 'Update',
@@ -448,7 +509,6 @@ var Sita;
                 TblBagsService[x] = function (r, s, o) {
                     return Q.serviceRequest(TblBagsService.baseUrl + '/' + x, r, s, o);
                 };
-                Methods[x] = TblBagsService.baseUrl + '/' + x;
             });
         })(TblBagsService = Default.TblBagsService || (Default.TblBagsService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
@@ -459,25 +519,25 @@ var Sita;
     (function (Default) {
         var TblFieldForm = /** @class */ (function (_super) {
             __extends(TblFieldForm, _super);
-            function TblFieldForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function TblFieldForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TblFieldForm.init) {
+                    TblFieldForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(TblFieldForm, [
+                        'Name', w0,
+                        'Instance', w0,
+                        'Value', w0,
+                        'FlightRef', w0
+                    ]);
+                }
+                return _this;
             }
             TblFieldForm.formKey = 'Default.TblField';
             return TblFieldForm;
         }(Serenity.PrefixedContext));
         Default.TblFieldForm = TblFieldForm;
-        [,
-            ['Name', function () { return Serenity.StringEditor; }],
-            ['Instance', function () { return Serenity.StringEditor; }],
-            ['Value', function () { return Serenity.StringEditor; }],
-            ['FlightRef', function () { return Serenity.StringEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(TblFieldForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -493,16 +553,6 @@ var Sita;
             TblFieldRow.insertPermission = 'Administration:General';
             TblFieldRow.readPermission = 'Administration:General';
             TblFieldRow.updatePermission = 'Administration:General';
-            var Fields;
-            (function (Fields) {
-            })(Fields = TblFieldRow.Fields || (TblFieldRow.Fields = {}));
-            [
-                'Id',
-                'Name',
-                'Instance',
-                'Value',
-                'FlightRef'
-            ].forEach(function (x) { return Fields[x] = x; });
         })(TblFieldRow = Default.TblFieldRow || (Default.TblFieldRow = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
@@ -513,9 +563,6 @@ var Sita;
         var TblFieldService;
         (function (TblFieldService) {
             TblFieldService.baseUrl = 'Default/TblField';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TblFieldService.Methods || (TblFieldService.Methods = {}));
             [
                 'Create',
                 'Update',
@@ -526,7 +573,6 @@ var Sita;
                 TblFieldService[x] = function (r, s, o) {
                     return Q.serviceRequest(TblFieldService.baseUrl + '/' + x, r, s, o);
                 };
-                Methods[x] = TblFieldService.baseUrl + '/' + x;
             });
         })(TblFieldService = Default.TblFieldService || (Default.TblFieldService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
@@ -537,34 +583,36 @@ var Sita;
     (function (Default) {
         var TblFlightForm = /** @class */ (function (_super) {
             __extends(TblFlightForm, _super);
-            function TblFlightForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function TblFlightForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TblFlightForm.init) {
+                    TblFlightForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = s.DateEditor;
+                    Q.initFormType(TblFlightForm, [
+                        'Adi', w0,
+                        'LineCode', w0,
+                        'Number', w0,
+                        'ScheduleDate', w0,
+                        'SoftReplace', w0,
+                        'SiteIata', w0,
+                        'DateBoundảy', w0,
+                        'Chute', w1,
+                        'LastChanged', w2,
+                        'DateCreated', w2,
+                        'UserCreated', w0,
+                        'UserUpdate', w0,
+                        'DateUpdated', w2
+                    ]);
+                }
+                return _this;
             }
             TblFlightForm.formKey = 'Default.TblFlight';
             return TblFlightForm;
         }(Serenity.PrefixedContext));
         Default.TblFlightForm = TblFlightForm;
-        [,
-            ['Adi', function () { return Serenity.StringEditor; }],
-            ['LineCode', function () { return Serenity.StringEditor; }],
-            ['Number', function () { return Serenity.StringEditor; }],
-            ['ScheduleDate', function () { return Serenity.StringEditor; }],
-            ['SoftReplace', function () { return Serenity.StringEditor; }],
-            ['SiteIata', function () { return Serenity.StringEditor; }],
-            ['DateBoundảy', function () { return Serenity.StringEditor; }],
-            ['Chute', function () { return Serenity.IntegerEditor; }],
-            ['LastChanged', function () { return Serenity.DateEditor; }],
-            ['DateCreated', function () { return Serenity.DateEditor; }],
-            ['UserCreated', function () { return Serenity.StringEditor; }],
-            ['UserUpdate', function () { return Serenity.StringEditor; }],
-            ['DateUpdated', function () { return Serenity.DateEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(TblFlightForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -580,25 +628,6 @@ var Sita;
             TblFlightRow.insertPermission = 'Administration:General';
             TblFlightRow.readPermission = 'Administration:General';
             TblFlightRow.updatePermission = 'Administration:General';
-            var Fields;
-            (function (Fields) {
-            })(Fields = TblFlightRow.Fields || (TblFlightRow.Fields = {}));
-            [
-                'Identify',
-                'Adi',
-                'LineCode',
-                'Number',
-                'ScheduleDate',
-                'SoftReplace',
-                'SiteIata',
-                'DateBoundảy',
-                'Chute',
-                'LastChanged',
-                'DateCreated',
-                'UserCreated',
-                'UserUpdate',
-                'DateUpdated'
-            ].forEach(function (x) { return Fields[x] = x; });
         })(TblFlightRow = Default.TblFlightRow || (Default.TblFlightRow = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
@@ -609,9 +638,6 @@ var Sita;
         var TblFlightService;
         (function (TblFlightService) {
             TblFlightService.baseUrl = 'Default/TblFlight';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TblFlightService.Methods || (TblFlightService.Methods = {}));
             [
                 'Create',
                 'Update',
@@ -622,7 +648,6 @@ var Sita;
                 TblFlightService[x] = function (r, s, o) {
                     return Q.serviceRequest(TblFlightService.baseUrl + '/' + x, r, s, o);
                 };
-                Methods[x] = TblFlightService.baseUrl + '/' + x;
             });
         })(TblFlightService = Default.TblFlightService || (Default.TblFlightService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
@@ -762,7 +787,7 @@ var Sita;
 (function (Sita) {
     var Texts;
     (function (Texts) {
-        Sita['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        Sita['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Default: { TblBags: { BaggageTag: 1, Bpm: 1, Bsm: 1, DDMM: 1, FlightRef: 1, Id: 1, Processed: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, YYYY: 1 }, TblBagsHistory: { BaggageTag: 1, Bpm: 1, Bsm: 1, Ddmm: 1, FlightRef: 1, Id: 1, Processed: 1, TblBagsId: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, Yyyy: 1 }, TblField: { FlightRef: 1, Id: 1, Instance: 1, Name: 1, Value: 1 }, TblFlight: { Adi: 1, Chute: 1, DateBoundảy: 1, DateCreated: 1, DateUpdated: 1, Identify: 1, LastChanged: 1, LineCode: 1, Number: 1, ScheduleDate: 1, SiteIata: 1, SoftReplace: 1, UserCreated: 1, UserUpdate: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = Sita.Texts || (Sita.Texts = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -2984,6 +3009,56 @@ var Sita;
             return TblBagsGrid;
         }(Serenity.EntityGrid));
         Default.TblBagsGrid = TblBagsGrid;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblBagsHistoryDialog = /** @class */ (function (_super) {
+            __extends(TblBagsHistoryDialog, _super);
+            function TblBagsHistoryDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Default.TblBagsHistoryForm(_this.idPrefix);
+                return _this;
+            }
+            TblBagsHistoryDialog.prototype.getFormKey = function () { return Default.TblBagsHistoryForm.formKey; };
+            TblBagsHistoryDialog.prototype.getIdProperty = function () { return Default.TblBagsHistoryRow.idProperty; };
+            TblBagsHistoryDialog.prototype.getLocalTextPrefix = function () { return Default.TblBagsHistoryRow.localTextPrefix; };
+            TblBagsHistoryDialog.prototype.getNameProperty = function () { return Default.TblBagsHistoryRow.nameProperty; };
+            TblBagsHistoryDialog.prototype.getService = function () { return Default.TblBagsHistoryService.baseUrl; };
+            TblBagsHistoryDialog.prototype.getDeletePermission = function () { return Default.TblBagsHistoryRow.deletePermission; };
+            TblBagsHistoryDialog.prototype.getInsertPermission = function () { return Default.TblBagsHistoryRow.insertPermission; };
+            TblBagsHistoryDialog.prototype.getUpdatePermission = function () { return Default.TblBagsHistoryRow.updatePermission; };
+            TblBagsHistoryDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblBagsHistoryDialog);
+            return TblBagsHistoryDialog;
+        }(Serenity.EntityDialog));
+        Default.TblBagsHistoryDialog = TblBagsHistoryDialog;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblBagsHistoryGrid = /** @class */ (function (_super) {
+            __extends(TblBagsHistoryGrid, _super);
+            function TblBagsHistoryGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TblBagsHistoryGrid.prototype.getColumnsKey = function () { return 'Default.TblBagsHistory'; };
+            TblBagsHistoryGrid.prototype.getDialogType = function () { return Default.TblBagsHistoryDialog; };
+            TblBagsHistoryGrid.prototype.getIdProperty = function () { return Default.TblBagsHistoryRow.idProperty; };
+            TblBagsHistoryGrid.prototype.getInsertPermission = function () { return Default.TblBagsHistoryRow.insertPermission; };
+            TblBagsHistoryGrid.prototype.getLocalTextPrefix = function () { return Default.TblBagsHistoryRow.localTextPrefix; };
+            TblBagsHistoryGrid.prototype.getService = function () { return Default.TblBagsHistoryService.baseUrl; };
+            TblBagsHistoryGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblBagsHistoryGrid);
+            return TblBagsHistoryGrid;
+        }(Serenity.EntityGrid));
+        Default.TblBagsHistoryGrid = TblBagsHistoryGrid;
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;

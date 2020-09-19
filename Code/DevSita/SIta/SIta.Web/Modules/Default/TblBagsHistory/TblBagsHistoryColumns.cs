@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Columns
+namespace Sita.Default.Columns
 {
     using Serenity;
     using Serenity.ComponentModel;

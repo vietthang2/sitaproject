@@ -4,7 +4,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Serilog;
 using Sita.Modules.Default.TblBags;
-using SIta.Modules.RabbitMQ;
+using Sita.Modules.RabbitMQ;
 using System;
 using System.IO;
 using System.Text;

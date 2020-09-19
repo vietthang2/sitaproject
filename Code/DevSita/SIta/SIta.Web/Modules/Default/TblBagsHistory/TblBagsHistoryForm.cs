@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Forms
+namespace Sita.Default.Forms
 {
     using Serenity;
     using Serenity.ComponentModel;

@@ -1,9 +1,4 @@
-﻿
-namespace Sita.Default {
-    export class TblFieldForm extends Serenity.PrefixedContext {
-        static formKey = 'Default.TblField';
-    }
-
+﻿namespace Sita.Default {
     export interface TblFieldForm {
         Name: Serenity.StringEditor;
         Instance: Serenity.StringEditor;
@@ -11,16 +6,27 @@ namespace Sita.Default {
         FlightRef: Serenity.StringEditor;
     }
 
-    [,
-        ['Name', () => Serenity.StringEditor],
-        ['Instance', () => Serenity.StringEditor],
-        ['Value', () => Serenity.StringEditor],
-        ['FlightRef', () => Serenity.StringEditor]
-    ].forEach(x => Object.defineProperty(TblFieldForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class TblFieldForm extends Serenity.PrefixedContext {
+        static formKey = 'Default.TblField';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!TblFieldForm.init)  {
+                TblFieldForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.StringEditor;
+
+                Q.initFormType(TblFieldForm, [
+                    'Name', w0,
+                    'Instance', w0,
+                    'Value', w0,
+                    'FlightRef', w0
+                ]);
+            }
+        }
+    }
 }
+

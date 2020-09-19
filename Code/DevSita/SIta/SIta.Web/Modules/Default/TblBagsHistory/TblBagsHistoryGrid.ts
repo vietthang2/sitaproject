@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default {
+namespace Sita.Default {
 
     @Serenity.Decorators.registerClass()
     export class TblBagsHistoryGrid extends Serenity.EntityGrid<TblBagsHistoryRow, any> {

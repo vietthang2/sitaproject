@@ -1,7 +1,9 @@
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.Mvc.xml
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.WebPages.Deployment.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\wkhtmltopdf.exe
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\SIta.Web.dll.config
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\SIta.Web.dll
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\SIta.Web.pdb
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Sita.Web.dll.config
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Sita.Web.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Sita.Web.pdb
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\BouncyCastle.Crypto.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\CsQuery.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Dapper.dll
@@ -85,10 +87,8 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Runtime.CompilerServices.U
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Threading.Channels.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Threading.Tasks.Extensions.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.Helpers.xml
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.Mvc.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.Razor.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.WebPages.xml
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.WebPages.Deployment.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\System.Web.WebPages.Razor.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\TinyMapper.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\es\Hangfire.Core.resources.dll
@@ -100,7 +100,7 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\pt-BR\Hangfire.Core.resources.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\pt-PT\Hangfire.Core.resources.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\zh\Hangfire.Core.resources.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\zh-TW\Hangfire.Core.resources.dll
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.csproj.CopyComplete
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.dll
-E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.pdb
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.csprojAssemblyReference.cache
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\SIta.Web.csproj.CopyComplete
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\Sita.Web.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Debug\Sita.Web.pdb

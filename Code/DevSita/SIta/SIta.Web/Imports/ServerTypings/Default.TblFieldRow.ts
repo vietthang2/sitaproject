@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export interface TblFieldRow {
         Id?: string;
         Name?: string;
@@ -17,20 +16,13 @@ namespace Sita.Default {
         export const readPermission = 'Administration:General';
         export const updatePermission = 'Administration:General';
 
-        export namespace Fields {
-            export declare const Id;
-            export declare const Name;
-            export declare const Instance;
-            export declare const Value;
-            export declare const FlightRef;
+        export declare const enum Fields {
+            Id = "Id",
+            Name = "Name",
+            Instance = "Instance",
+            Value = "Value",
+            FlightRef = "FlightRef"
         }
-
-        [
-            'Id',
-            'Name',
-            'Instance',
-            'Value',
-            'FlightRef'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

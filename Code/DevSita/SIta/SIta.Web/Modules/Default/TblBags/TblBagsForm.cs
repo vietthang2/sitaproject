@@ -13,14 +13,21 @@ namespace Sita.Default.Forms
     [BasedOnRow(typeof(Entities.TblBagsRow), CheckNames = true)]
     public class TblBagsForm
     {
+        [HalfWidth, ReadOnly(true)]
         public String BaggageTag { get; set; }
+        [HalfWidth, ReadOnly(true)]
         public String FlightRef { get; set; }
         public Boolean Processed { get; set; }
+        [TextAreaEditor(Rows=2),  ]
         public String Bsm { get; set; }
         public String Bpm { get; set; }
+        [HalfWidth, ReadOnly(true)]
         public DateTime TimeRcvBsm { get; set; }
+        [HalfWidth, ReadOnly(true)]
         public DateTime TimeRcvBpm { get; set; }
+        [HalfWidth, ReadOnly(true)]
         public String DDMM { get; set; }
+        [HalfWidth, ReadOnly(true)]
         public String YYYY { get; set; }
     }
 }

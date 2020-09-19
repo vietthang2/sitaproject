@@ -1,5 +1,5 @@
 ﻿
-namespace SIta.Default.Endpoints
+namespace Sita.Default.Endpoints
 {
     using Serenity;
     using Serenity.Data;

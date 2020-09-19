@@ -1,9 +1,4 @@
-﻿
-namespace Sita.Default {
-    export class TblFlightForm extends Serenity.PrefixedContext {
-        static formKey = 'Default.TblFlight';
-    }
-
+﻿namespace Sita.Default {
     export interface TblFlightForm {
         Adi: Serenity.StringEditor;
         LineCode: Serenity.StringEditor;
@@ -20,25 +15,38 @@ namespace Sita.Default {
         DateUpdated: Serenity.DateEditor;
     }
 
-    [,
-        ['Adi', () => Serenity.StringEditor],
-        ['LineCode', () => Serenity.StringEditor],
-        ['Number', () => Serenity.StringEditor],
-        ['ScheduleDate', () => Serenity.StringEditor],
-        ['SoftReplace', () => Serenity.StringEditor],
-        ['SiteIata', () => Serenity.StringEditor],
-        ['DateBoundảy', () => Serenity.StringEditor],
-        ['Chute', () => Serenity.IntegerEditor],
-        ['LastChanged', () => Serenity.DateEditor],
-        ['DateCreated', () => Serenity.DateEditor],
-        ['UserCreated', () => Serenity.StringEditor],
-        ['UserUpdate', () => Serenity.StringEditor],
-        ['DateUpdated', () => Serenity.DateEditor]
-    ].forEach(x => Object.defineProperty(TblFlightForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class TblFlightForm extends Serenity.PrefixedContext {
+        static formKey = 'Default.TblFlight';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!TblFlightForm.init)  {
+                TblFlightForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.StringEditor;
+                var w1 = s.IntegerEditor;
+                var w2 = s.DateEditor;
+
+                Q.initFormType(TblFlightForm, [
+                    'Adi', w0,
+                    'LineCode', w0,
+                    'Number', w0,
+                    'ScheduleDate', w0,
+                    'SoftReplace', w0,
+                    'SiteIata', w0,
+                    'DateBoundảy', w0,
+                    'Chute', w1,
+                    'LastChanged', w2,
+                    'DateCreated', w2,
+                    'UserCreated', w0,
+                    'UserUpdate', w0,
+                    'DateUpdated', w2
+                ]);
+            }
+        }
+    }
 }
+
