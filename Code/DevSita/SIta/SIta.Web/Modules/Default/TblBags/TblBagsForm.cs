@@ -20,5 +20,7 @@ namespace Sita.Default.Forms
         public String Bpm { get; set; }
         public DateTime TimeRcvBsm { get; set; }
         public DateTime TimeRcvBpm { get; set; }
+        public String DDMM { get; set; }
+        public String YYYY { get; set; }
     }
 }

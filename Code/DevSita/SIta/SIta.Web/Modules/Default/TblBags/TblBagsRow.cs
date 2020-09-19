@@ -76,6 +76,19 @@ namespace Sita.Default.Entities
             get { return Fields.Id; }
         }
 
+        [DisplayName("DDMM"), Column("DDMM")]
+        public String DDMM
+        {
+            get { return Fields.DDMM[this]; }
+            set { Fields.DDMM[this] = value; }
+        }
+
+        [DisplayName("YYYY"), Column("YYYY")]
+        public String YYYY
+        {
+            get { return Fields.YYYY[this]; }
+            set { Fields.YYYY[this] = value; }
+        }
         StringField INameRow.NameField
         {
             get { return Fields.BaggageTag; }
@@ -98,6 +111,8 @@ namespace Sita.Default.Entities
             public DateTimeField TimeRcvBsm;
             public DateTimeField TimeRcvBpm;
             public Int32Field Id;
+            public StringField DDMM;
+            public StringField YYYY;
         }
     }
 }

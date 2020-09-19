@@ -46,7 +46,7 @@ namespace Sita.Modules.MSMQServices
             }
         }
         private static void MSMQServicesRun()
-        {
+         {
             bool enableEmailService = true;//Convert.ToBoolean(ConfigurationManager.AppSettings["EnableEmailService"]);
             if (enableEmailService)
             {
