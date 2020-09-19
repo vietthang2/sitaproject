@@ -43,7 +43,6 @@ namespace Sita.Modules.Default.TblBags
 
                         try
                         {
-                           
                             SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
                             saveRequest.Entity = newBagtag;
                             new TblBagsController().Create(unitOfWork, saveRequest);
