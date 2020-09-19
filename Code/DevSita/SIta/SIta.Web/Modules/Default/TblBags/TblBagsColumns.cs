@@ -23,5 +23,7 @@ namespace Sita.Default.Columns
         public DateTime TimeRcvBpm { get; set; }
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 Id { get; set; }
+        public String DDMM { get; set; }
+        public String YYYY { get; set; }
     }
 }

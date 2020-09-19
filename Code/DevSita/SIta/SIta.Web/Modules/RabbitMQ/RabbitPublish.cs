@@ -140,7 +140,7 @@ namespace Sita.Modules.RabbitMQ
                                      autoAck: true,
                                      consumer: consumer);
 
-
+            
 
         }
     }
