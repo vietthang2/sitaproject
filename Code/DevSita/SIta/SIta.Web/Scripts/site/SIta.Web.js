@@ -2981,7 +2981,7 @@ var Sita;
             TblBagsDialog.prototype.getInsertPermission = function () { return Default.TblBagsRow.insertPermission; };
             TblBagsDialog.prototype.getUpdatePermission = function () { return Default.TblBagsRow.updatePermission; };
             TblBagsDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.panel()
             ], TblBagsDialog);
             return TblBagsDialog;
         }(Serenity.EntityDialog));
@@ -3031,7 +3031,7 @@ var Sita;
             TblBagsHistoryDialog.prototype.getInsertPermission = function () { return Default.TblBagsHistoryRow.insertPermission; };
             TblBagsHistoryDialog.prototype.getUpdatePermission = function () { return Default.TblBagsHistoryRow.updatePermission; };
             TblBagsHistoryDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.panel()
             ], TblBagsHistoryDialog);
             return TblBagsHistoryDialog;
         }(Serenity.EntityDialog));
@@ -3081,7 +3081,7 @@ var Sita;
             TblFieldDialog.prototype.getInsertPermission = function () { return Default.TblFieldRow.insertPermission; };
             TblFieldDialog.prototype.getUpdatePermission = function () { return Default.TblFieldRow.updatePermission; };
             TblFieldDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.panel()
             ], TblFieldDialog);
             return TblFieldDialog;
         }(Serenity.EntityDialog));
@@ -3131,7 +3131,7 @@ var Sita;
             TblFlightDialog.prototype.getInsertPermission = function () { return Default.TblFlightRow.insertPermission; };
             TblFlightDialog.prototype.getUpdatePermission = function () { return Default.TblFlightRow.updatePermission; };
             TblFlightDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.panel()
             ], TblFlightDialog);
             return TblFlightDialog;
         }(Serenity.EntityDialog));

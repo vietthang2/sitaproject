@@ -18,8 +18,9 @@ namespace Sita.Default.Forms
         [HalfWidth, ReadOnly(true)]
         public String FlightRef { get; set; }
         public Boolean Processed { get; set; }
-        [TextAreaEditor(Rows=2),  ]
+        [TextAreaEditor(Rows=5)  ]
         public String Bsm { get; set; }
+        [TextAreaEditor(Rows = 5)]
         public String Bpm { get; set; }
         [HalfWidth, ReadOnly(true)]
         public DateTime TimeRcvBsm { get; set; }
