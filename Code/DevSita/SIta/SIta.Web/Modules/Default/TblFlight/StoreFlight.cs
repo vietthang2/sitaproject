@@ -42,36 +42,39 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.DateBoundảy = dailyModel.Connect.Daily.DateBoundary;
                 //newFlight.Chute = dailyModel.Connect.Daily;
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
-                //newFlight.DateCreated = dailyModel.Connect.Daily.Linecode;
-                //newFlight.UserCreated = dailyModel.Connect.Daily.Linecode;
-                //newFlight.UserUpdate = dailyModel.Connect.Daily.Linecode;
-                //newFlight.DateUpdated = dailyModel.Connect.Daily.Linecode;
-                //newFlight.DDMM = da
-                newFlight.YYYY = DateTime.Now.Year.ToString();
+               
+               
+                newFlight.DDMM = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("DDMM");
+                newFlight.YYYY = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("yyyy");
+
+
                 try
                 {
                     SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
                     
                     if (dailyModel.Connect.Daily.Action == "Insert")
                     {
+                        
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Create(unitOfWork, saveRequest);
                     }
                     else if (dailyModel.Connect.Daily.Action == "Update")
                     {
+                        //newFlight.UserUpdate = dailyModel.Connect.Daily.Linecode;
+                        newFlight.DateUpdated = DateTime.Now;
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Update(unitOfWork, saveRequest);
                     }
                     else
                     {
+                        newFlight.DateCreated = DateTime.Now;
+
                         DeleteRequest deleteRequest = new DeleteRequest();
                         deleteRequest.EntityId = newFlight.Identify;
                         new TblFlightController().Delete(unitOfWork, deleteRequest);
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Create(unitOfWork, saveRequest);
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -80,15 +83,6 @@ namespace Sita.Modules.Default.TblFlight
                 unitOfWork.Commit();
             }
 
-        }
-
-        public string  MD5Identify(string indentify)
-        {
-            string StrIndentify = "";
-
-
-
-            return StrIndentify;
         }
 
         public static string Encrypte(string pString)
