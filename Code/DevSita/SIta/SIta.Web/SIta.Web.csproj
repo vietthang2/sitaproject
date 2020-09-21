@@ -104,9 +104,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Mono.Cecil, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e">
-      <HintPath>..\packages\Serenity.Web.3.13.5\lib\net45\Mono.Cecil.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Mono.Cecil, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Web.3.14.1\lib\net45\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.1\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
@@ -143,25 +142,20 @@
     <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.6.2.1\lib\net461\RabbitMQ.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Core, Version=3.13.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Serenity.Core.3.13.5\lib\net45\Serenity.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Serenity.Core, Version=3.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Core.3.14.1\lib\net45\Serenity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Data, Version=3.13.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Serenity.Data.3.13.5\lib\net45\Serenity.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Serenity.Data, Version=3.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Data.3.14.1\lib\net45\Serenity.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Data.Entity, Version=3.13.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Serenity.Data.Entity.3.13.5\lib\net45\Serenity.Data.Entity.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Serenity.Data.Entity, Version=3.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Data.Entity.3.14.1\lib\net45\Serenity.Data.Entity.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Services, Version=3.13.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Serenity.Services.3.13.5\lib\net45\Serenity.Services.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Serenity.Services, Version=3.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Services.3.14.1\lib\net45\Serenity.Services.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Web, Version=3.13.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Serenity.Web.3.13.5\lib\net45\Serenity.Web.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Serenity.Web, Version=3.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serenity.Web.3.14.1\lib\net45\Serenity.Web.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.9.0\lib\net45\Serilog.dll</HintPath>
