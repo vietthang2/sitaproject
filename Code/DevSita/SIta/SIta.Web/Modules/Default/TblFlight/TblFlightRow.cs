@@ -15,7 +15,7 @@ namespace Sita.Default.Entities
     [ModifyPermission("Administration:General")]
     public sealed class TblFlightRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Identify"), Size(20), PrimaryKey, QuickSearch]
+        [DisplayName("Identify"), Size(100), PrimaryKey, QuickSearch]
         public String Identify
         {
             get { return Fields.Identify[this]; }
@@ -113,6 +113,20 @@ namespace Sita.Default.Entities
             set { Fields.DateUpdated[this] = value; }
         }
 
+
+        [DisplayName("DDMM"), Column("DDMM")]
+        public String DDMM
+        {
+            get { return Fields.DDMM[this]; }
+            set { Fields.DDMM[this] = value; }
+        }
+
+        [DisplayName("YYYY"), Column("YYYY")]
+        public String YYYY
+        {
+            get { return Fields.YYYY[this]; }
+            set { Fields.YYYY[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.Identify; }
@@ -146,6 +160,8 @@ namespace Sita.Default.Entities
             public StringField UserCreated;
             public StringField UserUpdate;
             public DateTimeField DateUpdated;
+            public StringField DDMM;
+            public StringField YYYY;
         }
     }
 }
