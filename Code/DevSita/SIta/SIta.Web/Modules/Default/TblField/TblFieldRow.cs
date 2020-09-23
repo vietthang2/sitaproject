@@ -55,6 +55,13 @@ namespace Sita.Default.Entities
             get { return Fields.Id; }
         }
 
+        [DisplayName("Flight Indentify"), Size(200)]
+        public String FlightIndentify
+        {
+            get { return Fields.FlightIndentify[this]; }
+            set { Fields.FlightIndentify[this] = value; }
+        }
+
         StringField INameRow.NameField
         {
             get { return Fields.Name; }
@@ -74,6 +81,8 @@ namespace Sita.Default.Entities
             public StringField Instance;
             public StringField Value;
             public StringField FlightRef;
+            public StringField FlightIndentify;
         }
+        
     }
 }
