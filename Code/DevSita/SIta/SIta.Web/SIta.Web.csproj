@@ -1880,6 +1880,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
     <Compile Include="Modules\Default\SearchBagtag\SearchController.cs" />
     <Compile Include="Modules\Default\TblBags\StoreBag.cs" />
+    <Compile Include="Modules\Default\TblField\StoreField.cs" />
     <Compile Include="Modules\Default\TblFlight\StoreFlight.cs" />
     <Compile Include="Modules\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
     <Compile Include="Modules\Membership\Account\EnvironmentSettings.cs" />
