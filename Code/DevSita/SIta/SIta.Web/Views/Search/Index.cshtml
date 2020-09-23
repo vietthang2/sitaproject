@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+
+<section id="section-search">
+    <div class="card bg-outline-primary">
+        <div class="card-header">
+            Thông tin tìm kiếm
+            <span class="float-right clickable"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="card-body text-left">
+            <partial name="Ssc/_SearchInfo" />
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label>Chuyến bay <span class="text-danger">(*)</span></label>
+                    <input type="text" id="dtpFromDate" class="form-control" name="FromDate" autocomplete="off" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Mã bag tag <span class="text-danger">(*)</span></label>
+                    <input type="text" id="dtpToDate" class="form-control" name="ToDate" autocomplete="off" />
+                </div>
+               
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" id="btn-search">
+                    <i class="fas fa-search"></i> Tìm kiếm
+                </button>
+            </div>
+        </div>
+    </div>
+        </div>
+</section>
+<div id="data-grid">
+    <partial name="_SearchGrid" />
+</div>

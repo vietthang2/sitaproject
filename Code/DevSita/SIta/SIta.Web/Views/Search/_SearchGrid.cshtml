@@ -1,0 +1,67 @@
+﻿
+
+@model List<Sita.Default.Entities.TblBagsRow>
+
+@{
+    int rowNumber = 1;
+    int pageSize = 10;
+    int pageNumber = Convert.ToInt32(ViewBag.PageNumber);
+    if (pageNumber > 1)
+    {
+        rowNumber = pageSize * (pageNumber - 1) + rowNumber;
+    }
+
+    var datas = Model;
+    var transCode = string.Empty;
+}
+
+<h4 id="booking-title">
+    <span class="text-uppercase">Kết quả tìm kiếm</span>
+    <span class="title-totalrows">
+        Tổng số kết quả: <span class="badge badge-primary fs-100">@ViewBag.Totalrows</span>
+    </span>
+</h4>
+
+<div class="table-responsive">
+    <div class="mvc-grid mvc-grid-excel-mode">
+        <table class="header-primary">
+            <thead>
+                <tr>
+                    <th class="text-center"></th>
+                    <th class="text-center">STT</th>
+                    <th class="text-center">Mã chuyến bay</th>
+                    <th class="text-center">Ngày </th>
+                    <th class="text-center">Bag tag</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in datas)
+                    {
+                        
+                <tr data-id="@item.Id">
+
+                    <td class="text-center">@rowNumber</td>
+                    <td class="text-center">@item.FlightRef</td>
+                    <td class="text-center">@item.DDMM</td>
+                    <td class="text-center">@item.BaggageTag</td>
+
+                </tr>
+                        rowNumber++;
+                    }
+                }
+                else
+                {
+                    <tr class="mvc-grid-empty-row">
+                        <td colspan="13">
+                            Không có dữ liệu
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.Raw(ViewBag.Paging)
+    </div>
+</div>
