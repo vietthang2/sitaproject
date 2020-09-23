@@ -77,7 +77,7 @@ namespace Sita.Modules.Default.TblFlight
                         deleteRequest.EntityId = newFlight.Identify;
 
                         var request = new ListRequest();
-                        request.Criteria = new Criteria("Identify = '" + deleteRequest.EntityId + "'");
+                        request.Criteria = new Criteria("Identify")==newFlight.Identify;
                         ListResponse<MyRow> rows =  new MyRepository().List(connection, request);
                         if (rows.TotalCount > 0)
                             new TblFlightController().Delete(unitOfWork, deleteRequest);
