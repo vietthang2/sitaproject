@@ -66,7 +66,10 @@ namespace Sita
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
             //RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
-            
+
+            BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Minutely);
+
             Sita.Modules.RabbitMQ.RabbitSubscribe.StartSubscribeThread();
 
         }

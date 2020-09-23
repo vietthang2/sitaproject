@@ -38,7 +38,7 @@ namespace Sita.Modules.Default.TblBags
                         newBagtag.FlightRef = Array.Find(ObjectData, element => element.StartsWith("F/", StringComparison.Ordinal)).Substring(2, 6);
                         newBagtag.Bsm = mess;
                         newBagtag.Processed = true;
-                        newBagtag.TimeRcvBpm = DateTime.Now;
+                        newBagtag.TimeRcvBsm = DateTime.Now;
                         newBagtag.DDMM = DateTime.Now.ToString("ddMM");
                         newBagtag.YYYY = DateTime.Now.Year.ToString();
 

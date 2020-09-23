@@ -1896,6 +1896,8 @@
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
     <Compile Include="Modules\MSMQServices\DTO\DailyModel.cs" />
     <Compile Include="Modules\MSMQServices\DTO\ServerModel.cs" />
+    <Compile Include="Modules\MSMQServices\ScheduleServicesJob.cs" />
+    <Compile Include="Modules\MSMQServices\ScheduleServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServicesJob.cs" />
     <Compile Include="Modules\RabbitMQ\RabbitPublish.cs" />

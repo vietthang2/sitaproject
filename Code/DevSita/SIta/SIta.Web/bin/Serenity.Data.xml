@@ -1577,7 +1577,7 @@
               field name, but it can also be a criteria text pre-generated.</summary>
             <remarks>
               Usually used like: <c>new Criteria("fieldname") >= 5</c>.</remarks>
-            <param name="text">
+            <param name="expression">
               A field name or criteria condition (can be null)</param>
         </member>
         <member name="M:Serenity.Data.Criteria.#ctor(Serenity.Data.IField)">
@@ -3995,6 +3995,13 @@
             Adds a FOR XML statement to the query.
             </summary>
             <param name="forXml">FOR XML type, usually "RAW".</param>
+            <returns></returns>
+        </member>
+        <member name="M:Serenity.Data.SqlQuery.ForJson(System.String)">
+            <summary>
+            Adds a FOR JSON statement to the query.
+            </summary>
+            <param name="forJson">FOR JSON type, usually "auto".</param>
             <returns></returns>
         </member>
         <member name="M:Serenity.Data.SqlQuery.From(System.String)">
@@ -7970,7 +7977,23 @@
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
         </member>
+        <member name="M:Serenity.Data.Sql.Sum(Serenity.Data.IField)">
+            <summary>
+            Creates a SUM() expression
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
+        </member>
         <member name="M:Serenity.Data.Sql.Count(System.String)">
+            <summary>
+            Creates a COUNT() expression
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
+        </member>
+        <member name="M:Serenity.Data.Sql.Count(Serenity.Data.IField)">
             <summary>
             Creates a COUNT() expression
             </summary>
@@ -8018,6 +8041,14 @@
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
         </member>
+        <member name="M:Serenity.Data.Sql.Min(Serenity.Data.IField)">
+            <summary>
+            Creates a MIN() expression
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
+        </member>
         <member name="M:Serenity.Data.Sql.Min(System.Int32,System.String)">
             <summary>
             Creates a MIN() expression.
@@ -8028,6 +8059,14 @@
             <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
         </member>
         <member name="M:Serenity.Data.Sql.Max(System.String)">
+            <summary>
+            Creates a MAX() expression.
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
+        </member>
+        <member name="M:Serenity.Data.Sql.Max(Serenity.Data.IField)">
             <summary>
             Creates a MAX() expression.
             </summary>
@@ -8054,6 +8093,14 @@
             <exception cref="T:System.ArgumentNullException">field is null or empty.</exception>
         </member>
         <member name="M:Serenity.Data.Sql.Avg(System.String)">
+            <summary>
+            Creates a AVG expression.
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">field is null or empty</exception>
+        </member>
+        <member name="M:Serenity.Data.Sql.Avg(Serenity.Data.IField)">
             <summary>
             Creates a AVG expression.
             </summary>

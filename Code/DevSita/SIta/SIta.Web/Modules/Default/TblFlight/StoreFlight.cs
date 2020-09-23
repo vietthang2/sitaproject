@@ -24,12 +24,14 @@ namespace Sita.Modules.Default.TblFlight
         public static void Save(DailyModel dailyModel)
         {
             // //Vi luu data manual dạng http request không có chứng thực nên cần đoạn này
-            // (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
+             (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
 
             if (dailyModel != null)
             {
                 var connection = SqlConnections.NewFor<MyRow>();
                 UnitOfWork unitOfWork = new UnitOfWork(connection);
+
+                
                 var newFlight = new TblFlightRow()  ;
 
                 newFlight.Identify = Encrypte(dailyModel.Connect.Daily.Adi.ToString() + dailyModel.Connect.Daily.Linecode.ToString() + dailyModel.Connect.Daily.Number.ToString() + dailyModel.Connect.Daily.ScheduleDate.ToString());
@@ -69,9 +71,17 @@ namespace Sita.Modules.Default.TblFlight
                     {
                         newFlight.DateCreated = DateTime.Now;
 
+                        
+
                         DeleteRequest deleteRequest = new DeleteRequest();
                         deleteRequest.EntityId = newFlight.Identify;
-                        new TblFlightController().Delete(unitOfWork, deleteRequest);
+
+                        var request = new ListRequest();
+                        request.Criteria = new Criteria("Identify = '" + deleteRequest.EntityId + "'");
+                        ListResponse<MyRow> rows =  new MyRepository().List(connection, request);
+                        if (rows.TotalCount > 0)
+                            new TblFlightController().Delete(unitOfWork, deleteRequest);
+
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Create(unitOfWork, saveRequest);
                     }
