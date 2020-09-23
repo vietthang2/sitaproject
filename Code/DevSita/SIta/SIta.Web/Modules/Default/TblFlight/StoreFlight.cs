@@ -77,7 +77,8 @@ namespace Sita.Modules.Default.TblFlight
                             newField.Name = Field.Name;
                             newField.Instance = Field.Instance;
                             newField.Value = Field.Value.ToString();
-                            newField.FlightRef = newFlight.Identify;
+                            newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
+                            newField.FlightIndentify = newFlight.Identify;
 
                             saveRequestField.Entity = newField;
                             new TblFieldController().Create(unitOfWork, saveRequestField);
@@ -90,6 +91,24 @@ namespace Sita.Modules.Default.TblFlight
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Update(unitOfWork, saveRequest);
 
+                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        {
+                            var newField = new TblFieldRow();
+                            newField.Name = Field.Name;
+                            newField.Instance = Field.Instance;
+                            newField.Value = Field.Value.ToString();
+                            newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
+                            newField.FlightIndentify = newFlight.Identify;
+
+                            DeleteRequest deleteRequestField = new DeleteRequest();
+                            deleteRequestField.EntityId = newField.FlightIndentify;
+                            var requestField = new ListRequest();
+                            requestField.Criteria = new Criteria("FlightIndentify") == newField.FlightIndentify;
+                            ListResponse<MyFieldRow> rowsField = new MyFieldRepository().List(connection, requestField);
+                            if (rowsField.TotalCount > 0)
+                                new TblFieldController().Delete(unitOfWork, deleteRequestField);
+                            break;
+                        }
 
                         foreach (var Field in dailyModel.Connect.Daily.Field)
                         {
@@ -98,7 +117,8 @@ namespace Sita.Modules.Default.TblFlight
                             newField.Name = Field.Name;
                             newField.Instance = Field.Instance;
                             newField.Value = Field.Value.ToString();
-                            newField.FlightRef = newFlight.Identify;
+                            newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
+                            newField.FlightIndentify = newFlight.Identify;
 
                             saveRequestField.Entity = newField;
                             new TblFieldController().Update(unitOfWork, saveRequestField);
@@ -125,12 +145,13 @@ namespace Sita.Modules.Default.TblFlight
                             newField.Name = Field.Name;
                             newField.Instance = Field.Instance;
                             newField.Value = Field.Value.ToString();
-                            newField.FlightRef = newFlight.Identify;
+                            newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
+                            newField.FlightIndentify = newFlight.Identify;
 
                             DeleteRequest deleteRequestField = new DeleteRequest();
-                            deleteRequestField.EntityId = newField.FlightRef;
+                            deleteRequestField.EntityId = newField.FlightIndentify;
                             var requestField = new ListRequest();
-                            request.Criteria = new Criteria("FlightRef") == newField.FlightRef;
+                            requestField.Criteria = new Criteria("FlightIndentify") == newField.FlightIndentify;
                             ListResponse<MyFieldRow> rowsField = new MyFieldRepository().List(connection, requestField);
                             if (rowsField.TotalCount > 0)
                                 new TblFieldController().Delete(unitOfWork, deleteRequestField);
@@ -148,7 +169,8 @@ namespace Sita.Modules.Default.TblFlight
                             newField.Name = Field.Name;
                             newField.Instance = Field.Instance;
                             newField.Value = Field.Value.ToString();
-                            newField.FlightRef = newFlight.Identify;
+                            newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
+                            newField.FlightIndentify = newFlight.Identify;
 
                             saveRequestField.Entity = newField;
                             new TblFieldController().Create(unitOfWork, saveRequestField);
