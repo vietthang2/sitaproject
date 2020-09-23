@@ -1782,6 +1782,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Default.TblBagsHistoryForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblAdiTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblAdiTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblAdiType\TblAdiTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblAdiType\TblAdiTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblAdiType\TblAdiTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblAdiTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1878,6 +1890,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceModels.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
+    <Compile Include="Modules\Default\Common\Const.cs" />
     <Compile Include="Modules\Default\SearchBagtag\SearchController.cs" />
     <Compile Include="Modules\Default\TblBags\StoreBag.cs" />
     <Compile Include="Modules\Default\TblFlight\StoreFlight.cs" />
@@ -1968,6 +1981,12 @@
     <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryPage.cs" />
     <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryColumns.cs" />
     <Compile Include="Modules\Default\TblBagsHistory\TblBagsHistoryForm.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypeRow.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypeRepository.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypeEndpoint.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypePage.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypeColumns.cs" />
+    <Compile Include="Modules\Default\TblAdiType\TblAdiTypeForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

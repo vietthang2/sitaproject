@@ -14,6 +14,7 @@ using Sita.Modules.MSMQServices.DTO;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using Sita.Modules.Default.Common;
 
 namespace Sita.Modules.Default.TblFlight
 {
@@ -42,6 +43,7 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.SoftReplace = dailyModel.Connect.Daily.Softreplace;
                 newFlight.SiteIata = dailyModel.Connect.Daily.SiteIata;
                 newFlight.DateBoundảy = dailyModel.Connect.Daily.DateBoundary;
+                
                 //newFlight.Chute = dailyModel.Connect.Daily;
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
                

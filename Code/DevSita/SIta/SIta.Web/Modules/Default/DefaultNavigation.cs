@@ -1,4 +1,5 @@
 ﻿using Serenity.Navigation;
+
 using MyPages = Sita.Default.Pages;
 
 
@@ -7,3 +8,4 @@ using MyPages = Sita.Default.Pages;
 [assembly: NavigationLink(int.MaxValue, "Default/Tbl Flight", typeof(MyPages.TblFlightController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Default/Tbl Bags History", typeof(MyPages.TblBagsHistoryController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Default/Search", typeof(MyPages.SearchController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Default/Tbl Adi Type", typeof(MyPages.TblAdiTypeController), icon: null)]

@@ -5,12 +5,14 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Modules.Default.Common;
+    using Sita.Default.Entities;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblFlight]")]
-    [DisplayName("Tbl Flight"), InstanceName("Tbl Flight")]
+    [DisplayName("Flight"), InstanceName("Flight")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     public sealed class TblFlightRow : Row, IIdRow, INameRow
@@ -22,7 +24,9 @@ namespace Sita.Default.Entities
             set { Fields.Identify[this] = value; }
         }
 
-        [DisplayName("Adi"), Size(50)]
+        [DisplayName("Adi"), Size(50), QuickSearch]
+        [ForeignKey(typeof(TblAdiTypeRow), "Code"), LeftJoin("jAdiType"), TextualField("Adi Name")]
+        [LookupEditor(typeof(TblAdiTypeRow))]//Thêm
         public String Adi
         {
             get { return Fields.Adi[this]; }

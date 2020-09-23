@@ -7428,3 +7428,9 @@ section.content > .s-DataGrid {
 .s-Default-TblBagsHistoryDialog .caption {
   width: 150px;
 }
+.s-Default-TblAdiTypeDialog > .size {
+  width: 650px;
+}
+.s-Default-TblAdiTypeDialog .caption {
+  width: 150px;
+}

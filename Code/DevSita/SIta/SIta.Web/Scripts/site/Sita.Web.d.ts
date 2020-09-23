@@ -440,6 +440,52 @@ declare namespace Sita.Common {
     }
 }
 declare namespace Sita.Default {
+    class TblAdiTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblAdiTypeForm {
+        Name: Serenity.StringEditor;
+    }
+}
+declare namespace Sita.Default {
+    interface TblAdiTypeRow {
+        Code?: string;
+        Name?: string;
+    }
+    namespace TblAdiTypeRow {
+        const idProperty = "Code";
+        const nameProperty = "Code";
+        const localTextPrefix = "Default.TblAdiType";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Code: any;
+            const Name: any;
+        }
+    }
+}
+declare namespace Sita.Default {
+    namespace TblAdiTypeService {
+        const baseUrl = "Default/TblAdiType";
+        function Create(request: Serenity.SaveRequest<TblAdiTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblAdiTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Sita.Default {
+}
+declare namespace Sita.Default {
     interface TblBagsForm {
         BaggageTag: Serenity.StringEditor;
         FlightRef: Serenity.StringEditor;
@@ -456,6 +502,8 @@ declare namespace Sita.Default {
         private static init;
         constructor(prefix: string);
     }
+}
+declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblBagsHistoryForm {
@@ -583,6 +631,8 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
+}
+declare namespace Sita.Default {
     interface TblFieldForm {
         Name: Serenity.StringEditor;
         Instance: Serenity.StringEditor;
@@ -636,6 +686,8 @@ declare namespace Sita.Default {
             List = "Default/TblField/List"
         }
     }
+}
+declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblFlightForm {
@@ -1274,6 +1326,30 @@ declare namespace Sita.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace Sita.Default {
+    class TblAdiTypeDialog extends Serenity.EntityDialog<TblAdiTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblAdiTypeForm;
+    }
+}
+declare namespace Sita.Default {
+    class TblAdiTypeGrid extends Serenity.EntityGrid<TblAdiTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblAdiTypeDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Sita.Default {

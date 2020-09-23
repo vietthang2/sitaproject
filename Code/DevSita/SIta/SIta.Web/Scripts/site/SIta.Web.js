@@ -373,6 +373,78 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
+        var TblAdiTypeForm = /** @class */ (function (_super) {
+            __extends(TblAdiTypeForm, _super);
+            function TblAdiTypeForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TblAdiTypeForm.formKey = 'Default.TblAdiType';
+            return TblAdiTypeForm;
+        }(Serenity.PrefixedContext));
+        Default.TblAdiTypeForm = TblAdiTypeForm;
+        [,
+            ['Name', function () { return Serenity.StringEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(TblAdiTypeForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblAdiTypeRow;
+        (function (TblAdiTypeRow) {
+            TblAdiTypeRow.idProperty = 'Code';
+            TblAdiTypeRow.nameProperty = 'Code';
+            TblAdiTypeRow.localTextPrefix = 'Default.TblAdiType';
+            TblAdiTypeRow.deletePermission = 'Administration:General';
+            TblAdiTypeRow.insertPermission = 'Administration:General';
+            TblAdiTypeRow.readPermission = 'Administration:General';
+            TblAdiTypeRow.updatePermission = 'Administration:General';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TblAdiTypeRow.Fields || (TblAdiTypeRow.Fields = {}));
+            [
+                'Code',
+                'Name'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(TblAdiTypeRow = Default.TblAdiTypeRow || (Default.TblAdiTypeRow = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblAdiTypeService;
+        (function (TblAdiTypeService) {
+            TblAdiTypeService.baseUrl = 'Default/TblAdiType';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TblAdiTypeService.Methods || (TblAdiTypeService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TblAdiTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TblAdiTypeService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = TblAdiTypeService.baseUrl + '/' + x;
+            });
+        })(TblAdiTypeService = Default.TblAdiTypeService || (Default.TblAdiTypeService = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
         var TblBagsForm = /** @class */ (function (_super) {
             __extends(TblBagsForm, _super);
             function TblBagsForm(prefix) {
@@ -2960,6 +3032,56 @@ var Sita;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = Sita.Common || (Sita.Common = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblAdiTypeDialog = /** @class */ (function (_super) {
+            __extends(TblAdiTypeDialog, _super);
+            function TblAdiTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Default.TblAdiTypeForm(_this.idPrefix);
+                return _this;
+            }
+            TblAdiTypeDialog.prototype.getFormKey = function () { return Default.TblAdiTypeForm.formKey; };
+            TblAdiTypeDialog.prototype.getIdProperty = function () { return Default.TblAdiTypeRow.idProperty; };
+            TblAdiTypeDialog.prototype.getLocalTextPrefix = function () { return Default.TblAdiTypeRow.localTextPrefix; };
+            TblAdiTypeDialog.prototype.getNameProperty = function () { return Default.TblAdiTypeRow.nameProperty; };
+            TblAdiTypeDialog.prototype.getService = function () { return Default.TblAdiTypeService.baseUrl; };
+            TblAdiTypeDialog.prototype.getDeletePermission = function () { return Default.TblAdiTypeRow.deletePermission; };
+            TblAdiTypeDialog.prototype.getInsertPermission = function () { return Default.TblAdiTypeRow.insertPermission; };
+            TblAdiTypeDialog.prototype.getUpdatePermission = function () { return Default.TblAdiTypeRow.updatePermission; };
+            TblAdiTypeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblAdiTypeDialog);
+            return TblAdiTypeDialog;
+        }(Serenity.EntityDialog));
+        Default.TblAdiTypeDialog = TblAdiTypeDialog;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblAdiTypeGrid = /** @class */ (function (_super) {
+            __extends(TblAdiTypeGrid, _super);
+            function TblAdiTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TblAdiTypeGrid.prototype.getColumnsKey = function () { return 'Default.TblAdiType'; };
+            TblAdiTypeGrid.prototype.getDialogType = function () { return Default.TblAdiTypeDialog; };
+            TblAdiTypeGrid.prototype.getIdProperty = function () { return Default.TblAdiTypeRow.idProperty; };
+            TblAdiTypeGrid.prototype.getInsertPermission = function () { return Default.TblAdiTypeRow.insertPermission; };
+            TblAdiTypeGrid.prototype.getLocalTextPrefix = function () { return Default.TblAdiTypeRow.localTextPrefix; };
+            TblAdiTypeGrid.prototype.getService = function () { return Default.TblAdiTypeService.baseUrl; };
+            TblAdiTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblAdiTypeGrid);
+            return TblAdiTypeGrid;
+        }(Serenity.EntityGrid));
+        Default.TblAdiTypeGrid = TblAdiTypeGrid;
+    })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
 (function (Sita) {
