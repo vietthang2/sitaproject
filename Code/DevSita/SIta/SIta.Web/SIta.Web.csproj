@@ -1891,6 +1891,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
     <Compile Include="Modules\Default\Common\Const.cs" />
+    <Compile Include="Modules\Default\SearchBagtag\FlightBagModel.cs" />
     <Compile Include="Modules\Default\SearchBagtag\SearchController.cs" />
     <Compile Include="Modules\Default\TblBags\StoreBag.cs" />
     <Compile Include="Modules\Default\TblField\StoreField.cs" />
