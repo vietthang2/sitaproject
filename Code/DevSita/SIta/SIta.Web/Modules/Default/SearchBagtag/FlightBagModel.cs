@@ -22,20 +22,24 @@ namespace Sita.Modules.Default.SearchBagtag
         public String UserUpdate { get; set; }
         public DateTime DateUpdated { get; set; }
         //Bagtag
-        
+
         public String BaggageTag { get; set; }
-        
+
         public String FlightRef { get; set; }
         public Boolean Processed { get; set; }
         public String Bsm { get; set; }
         public String Bpm { get; set; }
-        
+
         public DateTime TimeRcvBsm { get; set; }
-        
+
         public DateTime TimeRcvBpm { get; set; }
-        
+
         public Int32 Id { get; set; }
         public String DDMM { get; set; }
         public String YYYY { get; set; }
+    }
+    public class RequestSearch{
+        public String flight { get; set; }
+        public String bagtag { get; set; }
     }
 }

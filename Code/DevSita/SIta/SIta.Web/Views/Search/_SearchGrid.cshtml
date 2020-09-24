@@ -1,15 +1,15 @@
 ﻿
 
-@model List<Sita.Default.Entities.TblBagsRow>
+@model List<Sita.Modules.Default.SearchBagtag.FlightBagModel>
 
 @{
     int rowNumber = 1;
     int pageSize = 10;
-    int pageNumber = Convert.ToInt32(ViewBag.PageNumber);
-    if (pageNumber > 1)
-    {
-        rowNumber = pageSize * (pageNumber - 1) + rowNumber;
-    }
+    //int pageNumber = Convert.ToInt32(ViewBag.PageNumber);
+    //if (pageNumber > 1)
+    //{
+    //    rowNumber = pageSize * (pageNumber - 1) + rowNumber;
+    //}
 
     var datas = Model;
     var transCode = string.Empty;
@@ -17,9 +17,7 @@
 
 <h4 id="booking-title">
     <span class="text-uppercase">Kết quả tìm kiếm</span>
-    <span class="title-totalrows">
-        Tổng số kết quả: <span class="badge badge-primary fs-100">@ViewBag.Totalrows</span>
-    </span>
+    
 </h4>
 
 <div class="table-responsive">
@@ -62,6 +60,6 @@
                 }
             </tbody>
         </table>
-        @Html.Raw(ViewBag.Paging)
+        @*@Html.Raw(ViewBag.Paging)*@
     </div>
 </div>
