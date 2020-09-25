@@ -11,27 +11,40 @@
             <span class="float-right clickable"><i class="fas fa-chevron-down"></i></span>
         </div>
         <div class="card-body text-left">
-            
+
 
             <div class="row">
                 <div class="form-group col-md-3">
                     <label>Chuyến bay <span class="text-danger">(*)</span></label>
-                    <input type="text" id="dtpFromDate" class="form-control" name="FromDate" autocomplete="off" />
+                    <input type="text" id="txtFlight" class="form-control" name="FromDate" autocomplete="off" />
                 </div>
                 <div class="form-group col-md-3">
                     <label>Mã bag tag <span class="text-danger">(*)</span></label>
-                    <input type="text" id="dtpToDate" class="form-control" name="ToDate" autocomplete="off" />
+                    <input type="text" id="txtBag" class="form-control" name="ToDate" autocomplete="off" />
                 </div>
-               
-            <div class="text-center">
-                <button type="button" class="btn btn-primary" id="btn-search">
-                    <i class="fas fa-search"></i> Tìm kiếm
-                </button>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="btn-search">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+
+
+
             </div>
+           
         </div>
+
+
     </div>
-        </div>
 </section>
 <div id="data-grid">
     <partial name="_SearchGrid" />
 </div>
+
+    <environment include="Development">
+        <script src="~/scripts/searchbagtag/index.js" type="text/javascript"></script>
+    </environment>
+    <environment exclude="Production">
+        <script src="~/scripts/searchbagtag/index.js" type="text/javascript"></script>
+    </environment>
