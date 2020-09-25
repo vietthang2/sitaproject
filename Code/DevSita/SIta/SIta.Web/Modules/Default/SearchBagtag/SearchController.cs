@@ -9,7 +9,8 @@ using System.Web.Mvc;
 namespace Sita.Default.Pages
 {
 
-    [RoutePrefix("Default/SearchBags"), Route("{action=index}")]
+    [RoutePrefix("Services/Default/TblFlight"), Route("{action=index}")]
+    
     public class SearchController : Controller
     {
         // GET: Search
@@ -17,21 +18,21 @@ namespace Sita.Default.Pages
         {
             return View();
         }
-        public ActionResult Index(string flight, string bagtag)
-        {
-            var proName2 = "PR_SEARCH_FLIGHT_BAGTAG";
-            var connect = SqlConnections.NewByKey("Default");
+        //public ActionResult Index(string flight, string bagtag)
+        //{
+        //    var proName2 = "PR_SEARCH_FLIGHT_BAGTAG";
+        //    var connect = SqlConnections.NewByKey("Default");
 
-            var records = connect.Query<FlightBagModel>(proName2,
-                 param: new {Flight= flight,Bagtag= bagtag },
-                 commandType: System.Data.CommandType.StoredProcedure).ToList();
+        //    var records = connect.Query<FlightBagModel>(proName2,
+        //         param: new {Flight= flight,Bagtag= bagtag },
+        //         commandType: System.Data.CommandType.StoredProcedure).ToList();
 
 
             
-            if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
-                return PartialView("_SearchGrid", records);
-            return View(records);
+        //    if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        //        return PartialView("_SearchGrid", records);
+        //    return View(records);
 
-        }
+        //}
     }
 }
