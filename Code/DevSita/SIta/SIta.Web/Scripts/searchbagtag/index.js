@@ -11,10 +11,10 @@
         var bag = $('#txtBag').val();
         var param = {
             'flight': flight,
-            'bagtag':bag
-        }
+            'bagtag': bag
+        };
         $.ajax({
-            url: '/Default/Search/SearchBg',
+            url: '/Default/Search/SearchGrid',
             type: 'post',
             dataType: 'html',
             para: param,

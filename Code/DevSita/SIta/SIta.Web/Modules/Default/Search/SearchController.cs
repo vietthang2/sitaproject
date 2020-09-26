@@ -20,7 +20,8 @@ namespace Sita.Default.Pages
             return View();
         }
         [HttpPost]
-        public ActionResult SearchBg(RequestSearch req)
+        [Route("SearchGrid")]
+        public ActionResult SearchGrid(RequestSearch req)
         {
             //var proName2 = "PR_SEARCH_FLIGHT_BAGTAG";
             //var connect = SqlConnections.NewByKey("Default");
