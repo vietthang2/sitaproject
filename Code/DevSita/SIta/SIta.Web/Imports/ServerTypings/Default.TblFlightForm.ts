@@ -13,7 +13,7 @@
         UserCreated: Serenity.StringEditor;
         UserUpdate: Serenity.StringEditor;
         DateUpdated: Serenity.DateEditor;
-        ListField: Serenity.StringEditor;
+        ListField: FieldDetailEditor;
     }
 
     export class TblFlightForm extends Serenity.PrefixedContext {
@@ -31,6 +31,7 @@
                 var w1 = s.StringEditor;
                 var w2 = s.IntegerEditor;
                 var w3 = s.DateEditor;
+                var w4 = FieldDetailEditor;
 
                 Q.initFormType(TblFlightForm, [
                     'Adi', w0,
@@ -46,7 +47,7 @@
                     'UserCreated', w1,
                     'UserUpdate', w1,
                     'DateUpdated', w3,
-                    'ListField', w1
+                    'ListField', w4
                 ]);
             }
         }

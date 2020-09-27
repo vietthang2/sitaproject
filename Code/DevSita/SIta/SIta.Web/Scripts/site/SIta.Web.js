@@ -660,6 +660,7 @@ var Sita;
                     var w1 = s.StringEditor;
                     var w2 = s.IntegerEditor;
                     var w3 = s.DateEditor;
+                    var w4 = Default.FieldDetailEditor;
                     Q.initFormType(TblFlightForm, [
                         'Adi', w0,
                         'LineCode', w1,
@@ -674,7 +675,7 @@ var Sita;
                         'UserCreated', w1,
                         'UserUpdate', w1,
                         'DateUpdated', w3,
-                        'ListField', w1
+                        'ListField', w4
                     ]);
                 }
                 return _this;
@@ -694,6 +695,11 @@ var Sita;
             TblFlightRow.idProperty = 'Identify';
             TblFlightRow.nameProperty = 'Identify';
             TblFlightRow.localTextPrefix = 'Default.TblFlight';
+            TblFlightRow.lookupKey = 'dbo.tblFlight';
+            function getLookup() {
+                return Q.getLookup('dbo.tblFlight');
+            }
+            TblFlightRow.getLookup = getLookup;
             TblFlightRow.deletePermission = 'Administration:General';
             TblFlightRow.insertPermission = 'Administration:General';
             TblFlightRow.readPermission = 'Administration:General';
@@ -3124,9 +3130,72 @@ var Sita;
             TblBagsGrid.prototype.getLocalTextPrefix = function () { return Default.TblBagsRow.localTextPrefix; };
             TblBagsGrid.prototype.getService = function () { return Default.TblBagsService.baseUrl; };
             TblBagsGrid.prototype.getButtons = function () {
+                var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                buttons.push({
+                    title: 'Group by Flight',
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([{
+                            formatter: function (x) { return 'Flight: ' + x.value + ' (' + x.count + ' items)'; },
+                            getter: 'FlightRef'
+                        }]); }
+                }, {
+                    title: 'Group by DDMM',
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([{
+                            formatter: function (x) { return 'DDMM: ' + x.value + ' (' + x.count + ' items)'; },
+                            getter: 'DDMM'
+                        }]); }
+                }, {
+                    title: 'Bỏ group',
+                    cssClass: 'collapse-all-button',
+                    onClick: function () { return _this.view.setGrouping([]); }
+                });
                 return buttons;
+            };
+            TblBagsGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                columns.unshift({
+                    field: 'FlightRef',
+                    name: '',
+                    format: function (ctx) { return '<div class="inline update-status btn btn-success btn-sm active" type="button">View Flight</div>'; },
+                    width: 140,
+                    minWidth: 140,
+                    maxWidth: 140
+                });
+                return columns;
+            };
+            TblBagsGrid.prototype.onClick = function (e, row, cell) {
+                // let base grid handle clicks for its edit links
+                var _this = this;
+                // if base grid already handled, we shouldn"t handle it again
+                if (e.isDefaultPrevented()) {
+                    return;
+                }
+                // get reference to current item
+                if (row >= 0) {
+                    var item = this.itemAt(row);
+                    var target = $(e.target);
+                    if (target.hasClass("inline")) {
+                        e.preventDefault();
+                        var dialog_ = new Default.TblFlightDialog();
+                        //Tìm kiếm chuyến bay
+                        var fligth = Default.TblFlightRow.getLookup().items.filter(function (k) { return k.DDMM !== null; }); // === item.DDMM);// && k.YYYY === item.YYYY);//&& (k.LineCode + k.Number) === item.FlightRef);
+                        if (fligth.length === 0) {
+                            Q.alert('Not found flight');
+                            return;
+                        }
+                        //End
+                        dialog_.loadEntityAndOpenDialog(fligth[0]);
+                        Serenity.SubDialogHelper.bindToDataChange(dialog_, this, function (e, dci) {
+                            _this.refresh();
+                        }, true);
+                    }
+                    else {
+                        _super.prototype.onClick.call(this, e, row, cell);
+                    }
+                }
             };
             TblBagsGrid = __decorate([
                 Serenity.Decorators.registerClass()
@@ -3179,8 +3248,28 @@ var Sita;
             TblBagsHistoryGrid.prototype.getLocalTextPrefix = function () { return Default.TblBagsHistoryRow.localTextPrefix; };
             TblBagsHistoryGrid.prototype.getService = function () { return Default.TblBagsHistoryService.baseUrl; };
             TblBagsHistoryGrid.prototype.getButtons = function () {
+                var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                buttons.push({
+                    title: 'Group by Flight',
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([{
+                            formatter: function (x) { return 'Flight: ' + x.value + ' (' + x.count + ' items)'; },
+                            getter: 'FlightRef'
+                        }]); }
+                }, {
+                    title: 'Group by DDMM',
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([{
+                            formatter: function (x) { return 'DDMM: ' + x.value + ' (' + x.count + ' items)'; },
+                            getter: 'DDMM'
+                        }]); }
+                }, {
+                    title: 'Bỏ group',
+                    cssClass: 'collapse-all-button',
+                    onClick: function () { return _this.view.setGrouping([]); }
+                });
                 return buttons;
             };
             TblBagsHistoryGrid = __decorate([

@@ -13,6 +13,8 @@ namespace Sita.Default.Columns
     [BasedOnRow(typeof(Entities.TblBagsRow), CheckNames = true)]
     public class TblBagsColumns
     {
+        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        public Int32 Id { get; set; }
         [EditLink]
         [QuickFilter(CssClass = "hidden-xs")]
         public String BaggageTag { get; set; }
@@ -25,8 +27,7 @@ namespace Sita.Default.Columns
         public DateTime TimeRcvBsm { get; set; }
         [QuickFilter(CssClass = "hidden-xs")]
         public DateTime TimeRcvBpm { get; set; }
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 Id { get; set; }
+        
         public String DDMM { get; set; }
         public String YYYY { get; set; }
     }

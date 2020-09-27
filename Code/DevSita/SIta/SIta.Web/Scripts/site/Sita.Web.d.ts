@@ -713,7 +713,7 @@ declare namespace Sita.Default {
         UserCreated: Serenity.StringEditor;
         UserUpdate: Serenity.StringEditor;
         DateUpdated: Serenity.DateEditor;
-        ListField: Serenity.StringEditor;
+        ListField: FieldDetailEditor;
     }
     class TblFlightForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -745,6 +745,8 @@ declare namespace Sita.Default {
         const idProperty = "Identify";
         const nameProperty = "Identify";
         const localTextPrefix = "Default.TblFlight";
+        const lookupKey = "dbo.tblFlight";
+        function getLookup(): Q.Lookup<TblFlightRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -1391,6 +1393,8 @@ declare namespace Sita.Default {
         protected getService(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
 }
 declare namespace Sita.Default {
@@ -1423,7 +1427,6 @@ declare namespace Sita.Default {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof TblFieldDialog;
         protected getLocalTextPrefix(): string;
-        ListSource: Default.TblFieldRow[];
         constructor(container: JQuery);
         getButtons(): Serenity.ToolButton[];
     }

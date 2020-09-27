@@ -64,7 +64,7 @@ namespace Sita.Modules.MSMQServices
                      //   System.Messaging.Message[] messages = messageQueue.GetAllMessages();
                         var mes= @"<?xml version = '1.0' encoding='utf-8'?>
 <connect version = '1.0' name='AMS'>
-<daily action = 'replace' adi='A' linecode='DL' number='1397' schedule_date='2016-10-26' softreplace='true' site_iata='DEN' date_boundary='0'>
+<daily action = 'Replace' adi='A' linecode='VN' number='2122' schedule_date='2016-10-26' softreplace='true' site_iata='DEN' date_boundary='0'>
 <field name = 'schedule' instance='1' value='2016-10-26T10:18:00' />
 <field name = 'estimated' instance='1' value='2016-10-26T10:18:00' />
 <field name = 'actual' instance='1' value='2016-10-26T10:18:00' />

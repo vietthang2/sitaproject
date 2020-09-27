@@ -8,7 +8,7 @@
         protected getDialogType() { return TblFieldDialog; }
         protected getLocalTextPrefix() { return TblFieldRow.localTextPrefix; }
 
-        public ListSource: Default.TblFieldRow[];
+        
 
         constructor(container: JQuery) {
             super(container);
