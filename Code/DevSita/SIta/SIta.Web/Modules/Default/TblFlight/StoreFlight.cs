@@ -46,11 +46,12 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.SoftReplace = dailyModel.Connect.Daily.Softreplace;
                 newFlight.SiteIata = dailyModel.Connect.Daily.SiteIata;
                 newFlight.DateBoundảy = dailyModel.Connect.Daily.DateBoundary;
-                
+                newFlight.DateCreated = DateTime.Now;
+                newFlight.UserCreated = "Admin";
                 //newFlight.Chute = dailyModel.Connect.Daily;
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
-               
-               
+
+
                 newFlight.DDMM = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("ddMM");
                 newFlight.YYYY = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("yyyy");
 
@@ -79,7 +80,8 @@ namespace Sita.Modules.Default.TblFlight
                             newField.Value = Field.Value.ToString();
                             newField.FlightRef = newFlight.LineCode.ToString() + newFlight.Number.ToString();
                             newField.FlightIndentify = newFlight.Identify;
-
+                            newFlight.UserCreated = "Admin";
+                            newFlight.DateCreated = DateTime.Now;
                             saveRequestField.Entity = newField;
                             new TblFieldController().Create(unitOfWork, saveRequestField);
                         }
