@@ -10,6 +10,7 @@ namespace Sita.Default.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using System.Collections.Generic;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblFlight]")]
     [DisplayName("Flight"), InstanceName("Flight")]
@@ -131,6 +132,12 @@ namespace Sita.Default.Entities
             get { return Fields.YYYY[this]; }
             set { Fields.YYYY[this] = value; }
         }
+        [DisplayName("Field"), MasterDetailRelation(foreignKey: "FlightIndentify"), NotMapped]
+        public List<TblFieldRow> ListField
+        {
+            get { return Fields.ListField[this]; }
+            set { Fields.ListField[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.Identify; }
@@ -166,6 +173,7 @@ namespace Sita.Default.Entities
             public DateTimeField DateUpdated;
             public StringField DDMM;
             public StringField YYYY;
+            public readonly RowListField<TblFieldRow> ListField;
         }
     }
 }

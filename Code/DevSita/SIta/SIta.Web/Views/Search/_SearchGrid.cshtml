@@ -14,22 +14,30 @@
 }
 
 <h4 id="booking-title">
-    <span class="text-uppercase">Kết quả tìm kiếm</span>
-    <span class="title-totalrows">
-        Tổng số kết quả: <span class="badge badge-primary fs-100">@ViewBag.Totalrows</span>
-    </span>
+    <span class="text-uppercase">Result</span>
+   
 </h4>
 
-<div class="table-responsive">
-    <div class="mvc-grid mvc-grid-excel-mode">
-        <table class="header-primary">
+<div class="box-body table-responsive no-padding">
+    <div >
+        <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th class="text-center"></th>
-                    <th class="text-center">STT</th>
-                    <th class="text-center">Mã chuyến bay</th>
-                    <th class="text-center">Ngày </th>
-                    <th class="text-center">Bag tag</th>
+
+                    <th class="text-center bg-primary">No</th>
+                    <th class="text-center bg-primary">Flight Code</th>
+                    <th class="text-center bg-primary">ScheduleDate</th>
+                    <th class="text-center bg-primary">Adi</th>
+                    <th class="text-center bg-primary">LineCode</th>
+                    <th class="text-center bg-primary">Number</th>
+                    <th class="text-center bg-primary">Chute</th>
+                    <th class="text-center bg-primary">DateBounday</th>
+                    <th class="text-center bg-primary">SiteIata</th>
+                    <th class="text-center bg-primary">SoftReplace</th>
+
+                    <th class="text-center bg-primary">Bag tag</th>
+                    <th class="text-center bg-primary">DDMM</th>
+                    <th class="text-center bg-primary">YYYY</th>
 
                 </tr>
             </thead>
@@ -39,14 +47,24 @@
                     foreach (var item in datas)
                     {
 
-                        <tr data-id="@item.Id">
+                <tr data-id="@item.Id">
 
-                            <td class="text-center">@rowNumber</td>
-                            <td class="text-center">@item.FlightRef</td>
-                            <td class="text-center">@item.DDMM</td>
-                            <td class="text-center">@item.BaggageTag</td>
+                    <td class="text-center">@rowNumber</td>
+                    <td class="text-center">@item.FlightRef</td>
+                    <td class="text-center">@item.ScheduleDate</td>
+                    <td class="text-center">@item.Adi</td>
+                    <td class="text-center">@item.LineCode</td>
+                    <td class="text-center">@item.Number</td>
+                    <td class="text-center">@item.Chute</td>
+                    <td class="text-center">@item.DateBounday</td>
+                    <td class="text-center">@item.SiteIata</td>
+                    <td class="text-center">@item.SoftReplace</td>
+                    <td class="text-center">@item.BaggageTag</td>
+                    <td class="text-center">@item.DDMM</td>
+                    <td class="text-center">@item.YYYY</td>
 
-                        </tr>
+
+                </tr>
                         rowNumber++;
                     }
                 }

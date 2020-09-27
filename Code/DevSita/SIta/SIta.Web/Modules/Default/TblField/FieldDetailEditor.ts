@@ -1,19 +1,20 @@
-﻿
-namespace Sita.Default {
+﻿ ///<reference path="../../Common/Helpers/GridEditorBase.ts" />
 
+    namespace Sita.Default {
     @Serenity.Decorators.registerClass()
-    export class TblFieldGrid extends Serenity.EntityGrid<TblFieldRow, any> {
+    export class FieldDetailEditor extends Common.GridEditorBase<TblFieldRow> {
         protected getColumnsKey() { return 'Default.TblField'; }
+        //protected getDialogType() { return TblContractItemsDialog; }
         protected getDialogType() { return TblFieldDialog; }
-        protected getIdProperty() { return TblFieldRow.idProperty; }
-        protected getInsertPermission() { return TblFieldRow.insertPermission; }
         protected getLocalTextPrefix() { return TblFieldRow.localTextPrefix; }
-        protected getService() { return TblFieldService.baseUrl; }
+
+        public ListSource: Default.TblFieldRow[];
 
         constructor(container: JQuery) {
             super(container);
+            
         }
-        protected getButtons(): Serenity.ToolButton[] {
+        getButtons(){
             var buttons = super.getButtons();
             buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
 

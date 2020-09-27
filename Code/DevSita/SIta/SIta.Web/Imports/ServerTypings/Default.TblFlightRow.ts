@@ -14,6 +14,9 @@
         UserCreated?: string;
         UserUpdate?: string;
         DateUpdated?: string;
+        DDMM?: string;
+        YYYY?: string;
+        ListField?: TblFieldRow[];
     }
 
     export namespace TblFlightRow {
@@ -39,7 +42,10 @@
             DateCreated = "DateCreated",
             UserCreated = "UserCreated",
             UserUpdate = "UserUpdate",
-            DateUpdated = "DateUpdated"
+            DateUpdated = "DateUpdated",
+            DDMM = "DDMM",
+            YYYY = "YYYY",
+            ListField = "ListField"
         }
     }
 }

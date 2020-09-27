@@ -55,7 +55,7 @@ namespace Sita.Modules.MSMQServices
                 (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 while (true)
                 {
-                    Thread.Sleep(20000); // 10 sec
+                    Thread.Sleep(10000); // 10 sec
                     try
                     {
                         var path = BuildPath();

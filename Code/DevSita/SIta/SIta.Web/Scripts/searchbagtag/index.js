@@ -9,6 +9,10 @@
     function bindGrid() {
         var flight = $('#txtFlight').val();
         var bag = $('#txtBag').val();
+        if (flight === '' || bag === '') {
+            alert('Please input flight code and bag tag code');
+            return;
+        }
         var param = {
             'flight': flight,
             'bagtag': bag

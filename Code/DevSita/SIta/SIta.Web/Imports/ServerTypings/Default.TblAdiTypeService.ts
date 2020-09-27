@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export namespace TblAdiTypeService {
         export const baseUrl = 'Default/TblAdiType';
 
@@ -9,12 +8,12 @@ namespace Sita.Default {
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
-        export namespace Methods {
-            export declare const Create: string;
-            export declare const Update: string;
-            export declare const Delete: string;
-            export declare const Retrieve: string;
-            export declare const List: string;
+        export declare const enum Methods {
+            Create = "Default/TblAdiType/Create",
+            Update = "Default/TblAdiType/Update",
+            Delete = "Default/TblAdiType/Delete",
+            Retrieve = "Default/TblAdiType/Retrieve",
+            List = "Default/TblAdiType/List"
         }
 
         [
@@ -24,10 +23,10 @@ namespace Sita.Default {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>TblAdiTypeService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>TblAdiTypeService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
-            (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }
+

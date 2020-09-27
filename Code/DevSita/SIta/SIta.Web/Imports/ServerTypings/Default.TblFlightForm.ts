@@ -1,6 +1,6 @@
 ﻿namespace Sita.Default {
     export interface TblFlightForm {
-        Adi: Serenity.StringEditor;
+        Adi: Serenity.LookupEditor;
         LineCode: Serenity.StringEditor;
         Number: Serenity.StringEditor;
         ScheduleDate: Serenity.StringEditor;
@@ -13,6 +13,7 @@
         UserCreated: Serenity.StringEditor;
         UserUpdate: Serenity.StringEditor;
         DateUpdated: Serenity.DateEditor;
+        ListField: Serenity.StringEditor;
     }
 
     export class TblFlightForm extends Serenity.PrefixedContext {
@@ -26,24 +27,26 @@
                 TblFlightForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.IntegerEditor;
-                var w2 = s.DateEditor;
+                var w0 = s.LookupEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.IntegerEditor;
+                var w3 = s.DateEditor;
 
                 Q.initFormType(TblFlightForm, [
                     'Adi', w0,
-                    'LineCode', w0,
-                    'Number', w0,
-                    'ScheduleDate', w0,
-                    'SoftReplace', w0,
-                    'SiteIata', w0,
-                    'DateBoundảy', w0,
-                    'Chute', w1,
-                    'LastChanged', w2,
-                    'DateCreated', w2,
-                    'UserCreated', w0,
-                    'UserUpdate', w0,
-                    'DateUpdated', w2
+                    'LineCode', w1,
+                    'Number', w1,
+                    'ScheduleDate', w1,
+                    'SoftReplace', w1,
+                    'SiteIata', w1,
+                    'DateBoundảy', w1,
+                    'Chute', w2,
+                    'LastChanged', w3,
+                    'DateCreated', w3,
+                    'UserCreated', w1,
+                    'UserUpdate', w1,
+                    'DateUpdated', w3,
+                    'ListField', w1
                 ]);
             }
         }

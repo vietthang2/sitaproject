@@ -14,6 +14,7 @@ namespace Sita.Default.Columns
     public class TblFieldColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [Hidden]
         public Guid Id { get; set; }
         [EditLink]
         public String Name { get; set; }

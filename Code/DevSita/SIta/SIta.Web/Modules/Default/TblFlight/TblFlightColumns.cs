@@ -14,10 +14,12 @@ namespace Sita.Default.Columns
     public class TblFlightColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        
         public String Identify { get; set; }
-        public String Adi { get; set; }
         public String LineCode { get; set; }
         public String Number { get; set; }
+        public String Adi { get; set; }
+       
         public String ScheduleDate { get; set; }
         public String SoftReplace { get; set; }
         public String SiteIata { get; set; }

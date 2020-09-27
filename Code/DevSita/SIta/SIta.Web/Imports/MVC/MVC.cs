@@ -99,6 +99,11 @@ namespace MVC
 
         public static class Default
         {
+            public static class TblAdiType
+            {
+                public const string TblAdiTypeIndex = "~/Modules/Default/TblAdiType/TblAdiTypeIndex.cshtml";
+            }
+
             public static class TblBags
             {
                 public const string TblBagsIndex = "~/Modules/Default/TblBags/TblBagsIndex.cshtml";
@@ -157,6 +162,12 @@ namespace MVC
                     public const string AccountSignUp_AdminLTE = "~/Modules/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
                 }
             }
+        }
+
+        public static class Search
+        {
+            public const string _SearchGrid = "~/Views/Search/_SearchGrid.cshtml";
+            public const string Index = "~/Views/Search/Index.cshtml";
         }
 
         public static class Shared

@@ -440,11 +440,16 @@ declare namespace Sita.Common {
     }
 }
 declare namespace Sita.Default {
+}
+declare namespace Sita.Default {
+    interface TblAdiTypeForm {
+        Code: Serenity.StringEditor;
+        Name: Serenity.StringEditor;
+    }
     class TblAdiTypeForm extends Serenity.PrefixedContext {
         static formKey: string;
-    }
-    interface TblAdiTypeForm {
-        Name: Serenity.StringEditor;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace Sita.Default {
@@ -454,15 +459,17 @@ declare namespace Sita.Default {
     }
     namespace TblAdiTypeRow {
         const idProperty = "Code";
-        const nameProperty = "Code";
+        const nameProperty = "Name";
         const localTextPrefix = "Default.TblAdiType";
+        const lookupKey = "dbo.tblType";
+        function getLookup(): Q.Lookup<TblAdiTypeRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
         const updatePermission = "Administration:General";
-        namespace Fields {
-            const Code: any;
-            const Name: any;
+        const enum Fields {
+            Code = "Code",
+            Name = "Name"
         }
     }
 }
@@ -474,12 +481,12 @@ declare namespace Sita.Default {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblAdiTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Default/TblAdiType/Create",
+            Update = "Default/TblAdiType/Update",
+            Delete = "Default/TblAdiType/Delete",
+            Retrieve = "Default/TblAdiType/Retrieve",
+            List = "Default/TblAdiType/List"
         }
     }
 }
@@ -490,8 +497,8 @@ declare namespace Sita.Default {
         BaggageTag: Serenity.StringEditor;
         FlightRef: Serenity.StringEditor;
         Processed: Serenity.BooleanEditor;
-        Bsm: Serenity.StringEditor;
-        Bpm: Serenity.StringEditor;
+        Bsm: Serenity.TextAreaEditor;
+        Bpm: Serenity.TextAreaEditor;
         TimeRcvBsm: Serenity.DateEditor;
         TimeRcvBpm: Serenity.DateEditor;
         DDMM: Serenity.StringEditor;
@@ -652,6 +659,7 @@ declare namespace Sita.Default {
         Instance?: string;
         Value?: string;
         FlightRef?: string;
+        FlightIndentify?: string;
     }
     namespace TblFieldRow {
         const idProperty = "Id";
@@ -666,7 +674,8 @@ declare namespace Sita.Default {
             Name = "Name",
             Instance = "Instance",
             Value = "Value",
-            FlightRef = "FlightRef"
+            FlightRef = "FlightRef",
+            FlightIndentify = "FlightIndentify"
         }
     }
 }
@@ -691,7 +700,7 @@ declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblFlightForm {
-        Adi: Serenity.StringEditor;
+        Adi: Serenity.LookupEditor;
         LineCode: Serenity.StringEditor;
         Number: Serenity.StringEditor;
         ScheduleDate: Serenity.StringEditor;
@@ -704,6 +713,7 @@ declare namespace Sita.Default {
         UserCreated: Serenity.StringEditor;
         UserUpdate: Serenity.StringEditor;
         DateUpdated: Serenity.DateEditor;
+        ListField: Serenity.StringEditor;
     }
     class TblFlightForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -727,6 +737,9 @@ declare namespace Sita.Default {
         UserCreated?: string;
         UserUpdate?: string;
         DateUpdated?: string;
+        DDMM?: string;
+        YYYY?: string;
+        ListField?: TblFieldRow[];
     }
     namespace TblFlightRow {
         const idProperty = "Identify";
@@ -750,7 +763,10 @@ declare namespace Sita.Default {
             DateCreated = "DateCreated",
             UserCreated = "UserCreated",
             UserUpdate = "UserUpdate",
-            DateUpdated = "DateUpdated"
+            DateUpdated = "DateUpdated",
+            DDMM = "DDMM",
+            YYYY = "YYYY",
+            ListField = "ListField"
         }
     }
 }
@@ -1374,6 +1390,7 @@ declare namespace Sita.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Sita.Default {
@@ -1398,6 +1415,17 @@ declare namespace Sita.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Sita.Default {
+    class FieldDetailEditor extends Common.GridEditorBase<TblFieldRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblFieldDialog;
+        protected getLocalTextPrefix(): string;
+        ListSource: Default.TblFieldRow[];
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Sita.Default {
@@ -1422,6 +1450,7 @@ declare namespace Sita.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Sita.Default {
@@ -1446,6 +1475,7 @@ declare namespace Sita.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Sita.Membership {

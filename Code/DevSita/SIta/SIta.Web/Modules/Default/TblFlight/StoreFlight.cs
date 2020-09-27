@@ -154,7 +154,16 @@ namespace Sita.Modules.Default.TblFlight
                             requestField.Criteria = new Criteria("FlightIndentify") == newField.FlightIndentify;
                             ListResponse<MyFieldRow> rowsField = new MyFieldRepository().List(connection, requestField);
                             if (rowsField.TotalCount > 0)
-                                new TblFieldController().Delete(unitOfWork, deleteRequestField);
+                            {
+                                //rowsField.Entities.
+                                foreach (var item in rowsField.Entities)
+                                {
+                                    deleteRequestField.EntityId = item.Id;
+                                    new TblFieldController().Delete(unitOfWork, deleteRequestField);
+                                }
+                               
+                            }
+
                             break;
                         }
                        
