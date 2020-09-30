@@ -22,7 +22,7 @@ namespace Sita.Default.Entities
             set { Fields.BaggageTag[this] = value; }
         }
 
-        [DisplayName("Flight Ref"), Size(200)]
+        [DisplayName("Flight Ref"), Size(200), QuickSearch]
         public String FlightRef
         {
             get { return Fields.FlightRef[this]; }

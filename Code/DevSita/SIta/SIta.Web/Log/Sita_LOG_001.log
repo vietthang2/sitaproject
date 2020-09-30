@@ -25678,3 +25678,870 @@ ENDBSM
 2020-09-23 22:34:37.615 +07:00 [ERR] Luu Bag tag:Bagtag đã tồn tại
 2020-09-23 22:34:45.408 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
 2020-09-23 22:35:11.834 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-24 22:18:00.811 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-24 22:18:00.892 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-24 22:18:00.893 +07:00 [INF] Log level is: info
+2020-09-24 22:18:05.689 +07:00 [INF] Rabbit MessageReceived :
+2020-09-24 22:18:08.712 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-24 22:18:09.179 +07:00 [INF] Time:9/24/2020 10:18:09 PM : OnSocketAccepted
+2020-09-24 22:18:09.188 +07:00 [INF] Time:9/24/2020 10:18:09 PM - SND- MsgType: LOGIN_RQST - MsgId  : 2- MsgData: password
+2020-09-24 22:18:09.188 +07:00 [INF] Time:9/24/2020 10:18:09 PM : StartListening
+2020-09-24 22:18:09.208 +07:00 [INF] Time:9/24/2020 10:18:09 PM - RCV- MsgType: LOGIN_ACCEPT - MsgId  : 1132- MsgData: - Raw Data: 4248535F43585200020002006C04000000000000
+2020-09-24 22:18:11.478 +07:00 [INF] Time:9/24/2020 10:18:11 PM - RCV- MsgType: ACK_DATA - MsgId  : 1133- MsgData: BSM
+.V/1TZRH//6543210014/A/123ABC456Z
+.F/VN2422/18APR/JFK/F
+.I/AZ318/18 APR/FCO/J
+.N/0101811891003
+.S/Y/3A/C
+.P/SMITH/TOM
+.L/XY1C3P
+.T/321A4C
+.E/RUSH
+.R/VIP
+.X/XRAY
+ENDBSM- Raw Data: 4248535F43585200020005006D04B7000000000042534D0D0A2E562F31545A52482F2F363534333231303031342F412F3132334142433435365A0D0A2E462F564E323432322F31384150522F4A464B2F460D0A2E492F415A3331382F3138204150522F46434F2F4A0D0A2E4E2F303130313831313839313030330D0A2E532F592F33412F430D0A2E502F534D4954482F544F4D0D0A2E4C2F5859314333500D0A2E542F3332314134430D0A2E452F525553480D0A2E522F5649500D0A2E582F585241590D0A454E4442534D
+2020-09-24 22:18:12.457 +07:00 [INF]  [x] Sent Rabbit BSM
+.V/1TZRH//6543210014/A/123ABC456Z
+.F/VN2422/18APR/JFK/F
+.I/AZ318/18 APR/FCO/J
+.N/0101811891003
+.S/Y/3A/C
+.P/SMITH/TOM
+.L/XY1C3P
+.T/321A4C
+.E/RUSH
+.R/VIP
+.X/XRAY
+ENDBSM
+2020-09-24 22:18:12.481 +07:00 [INF] Rabbit recieve:BSM
+.V/1TZRH//6543210014/A/123ABC456Z
+.F/VN2422/18APR/JFK/F
+.I/AZ318/18 APR/FCO/J
+.N/0101811891003
+.S/Y/3A/C
+.P/SMITH/TOM
+.L/XY1C3P
+.T/321A4C
+.E/RUSH
+.R/VIP
+.X/XRAY
+ENDBSM
+2020-09-25 22:48:53.190 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 22:48:53.274 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 22:48:53.274 +07:00 [INF] Log level is: info
+2020-09-25 22:48:55.447 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 22:48:59.342 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:48:59.386 +07:00 [INF] Time:9/25/2020 10:48:59 PM : StartListening
+2020-09-25 22:49:00.554 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:04.435 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:04.439 +07:00 [INF] Time:9/25/2020 10:49:04 PM : StartListening
+2020-09-25 22:49:05.834 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:10.229 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:10.229 +07:00 [INF] Time:9/25/2020 10:49:10 PM : StartListening
+2020-09-25 22:49:11.352 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:14.380 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:49:15.411 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:49:15.411 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:15.411 +07:00 [INF] Time:9/25/2020 10:49:15 PM : StartListening
+2020-09-25 22:49:16.600 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:23.000 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:23.024 +07:00 [INF] Time:9/25/2020 10:49:23 PM : StartListening
+2020-09-25 22:49:24.147 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:28.054 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:28.054 +07:00 [INF] Time:9/25/2020 10:49:28 PM : StartListening
+2020-09-25 22:49:29.252 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:33.063 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:33.063 +07:00 [INF] Time:9/25/2020 10:49:33 PM : StartListening
+2020-09-25 22:49:34.248 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:36.667 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:49:38.070 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:38.070 +07:00 [INF] Time:9/25/2020 10:49:38 PM : StartListening
+2020-09-25 22:49:39.250 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:43.101 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:43.105 +07:00 [INF] Time:9/25/2020 10:49:43 PM : StartListening
+2020-09-25 22:49:44.121 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:48.164 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:48.164 +07:00 [INF] Time:9/25/2020 10:49:48 PM : StartListening
+2020-09-25 22:49:49.290 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:53.859 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:53.859 +07:00 [INF] Time:9/25/2020 10:49:53 PM : StartListening
+2020-09-25 22:49:55.085 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:49:56.739 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:49:56.787 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:49:58.873 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:49:58.897 +07:00 [INF] Time:9/25/2020 10:49:58 PM : StartListening
+2020-09-25 22:50:00.091 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:03.984 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:03.984 +07:00 [INF] Time:9/25/2020 10:50:03 PM : StartListening
+2020-09-25 22:50:05.185 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:09.073 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:09.077 +07:00 [INF] Time:9/25/2020 10:50:09 PM : StartListening
+2020-09-25 22:50:10.288 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:14.099 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:14.099 +07:00 [INF] Time:9/25/2020 10:50:14 PM : StartListening
+2020-09-25 22:50:15.286 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:18.063 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:50:19.501 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:19.505 +07:00 [INF] Time:9/25/2020 10:50:19 PM : StartListening
+2020-09-25 22:50:20.787 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:24.510 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:24.510 +07:00 [INF] Time:9/25/2020 10:50:24 PM : StartListening
+2020-09-25 22:50:25.694 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:29.513 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:29.517 +07:00 [INF] Time:9/25/2020 10:50:29 PM : StartListening
+2020-09-25 22:50:30.689 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:34.524 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:34.528 +07:00 [INF] Time:9/25/2020 10:50:34 PM : StartListening
+2020-09-25 22:50:35.888 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:38.066 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:50:38.142 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:50:39.727 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:39.731 +07:00 [INF] Time:9/25/2020 10:50:39 PM : StartListening
+2020-09-25 22:50:40.888 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:44.758 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:44.758 +07:00 [INF] Time:9/25/2020 10:50:44 PM : StartListening
+2020-09-25 22:50:45.894 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:49.973 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:49.973 +07:00 [INF] Time:9/25/2020 10:50:49 PM : StartListening
+2020-09-25 22:50:51.085 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:54.982 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:50:54.982 +07:00 [INF] Time:9/25/2020 10:50:54 PM : StartListening
+2020-09-25 22:50:56.188 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:50:59.195 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:51:00.103 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:00.107 +07:00 [INF] Time:9/25/2020 10:51:00 PM : StartListening
+2020-09-25 22:51:01.319 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:05.120 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:05.120 +07:00 [INF] Time:9/25/2020 10:51:05 PM : StartListening
+2020-09-25 22:51:06.286 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:10.133 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:10.141 +07:00 [INF] Time:9/25/2020 10:51:10 PM : StartListening
+2020-09-25 22:51:11.161 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:15.188 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:15.192 +07:00 [INF] Time:9/25/2020 10:51:15 PM : StartListening
+2020-09-25 22:51:16.208 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:19.199 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:51:19.255 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:51:20.243 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:20.243 +07:00 [INF] Time:9/25/2020 10:51:20 PM : StartListening
+2020-09-25 22:51:21.254 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:25.245 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:25.249 +07:00 [INF] Time:9/25/2020 10:51:25 PM : StartListening
+2020-09-25 22:51:26.269 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:30.253 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:30.253 +07:00 [INF] Time:9/25/2020 10:51:30 PM : StartListening
+2020-09-25 22:51:31.268 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:35.318 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:35.322 +07:00 [INF] Time:9/25/2020 10:51:35 PM : StartListening
+2020-09-25 22:51:36.346 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:40.301 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:51:40.345 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:40.345 +07:00 [INF] Time:9/25/2020 10:51:40 PM : StartListening
+2020-09-25 22:51:41.501 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:45.365 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:45.365 +07:00 [INF] Time:9/25/2020 10:51:45 PM : StartListening
+2020-09-25 22:51:46.387 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:50.390 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:50.390 +07:00 [INF] Time:9/25/2020 10:51:50 PM : StartListening
+2020-09-25 22:51:51.413 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:51:55.422 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:51:55.422 +07:00 [INF] Time:9/25/2020 10:51:55 PM : StartListening
+2020-09-25 22:51:56.438 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:00.305 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:52:00.353 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:52:00.425 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:00.425 +07:00 [INF] Time:9/25/2020 10:52:00 PM : StartListening
+2020-09-25 22:52:01.444 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:05.431 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:05.431 +07:00 [INF] Time:9/25/2020 10:52:05 PM : StartListening
+2020-09-25 22:52:06.451 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:10.438 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:10.438 +07:00 [INF] Time:9/25/2020 10:52:10 PM : StartListening
+2020-09-25 22:52:11.462 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:15.443 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:15.443 +07:00 [INF] Time:9/25/2020 10:52:15 PM : StartListening
+2020-09-25 22:52:16.463 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:20.455 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:20.455 +07:00 [INF] Time:9/25/2020 10:52:20 PM : StartListening
+2020-09-25 22:52:21.383 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:52:21.479 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:25.470 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:25.470 +07:00 [INF] Time:9/25/2020 10:52:25 PM : StartListening
+2020-09-25 22:52:26.488 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:30.478 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:30.478 +07:00 [INF] Time:9/25/2020 10:52:30 PM : StartListening
+2020-09-25 22:52:31.588 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:35.483 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:35.483 +07:00 [INF] Time:9/25/2020 10:52:35 PM : StartListening
+2020-09-25 22:52:36.507 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:40.490 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:40.490 +07:00 [INF] Time:9/25/2020 10:52:40 PM : StartListening
+2020-09-25 22:52:41.390 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:52:41.446 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:52:41.510 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:45.493 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:45.493 +07:00 [INF] Time:9/25/2020 10:52:45 PM : StartListening
+2020-09-25 22:52:46.509 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:50.500 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:50.500 +07:00 [INF] Time:9/25/2020 10:52:50 PM : StartListening
+2020-09-25 22:52:51.528 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:52:55.503 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:52:55.503 +07:00 [INF] Time:9/25/2020 10:52:55 PM : StartListening
+2020-09-25 22:52:56.519 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:00.511 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:00.511 +07:00 [INF] Time:9/25/2020 10:53:00 PM : StartListening
+2020-09-25 22:53:01.568 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:02.498 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:53:05.517 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:05.517 +07:00 [INF] Time:9/25/2020 10:53:05 PM : StartListening
+2020-09-25 22:53:06.537 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:10.522 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:10.522 +07:00 [INF] Time:9/25/2020 10:53:10 PM : StartListening
+2020-09-25 22:53:11.544 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:15.527 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:15.527 +07:00 [INF] Time:9/25/2020 10:53:15 PM : StartListening
+2020-09-25 22:53:16.545 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:20.532 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:20.532 +07:00 [INF] Time:9/25/2020 10:53:20 PM : StartListening
+2020-09-25 22:53:21.560 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:22.504 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:53:22.559 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:53:25.535 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:25.535 +07:00 [INF] Time:9/25/2020 10:53:25 PM : StartListening
+2020-09-25 22:53:26.550 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:30.542 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:30.542 +07:00 [INF] Time:9/25/2020 10:53:30 PM : StartListening
+2020-09-25 22:53:31.554 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:35.545 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:35.545 +07:00 [INF] Time:9/25/2020 10:53:35 PM : StartListening
+2020-09-25 22:53:36.565 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:40.551 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:40.551 +07:00 [INF] Time:9/25/2020 10:53:40 PM : StartListening
+2020-09-25 22:53:41.578 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:43.606 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:53:45.557 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:45.557 +07:00 [INF] Time:9/25/2020 10:53:45 PM : StartListening
+2020-09-25 22:53:46.589 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:50.565 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:50.569 +07:00 [INF] Time:9/25/2020 10:53:50 PM : StartListening
+2020-09-25 22:53:51.589 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:53:55.572 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:53:55.572 +07:00 [INF] Time:9/25/2020 10:53:55 PM : StartListening
+2020-09-25 22:53:56.599 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:00.574 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:00.574 +07:00 [INF] Time:9/25/2020 10:54:00 PM : StartListening
+2020-09-25 22:54:01.598 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:03.622 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:54:03.678 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:54:05.577 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:05.577 +07:00 [INF] Time:9/25/2020 10:54:05 PM : StartListening
+2020-09-25 22:54:06.597 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:10.580 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:10.580 +07:00 [INF] Time:9/25/2020 10:54:10 PM : StartListening
+2020-09-25 22:54:11.600 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:15.585 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:15.585 +07:00 [INF] Time:9/25/2020 10:54:15 PM : StartListening
+2020-09-25 22:54:16.605 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:20.588 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:20.588 +07:00 [INF] Time:9/25/2020 10:54:20 PM : StartListening
+2020-09-25 22:54:21.604 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:24.724 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:54:25.594 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:25.594 +07:00 [INF] Time:9/25/2020 10:54:25 PM : StartListening
+2020-09-25 22:54:26.614 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:30.637 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:30.641 +07:00 [INF] Time:9/25/2020 10:54:30 PM : StartListening
+2020-09-25 22:54:31.661 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:35.656 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:35.656 +07:00 [INF] Time:9/25/2020 10:54:35 PM : StartListening
+2020-09-25 22:54:36.676 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:40.663 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:40.663 +07:00 [INF] Time:9/25/2020 10:54:40 PM : StartListening
+2020-09-25 22:54:41.847 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:45.027 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:54:45.083 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:54:45.667 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:45.667 +07:00 [INF] Time:9/25/2020 10:54:45 PM : StartListening
+2020-09-25 22:54:46.847 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:50.678 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:50.682 +07:00 [INF] Time:9/25/2020 10:54:50 PM : StartListening
+2020-09-25 22:54:51.850 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:54:55.708 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:54:55.708 +07:00 [INF] Time:9/25/2020 10:54:55 PM : StartListening
+2020-09-25 22:54:56.861 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:00.959 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:00.959 +07:00 [INF] Time:9/25/2020 10:55:00 PM : StartListening
+2020-09-25 22:55:02.167 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:06.004 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:06.004 +07:00 [INF] Time:9/25/2020 10:55:06 PM : StartListening
+2020-09-25 22:55:06.244 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:55:07.162 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:11.097 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:11.101 +07:00 [INF] Time:9/25/2020 10:55:11 PM : StartListening
+2020-09-25 22:55:12.250 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:16.104 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:16.108 +07:00 [INF] Time:9/25/2020 10:55:16 PM : StartListening
+2020-09-25 22:55:17.251 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:21.128 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:21.128 +07:00 [INF] Time:9/25/2020 10:55:21 PM : StartListening
+2020-09-25 22:55:22.248 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:26.131 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:26.131 +07:00 [INF] Time:9/25/2020 10:55:26 PM : StartListening
+2020-09-25 22:55:26.251 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:55:26.307 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:55:27.159 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:55:32.314 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:55:32.326 +07:00 [INF] Time:9/25/2020 10:55:32 PM : StartListening
+2020-09-25 22:57:41.884 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 22:57:41.980 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 22:57:41.980 +07:00 [INF] Log level is: info
+2020-09-25 22:57:45.119 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 22:57:49.310 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:57:50.130 +07:00 [INF] Time:9/25/2020 10:57:50 PM : StartListening
+2020-09-25 22:57:50.629 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:00.823 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:00.827 +07:00 [INF] Time:9/25/2020 10:58:00 PM : StartListening
+2020-09-25 22:58:02.027 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:03.338 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:58:03.713 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:58:05.854 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:05.854 +07:00 [INF] Time:9/25/2020 10:58:05 PM : StartListening
+2020-09-25 22:58:07.009 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:14.932 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:14.968 +07:00 [INF] Time:9/25/2020 10:58:14 PM : StartListening
+2020-09-25 22:58:16.106 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:20.187 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:20.187 +07:00 [INF] Time:9/25/2020 10:58:20 PM : StartListening
+2020-09-25 22:58:21.491 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:25.024 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:58:25.196 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:25.196 +07:00 [INF] Time:9/25/2020 10:58:25 PM : StartListening
+2020-09-25 22:58:26.304 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:34.984 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:42.151 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:42.151 +07:00 [INF] Time:9/25/2020 10:58:35 PM : StartListening
+2020-09-25 22:58:46.463 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:58:46.515 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:58:51.454 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:51.454 +07:00 [INF] Time:9/25/2020 10:58:51 PM : StartListening
+2020-09-25 22:58:52.663 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:58:56.467 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:58:56.471 +07:00 [INF] Time:9/25/2020 10:58:56 PM : StartListening
+2020-09-25 22:58:57.664 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:01.481 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:01.481 +07:00 [INF] Time:9/25/2020 10:59:01 PM : StartListening
+2020-09-25 22:59:02.685 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:06.493 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:06.497 +07:00 [INF] Time:9/25/2020 10:59:06 PM : StartListening
+2020-09-25 22:59:07.562 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:59:07.566 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:11.501 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:11.501 +07:00 [INF] Time:9/25/2020 10:59:11 PM : StartListening
+2020-09-25 22:59:12.665 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:16.505 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:16.505 +07:00 [INF] Time:9/25/2020 10:59:16 PM : StartListening
+2020-09-25 22:59:17.661 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:21.512 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:21.512 +07:00 [INF] Time:9/25/2020 10:59:21 PM : StartListening
+2020-09-25 22:59:22.660 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:26.522 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:26.522 +07:00 [INF] Time:9/25/2020 10:59:26 PM : StartListening
+2020-09-25 22:59:27.569 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 22:59:27.641 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 22:59:27.661 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:31.541 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:31.541 +07:00 [INF] Time:9/25/2020 10:59:31 PM : StartListening
+2020-09-25 22:59:32.769 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:36.565 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:36.565 +07:00 [INF] Time:9/25/2020 10:59:36 PM : StartListening
+2020-09-25 22:59:37.860 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:41.626 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:41.626 +07:00 [INF] Time:9/25/2020 10:59:41 PM : StartListening
+2020-09-25 22:59:42.769 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:46.640 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:46.640 +07:00 [INF] Time:9/25/2020 10:59:46 PM : StartListening
+2020-09-25 22:59:48.519 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:49.011 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 22:59:51.664 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:51.668 +07:00 [INF] Time:9/25/2020 10:59:51 PM : StartListening
+2020-09-25 22:59:52.687 +07:00 [ERR] Can not connect to Socket
+2020-09-25 22:59:56.676 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 22:59:56.676 +07:00 [INF] Time:9/25/2020 10:59:56 PM : StartListening
+2020-09-25 23:00:01.680 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:00:06.727 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:00:09.016 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:00:09.072 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:01:21.177 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 23:01:21.269 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 23:01:21.273 +07:00 [INF] Log level is: info
+2020-09-25 23:01:24.324 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 23:01:28.072 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:01:28.120 +07:00 [INF] Time:9/25/2020 11:01:28 PM : StartListening
+2020-09-25 23:01:29.415 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:01:34.295 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:01:34.531 +07:00 [INF] Time:9/25/2020 11:01:34 PM : StartListening
+2020-09-25 23:01:35.530 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:01:39.555 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:01:39.555 +07:00 [INF] Time:9/25/2020 11:01:39 PM : StartListening
+2020-09-25 23:01:41.508 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:01:45.471 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:01:45.503 +07:00 [INF] Time:9/25/2020 11:01:45 PM : StartListening
+2020-09-25 23:01:47.339 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:01:50.668 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:01:50.668 +07:00 [INF] Time:9/25/2020 11:01:50 PM : StartListening
+2020-09-25 23:01:55.673 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:00.862 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:03.895 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:05.884 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:05.884 +07:00 [INF] Time:9/25/2020 11:02:05 PM : StartListening
+2020-09-25 23:02:10.894 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:12.913 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:16.067 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:16.067 +07:00 [INF] Time:9/25/2020 11:02:16 PM : StartListening
+2020-09-25 23:02:21.072 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:22.703 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:26.093 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:26.093 +07:00 [INF] Time:9/25/2020 11:02:26 PM : StartListening
+2020-09-25 23:02:28.408 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:31.098 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:31.098 +07:00 [INF] Time:9/25/2020 11:02:31 PM : StartListening
+2020-09-25 23:02:32.119 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:36.110 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:36.110 +07:00 [INF] Time:9/25/2020 11:02:36 PM : StartListening
+2020-09-25 23:02:37.246 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:41.120 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:41.124 +07:00 [INF] Time:9/25/2020 11:02:41 PM : StartListening
+2020-09-25 23:02:42.152 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:46.238 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:46.242 +07:00 [INF] Time:9/25/2020 11:02:46 PM : StartListening
+2020-09-25 23:02:48.120 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:51.323 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:51.323 +07:00 [INF] Time:9/25/2020 11:02:51 PM : StartListening
+2020-09-25 23:02:52.491 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:02:56.337 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:02:56.337 +07:00 [INF] Time:9/25/2020 11:02:56 PM : StartListening
+2020-09-25 23:02:57.498 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:01.347 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:01.347 +07:00 [INF] Time:9/25/2020 11:03:01 PM : StartListening
+2020-09-25 23:03:02.601 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:06.358 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:06.362 +07:00 [INF] Time:9/25/2020 11:03:06 PM : StartListening
+2020-09-25 23:03:07.497 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:11.374 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:11.374 +07:00 [INF] Time:9/25/2020 11:03:11 PM : StartListening
+2020-09-25 23:03:12.498 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:16.377 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:16.377 +07:00 [INF] Time:9/25/2020 11:03:16 PM : StartListening
+2020-09-25 23:03:17.397 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:21.379 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:21.379 +07:00 [INF] Time:9/25/2020 11:03:21 PM : StartListening
+2020-09-25 23:03:22.403 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:26.391 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:26.426 +07:00 [INF] Time:9/25/2020 11:03:26 PM : StartListening
+2020-09-25 23:03:27.443 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:33.277 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:33.281 +07:00 [INF] Time:9/25/2020 11:03:33 PM : StartListening
+2020-09-25 23:03:34.581 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:39.587 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:39.587 +07:00 [INF] Time:9/25/2020 11:03:39 PM : StartListening
+2020-09-25 23:03:40.881 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:44.616 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:44.616 +07:00 [INF] Time:9/25/2020 11:03:44 PM : StartListening
+2020-09-25 23:03:45.732 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:49.690 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:49.706 +07:00 [INF] Time:9/25/2020 11:03:49 PM : StartListening
+2020-09-25 23:03:50.882 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:54.773 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:54.777 +07:00 [INF] Time:9/25/2020 11:03:54 PM : StartListening
+2020-09-25 23:03:55.935 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:03:59.867 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:03:59.875 +07:00 [INF] Time:9/25/2020 11:03:59 PM : StartListening
+2020-09-25 23:04:01.033 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:04.897 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:04.897 +07:00 [INF] Time:9/25/2020 11:04:04 PM : StartListening
+2020-09-25 23:04:05.921 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:09.903 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:09.903 +07:00 [INF] Time:9/25/2020 11:04:09 PM : StartListening
+2020-09-25 23:04:14.931 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:19.994 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:22.919 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:25.011 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:25.011 +07:00 [INF] Time:9/25/2020 11:04:25 PM : StartListening
+2020-09-25 23:04:27.232 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:30.023 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:30.023 +07:00 [INF] Time:9/25/2020 11:04:30 PM : StartListening
+2020-09-25 23:04:31.359 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:35.062 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:35.070 +07:00 [INF] Time:9/25/2020 11:04:35 PM : StartListening
+2020-09-25 23:04:40.352 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:41.600 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:45.416 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:45.416 +07:00 [INF] Time:9/25/2020 11:04:45 PM : StartListening
+2020-09-25 23:04:46.430 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:50.421 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:50.421 +07:00 [INF] Time:9/25/2020 11:04:50 PM : StartListening
+2020-09-25 23:04:51.437 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:04:55.439 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:04:55.443 +07:00 [INF] Time:9/25/2020 11:04:55 PM : StartListening
+2020-09-25 23:05:00.574 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:02.067 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:05.620 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:05.620 +07:00 [INF] Time:9/25/2020 11:05:05 PM : StartListening
+2020-09-25 23:05:06.770 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:10.713 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:10.717 +07:00 [INF] Time:9/25/2020 11:05:10 PM : StartListening
+2020-09-25 23:05:11.869 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:15.897 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:15.913 +07:00 [INF] Time:9/25/2020 11:05:15 PM : StartListening
+2020-09-25 23:05:20.982 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:30.731 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:30.747 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:38.967 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:38.967 +07:00 [INF] Time:9/25/2020 11:05:38 PM : StartListening
+2020-09-25 23:05:40.183 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:43.970 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:43.970 +07:00 [INF] Time:9/25/2020 11:05:43 PM : StartListening
+2020-09-25 23:05:45.077 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:48.976 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:48.980 +07:00 [INF] Time:9/25/2020 11:05:48 PM : StartListening
+2020-09-25 23:05:50.112 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:54.162 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:54.162 +07:00 [INF] Time:9/25/2020 11:05:54 PM : StartListening
+2020-09-25 23:05:55.581 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:05:59.202 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:05:59.210 +07:00 [INF] Time:9/25/2020 11:05:59 PM : StartListening
+2020-09-25 23:06:00.879 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:04.219 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:04.219 +07:00 [INF] Time:9/25/2020 11:06:04 PM : StartListening
+2020-09-25 23:06:06.482 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:09.225 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:09.229 +07:00 [INF] Time:9/25/2020 11:06:09 PM : StartListening
+2020-09-25 23:06:12.661 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:14.239 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:14.239 +07:00 [INF] Time:9/25/2020 11:06:14 PM : StartListening
+2020-09-25 23:06:15.381 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:19.384 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:19.384 +07:00 [INF] Time:9/25/2020 11:06:19 PM : StartListening
+2020-09-25 23:06:23.212 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:06:23.839 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:06:24.557 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:29.639 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:32.975 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:35.568 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:35.580 +07:00 [INF] Time:9/25/2020 11:06:35 PM : StartListening
+2020-09-25 23:06:36.797 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:40.634 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:40.634 +07:00 [INF] Time:9/25/2020 11:06:40 PM : StartListening
+2020-09-25 23:06:42.388 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:45.242 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:06:45.714 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:45.714 +07:00 [INF] Time:9/25/2020 11:06:45 PM : StartListening
+2020-09-25 23:06:46.897 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:50.721 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:50.725 +07:00 [INF] Time:9/25/2020 11:06:50 PM : StartListening
+2020-09-25 23:06:52.651 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:06:55.846 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:06:55.846 +07:00 [INF] Time:9/25/2020 11:06:55 PM : StartListening
+2020-09-25 23:06:56.988 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:01.009 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:01.009 +07:00 [INF] Time:9/25/2020 11:07:01 PM : StartListening
+2020-09-25 23:07:02.237 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:05.824 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:07:06.448 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:06.452 +07:00 [INF] Time:9/25/2020 11:07:06 PM : StartListening
+2020-09-25 23:07:06.484 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:07:07.583 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:11.501 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:11.537 +07:00 [INF] Time:9/25/2020 11:07:11 PM : StartListening
+2020-09-25 23:07:12.679 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:16.600 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:16.608 +07:00 [INF] Time:9/25/2020 11:07:16 PM : StartListening
+2020-09-25 23:07:18.110 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:21.631 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:21.631 +07:00 [INF] Time:9/25/2020 11:07:21 PM : StartListening
+2020-09-25 23:07:23.838 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:26.651 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:26.663 +07:00 [INF] Time:9/25/2020 11:07:26 PM : StartListening
+2020-09-25 23:07:27.635 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:07:27.687 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:31.670 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:31.670 +07:00 [INF] Time:9/25/2020 11:07:31 PM : StartListening
+2020-09-25 23:07:36.682 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:40.710 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:42.414 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:42.426 +07:00 [INF] Time:9/25/2020 11:07:42 PM : StartListening
+2020-09-25 23:07:47.490 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:47.638 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:07:47.686 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:07:49.005 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:52.512 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:52.512 +07:00 [INF] Time:9/25/2020 11:07:52 PM : StartListening
+2020-09-25 23:07:53.536 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:07:57.610 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:07:57.618 +07:00 [INF] Time:9/25/2020 11:07:57 PM : StartListening
+2020-09-25 23:07:58.648 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:02.622 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:02.622 +07:00 [INF] Time:9/25/2020 11:08:02 PM : StartListening
+2020-09-25 23:08:03.642 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:07.625 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:07.625 +07:00 [INF] Time:9/25/2020 11:08:07 PM : StartListening
+2020-09-25 23:08:08.653 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:12.476 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:08:12.660 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:12.660 +07:00 [INF] Time:9/25/2020 11:08:12 PM : StartListening
+2020-09-25 23:08:13.832 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:17.930 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:19.470 +07:00 [INF] Time:9/25/2020 11:08:19 PM : StartListening
+2020-09-25 23:08:19.646 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:24.495 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:24.495 +07:00 [INF] Time:9/25/2020 11:08:24 PM : StartListening
+2020-09-25 23:08:29.518 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:32.486 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:08:32.578 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:08:34.817 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:37.629 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:40.318 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:40.658 +07:00 [INF] Time:9/25/2020 11:08:40 PM : StartListening
+2020-09-25 23:08:41.744 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:45.671 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:45.671 +07:00 [INF] Time:9/25/2020 11:08:45 PM : StartListening
+2020-09-25 23:08:46.690 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:50.673 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:50.673 +07:00 [INF] Time:9/25/2020 11:08:50 PM : StartListening
+2020-09-25 23:08:51.821 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:08:53.625 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:08:55.676 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:08:55.676 +07:00 [INF] Time:9/25/2020 11:08:55 PM : StartListening
+2020-09-25 23:08:56.692 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:00.859 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:00.859 +07:00 [INF] Time:9/25/2020 11:09:00 PM : StartListening
+2020-09-25 23:09:01.895 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:05.907 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:05.907 +07:00 [INF] Time:9/25/2020 11:09:05 PM : StartListening
+2020-09-25 23:09:10.922 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:13.630 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:09:15.959 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:21.224 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:26.258 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:26.962 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:27.114 +07:00 [ERR] MSMQ Error:A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+2020-09-25 23:09:31.288 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:31.296 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:31.296 +07:00 [INF] Time:9/25/2020 11:09:31 PM : StartListening
+2020-09-25 23:09:38.562 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:38.562 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:38.598 +07:00 [INF] Time:9/25/2020 11:09:38 PM : StartListening
+2020-09-25 23:09:43.663 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:43.663 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:43.663 +07:00 [INF] Time:9/25/2020 11:09:43 PM : StartListening
+2020-09-25 23:09:47.192 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:09:47.224 +07:00 [ERR] MSMQ Error:A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+2020-09-25 23:09:48.670 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:48.710 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:48.710 +07:00 [INF] Time:9/25/2020 11:09:48 PM : StartListening
+2020-09-25 23:09:53.734 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:53.734 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:53.734 +07:00 [INF] Time:9/25/2020 11:09:53 PM : StartListening
+2020-09-25 23:09:58.747 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:09:58.747 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:09:58.747 +07:00 [INF] Time:9/25/2020 11:09:58 PM : StartListening
+2020-09-25 23:10:03.751 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:10:03.755 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:10:03.755 +07:00 [INF] Time:9/25/2020 11:10:03 PM : StartListening
+2020-09-25 23:10:07.228 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:10:08.764 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:10:08.764 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:10:08.764 +07:00 [INF] Time:9/25/2020 11:10:08 PM : StartListening
+2020-09-25 23:12:42.806 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 23:12:42.941 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 23:12:42.941 +07:00 [INF] Log level is: info
+2020-09-25 23:12:51.328 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:12:52.776 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:12:55.231 +07:00 [INF] Time:9/25/2020 11:12:55 PM : StartListening
+2020-09-25 23:13:00.648 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:00.664 +07:00 [INF] Time:9/25/2020 11:13:00 PM : StartListening
+2020-09-25 23:13:01.860 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:01.976 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 23:13:12.189 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:12.769 +07:00 [INF] Time:9/25/2020 11:13:12 PM : StartListening
+2020-09-25 23:13:13.805 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:19.435 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:19.435 +07:00 [INF] Time:9/25/2020 11:13:19 PM : StartListening
+2020-09-25 23:13:20.559 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:24.478 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:24.494 +07:00 [INF] Time:9/25/2020 11:13:24 PM : StartListening
+2020-09-25 23:13:25.662 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:29.509 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:31.288 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:31.296 +07:00 [INF] Time:9/25/2020 11:13:31 PM : StartListening
+2020-09-25 23:13:34.511 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:13:35.167 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:13:36.857 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:36.857 +07:00 [INF] Time:9/25/2020 11:13:36 PM : StartListening
+2020-09-25 23:13:38.059 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:41.864 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:41.864 +07:00 [INF] Time:9/25/2020 11:13:41 PM : StartListening
+2020-09-25 23:13:43.251 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:47.786 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:48.286 +07:00 [INF] Time:9/25/2020 11:13:48 PM : StartListening
+2020-09-25 23:13:49.268 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:53.477 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:53.477 +07:00 [INF] Time:9/25/2020 11:13:53 PM : StartListening
+2020-09-25 23:13:54.659 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:13:56.809 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:13:58.515 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:13:58.515 +07:00 [INF] Time:9/25/2020 11:13:58 PM : StartListening
+2020-09-25 23:13:59.659 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:03.521 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:03.521 +07:00 [INF] Time:9/25/2020 11:14:03 PM : StartListening
+2020-09-25 23:14:04.677 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:08.935 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:08.935 +07:00 [INF] Time:9/25/2020 11:14:08 PM : StartListening
+2020-09-25 23:14:10.162 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:13.989 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:13.989 +07:00 [INF] Time:9/25/2020 11:14:13 PM : StartListening
+2020-09-25 23:14:15.161 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:16.817 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:14:16.985 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:14:18.996 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:19.000 +07:00 [INF] Time:9/25/2020 11:14:19 PM : StartListening
+2020-09-25 23:14:20.160 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:24.022 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:24.026 +07:00 [INF] Time:9/25/2020 11:14:24 PM : StartListening
+2020-09-25 23:14:25.162 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:30.289 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:30.289 +07:00 [INF] Time:9/25/2020 11:14:30 PM : StartListening
+2020-09-25 23:14:31.585 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:14:35.488 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:14:35.540 +07:00 [INF] Time:9/25/2020 11:14:35 PM : StartListening
+2020-09-25 23:14:36.666 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:15:52.840 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 23:15:52.944 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 23:15:52.944 +07:00 [INF] Log level is: info
+2020-09-25 23:16:07.603 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 23:16:08.115 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:09.202 +07:00 [INF] Time:9/25/2020 11:16:08 PM : StartListening
+2020-09-25 23:16:09.382 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:28.955 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:16:28.971 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:30.123 +07:00 [INF] Time:9/25/2020 11:16:30 PM : StartListening
+2020-09-25 23:16:30.167 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:31.167 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:16:35.385 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:35.385 +07:00 [INF] Time:9/25/2020 11:16:35 PM : StartListening
+2020-09-25 23:16:36.722 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:41.238 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:41.350 +07:00 [INF] Time:9/25/2020 11:16:41 PM : StartListening
+2020-09-25 23:16:42.441 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:48.215 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:48.227 +07:00 [INF] Time:9/25/2020 11:16:48 PM : StartListening
+2020-09-25 23:16:49.372 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:52.743 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:16:53.274 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:53.274 +07:00 [INF] Time:9/25/2020 11:16:53 PM : StartListening
+2020-09-25 23:16:54.534 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:16:58.277 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:16:58.277 +07:00 [INF] Time:9/25/2020 11:16:58 PM : StartListening
+2020-09-25 23:16:59.468 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:03.279 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:03.279 +07:00 [INF] Time:9/25/2020 11:17:03 PM : StartListening
+2020-09-25 23:17:04.295 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:08.286 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:08.286 +07:00 [INF] Time:9/25/2020 11:17:08 PM : StartListening
+2020-09-25 23:17:09.306 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:12.830 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:17:12.890 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:17:13.290 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:13.290 +07:00 [INF] Time:9/25/2020 11:17:13 PM : StartListening
+2020-09-25 23:17:14.310 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:18.305 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:18.305 +07:00 [INF] Time:9/25/2020 11:17:18 PM : StartListening
+2020-09-25 23:17:19.355 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:29.784 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:29.808 +07:00 [INF] Time:9/25/2020 11:17:29 PM : StartListening
+2020-09-25 23:17:30.971 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:34.064 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:17:34.862 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:34.862 +07:00 [INF] Time:9/25/2020 11:17:34 PM : StartListening
+2020-09-25 23:17:36.070 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:39.872 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:39.872 +07:00 [INF] Time:9/25/2020 11:17:39 PM : StartListening
+2020-09-25 23:17:40.895 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:44.885 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:44.889 +07:00 [INF] Time:9/25/2020 11:17:44 PM : StartListening
+2020-09-25 23:17:46.440 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:49.925 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:49.925 +07:00 [INF] Time:9/25/2020 11:17:49 PM : StartListening
+2020-09-25 23:17:51.151 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:54.069 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:17:54.169 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:17:54.933 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:54.937 +07:00 [INF] Time:9/25/2020 11:17:54 PM : StartListening
+2020-09-25 23:17:56.151 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:17:59.946 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:17:59.946 +07:00 [INF] Time:9/25/2020 11:17:59 PM : StartListening
+2020-09-25 23:18:00.970 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:05.046 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:05.046 +07:00 [INF] Time:9/25/2020 11:18:05 PM : StartListening
+2020-09-25 23:18:07.509 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:10.052 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:10.052 +07:00 [INF] Time:9/25/2020 11:18:10 PM : StartListening
+2020-09-25 23:18:11.286 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:15.097 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:15.097 +07:00 [INF] Time:9/25/2020 11:18:15 PM : StartListening
+2020-09-25 23:18:15.205 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:18:16.125 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:20.100 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:20.100 +07:00 [INF] Time:9/25/2020 11:18:20 PM : StartListening
+2020-09-25 23:18:21.136 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:25.103 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:25.103 +07:00 [INF] Time:9/25/2020 11:18:25 PM : StartListening
+2020-09-25 23:18:26.183 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:30.118 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:30.118 +07:00 [INF] Time:9/25/2020 11:18:30 PM : StartListening
+2020-09-25 23:18:31.153 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:35.124 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:35.124 +07:00 [INF] Time:9/25/2020 11:18:35 PM : StartListening
+2020-09-25 23:18:35.212 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:18:35.364 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:18:36.348 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:40.131 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:40.131 +07:00 [INF] Time:9/25/2020 11:18:40 PM : StartListening
+2020-09-25 23:18:41.348 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:18:45.143 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:18:45.143 +07:00 [INF] Time:9/25/2020 11:18:45 PM : StartListening
+2020-09-25 23:19:59.299 +07:00 [INF] Current directory is: C:\Program Files (x86)\IIS Express
+2020-09-25 23:19:59.383 +07:00 [INF] Log file is: E:\Project\Sita\Code\DevSita\Sita\SIta.Web\Log\Sita_LOG.log
+2020-09-25 23:19:59.383 +07:00 [INF] Log level is: info
+2020-09-25 23:20:04.225 +07:00 [INF] Rabbit MessageReceived :
+2020-09-25 23:20:07.437 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:08.697 +07:00 [INF] Time:9/25/2020 11:20:08 PM : StartListening
+2020-09-25 23:20:08.809 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:13.718 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:13.718 +07:00 [INF] Time:9/25/2020 11:20:13 PM : StartListening
+2020-09-25 23:20:14.908 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:18.835 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:19.163 +07:00 [INF] Time:9/25/2020 11:20:19 PM : StartListening
+2020-09-25 23:20:20.310 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:25.740 +07:00 [INF] Begin connect to: FormatName:Direct = TCP:57.47.209.61\private$\bsh
+2020-09-25 23:20:25.752 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:25.756 +07:00 [INF] Time:9/25/2020 11:20:25 PM : StartListening
+2020-09-25 23:20:26.932 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:31.195 +07:00 [ERR] Save Flight :Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+2020-09-25 23:20:31.199 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:31.275 +07:00 [INF] Time:9/25/2020 11:20:31 PM : StartListening
+2020-09-25 23:20:32.444 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:36.306 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:36.306 +07:00 [INF] Time:9/25/2020 11:20:36 PM : StartListening
+2020-09-25 23:20:37.682 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:41.312 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:41.312 +07:00 [INF] Time:9/25/2020 11:20:41 PM : StartListening
+2020-09-25 23:20:42.509 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:46.316 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:46.316 +07:00 [INF] Time:9/25/2020 11:20:46 PM : StartListening
+2020-09-25 23:20:47.503 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:51.322 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000
+2020-09-25 23:20:51.326 +07:00 [INF] Time:9/25/2020 11:20:51 PM : StartListening
+2020-09-25 23:20:52.509 +07:00 [ERR] MSMQ Error:Remote computer is not available.
+2020-09-25 23:20:52.733 +07:00 [ERR] Can not connect to Socket
+2020-09-25 23:20:56.360 +07:00 [INF] Begin StartListening Ip: 27.71.237.68 and port:1000

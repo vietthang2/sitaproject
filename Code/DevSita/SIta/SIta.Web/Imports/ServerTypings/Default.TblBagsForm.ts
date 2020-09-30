@@ -3,8 +3,8 @@
         BaggageTag: Serenity.StringEditor;
         FlightRef: Serenity.StringEditor;
         Processed: Serenity.BooleanEditor;
-        Bsm: Serenity.StringEditor;
-        Bpm: Serenity.StringEditor;
+        Bsm: Serenity.TextAreaEditor;
+        Bpm: Serenity.TextAreaEditor;
         TimeRcvBsm: Serenity.DateEditor;
         TimeRcvBpm: Serenity.DateEditor;
         DDMM: Serenity.StringEditor;
@@ -24,16 +24,17 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.BooleanEditor;
-                var w2 = s.DateEditor;
+                var w2 = s.TextAreaEditor;
+                var w3 = s.DateEditor;
 
                 Q.initFormType(TblBagsForm, [
                     'BaggageTag', w0,
                     'FlightRef', w0,
                     'Processed', w1,
-                    'Bsm', w0,
-                    'Bpm', w0,
-                    'TimeRcvBsm', w2,
-                    'TimeRcvBpm', w2,
+                    'Bsm', w2,
+                    'Bpm', w2,
+                    'TimeRcvBsm', w3,
+                    'TimeRcvBpm', w3,
                     'DDMM', w0,
                     'YYYY', w0
                 ]);

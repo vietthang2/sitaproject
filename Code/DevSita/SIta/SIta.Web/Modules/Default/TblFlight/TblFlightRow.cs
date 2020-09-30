@@ -10,21 +10,23 @@ namespace Sita.Default.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using System.Collections.Generic;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblFlight]")]
     [DisplayName("Flight"), InstanceName("Flight")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("dbo.tblFlight", Permission = "*",Expiration =-1)]//add thêm
     public sealed class TblFlightRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Identify"), Size(100), PrimaryKey, QuickSearch]
+        [DisplayName("Identify"), Size(100), PrimaryKey, QuickSearch, LookupInclude]
         public String Identify
         {
             get { return Fields.Identify[this]; }
             set { Fields.Identify[this] = value; }
         }
 
-        [DisplayName("Adi"), Size(50), QuickSearch]
+        [DisplayName("Adi"), Size(50), QuickSearch, LookupInclude]
         [ForeignKey(typeof(TblAdiTypeRow), "Code"), LeftJoin("jAdiType"), TextualField("Adi Name")]
         [LookupEditor(typeof(TblAdiTypeRow))]//Thêm
         public String Adi
@@ -33,14 +35,14 @@ namespace Sita.Default.Entities
             set { Fields.Adi[this] = value; }
         }
 
-        [DisplayName("Line Code"), Size(50)]
+        [DisplayName("Line Code"), Size(50), LookupInclude]
         public String LineCode
         {
             get { return Fields.LineCode[this]; }
             set { Fields.LineCode[this] = value; }
         }
 
-        [DisplayName("Number"), Size(50)]
+        [DisplayName("Number"), Size(50), LookupInclude]
         public String Number
         {
             get { return Fields.Number[this]; }
@@ -118,18 +120,24 @@ namespace Sita.Default.Entities
         }
 
 
-        [DisplayName("DDMM"), Column("DDMM")]
+        [DisplayName("DDMM"), Column("DDMM"), LookupInclude]
         public String DDMM
         {
             get { return Fields.DDMM[this]; }
             set { Fields.DDMM[this] = value; }
         }
 
-        [DisplayName("YYYY"), Column("YYYY")]
+        [DisplayName("YYYY"), Column("YYYY"), LookupInclude]
         public String YYYY
         {
             get { return Fields.YYYY[this]; }
             set { Fields.YYYY[this] = value; }
+        }
+        [DisplayName("Field"), MasterDetailRelation(foreignKey: "FlightIndentify"), NotMapped]
+        public List<TblFieldRow> ListField
+        {
+            get { return Fields.ListField[this]; }
+            set { Fields.ListField[this] = value; }
         }
         IIdField IIdRow.IdField
         {
@@ -166,6 +174,7 @@ namespace Sita.Default.Entities
             public DateTimeField DateUpdated;
             public StringField DDMM;
             public StringField YYYY;
+            public readonly RowListField<TblFieldRow> ListField;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Sita.Default.Forms
     [BasedOnRow(typeof(Entities.TblFlightRow), CheckNames = true)]
     public class TblFlightForm
     {
+        [Tab("Flight")]
         public String Adi { get; set; }
         public String LineCode { get; set; }
         public String Number { get; set; }
@@ -26,5 +27,8 @@ namespace Sita.Default.Forms
         public String UserCreated { get; set; }
         public String UserUpdate { get; set; }
         public DateTime DateUpdated { get; set; }
+        [Tab("Field")]
+        [FieldDetailEditor]
+        public List<Entities.TblFieldRow> ListField { get; set; }
     }
 }

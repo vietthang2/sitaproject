@@ -9,12 +9,16 @@
     function bindGrid() {
         var flight = $('#txtFlight').val();
         var bag = $('#txtBag').val();
+        if (flight === '' || bag === '') {
+            alert('Please input flight code and bag tag code');
+            return;
+        }
         var param = {
             'flight': flight,
-            'bagtag':bag
-        }
+            'bagtag': bag
+        };
         $.ajax({
-            url: '/Default/Search/SearchBg',
+            url: '/Default/Search/SearchGrid',
             type: 'post',
             dataType: 'html',
             para: param,

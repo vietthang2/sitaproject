@@ -5,6 +5,7 @@
         Instance?: string;
         Value?: string;
         FlightRef?: string;
+        FlightIndentify?: string;
     }
 
     export namespace TblFieldRow {
@@ -21,7 +22,8 @@
             Name = "Name",
             Instance = "Instance",
             Value = "Value",
-            FlightRef = "FlightRef"
+            FlightRef = "FlightRef",
+            FlightIndentify = "FlightIndentify"
         }
     }
 }

@@ -14,12 +14,20 @@
         UserCreated?: string;
         UserUpdate?: string;
         DateUpdated?: string;
+        DDMM?: string;
+        YYYY?: string;
+        ListField?: TblFieldRow[];
     }
 
     export namespace TblFlightRow {
         export const idProperty = 'Identify';
         export const nameProperty = 'Identify';
         export const localTextPrefix = 'Default.TblFlight';
+        export const lookupKey = 'dbo.tblFlight';
+
+        export function getLookup(): Q.Lookup<TblFlightRow> {
+            return Q.getLookup<TblFlightRow>('dbo.tblFlight');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';
@@ -39,7 +47,10 @@
             DateCreated = "DateCreated",
             UserCreated = "UserCreated",
             UserUpdate = "UserUpdate",
-            DateUpdated = "DateUpdated"
+            DateUpdated = "DateUpdated",
+            DDMM = "DDMM",
+            YYYY = "YYYY",
+            ListField = "ListField"
         }
     }
 }
