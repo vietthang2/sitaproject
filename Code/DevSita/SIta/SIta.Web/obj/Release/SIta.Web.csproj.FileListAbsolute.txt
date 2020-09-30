@@ -102,3 +102,10 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\SIta.Web.csprojAssemblyRe
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\SIta.Web.csproj.CopyComplete
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\SIta.Web.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\SIta.Web.pdb
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Castle.Core.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\FakeItEasy.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\GenFu.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.dll
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Castle.Core.xml
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\FakeItEasy.xml
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.xml

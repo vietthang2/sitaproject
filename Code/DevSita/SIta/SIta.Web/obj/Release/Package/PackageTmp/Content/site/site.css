@@ -7404,3 +7404,33 @@ section.content > .s-DataGrid {
   font-style: italic;
   color: #966;
 }
+.s-Default-TblBagsDialog > .size {
+  width: 650px;
+}
+.s-Default-TblBagsDialog .caption {
+  width: 150px;
+}
+.s-Default-TblFieldDialog > .size {
+  width: 650px;
+}
+.s-Default-TblFieldDialog .caption {
+  width: 150px;
+}
+.s-Default-TblFlightDialog > .size {
+  width: 650px;
+}
+.s-Default-TblFlightDialog .caption {
+  width: 150px;
+}
+.s-Default-TblBagsHistoryDialog > .size {
+  width: 650px;
+}
+.s-Default-TblBagsHistoryDialog .caption {
+  width: 150px;
+}
+.s-Default-TblAdiTypeDialog > .size {
+  width: 650px;
+}
+.s-Default-TblAdiTypeDialog .caption {
+  width: 150px;
+}

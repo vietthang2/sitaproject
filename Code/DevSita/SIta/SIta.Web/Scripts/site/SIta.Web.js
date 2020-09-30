@@ -3181,7 +3181,7 @@ var Sita;
                         e.preventDefault();
                         var dialog_ = new Default.TblFlightDialog();
                         //Tìm kiếm chuyến bay
-                        var fligth = Default.TblFlightRow.getLookup().items.filter(function (k) { return k.DDMM !== null; }); // === item.DDMM);// && k.YYYY === item.YYYY);//&& (k.LineCode + k.Number) === item.FlightRef);
+                        var fligth = Default.TblFlightRow.getLookup().items.filter(function (k) { return k.DDMM === item.DDMM && k.YYYY === item.YYYY && (k.LineCode + k.Number) === item.FlightRef; });
                         if (fligth.length === 0) {
                             Q.alert('Not found flight');
                             return;
