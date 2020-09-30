@@ -1,3 +1,6 @@
 [submodule "Code/DevSita/SearchBagTag"]
 	path = Code/DevSita/SearchBagTag
 	url = D:\\Gif Hub\\Code\\DevSita\\SearchBagTag
+[submodule "Code/DevSita/Sita/SearchBagTag"]
+	path = Code/DevSita/Sita/SearchBagTag
+	url = D:\\Gif Hub\\Code\\DevSita\\Sita\\SearchBagTag
