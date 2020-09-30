@@ -6,11 +6,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>bin\Release\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Release\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/BouncyCastle.Crypto.dll">
       <publishTime>08/30/2020 20:15:21</publishTime>
+    </File>
+    <File Include="bin/Castle.Core.dll">
+      <publishTime>06/20/2018 15:07:38</publishTime>
     </File>
     <File Include="bin/CsQuery.dll">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -27,6 +30,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/fa/Hangfire.Core.resources.dll">
       <publishTime>08/30/2020 20:15:22</publishTime>
     </File>
+    <File Include="bin/FakeItEasy.dll">
+      <publishTime>09/02/2020 10:45:08</publishTime>
+    </File>
     <File Include="bin/FluentMigrator.dll">
       <publishTime>08/30/2020 20:15:22</publishTime>
     </File>
@@ -41,6 +47,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/fr/Hangfire.Core.resources.dll">
       <publishTime>08/30/2020 20:15:22</publishTime>
+    </File>
+    <File Include="bin/GenFu.dll">
+      <publishTime>01/27/2020 03:19:36</publishTime>
     </File>
     <File Include="bin/Hangfire.AspNet.dll">
       <publishTime>08/30/2020 20:15:22</publishTime>
@@ -57,11 +66,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
       <publishTime>08/30/2020 20:15:22</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>01/13/2014 16:11:08</publishTime>
+    </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>08/30/2020 20:15:23</publishTime>
     </File>
     <File Include="bin/Mono.Cecil.dll">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Mono.Cecil.Mdb.dll">
       <publishTime>08/30/2020 20:15:23</publishTime>
@@ -115,34 +127,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/20/2020 21:26:24</publishTime>
     </File>
     <File Include="bin/Serenity.Core.dll">
-      <publishTime>08/30/2020 20:15:23</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Core.pdb">
-      <publishTime>08/30/2020 20:15:23</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Data.dll">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Data.Entity.dll">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Data.Entity.pdb">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Data.pdb">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Services.dll">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Services.pdb">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Web.dll">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serenity.Web.pdb">
-      <publishTime>08/30/2020 20:15:24</publishTime>
+      <publishTime>09/21/2020 20:59:01</publishTime>
     </File>
     <File Include="bin/Serilog.dll">
       <publishTime>10/13/2019 21:02:42</publishTime>
@@ -154,10 +166,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2019 05:25:34</publishTime>
     </File>
     <File Include="bin/SIta.Web.dll">
-      <publishTime>09/07/2020 22:04:11</publishTime>
+      <publishTime>09/28/2020 22:33:54</publishTime>
     </File>
     <File Include="bin/SIta.Web.pdb">
-      <publishTime>09/07/2020 22:04:11</publishTime>
+      <publishTime>09/28/2020 22:33:54</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
       <publishTime>08/30/2020 20:15:25</publishTime>
@@ -595,7 +607,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Content/font-open-sans.css">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:41</publishTime>
     </File>
     <File Include="Content/glyphicons.css">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -1921,16 +1933,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Content/serenity/serenity.bootstrap.messagedialogs.css">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 22:58:52</publishTime>
     </File>
     <File Include="Content/serenity/serenity.css">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/27/2020 21:22:16</publishTime>
     </File>
     <File Include="Content/serenity/serenity.editors.css">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 22:58:51</publishTime>
     </File>
     <File Include="Content/serenity/serenity.jquery-ui.messagedialogs.css">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 22:58:50</publishTime>
     </File>
     <File Include="Content/simple-line-icons.css">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -1966,13 +1978,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Content/site/site.css">
-      <publishTime>08/30/2020 22:01:16</publishTime>
+      <publishTime>09/23/2020 22:03:30</publishTime>
+    </File>
+    <File Include="Content/site/site.default.less">
+      <publishTime>09/23/2020 21:39:02</publishTime>
     </File>
     <File Include="Content/site/site.htmlcontent.css">
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Content/site/site.less">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/12/2020 10:10:35</publishTime>
     </File>
     <File Include="Content/site/site.membership.less">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -1987,13 +2002,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Content/site/slides/slide1.jpg">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 20:39:53</publishTime>
     </File>
     <File Include="Content/site/slides/slide2.jpg">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 20:39:53</publishTime>
     </File>
     <File Include="Content/site/slides/slide3.jpg">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/21/2020 20:39:53</publishTime>
     </File>
     <File Include="Content/slick-default-theme.css">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -2227,10 +2242,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:41</publishTime>
     </File>
     <File Include="Imports/ClientTypes/ClientTypes.log">
-      <publishTime>09/03/2020 19:37:36</publishTime>
+      <publishTime>09/27/2020 22:18:02</publishTime>
     </File>
     <File Include="Imports/CodeGenerationHelpers.ttinclude">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -2245,16 +2260,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/Administration/Language/LanguageIndex.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:46</publishTime>
     </File>
     <File Include="Modules/Administration/Role/RoleIndex.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:47</publishTime>
     </File>
     <File Include="Modules/Administration/Translation/TranslationIndex.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:47</publishTime>
     </File>
     <File Include="Modules/Administration/User/UserIndex.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:48</publishTime>
     </File>
     <File Include="Modules/AdminLTE/Calendar.cshtml">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -2347,58 +2362,73 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/Common/Dashboard/DashboardIndex.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:50</publishTime>
     </File>
     <File Include="Modules/Common/Reporting/ReportDialog.Template.html">
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/Common/Reporting/ReportPage.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:51</publishTime>
+    </File>
+    <File Include="Modules/Default/TblAdiType/TblAdiTypeIndex.cshtml">
+      <publishTime>09/23/2020 21:44:52</publishTime>
+    </File>
+    <File Include="Modules/Default/TblBags/TblBagsIndex.cshtml">
+      <publishTime>09/23/2020 22:00:47</publishTime>
+    </File>
+    <File Include="Modules/Default/TblBagsHistory/TblBagsHistoryIndex.cshtml">
+      <publishTime>09/23/2020 22:00:43</publishTime>
+    </File>
+    <File Include="Modules/Default/TblField/TblFieldIndex.cshtml">
+      <publishTime>09/23/2020 21:44:53</publishTime>
+    </File>
+    <File Include="Modules/Default/TblFlight/TblFlightIndex.cshtml">
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/AccountLogin.AdminLTE.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/AccountLogin.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ChangePassword/AccountChangePassword.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ForgotPassword/AccountForgotPassword.AdminLTE.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ForgotPassword/AccountForgotPassword.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ResetPassword/AccountResetPassword.AdminLTE.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:54</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ResetPassword/AccountResetPassword.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:55</publishTime>
     </File>
     <File Include="Modules/Membership/Account/ResetPassword/AccountResetPasswordEmail.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:55</publishTime>
     </File>
     <File Include="Modules/Membership/Account/SignUp/AccountActivateEmail.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:55</publishTime>
     </File>
     <File Include="Modules/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:55</publishTime>
     </File>
     <File Include="Modules/Membership/Account/SignUp/AccountSignUp.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:55</publishTime>
     </File>
     <File Include="Modules/Membership/_ViewStart.cshtml">
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/Web.config">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Modules/_ViewStart.cshtml">
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="package.json">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Readme.CodeGenerator.txt">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -2473,13 +2503,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/af.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/ar.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/az.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/bg.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -2524,7 +2554,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/eo.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/es-mx.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -2533,10 +2563,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/et.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/eu.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/fa.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -2611,13 +2641,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/nb.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/nl.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/no.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/lang/oc.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -2794,7 +2824,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/ckeditor/plugins/specialchar/dialogs/lang/eo.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="Scripts/ckeditor/plugins/specialchar/dialogs/lang/es-mx.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -3609,6 +3639,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/saltarelle/mscorlib.min.js">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
+    <File Include="Scripts/searchbagtag/index.js">
+      <publishTime>09/27/2020 14:41:06</publishTime>
+    </File>
     <File Include="Scripts/Select2-locales/select2_locale_ar.js">
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
@@ -3754,145 +3787,145 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/serenity/core/serenity-core.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:49</publishTime>
     </File>
     <File Include="Scripts/serenity/core/serenity-core.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:48</publishTime>
     </File>
     <File Include="Scripts/serenity/core/serenity-core.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:48</publishTime>
     </File>
     <File Include="Scripts/serenity/dialogs/serenity-dialogs.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:46</publishTime>
     </File>
     <File Include="Scripts/serenity/dialogs/serenity-dialogs.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:45</publishTime>
     </File>
     <File Include="Scripts/serenity/dialogs/serenity-dialogs.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:45</publishTime>
     </File>
     <File Include="Scripts/serenity/editors/serenity-editors.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:42</publishTime>
     </File>
     <File Include="Scripts/serenity/editors/serenity-editors.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:41</publishTime>
     </File>
     <File Include="Scripts/serenity/editors/serenity-editors.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:40</publishTime>
     </File>
     <File Include="Scripts/serenity/filterpanel/serenity-filterpanel.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:38</publishTime>
     </File>
     <File Include="Scripts/serenity/filterpanel/serenity-filterpanel.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:38</publishTime>
     </File>
     <File Include="Scripts/serenity/filterpanel/serenity-filterpanel.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:37</publishTime>
     </File>
     <File Include="Scripts/serenity/forms/serenity-forms.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:35</publishTime>
     </File>
     <File Include="Scripts/serenity/forms/serenity-forms.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:35</publishTime>
     </File>
     <File Include="Scripts/serenity/forms/serenity-forms.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:34</publishTime>
     </File>
     <File Include="Scripts/serenity/grids/serenity-grids.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:31</publishTime>
     </File>
     <File Include="Scripts/serenity/grids/serenity-grids.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:30</publishTime>
     </File>
     <File Include="Scripts/serenity/grids/serenity-grids.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:29</publishTime>
     </File>
     <File Include="Scripts/serenity/quickfilter/serenity-quickfilter.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:27</publishTime>
     </File>
     <File Include="Scripts/serenity/quickfilter/serenity-quickfilter.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:26</publishTime>
     </File>
     <File Include="Scripts/serenity/quickfilter/serenity-quickfilter.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:24</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.CoreLib.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:22</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.CoreLib.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:18</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.CoreLib.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:18</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.Script.UI.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:13</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.Script.UI.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:13</publishTime>
     </File>
     <File Include="Scripts/serenity/slick/serenity-slick.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:12</publishTime>
     </File>
     <File Include="Scripts/serenity/slick/serenity-slick.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:11</publishTime>
     </File>
     <File Include="Scripts/serenity/slick/serenity-slick.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:11</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.bn.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:10</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.de.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:10</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.es.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:10</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.fa.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:09</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.it.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:09</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.pt-BR.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:08</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.pt.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:08</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.ru.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:08</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.tr.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:07</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.vi-VN.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:07</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.zh-CN.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:06</publishTime>
     </File>
     <File Include="Scripts/serenity/widget/serenity-widget.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:05</publishTime>
     </File>
     <File Include="Scripts/serenity/widget/serenity-widget.js.map">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:04</publishTime>
     </File>
     <File Include="Scripts/serenity/widget/serenity-widget.min.js">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/21/2020 22:58:04</publishTime>
     </File>
     <File Include="Scripts/site/ScriptBundles.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/SIta.Web.js">
-      <publishTime>09/03/2020 08:42:13</publishTime>
+      <publishTime>09/28/2020 22:34:21</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.de.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.es.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.fa.json">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -3904,19 +3937,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.pt-BR.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.pt.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.ru.json">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.tr.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.vi-VN.json">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 22:00:40</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.zh-CN.json">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -4078,10 +4111,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>09/23/2020 21:44:56</publishTime>
     </File>
     <File Include="ServerConfig.json">
-      <publishTime>09/06/2020 16:37:19</publishTime>
+      <publishTime>09/21/2020 20:39:53</publishTime>
     </File>
     <File Include="tools/JsEngine/json2.min.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4105,7 +4138,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/extend-visitor.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/fs.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4114,13 +4147,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/import-visitor.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/index.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/join-selector-visitor.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/lessc_helper.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4135,7 +4168,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/to-css-visitor.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:58</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4150,7 +4183,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/call.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/color.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4174,7 +4207,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/expression.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/extend.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4189,10 +4222,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/media.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/mixin.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/negative.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4213,10 +4246,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/ruleset.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/selector.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/unicode-descriptor.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4225,13 +4258,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/value.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/tree/variable.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tools/Node/less/lib/less/visitor.js">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tools/Node/less/lib/lessc.js">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4246,7 +4279,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:21</publishTime>
     </File>
     <File Include="tsconfig.json">
-      <publishTime>08/30/2020 20:15:21</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="tslint.json">
       <publishTime>08/30/2020 20:15:21</publishTime>
@@ -4257,14 +4290,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Errors/ValidationError.cshtml">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
+    <File Include="Views/Search/Index.cshtml">
+      <publishTime>09/27/2020 14:42:26</publishTime>
+    </File>
+    <File Include="Views/Search/_SearchGrid.cshtml">
+      <publishTime>09/27/2020 14:49:29</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Views/Shared/LeftNavigation.cshtml">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHead.cshtml">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -4273,7 +4312,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutSlim.cshtml">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutSlimHead.cshtml">
       <publishTime>08/30/2020 20:15:20</publishTime>
@@ -4285,13 +4324,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>08/30/2020 20:15:20</publishTime>
+      <publishTime>09/23/2020 21:44:59</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>08/30/2020 20:15:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/04/2020 21:06:32</publishTime>
+      <publishTime>09/28/2020 22:34:24</publishTime>
     </File>
     <File Include="Welcome.htm">
       <publishTime>08/30/2020 20:15:20</publishTime>

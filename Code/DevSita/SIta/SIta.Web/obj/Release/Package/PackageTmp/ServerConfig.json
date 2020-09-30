@@ -10,9 +10,13 @@
   },
   "BSMServer": {
     "Ip": "27.71.237.68",
-    
     "Port": 1000
 
+  },
+  "RabbitServer": {
+    "RabbitIp": "171.244.18.171",
+    "RabbitUsername": "admin",
+    "RabbitPassword": "admin"
 
   }
 
