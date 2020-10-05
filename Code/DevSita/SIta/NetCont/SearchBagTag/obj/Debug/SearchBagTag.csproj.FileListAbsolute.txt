@@ -1,0 +1,10 @@
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.csprojAssemblyReference.cache
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.SearchBagTag.resources
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.Properties.Resources.resources
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.csproj.GenerateResource.cache
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.csproj.CoreCompileInputs.cache
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\bin\Debug\SearchBagTag.exe.config
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\bin\Debug\SearchBagTag.exe
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\bin\Debug\SearchBagTag.pdb
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.exe
+D:\Gif Hub\SearchBagTag\SearchBagTag\SearchBagTag\obj\Debug\SearchBagTag.pdb
