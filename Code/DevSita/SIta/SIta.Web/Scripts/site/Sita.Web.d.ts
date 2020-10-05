@@ -1371,6 +1371,28 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
+    class FlightBagDialog extends Serenity.EntityDialog<TblBagsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TblBagsForm;
+        private bagGrid;
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Sita.Default {
+    class FlightBagtagGrid extends Serenity.EntityGrid<TblBagsRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Sita.Default {
     class TblBagsDialog extends Serenity.EntityDialog<TblBagsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;

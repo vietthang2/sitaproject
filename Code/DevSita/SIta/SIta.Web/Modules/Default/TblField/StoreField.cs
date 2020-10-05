@@ -81,7 +81,7 @@ namespace Sita.Modules.Default.TblBags
                 }
                 catch (Exception ex)
                 {
-                    Logging.Logger.Error("Save Flight :" + ex.Message);
+                    Logging.Logger.Error("Save Field :" + ex.Message);
                 }
                 unitOfWork.Commit();
             }

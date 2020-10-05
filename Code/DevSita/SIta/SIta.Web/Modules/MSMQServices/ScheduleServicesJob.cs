@@ -63,26 +63,26 @@ namespace Sita.Modules.MSMQServices
                 Logging.Logger.Error("Schedule Error:" + ex.Message);
             }
         }
-        public static string BuildPath()
-        {
-            ////Doc cau hình MSMQ Server từ file config
-            try
-            {
-                using (var reader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "ServerConfig.json"))
-                {
-                    var appSettings = JsonConvert.DeserializeObject<ServerModel>(reader.ReadToEnd());
+        //public static string BuildPath()
+        //{
+        //    ////Doc cau hình MSMQ Server từ file config
+        //    try
+        //    {
+        //        using (var reader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "ServerConfig.json"))
+        //        {
+        //            var appSettings = JsonConvert.DeserializeObject<ServerModel>(reader.ReadToEnd());
 
-                    string path = String.Format("FormatName:Direct = TCP:{0}\\private$\\{1}", appSettings.MsmqServer.Ip, appSettings.MsmqServer.QueueName);
-                    appSettings.MsmqServer.QueuePath = path;
-                    return path;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-                throw;
-            }
-        }
+        //            string path = String.Format("FormatName:Direct = TCP:{0}\\private$\\{1}", appSettings.MsmqServer.Ip, appSettings.MsmqServer.QueueName);
+        //            appSettings.MsmqServer.QueuePath = path;
+        //            return path;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.Error(ex.Message);
+        //        throw;
+        //    }
+        //}
 
     }
 }

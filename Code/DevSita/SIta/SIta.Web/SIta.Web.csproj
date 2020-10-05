@@ -934,6 +934,7 @@
     <Content Include="Scripts\serenity\slick\serenity-slick.min.js" />
     <Content Include="Scripts\serenity\widget\serenity-widget.js" />
     <Content Include="Scripts\serenity\widget\serenity-widget.min.js" />
+    <Content Include="Modules\Default\TblFlight\TblFlightDialog.Template.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <Content Include="ServerConfig.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -1143,6 +1144,8 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Default\TblBags\FlightBagtagGrid.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblBags\FlightBagDialog.ts" />
     <TypeScriptCompile Include="Modules\Default\TblField\FieldDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
@@ -1935,6 +1938,7 @@
     <Compile Include="Modules\MSMQServices\ScheduleServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServices.cs" />
     <Compile Include="Modules\MSMQServices\MSMQServicesJob.cs" />
+    <Compile Include="Modules\RabbitMQ\RabbitPublishRemote.cs" />
     <Compile Include="Modules\RabbitMQ\RabbitPublish.cs" />
     <Compile Include="Modules\RabbitMQ\ServerModel.cs" />
     <Compile Include="Modules\Texts.cs" />

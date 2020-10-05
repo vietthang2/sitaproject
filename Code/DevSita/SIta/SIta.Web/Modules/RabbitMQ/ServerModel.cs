@@ -8,7 +8,8 @@ namespace Sita.Modules.RabbitMQ
     public class RabbitServerModel
     {
         public RabbitServer RabbitServer { get; set; }
-        
+        public RabbitServer RabbitServerRemote { get; set; }
+
 
 
     }

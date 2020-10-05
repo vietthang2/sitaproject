@@ -10,7 +10,7 @@ namespace Sita.Default.Entities
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblBags]")]
-    [DisplayName("Tbl Bags"), InstanceName("Tbl Bags")]
+    [DisplayName("Bags"), InstanceName("Bags")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     public sealed class TblBagsRow : Row, IIdRow, INameRow

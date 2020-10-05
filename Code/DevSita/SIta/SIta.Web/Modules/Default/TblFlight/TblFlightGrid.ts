@@ -19,5 +19,20 @@ namespace Sita.Default {
 
             return buttons;
         }
+        //protected getColumns(): Slick.Column[] {
+        //    var columns = super.getColumns();
+
+        //    columns.unshift({
+        //        field: 'Bag Tag',
+        //        name: '',
+        //        format: ctx => '<div class="inline update-status btn btn-success btn-sm active" type="button">Bag Tag</div>',
+        //        width: 140,
+        //        minWidth: 140,
+        //        maxWidth: 140
+
+        //    });
+        //    return columns;
+        //}
+        
     }
 }

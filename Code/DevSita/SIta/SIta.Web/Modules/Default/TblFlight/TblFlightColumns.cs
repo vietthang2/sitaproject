@@ -16,10 +16,11 @@ namespace Sita.Default.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         
         public String Identify { get; set; }
+        [QuickFilter(CssClass = "hidden-xs")]
         public String LineCode { get; set; }
         public String Number { get; set; }
         public String Adi { get; set; }
-       
+        [QuickFilter(CssClass = "hidden-xs")]
         public String ScheduleDate { get; set; }
         public String SoftReplace { get; set; }
         public String SiteIata { get; set; }

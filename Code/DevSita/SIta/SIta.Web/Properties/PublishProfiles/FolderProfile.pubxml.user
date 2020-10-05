@@ -166,10 +166,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2019 05:25:34</publishTime>
     </File>
     <File Include="bin/SIta.Web.dll">
-      <publishTime>09/28/2020 22:33:54</publishTime>
+      <publishTime>10/03/2020 15:25:29</publishTime>
     </File>
     <File Include="bin/SIta.Web.pdb">
-      <publishTime>09/28/2020 22:33:54</publishTime>
+      <publishTime>10/03/2020 15:25:29</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
       <publishTime>08/30/2020 20:15:25</publishTime>
@@ -2284,10 +2284,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/AdminLTE/Charts/Morris.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>10/03/2020 15:21:12</publishTime>
     </File>
     <File Include="Modules/AdminLTE/DashboardV2.cshtml">
-      <publishTime>08/30/2020 20:15:19</publishTime>
+      <publishTime>10/01/2020 21:26:58</publishTime>
     </File>
     <File Include="Modules/AdminLTE/Examples/BlankPage.cshtml">
       <publishTime>08/30/2020 20:15:19</publishTime>
@@ -2362,7 +2362,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/30/2020 20:15:19</publishTime>
     </File>
     <File Include="Modules/Common/Dashboard/DashboardIndex.cshtml">
-      <publishTime>09/23/2020 21:44:50</publishTime>
+      <publishTime>10/01/2020 22:24:16</publishTime>
     </File>
     <File Include="Modules/Common/Reporting/ReportDialog.Template.html">
       <publishTime>08/30/2020 20:15:19</publishTime>

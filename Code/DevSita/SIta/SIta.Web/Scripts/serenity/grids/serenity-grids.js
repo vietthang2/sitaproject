@@ -1786,10 +1786,10 @@ var Serenity;
                 opt.rowsPerPage = 0;
             }
             else if (this.element.hasClass('responsive-height')) {
-                opt.rowsPerPage = (($(window.window).width() < 768) ? 20 : 100);
+                opt.rowsPerPage = (($(window.window).width() < 768) ? 20 : 50);
             }
             else {
-                opt.rowsPerPage = 100;
+                opt.rowsPerPage = 50;
             }
             opt.getItemMetadata = function (item, index) {
                 return _this.getItemMetadata(item, index);

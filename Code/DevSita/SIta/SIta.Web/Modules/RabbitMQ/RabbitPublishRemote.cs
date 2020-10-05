@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Sita.Modules.RabbitMQ
 {
-    public class RabbitPublish
+    public class RabbitPublishRemote
     {
         public static RabbitServerModel ServerConfig = Common.GetRabbitConfig();
         //public static RabbitServer ServerConfigRemote = Common.GetRabbitConfig();
@@ -22,7 +22,7 @@ namespace Sita.Modules.RabbitMQ
             var RabbitServer = ServerConfig.RabbitServer;
             var RabbitServerRemote = ServerConfig.RabbitServerRemote;
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = RabbitServer.RabbitIp, UserName = RabbitServer.RabbitUsername, Password = RabbitServer.RabbitUsername };
+            var factory = new ConnectionFactory() { HostName = RabbitServerRemote.RabbitIp, UserName = RabbitServerRemote.RabbitUsername, Password = RabbitServerRemote.RabbitUsername };
             try
             {
 
@@ -38,8 +38,8 @@ namespace Sita.Modules.RabbitMQ
                                          routingKey: key,
                                          basicProperties: null,
                                          body: body);
-                    Console.WriteLine(" [x] Sent {0} to server {1}", message, RabbitServer.RabbitIp);
-                    Logging.Logger.Information(" [x] Sent Rabbit {0} to server {1}", message, RabbitServer.RabbitIp);
+                    Console.WriteLine(" [x] Sent {0} to server remote {1}", message, RabbitServer.RabbitIp);
+                    Logging.Logger.Information(" [x] Sent Rabbit {0} to server remote {1}", message, RabbitServer.RabbitIp);
                     connection.Close();
 
                 }
@@ -47,17 +47,15 @@ namespace Sita.Modules.RabbitMQ
             catch (Exception ex1)
             {
 
-                Log.Error("Publish Rabbit error: " + ex1.Message);
+                Log.Error("Publish Rabbit remote error: " + ex1.Message);
             }
-            RabbitPublishRemote.Publish(key, mess);
             
-
-
+           
 
         }
 
     }
-    public class RabbitSubscribe
+    public class RabbitRemoteSubscribe
     {
         private static Thread _Subscribe = null;
 
@@ -67,7 +65,7 @@ namespace Sita.Modules.RabbitMQ
 
             if (_Subscribe == null)
             {
-                _Subscribe = new Thread(new ThreadStart(SubscribeEvent))
+                _Subscribe = new Thread(new ThreadStart(SubscribeEventRemote))
                 {
                     Priority = ThreadPriority.Lowest
                 };
@@ -76,7 +74,7 @@ namespace Sita.Modules.RabbitMQ
             else if (_Subscribe.ThreadState == ThreadState.Stopped)
             {
 
-                _Subscribe = new Thread(new ThreadStart(SubscribeEvent));
+                _Subscribe = new Thread(new ThreadStart(SubscribeEventRemote));
             }
             else if (_Subscribe.ThreadState == ThreadState.Unstarted)
                 _Subscribe.Start();
@@ -90,9 +88,9 @@ namespace Sita.Modules.RabbitMQ
                 _Subscribe.Abort();
             }
         }
-        public static void SubscribeEvent()
+        public static void SubscribeEventRemote()
         {
-            RabbitEvent rabbitEvent = new RabbitEvent();
+            RabbitEventRemote rabbitEvent = new RabbitEventRemote();
             string messRbc = "";
             rabbitEvent.MessageReceived += (sender, msg) => messRbc = msg;
             rabbitEvent.RabbitMQManager();
@@ -103,7 +101,7 @@ namespace Sita.Modules.RabbitMQ
 
 
     }
-    public class RabbitEvent
+    public class RabbitEventRemote
     {
         private bool _disposed = false;
         protected virtual void Dispose(bool disposing)
@@ -132,7 +130,7 @@ namespace Sita.Modules.RabbitMQ
         public void RabbitMQManager()
         {
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername };
+            var factory = new ConnectionFactory() { HostName = ServerConfigRemote.RabbitIp, UserName = ServerConfigRemote.RabbitUsername, Password = ServerConfigRemote.RabbitUsername };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
@@ -147,18 +145,18 @@ namespace Sita.Modules.RabbitMQ
 
 
             var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
+            //consumer.Received += (model, ea) =>
+            //{
+            //    var body = ea.Body.ToArray();
+            //    var message = Encoding.UTF8.GetString(body);
 
-                MessageReceived?.Invoke(this, message);
-                Logging.Logger.Information("Rabbit recieve:{0}", message);
-                //Hàm lưu bag sẽ nhận tham số message
+            //    MessageReceived?.Invoke(this, message);
+            //    Logging.Logger.Information("Rabbit recieve:{0}", message);
+            //    //Hàm lưu bag sẽ nhận tham số message
 
 
-                StoreBag.Save(message);
-            };
+            //    StoreBag.Save(message);
+            //};
             _channel.BasicConsume(queue: queueName,
                                      autoAck: true,
                                      consumer: consumer);
@@ -166,26 +164,5 @@ namespace Sita.Modules.RabbitMQ
 
         }
     }
-    public static class Common
-    {
-        public static RabbitServerModel GetRabbitConfig()
-        {
-            try
-            {
-                using (var reader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "ServerConfig.json"))
-                {
-                    var appSettings = JsonConvert.DeserializeObject<RabbitServerModel>(reader.ReadToEnd());
-                    // var sq = new RabbitServer();
-                    return appSettings;
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-                throw;
-            }
-        }
-    }
+    
 }
