@@ -20,8 +20,8 @@ namespace SearchBagTag
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
 
+            String Aaa = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString();
             DbConnect.PathServerFile = @"~\AppData\Roaming\SearchBagTag\ConfigServer.ini";
 
             DbConnect.Server = DbConnect.ReadValue(DbConnect.PathServerFile, "F", "F1");
