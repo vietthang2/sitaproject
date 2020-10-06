@@ -5,14 +5,15 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Administration;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblField]")]
     [DisplayName("Tbl Field"), InstanceName("Tbl Field")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Field.View)]
+    [ModifyPermission(PermissionKeys.Field.Modify)]
     public sealed class TblFieldRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), NotNull]

@@ -16,7 +16,7 @@ namespace Sita.Modules.RabbitMQ
     {
         public static RabbitServerModel ServerConfig = Common.GetRabbitConfig();
         //public static RabbitServer ServerConfigRemote = Common.GetRabbitConfig();
-        public static void Publish(string key, string mess)
+        public void Publish(string key, string mess)
         {
             //RabbitServer RabbitServer = new RabbitServer();
             var RabbitServer = ServerConfig.RabbitServer;

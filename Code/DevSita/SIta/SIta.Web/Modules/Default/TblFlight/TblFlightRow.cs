@@ -11,11 +11,12 @@ namespace Sita.Default.Entities
     using System.ComponentModel;
     using System.IO;
     using System.Collections.Generic;
+    using Sita.Administration;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblFlight]")]
     [DisplayName("Flight"), InstanceName("Flight")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Flight.View)]
+    [ModifyPermission(PermissionKeys.Flight.Modify)]
     [LookupScript("dbo.tblFlight", Permission = "*",Expiration =-1)]//add thêm
     public sealed class TblFlightRow : Row, IIdRow, INameRow
     {

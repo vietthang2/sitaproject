@@ -5,14 +5,15 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Administration;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblBags]")]
     [DisplayName("Bags"), InstanceName("Bags")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Bags.View)]
+    [ModifyPermission(PermissionKeys.Bags.Modify)]
     public sealed class TblBagsRow : Row, IIdRow, INameRow
     {
         [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch, Unique(CheckBeforeSave =true,ErrorMessage ="Bagtag đã tồn tại")]

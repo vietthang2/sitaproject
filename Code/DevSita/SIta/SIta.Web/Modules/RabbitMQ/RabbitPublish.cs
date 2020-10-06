@@ -6,6 +6,7 @@ using Serilog;
 using Sita.Modules.Default.TblBags;
 using Sita.Modules.RabbitMQ;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -22,7 +23,7 @@ namespace Sita.Modules.RabbitMQ
             var RabbitServer = ServerConfig.RabbitServer;
             var RabbitServerRemote = ServerConfig.RabbitServerRemote;
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = RabbitServer.RabbitIp, UserName = RabbitServer.RabbitUsername, Password = RabbitServer.RabbitUsername };
+            var factory = new ConnectionFactory() { HostName = RabbitServer.RabbitIp, UserName = RabbitServer.RabbitUsername, Password = RabbitServer.RabbitUsername, RequestedHeartbeat = new TimeSpan(0, 0, 60) };
             try
             {
 
@@ -49,7 +50,8 @@ namespace Sita.Modules.RabbitMQ
 
                 Log.Error("Publish Rabbit error: " + ex1.Message);
             }
-            RabbitPublishRemote.Publish(key, mess);
+            RabbitPublishRemote rabbitPublishRemote = new RabbitPublishRemote();
+            rabbitPublishRemote.Publish(key, mess);
             
 
 
@@ -132,7 +134,8 @@ namespace Sita.Modules.RabbitMQ
         public void RabbitMQManager()
         {
             string queue = "Sita";
-            var factory = new ConnectionFactory() { HostName = ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername };
+            var factory = new ConnectionFactory(){ HostName= ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername,RequestedHeartbeat=new TimeSpan(0,0,60) };
+            
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 

@@ -3463,6 +3463,31 @@ var Sita;
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
                 return buttons;
             };
+            //protected getColumns(): Slick.Column[] {
+            //    var columns = super.getColumns();
+            //    columns.unshift({
+            //        field: 'Bag Tag',
+            //        name: '',
+            //        format: ctx => '<div class="inline update-status btn btn-success btn-sm active" type="button">Bag Tag</div>',
+            //        width: 140,
+            //        minWidth: 140,
+            //        maxWidth: 140
+            //    });
+            //    return columns;
+            //}
+            TblFlightGrid.prototype.getQuickFilters = function () {
+                // get quick filter list from base class, e.g. columns
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var filter = Q.first(filters, function (x) { return x.field == "ScheduleDate" /* ScheduleDate */; });
+                filter.title = "Schedule Date";
+                filter.type = Serenity.DateEditor;
+                filter.handler = function (h) {
+                    if (h.active) {
+                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["ScheduleDate" /* ScheduleDate */], '=', h.value]);
+                    }
+                };
+                return filters;
+            };
             TblFlightGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], TblFlightGrid);

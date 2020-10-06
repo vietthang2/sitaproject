@@ -5,14 +5,15 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Administration;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblBagsHistory]")]
-    [DisplayName("Tbl Bags History"), InstanceName("Tbl Bags History")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [DisplayName("Bags History"), InstanceName("Bags History")]
+    [ReadPermission(PermissionKeys.BagsHistory.View)]
+    [ModifyPermission(PermissionKeys.BagsHistory.Modify)]
     public sealed class TblBagsHistoryRow : Row, IIdRow, INameRow
     {
         [DisplayName("Baggage Tag"), Column("Baggage_Tag"), Size(50), NotNull, QuickSearch]

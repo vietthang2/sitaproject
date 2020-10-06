@@ -168,7 +168,8 @@ ENDBSM",
                     statusConnect = true;
                     Console.WriteLine("Socket connected to {0}",
                     client.RemoteEndPoint.ToString());
-
+                    Logging.Logger.Information("Socket connected to {0}",
+                    client.RemoteEndPoint.ToString());
 
                     Console.WriteLine($"OnSocketAccepted");
                     Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
@@ -307,6 +308,12 @@ ENDBSM",
                     
                 }
                
+            }
+            if (msg.Type == MsgType.STATUS)
+            {
+                Thread.Sleep(500);
+                SendData(MsgHelper.DataOnMsg());
+                timeOut = 0;
             }
             msgidx++;
             if (msgidx > 6)

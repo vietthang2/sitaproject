@@ -1,6 +1,6 @@
 ﻿
 namespace Sita.Default {
-
+    import fld = Sita.Default.TblFlightRow.Fields;
     @Serenity.Decorators.registerClass()
     export class TblFlightGrid extends Serenity.EntityGrid<TblFlightRow, any> {
         protected getColumnsKey() { return 'Default.TblFlight'; }
@@ -33,6 +33,20 @@ namespace Sita.Default {
         //    });
         //    return columns;
         //}
-        
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
+
+            // get quick filter list from base class, e.g. columns
+            let filters = super.getQuickFilters();
+            let filter = Q.first(filters, x => x.field == fld.ScheduleDate);
+            filter.title = "Schedule Date";
+            filter.type = Serenity.DateEditor;
+            filter.handler = h => {
+                if (h.active) {
+                    h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
+                        [[fld.ScheduleDate], '=', h.value]);
+                }
+            };
+            return filters;
+        }
     }
 }
