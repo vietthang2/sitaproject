@@ -10,7 +10,12 @@
   },
   "BSMServer": {
     "Ip": "27.71.237.68",
-    "Port": 1000
+    "Port": 1000,
+    "application": "BHS_CXR",
+    "version": 2,
+    "username": "",
+    "password": "password",
+    "msg_id": 1
 
   },
   "RabbitServerRemote": {

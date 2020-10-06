@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Serenity;
+using Sita.Modules.BSMServices.DTO;
+using Sita.Modules.Default.Common;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -9,11 +14,12 @@ namespace Sita.Modules.BSMServices
 
     public static class MsgHelper
     {
-        static string application = "BHS_CXR";
-        static ushort version = 2;//version 2
-        static string username;
-        static string password = "password";
-        static ushort msg_id = 1;
+
+        static string application = ConfigGlobals.application;// "BHS_CXR";
+        static ushort version = ConfigGlobals.version;//2;//version 2
+        static string username= ConfigGlobals.username;
+        static string password = ConfigGlobals.password;//"password";
+        static ushort msg_id = ConfigGlobals.msg_id;// 1;
 
         public static SitaMsg GetBaseMsg()
         {
@@ -266,6 +272,7 @@ namespace Sita.Modules.BSMServices
                 return false;
             }
         }
+        
     }
 
 }

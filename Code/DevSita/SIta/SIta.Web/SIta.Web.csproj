@@ -1910,6 +1910,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceModels.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
+    <Compile Include="Modules\Default\Common\ConfigGlobals.cs" />
     <Compile Include="Modules\Default\Common\Const.cs" />
     <Compile Include="Modules\Default\Search\FlightBagModel.cs" />
     <Compile Include="Modules\Default\Search\SearchController.cs" />
