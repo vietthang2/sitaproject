@@ -13,7 +13,8 @@ namespace Modules.Common
         public static void InitLogging()
         {
             CreateDirectoryIfMissing("Log\\");
-            LoggerConfiguration loggerConfiguration = new LoggerConfiguration();
+            LoggerConfiguration loggerConfiguration = new LoggerConfiguration()
+            .WriteTo.Seq("http://localhost:5341");
             // set the log level
             switch (_logLevel)
             {
@@ -47,6 +48,7 @@ namespace Modules.Common
             Logger.Information($"Current directory is: {System.IO.Directory.GetCurrentDirectory()}");
             Logger.Information($"Log file is: {System.IO.Path.GetFullPath(_logFileName)}");
             Logger.Information($"Log level is: {_logLevel}");
+            
         }
 
         public static void CreateDirectoryIfMissing(string FolderPath)

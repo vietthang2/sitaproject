@@ -14,6 +14,7 @@ namespace Sita.Modules.BSMServices.DTO
     {
         public string Ip { get; set; }
         public int Port { get; set; }
+        public int ClientPort { get; set; }
         public string Application { get; set; }
         public ushort Version { get; set; }
         public string Username { get; set; }

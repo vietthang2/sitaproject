@@ -64,11 +64,11 @@ namespace Sita
             // Setting up some example jobs
             BackgroundJob.Enqueue<MSMQServices>(job => job.Run());
             RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), Cron.Hourly);
-            //RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
+            RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
 
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Hourly);
-            //RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
 
             BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
             RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);

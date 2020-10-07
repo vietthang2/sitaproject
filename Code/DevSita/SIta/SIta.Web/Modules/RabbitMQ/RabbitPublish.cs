@@ -39,8 +39,8 @@ namespace Sita.Modules.RabbitMQ
                                          routingKey: key,
                                          basicProperties: null,
                                          body: body);
-                    Console.WriteLine(" [x] Sent {0} to server {1}", message, RabbitServer.RabbitIp);
-                    Logging.Logger.Information(" [x] Sent Rabbit {0} to server {1}", message, RabbitServer.RabbitIp);
+                  //  Console.WriteLine(" [x] Sent {0} to server {1}", message, RabbitServer.RabbitIp);
+                    Logging.Logger.Information(" [x] Sent Rabbit to server {0} Data:  {1}", RabbitServer.RabbitIp,message);
                     connection.Close();
 
                 }
@@ -133,38 +133,46 @@ namespace Sita.Modules.RabbitMQ
         public static RabbitServer ServerConfigRemote = Common.GetRabbitConfig().RabbitServerRemote;
         public void RabbitMQManager()
         {
-            string queue = "Sita";
-            var factory = new ConnectionFactory(){ HostName= ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername,RequestedHeartbeat=new TimeSpan(0,0,60) };
-            
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
-
-
-            _channel.ExchangeDeclare(exchange: queue, type: ExchangeType.Fanout);
-
-            var queueName = _channel.QueueDeclare().QueueName;
-            _channel.QueueBind(queue: queueName,
-                                  exchange: queue,
-                                  routingKey: "Server");
-
-
-
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (model, ea) =>
+            try
             {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
+                string queue = "Sita";
+                var factory = new ConnectionFactory() { HostName = ServerConfig.RabbitIp, UserName = ServerConfig.RabbitUsername, Password = ServerConfig.RabbitUsername, RequestedHeartbeat = new TimeSpan(0, 0, 60) };
 
-                MessageReceived?.Invoke(this, message);
-                Logging.Logger.Information("Rabbit recieve:{0}", message);
-                //Hàm lưu bag sẽ nhận tham số message
+                _connection = factory.CreateConnection();
+                _channel = _connection.CreateModel();
 
 
-                StoreBag.Save(message);
-            };
-            _channel.BasicConsume(queue: queueName,
-                                     autoAck: true,
-                                     consumer: consumer);
+                _channel.ExchangeDeclare(exchange: queue, type: ExchangeType.Fanout);
+
+                var queueName = _channel.QueueDeclare().QueueName;
+                _channel.QueueBind(queue: queueName,
+                                      exchange: queue,
+                                      routingKey: "Server");
+
+
+
+                var consumer = new EventingBasicConsumer(_channel);
+                consumer.Received += (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+
+                    MessageReceived?.Invoke(this, message);
+                    Logging.Logger.Information("Rabbit recieve:{0}", message);
+                    //Hàm lưu bag sẽ nhận tham số message
+
+
+                    StoreBag.Save(message);
+                };
+                _channel.BasicConsume(queue: queueName,
+                                         autoAck: true,
+                                         consumer: consumer);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("RabbitMQManager : " + ex.Message);
+                throw;
+            }
             
 
         }

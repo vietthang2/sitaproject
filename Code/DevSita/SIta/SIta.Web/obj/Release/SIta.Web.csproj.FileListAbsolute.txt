@@ -109,3 +109,9 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Castle.Core.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\FakeItEasy.xml
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\Microsoft.Owin.Security.xml
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Formatting.Compact.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Sinks.PeriodicBatching.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Sinks.Seq.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Formatting.Compact.xml
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Sinks.PeriodicBatching.xml
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Serilog.Sinks.Seq.xml

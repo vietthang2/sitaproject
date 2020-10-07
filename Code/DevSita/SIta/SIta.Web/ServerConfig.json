@@ -15,7 +15,8 @@
     "version": 2,
     "username": "",
     "password": "password",
-    "msg_id": 1
+    "msg_id": 1,
+    "ClientPort": 1201
 
   },
   "RabbitServerRemote": {

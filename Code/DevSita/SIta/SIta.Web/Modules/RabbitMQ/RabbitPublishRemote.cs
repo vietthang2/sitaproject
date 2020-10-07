@@ -38,8 +38,8 @@ namespace Sita.Modules.RabbitMQ
                                          routingKey: key,
                                          basicProperties: null,
                                          body: body);
-                    Console.WriteLine(" [x] Sent {0} to server remote {1}", message, RabbitServer.RabbitIp);
-                    Logging.Logger.Information(" [x] Sent Rabbit {0} to server remote {1}", message, RabbitServer.RabbitIp);
+                    //Console.WriteLine(" [x] Sent {0} to server remote {1}", message, RabbitServer.RabbitIp);
+                    Logging.Logger.Information(" [x] Sent Rabbit to server remote  {0} Data: {1}", RabbitServer.RabbitIp, message );
                     connection.Close();
 
                 }

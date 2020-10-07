@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Web;
 using Modules.Common;
+using Serenity;
 using Sita.Modules.RabbitMQ;
 
 namespace Sita.Modules.BSMServices
@@ -112,6 +113,7 @@ ENDBSM",
         /// PORT Number of the PLC, default is 102
         /// </summary>
         public int Port { get; set; }
+        public int ClientPort { get; set; }
         private static ManualResetEvent connectDone =
        new ManualResetEvent(false);
         public static ManualResetEvent allDone = new ManualResetEvent(false);
@@ -119,15 +121,15 @@ ENDBSM",
         bool statusConnect = false;
         public void StartListening(ref bool _statusConnect)
         {
-            Logging.Logger.Information($"Begin StartListening Ip: {IP} and port:{Port}");
+           // Logging.Logger.Information($"Begin StartListening Ip: {IP} and port:{Port}");
             try
             {
-                if (listener == null)
+                if (listener == null && client==null)
                 {
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
 
                     listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    listener.Bind(new IPEndPoint(IPAddress.Any, 1100));
+                    listener.Bind(new IPEndPoint(IPAddress.Any, ClientPort));
                     //listener.Listen(20);
                     // Connect to the remote endpoint.  
                     listener.BeginConnect(remoteEP,
@@ -142,16 +144,19 @@ ENDBSM",
                 }
                 else
                 {
+                   // Logging.Logger.Information("StartListening : listener != null");
                     listener.BeginAccept(OnSocketAccepted, null);
+                    //SendData(MsgHelper.LoginRequest());
                 }
                 
             }
             catch (Exception e)
             {
                 
-               // Logging.Logger.Error(e.Message + e.StackTrace + e.Source);
+                Log.Error("StartListening Error:"+e.Message + e.StackTrace + e.Source);
+               // listener.Close();
                 return;
-                listener.Shutdown(SocketShutdown.Receive);
+                
             }
         }
 
@@ -166,8 +171,8 @@ ENDBSM",
                 if (client.Connected)
                 {
                     statusConnect = true;
-                    Console.WriteLine("Socket connected to {0}",
-                    client.RemoteEndPoint.ToString());
+                    //Console.WriteLine("Socket connected to {0}",
+                    //client.RemoteEndPoint.ToString());
                     Logging.Logger.Information("Socket connected to {0}",
                     client.RemoteEndPoint.ToString());
 
@@ -180,8 +185,9 @@ ENDBSM",
                 }
                 else
                 {
-                    Logging.Logger.Error("Can not connect to Socket" );
-                    client.Close();
+                    client.Listen(20);
+                    Logging.Logger.Error("Can not connect to Socket : "+client.LingerState) ;
+                    //client.Close();
                 }
                     
             }

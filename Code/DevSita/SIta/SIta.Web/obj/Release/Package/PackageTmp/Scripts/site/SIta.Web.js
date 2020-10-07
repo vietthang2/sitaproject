@@ -3091,6 +3091,60 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
+        var FlightBagDialog = /** @class */ (function (_super) {
+            __extends(FlightBagDialog, _super);
+            function FlightBagDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Default.TblBagsForm(_this.idPrefix);
+                _this.bagGrid = new Default.FlightBagtagGrid(_this.byId("BagTagGrid"));
+                _this.tabs.on('tabsactivate', function (e, i) {
+                    _this.arrange();
+                });
+                return _this;
+            }
+            FlightBagDialog.prototype.getFormKey = function () { return Default.TblBagsForm.formKey; };
+            FlightBagDialog.prototype.getIdProperty = function () { return Default.TblBagsRow.idProperty; };
+            FlightBagDialog.prototype.getLocalTextPrefix = function () { return Default.TblBagsRow.localTextPrefix; };
+            FlightBagDialog.prototype.getNameProperty = function () { return Default.TblBagsRow.nameProperty; };
+            FlightBagDialog.prototype.getService = function () { return Default.TblBagsService.baseUrl; };
+            FlightBagDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.PlaceId, true);
+            };
+            FlightBagDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], FlightBagDialog);
+            return FlightBagDialog;
+        }(Serenity.EntityDialog));
+        Default.FlightBagDialog = FlightBagDialog;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var FlightBagtagGrid = /** @class */ (function (_super) {
+            __extends(FlightBagtagGrid, _super);
+            function FlightBagtagGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            FlightBagtagGrid.prototype.getColumnsKey = function () { return "Default.TblBags"; };
+            FlightBagtagGrid.prototype.getIdProperty = function () { return Default.TblBagsRow.idProperty; };
+            FlightBagtagGrid.prototype.getLocalTextPrefix = function () { return Default.TblBagsRow.localTextPrefix; };
+            FlightBagtagGrid.prototype.getService = function () { return Default.TblBagsService.baseUrl; };
+            FlightBagtagGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], FlightBagtagGrid);
+            return FlightBagtagGrid;
+        }(Serenity.EntityGrid));
+        Default.FlightBagtagGrid = FlightBagtagGrid;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
         var TblBagsDialog = /** @class */ (function (_super) {
             __extends(TblBagsDialog, _super);
             function TblBagsDialog() {
@@ -3409,6 +3463,31 @@ var Sita;
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
                 return buttons;
             };
+            //protected getColumns(): Slick.Column[] {
+            //    var columns = super.getColumns();
+            //    columns.unshift({
+            //        field: 'Bag Tag',
+            //        name: '',
+            //        format: ctx => '<div class="inline update-status btn btn-success btn-sm active" type="button">Bag Tag</div>',
+            //        width: 140,
+            //        minWidth: 140,
+            //        maxWidth: 140
+            //    });
+            //    return columns;
+            //}
+            TblFlightGrid.prototype.getQuickFilters = function () {
+                // get quick filter list from base class, e.g. columns
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var filter = Q.first(filters, function (x) { return x.field == "ScheduleDate" /* ScheduleDate */; });
+                filter.title = "Schedule Date";
+                filter.type = Serenity.DateEditor;
+                filter.handler = function (h) {
+                    if (h.active) {
+                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["ScheduleDate" /* ScheduleDate */], '=', h.value]);
+                    }
+                };
+                return filters;
+            };
             TblFlightGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], TblFlightGrid);
@@ -3480,7 +3559,7 @@ var Sita;
                 }
             };
             LoginPanel.prototype.getTemplate = function () {
-                return "\n<div class=\"flex-layout\">\n    <div class=\"logo\"></div>\n    <h3>" + Q.text("Forms.Membership.Login.FormTitle") + "</h3>\n    <form id=\"~_Form\" action=\"\">\n        <div class=\"s-Form\">\n            <div class=\"fieldset ui-widget ui-widget-content ui-corner-all\">\n                <div id=\"~_PropertyGrid\"></div>\n                <div class=\"clear\"></div>\n            </div>\n            <div class=\"buttons\">\n                <button id=\"~_LoginButton\" type=\"submit\" class=\"btn btn-primary\">\n                    " + Q.text("Forms.Membership.Login.SignInButton") + "\n                </button>\n            </div>\n            <div class=\"actions\">\n                <a href=\"" + Q.resolveUrl('~/Account/ForgotPassword') + "\"><i class=\"fa fa-angle-right\"></i>&nbsp;" + Q.text("Forms.Membership.Login.ForgotPassword") + "</a>\n                <a href=\"" + Q.resolveUrl('~/Account/SignUp') + "\"><i class=\"fa fa-angle-right\"></i>&nbsp;" + Q.text("Forms.Membership.Login.SignUpButton") + "</a>\n                <div class=\"clear\"></div>\n            </div>\n        </div>\n    </form>\n</div>\n";
+                return "\n<div class=\"flex-layout\">\n    <div class=\"logo\"></div>\n    <h3>" + Q.text("Forms.Membership.Login.FormTitle") + "</h3>\n    <form id=\"~_Form\" action=\"\">\n        <div class=\"s-Form\">\n            <div class=\"fieldset ui-widget ui-widget-content ui-corner-all\">\n                <div id=\"~_PropertyGrid\"></div>\n                <div class=\"clear\"></div>\n            </div>\n            <div class=\"buttons\">\n                <button id=\"~_LoginButton\" type=\"submit\" class=\"btn btn-primary\">\n                    " + Q.text("Forms.Membership.Login.SignInButton") + "\n                </button>\n            </div>\n            <div class=\"actions\">\n                \n                <div class=\"clear\"></div>\n            </div>\n        </div>\n    </form>\n</div>\n";
             };
             LoginPanel = __decorate([
                 Serenity.Decorators.registerClass()
