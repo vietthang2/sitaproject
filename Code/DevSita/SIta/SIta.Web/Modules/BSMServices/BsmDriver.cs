@@ -186,7 +186,7 @@ ENDBSM",
                 else
                 {
                     client.Listen(20);
-                    Logging.Logger.Error("Can not connect to Socket : "+client.LingerState) ;
+                    Logging.Logger.Information("Can not connect to Socket : "+client.LingerState) ;
                     //client.Close();
                 }
                     
