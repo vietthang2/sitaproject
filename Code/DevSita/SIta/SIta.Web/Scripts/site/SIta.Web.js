@@ -585,6 +585,81 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
+        var TblConfigSyncDataForm = /** @class */ (function (_super) {
+            __extends(TblConfigSyncDataForm, _super);
+            function TblConfigSyncDataForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TblConfigSyncDataForm.formKey = 'Default.TblConfigSyncData';
+            return TblConfigSyncDataForm;
+        }(Serenity.PrefixedContext));
+        Default.TblConfigSyncDataForm = TblConfigSyncDataForm;
+        [,
+            ['SynchronizeOnlyPeriod', function () { return Serenity.BooleanEditor; }],
+            ['Period', function () { return Serenity.IntegerEditor; }],
+            ['SynchronizeLogWhenReturns', function () { return Serenity.BooleanEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(TblConfigSyncDataForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblConfigSyncDataRow;
+        (function (TblConfigSyncDataRow) {
+            TblConfigSyncDataRow.idProperty = 'Id';
+            TblConfigSyncDataRow.localTextPrefix = 'Default.TblConfigSyncData';
+            TblConfigSyncDataRow.deletePermission = 'Administration:General';
+            TblConfigSyncDataRow.insertPermission = 'Administration:General';
+            TblConfigSyncDataRow.readPermission = 'Administration:General';
+            TblConfigSyncDataRow.updatePermission = 'Administration:General';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TblConfigSyncDataRow.Fields || (TblConfigSyncDataRow.Fields = {}));
+            [
+                'Id',
+                'SynchronizeOnlyPeriod',
+                'Period',
+                'SynchronizeLogWhenReturns'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(TblConfigSyncDataRow = Default.TblConfigSyncDataRow || (Default.TblConfigSyncDataRow = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblConfigSyncDataService;
+        (function (TblConfigSyncDataService) {
+            TblConfigSyncDataService.baseUrl = 'Default/TblConfigSyncData';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TblConfigSyncDataService.Methods || (TblConfigSyncDataService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TblConfigSyncDataService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TblConfigSyncDataService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = TblConfigSyncDataService.baseUrl + '/' + x;
+            });
+        })(TblConfigSyncDataService = Default.TblConfigSyncDataService || (Default.TblConfigSyncDataService = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
         var TblFieldForm = /** @class */ (function (_super) {
             __extends(TblFieldForm, _super);
             function TblFieldForm(prefix) {
@@ -726,6 +801,77 @@ var Sita;
                 };
             });
         })(TblFlightService = Default.TblFlightService || (Default.TblFlightService = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblScheduleCutBagForm = /** @class */ (function (_super) {
+            __extends(TblScheduleCutBagForm, _super);
+            function TblScheduleCutBagForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TblScheduleCutBagForm.formKey = 'Default.TblScheduleCutBag';
+            return TblScheduleCutBagForm;
+        }(Serenity.PrefixedContext));
+        Default.TblScheduleCutBagForm = TblScheduleCutBagForm;
+        [,
+            ['ScheduleCutDate', function () { return Serenity.IntegerEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(TblScheduleCutBagForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblScheduleCutBagRow;
+        (function (TblScheduleCutBagRow) {
+            TblScheduleCutBagRow.idProperty = 'Id';
+            TblScheduleCutBagRow.localTextPrefix = 'Default.TblScheduleCutBag';
+            TblScheduleCutBagRow.deletePermission = 'Administration:General';
+            TblScheduleCutBagRow.insertPermission = 'Administration:General';
+            TblScheduleCutBagRow.readPermission = 'Administration:General';
+            TblScheduleCutBagRow.updatePermission = 'Administration:General';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TblScheduleCutBagRow.Fields || (TblScheduleCutBagRow.Fields = {}));
+            [
+                'Id',
+                'ScheduleCutDate'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(TblScheduleCutBagRow = Default.TblScheduleCutBagRow || (Default.TblScheduleCutBagRow = {}));
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblScheduleCutBagService;
+        (function (TblScheduleCutBagService) {
+            TblScheduleCutBagService.baseUrl = 'Default/TblScheduleCutBag';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TblScheduleCutBagService.Methods || (TblScheduleCutBagService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TblScheduleCutBagService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TblScheduleCutBagService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = TblScheduleCutBagService.baseUrl + '/' + x;
+            });
+        })(TblScheduleCutBagService = Default.TblScheduleCutBagService || (Default.TblScheduleCutBagService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -3334,6 +3480,63 @@ var Sita;
         Default.TblBagsHistoryGrid = TblBagsHistoryGrid;
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblConfigSyncDataDialog = /** @class */ (function (_super) {
+            __extends(TblConfigSyncDataDialog, _super);
+            function TblConfigSyncDataDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Default.TblConfigSyncDataForm(_this.idPrefix);
+                return _this;
+            }
+            TblConfigSyncDataDialog.prototype.getFormKey = function () { return Default.TblConfigSyncDataForm.formKey; };
+            TblConfigSyncDataDialog.prototype.getIdProperty = function () { return Default.TblConfigSyncDataRow.idProperty; };
+            TblConfigSyncDataDialog.prototype.getLocalTextPrefix = function () { return Default.TblConfigSyncDataRow.localTextPrefix; };
+            TblConfigSyncDataDialog.prototype.getService = function () { return Default.TblConfigSyncDataService.baseUrl; };
+            TblConfigSyncDataDialog.prototype.getDeletePermission = function () { return Default.TblConfigSyncDataRow.deletePermission; };
+            TblConfigSyncDataDialog.prototype.getInsertPermission = function () { return Default.TblConfigSyncDataRow.insertPermission; };
+            TblConfigSyncDataDialog.prototype.getUpdatePermission = function () { return Default.TblConfigSyncDataRow.updatePermission; };
+            TblConfigSyncDataDialog.prototype.afterLoadEntity = function () {
+                this.deleteButton.addClass('disabled');
+            };
+            TblConfigSyncDataDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblConfigSyncDataDialog);
+            return TblConfigSyncDataDialog;
+        }(Serenity.EntityDialog));
+        Default.TblConfigSyncDataDialog = TblConfigSyncDataDialog;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblConfigSyncDataGrid = /** @class */ (function (_super) {
+            __extends(TblConfigSyncDataGrid, _super);
+            function TblConfigSyncDataGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TblConfigSyncDataGrid.prototype.getColumnsKey = function () { return 'Default.TblConfigSyncData'; };
+            TblConfigSyncDataGrid.prototype.getDialogType = function () { return Default.TblConfigSyncDataDialog; };
+            TblConfigSyncDataGrid.prototype.getIdProperty = function () { return Default.TblConfigSyncDataRow.idProperty; };
+            TblConfigSyncDataGrid.prototype.getInsertPermission = function () { return Default.TblConfigSyncDataRow.insertPermission; };
+            TblConfigSyncDataGrid.prototype.getLocalTextPrefix = function () { return Default.TblConfigSyncDataRow.localTextPrefix; };
+            TblConfigSyncDataGrid.prototype.getService = function () { return Default.TblConfigSyncDataService.baseUrl; };
+            TblConfigSyncDataGrid.prototype.getButtons = function () {
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            TblConfigSyncDataGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblConfigSyncDataGrid);
+            return TblConfigSyncDataGrid;
+        }(Serenity.EntityGrid));
+        Default.TblConfigSyncDataGrid = TblConfigSyncDataGrid;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
 ///<reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Sita;
 (function (Sita) {
@@ -3494,6 +3697,64 @@ var Sita;
             return TblFlightGrid;
         }(Serenity.EntityGrid));
         Default.TblFlightGrid = TblFlightGrid;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblScheduleCutBagDialog = /** @class */ (function (_super) {
+            __extends(TblScheduleCutBagDialog, _super);
+            function TblScheduleCutBagDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Default.TblScheduleCutBagForm(_this.idPrefix);
+                return _this;
+            }
+            TblScheduleCutBagDialog.prototype.getFormKey = function () { return Default.TblScheduleCutBagForm.formKey; };
+            TblScheduleCutBagDialog.prototype.getIdProperty = function () { return Default.TblScheduleCutBagRow.idProperty; };
+            TblScheduleCutBagDialog.prototype.getLocalTextPrefix = function () { return Default.TblScheduleCutBagRow.localTextPrefix; };
+            TblScheduleCutBagDialog.prototype.getService = function () { return Default.TblScheduleCutBagService.baseUrl; };
+            TblScheduleCutBagDialog.prototype.getDeletePermission = function () { return Default.TblScheduleCutBagRow.deletePermission; };
+            TblScheduleCutBagDialog.prototype.getInsertPermission = function () { return Default.TblScheduleCutBagRow.insertPermission; };
+            TblScheduleCutBagDialog.prototype.getUpdatePermission = function () { return Default.TblScheduleCutBagRow.updatePermission; };
+            TblScheduleCutBagDialog.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
+                this.deleteButton.addClass('disabled');
+            };
+            TblScheduleCutBagDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblScheduleCutBagDialog);
+            return TblScheduleCutBagDialog;
+        }(Serenity.EntityDialog));
+        Default.TblScheduleCutBagDialog = TblScheduleCutBagDialog;
+    })(Default = Sita.Default || (Sita.Default = {}));
+})(Sita || (Sita = {}));
+var Sita;
+(function (Sita) {
+    var Default;
+    (function (Default) {
+        var TblScheduleCutBagGrid = /** @class */ (function (_super) {
+            __extends(TblScheduleCutBagGrid, _super);
+            function TblScheduleCutBagGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TblScheduleCutBagGrid.prototype.getColumnsKey = function () { return 'Default.TblScheduleCutBag'; };
+            TblScheduleCutBagGrid.prototype.getDialogType = function () { return Default.TblScheduleCutBagDialog; };
+            TblScheduleCutBagGrid.prototype.getIdProperty = function () { return Default.TblScheduleCutBagRow.idProperty; };
+            TblScheduleCutBagGrid.prototype.getInsertPermission = function () { return Default.TblScheduleCutBagRow.insertPermission; };
+            TblScheduleCutBagGrid.prototype.getLocalTextPrefix = function () { return Default.TblScheduleCutBagRow.localTextPrefix; };
+            TblScheduleCutBagGrid.prototype.getService = function () { return Default.TblScheduleCutBagService.baseUrl; };
+            TblScheduleCutBagGrid.prototype.getButtons = function () {
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            TblScheduleCutBagGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TblScheduleCutBagGrid);
+            return TblScheduleCutBagGrid;
+        }(Serenity.EntityGrid));
+        Default.TblScheduleCutBagGrid = TblScheduleCutBagGrid;
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;

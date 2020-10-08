@@ -4,12 +4,18 @@
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
+    using Serenity.Services;
     using Serenity.Web;
     using System;
     using System.Configuration;
+    using MyRow = Sita.Default.Entities.TblConfigSyncDataRow;
+    using MyRepository = Sita.Default.Endpoints.TblConfigSyncDataController;
+    using System.Linq;
+    using Sita.Modules.SyncData;
 
     public static partial class SiteInitialization
     {
+        
         public static void ApplicationStart()
         {
             try
@@ -42,10 +48,28 @@
                 EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
+            CheckSyncData();
         }
 
         public static void ApplicationEnd()
         {
+        }
+        public static void CheckSyncData()
+        {
+            
+            var connection = SqlConnections.NewFor<MyRow>();
+            var request = new ListRequest();
+
+            request.Criteria = new Criteria("Id") == "1";
+            ListResponse<MyRow> rows =
+            new MyRepository().List(connection, request);
+            if (rows.TotalCount == 0)
+                return;
+            var config = rows.Entities[0];
+            if (config.SynchronizeLogWhenReturns == true)
+            {
+                SyncData.Run();
+            }
         }
     }
 }

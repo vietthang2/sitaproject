@@ -145,7 +145,7 @@ ENDBSM",
                 else
                 {
                    // Logging.Logger.Information("StartListening : listener != null");
-                    listener.BeginAccept(OnSocketAccepted, null);
+                    listener.BeginAccept(OnSocketAccepted, listener);
                     //SendData(MsgHelper.LoginRequest());
                 }
                 
@@ -192,7 +192,7 @@ ENDBSM",
                     
             }
             catch (Exception ex)
-            {
+            { 
 
                 Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
             }

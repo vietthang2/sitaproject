@@ -109,6 +109,26 @@
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Synchronization, Version=2.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NetframeworkSyn.2.1\Runtime\x86\Microsoft.Synchronization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NetframeworkSyn.2.1\Runtime\ADO.NET\V3.1\x86\Microsoft.Synchronization.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data.Server, Version=3.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NetframeworkSyn.2.1\Runtime\ADO.NET\V3.1\x86\Microsoft.Synchronization.Data.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data.SqlServer, Version=3.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NetframeworkSyn.2.1\Runtime\ADO.NET\V3.1\x86\Microsoft.Synchronization.Data.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data.SqlServerCe, Version=3.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NetframeworkSyn.2.1\Runtime\ADO.NET\V3.1\x86\Microsoft.Synchronization.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -1820,6 +1840,30 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Default.TblAdiTypeForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblConfigSyncDataRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblConfigSyncDataService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblConfigSyncDataForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblScheduleCutBagRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblScheduleCutBagService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.TblScheduleCutBagForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1951,6 +1995,7 @@
     <Compile Include="Modules\RabbitMQ\RabbitPublishRemote.cs" />
     <Compile Include="Modules\RabbitMQ\RabbitPublish.cs" />
     <Compile Include="Modules\RabbitMQ\ServerModel.cs" />
+    <Compile Include="Modules\SyncData\SyncData.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -2020,6 +2065,18 @@
     <Compile Include="Modules\Default\TblAdiType\TblAdiTypePage.cs" />
     <Compile Include="Modules\Default\TblAdiType\TblAdiTypeColumns.cs" />
     <Compile Include="Modules\Default\TblAdiType\TblAdiTypeForm.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataRow.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataRepository.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataEndpoint.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataPage.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataColumns.cs" />
+    <Compile Include="Modules\Default\TblConfigSyncData\TblConfigSyncDataForm.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagRow.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagRepository.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagEndpoint.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagPage.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagColumns.cs" />
+    <Compile Include="Modules\Default\TblScheduleCutBag\TblScheduleCutBagForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

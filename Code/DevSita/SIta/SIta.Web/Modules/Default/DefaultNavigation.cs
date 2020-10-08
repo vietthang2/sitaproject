@@ -9,3 +9,5 @@ using MyPages = Sita.Default.Pages;
 [assembly: NavigationLink(int.MaxValue, "Default/Bags History", typeof(MyPages.TblBagsHistoryController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Default/Search", typeof(MyPages.SearchController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Default/Master Data/Adi Type", typeof(MyPages.TblAdiTypeController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Default/Tbl Config Sync Data", typeof(MyPages.TblConfigSyncDataController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Default/Tbl Schedule Cut Bag", typeof(MyPages.TblScheduleCutBagController), icon: null)]

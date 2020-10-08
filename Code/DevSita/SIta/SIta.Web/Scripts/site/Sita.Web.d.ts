@@ -638,6 +638,55 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
+    class TblConfigSyncDataForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblConfigSyncDataForm {
+        SynchronizeOnlyPeriod: Serenity.BooleanEditor;
+        Period: Serenity.IntegerEditor;
+        SynchronizeLogWhenReturns: Serenity.BooleanEditor;
+    }
+}
+declare namespace Sita.Default {
+    interface TblConfigSyncDataRow {
+        Id?: number;
+        SynchronizeOnlyPeriod?: boolean;
+        Period?: number;
+        SynchronizeLogWhenReturns?: boolean;
+    }
+    namespace TblConfigSyncDataRow {
+        const idProperty = "Id";
+        const localTextPrefix = "Default.TblConfigSyncData";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Id: any;
+            const SynchronizeOnlyPeriod: any;
+            const Period: any;
+            const SynchronizeLogWhenReturns: any;
+        }
+    }
+}
+declare namespace Sita.Default {
+    namespace TblConfigSyncDataService {
+        const baseUrl = "Default/TblConfigSyncData";
+        function Create(request: Serenity.SaveRequest<TblConfigSyncDataRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblConfigSyncDataRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblConfigSyncDataRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblConfigSyncDataRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     interface TblFieldForm {
@@ -786,6 +835,49 @@ declare namespace Sita.Default {
             Delete = "Default/TblFlight/Delete",
             Retrieve = "Default/TblFlight/Retrieve",
             List = "Default/TblFlight/List"
+        }
+    }
+}
+declare namespace Sita.Default {
+    class TblScheduleCutBagForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TblScheduleCutBagForm {
+        ScheduleCutDate: Serenity.IntegerEditor;
+    }
+}
+declare namespace Sita.Default {
+    interface TblScheduleCutBagRow {
+        Id?: number;
+        ScheduleCutDate?: number;
+    }
+    namespace TblScheduleCutBagRow {
+        const idProperty = "Id";
+        const localTextPrefix = "Default.TblScheduleCutBag";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Id: any;
+            const ScheduleCutDate: any;
+        }
+    }
+}
+declare namespace Sita.Default {
+    namespace TblScheduleCutBagService {
+        const baseUrl = "Default/TblScheduleCutBag";
+        function Create(request: Serenity.SaveRequest<TblScheduleCutBagRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblScheduleCutBagRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
         }
     }
 }
@@ -1445,6 +1537,32 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
+    class TblConfigSyncDataDialog extends Serenity.EntityDialog<TblConfigSyncDataRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblConfigSyncDataForm;
+        constructor();
+        afterLoadEntity(): void;
+    }
+}
+declare namespace Sita.Default {
+    class TblConfigSyncDataGrid extends Serenity.EntityGrid<TblConfigSyncDataRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblConfigSyncDataDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Sita.Default {
     class FieldDetailEditor extends Common.GridEditorBase<TblFieldRow> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof TblFieldDialog;
@@ -1502,6 +1620,32 @@ declare namespace Sita.Default {
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Sita.Default {
+    class TblScheduleCutBagDialog extends Serenity.EntityDialog<TblScheduleCutBagRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: TblScheduleCutBagForm;
+        constructor();
+        afterLoadEntity(): void;
+    }
+}
+declare namespace Sita.Default {
+    class TblScheduleCutBagGrid extends Serenity.EntityGrid<TblScheduleCutBagRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TblScheduleCutBagDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Sita.Membership {

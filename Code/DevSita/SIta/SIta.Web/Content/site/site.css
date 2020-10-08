@@ -7434,3 +7434,15 @@ section.content > .s-DataGrid {
 .s-Default-TblAdiTypeDialog .caption {
   width: 150px;
 }
+.s-Default-TblConfigSyncDataDialog > .size {
+  width: 650px;
+}
+.s-Default-TblConfigSyncDataDialog .caption {
+  width: 150px;
+}
+.s-Default-TblScheduleCutBagDialog > .size {
+  width: 650px;
+}
+.s-Default-TblScheduleCutBagDialog .caption {
+  width: 150px;
+}
