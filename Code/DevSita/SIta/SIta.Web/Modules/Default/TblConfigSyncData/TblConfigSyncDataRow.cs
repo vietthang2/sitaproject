@@ -42,6 +42,12 @@ namespace Sita.Default.Entities
             get { return Fields.SynchronizeLogWhenReturns[this]; }
             set { Fields.SynchronizeLogWhenReturns[this] = value; }
         }
+        [DisplayName("Last Sync Date")]
+        public DateTime? LastSyncDate
+        {
+            get { return Fields.LastSyncDate[this]; }
+            set { Fields.LastSyncDate[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -61,6 +67,7 @@ namespace Sita.Default.Entities
             public BooleanField SynchronizeOnlyPeriod;
             public Int32Field Period;
             public BooleanField SynchronizeLogWhenReturns;
+            public DateTimeField LastSyncDate;
         }
     }
 }

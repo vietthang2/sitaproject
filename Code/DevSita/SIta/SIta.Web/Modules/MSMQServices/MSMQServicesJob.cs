@@ -59,11 +59,11 @@ namespace Sita.Modules.MSMQServices
                     try
                     {
                         var path = BuildPath();
-                        Logging.Logger.Information("Begin connect to: "+ path);
+                        Logging.Logger.Information("MSMQ Begin connect to: "+ path);
                         if (MessageQueue.Exists(path) == false)
                         {
                             
-                            Logging.Logger.Information("Not exist path: " + path);
+                            Logging.Logger.Information("MSMQ Not exist path: " + path);
                             var msgQueue = MessageQueue.Create(path);
                         //    msgQueue.Send("Test ");
                         }
@@ -94,7 +94,7 @@ namespace Sita.Modules.MSMQServices
                     }
                     catch (Exception ex)
                     {
-                        Logging.Logger.Error("MSMQ Error:" + ex.Message);
+                      //  Logging.Logger.Error("MSMQ Error:" + ex.Message);
                     }
 
                 }

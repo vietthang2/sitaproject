@@ -10,12 +10,18 @@ using Microsoft.Synchronization.Data;
 using Microsoft.Synchronization.Data.SqlServer;
 using Serenity;
 using Modules.Common;
+using Serenity.Abstractions;
+using Serenity.Services;
+using Serenity.Web;
+using MyRow = Sita.Default.Entities.TblConfigSyncDataRow;
+using MyRepository = Sita.Default.Endpoints.TblConfigSyncDataController;
 
 namespace Sita.Modules.SyncData
 {
 
     public class SyncData
     {
+        public static bool isPorcess = false;
         static string sServerConnection = SqlConnections.NewByKey("Default").ConnectionString;
 
         static string sClientConnection = SqlConnections.NewByKey("Client").ConnectionString;
@@ -127,6 +133,7 @@ namespace Sita.Modules.SyncData
         public static void Sync()
 
         {
+            isPorcess = true;
             SqlConnection serverConn = new SqlConnection(sServerConnection);
 
             SqlConnection clientConn = new SqlConnection(sClientConnection);
@@ -151,9 +158,10 @@ namespace Sita.Modules.SyncData
 
             Logging.Logger.Information("SyncData: Complete Time: " + syncStats.SyncEndTime);
 
-            
+            isPorcess = false;
 
-            
+
+
 
         }
         static void Program_ApplyChangeFailed(object sender, DbApplyChangeFailedEventArgs e)
@@ -171,6 +179,46 @@ namespace Sita.Modules.SyncData
             ProvisionClient();
             ProvisionServer();
             Sync();
+        }
+        public  void RunSchedule()
+        {
+            try
+            {
+                Logging.Logger.Information("SyncData: Check Period.....: ");
+                (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
+
+                var connection = SqlConnections.NewFor<MyRow>();
+                var request = new ListRequest();
+
+                request.Criteria = new Criteria("Id") == "1";
+                ListResponse<MyRow> rows =
+                new MyRepository().List(connection, request);
+                if (rows.TotalCount == 0)
+                    return;
+                var config = rows.Entities[0];
+                 if (SyncData.isPorcess == true) 
+                    return;
+                if (config.SynchronizeOnlyPeriod == true)
+                {
+                    var days = config.Period.Value;
+                    var lastSyncDate = config.LastSyncDate==null? DateTime.Now: config.LastSyncDate.Value;
+                    if (lastSyncDate >= DateTime.Now.AddDays(days))
+                    {
+                        SyncData.Run();
+                        config.LastSyncDate = DateTime.Now;
+                        connection.UpdateById<MyRow>(config);
+                    }
+                    else
+                        Logging.Logger.Information("SyncData: Next sync date time: " + lastSyncDate.AddDays(days));
+
+                }
+                (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
+            }
+            catch (Exception ex)
+            {
+                Logging.Logger.Error("SyncData: Error when run RunSchedule: " + ex.Message);
+                throw;
+            }
         }
     }
 

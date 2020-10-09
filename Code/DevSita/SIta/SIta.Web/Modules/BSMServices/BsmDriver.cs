@@ -121,10 +121,10 @@ ENDBSM",
         bool statusConnect = false;
         public void StartListening(ref bool _statusConnect)
         {
-           // Logging.Logger.Information($"Begin StartListening Ip: {IP} and port:{Port}");
+            
             try
             {
-                if (listener == null && client==null)
+                if (listener == null )
                 {
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
 
@@ -135,8 +135,8 @@ ENDBSM",
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
                     _statusConnect = statusConnect;
-                    Console.WriteLine("StartListening");
-                    Logging.Logger.Information($"Time:{DateTime.Now} : StartListening");
+                    Logging.Logger.Information($"Begin connect to server Ip: {IP} and port:{Port}");
+                    Logging.Logger.Information($"Time:{DateTime.Now} :StartListening");
 
                     Thread T = new Thread(checkTimeOut);
                     T.IsBackground = true;
@@ -144,8 +144,12 @@ ENDBSM",
                 }
                 else
                 {
-                   // Logging.Logger.Information("StartListening : listener != null");
-                    listener.BeginAccept(OnSocketAccepted, listener);
+                    
+                    // Logging.Logger.Information("StartListening : listener != null");
+                   // listener.Dispose();
+                    //listener.Listen(20);
+                    listener.BeginAccept(OnSocketAccepted, null);
+                    return;
                     //SendData(MsgHelper.LoginRequest());
                 }
                 
@@ -154,7 +158,9 @@ ENDBSM",
             {
                 
                 Log.Error("StartListening Error:"+e.Message + e.StackTrace + e.Source);
-               // listener.Close();
+                // listener.Close();
+                //Logging.Logger.Information($"Time:{DateTime.Now} :StartListening: Can not connect to server! ");
+                listener = null;
                 return;
                 
             }
@@ -185,8 +191,12 @@ ENDBSM",
                 }
                 else
                 {
-                    client.Listen(20);
-                    Logging.Logger.Information("Can not connect to Socket : "+client.LingerState) ;
+                    // client.Listen(20);
+                    Logging.Logger.Information($"Time:{DateTime.Now} :StartListening: Can not connect to server! ");
+                    //Logging.Logger.Information("Can not connect to Socket : ") ;
+                    listener = null;
+                    client = null;
+                    statusConnect = false;
                     //client.Close();
                 }
                     
@@ -195,6 +205,8 @@ ENDBSM",
             { 
 
                 Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
+                listener.Dispose();
+                client.Dispose();
             }
         }
         
@@ -248,7 +260,7 @@ ENDBSM",
 
             if (msg.Type == MsgType.LOGIN_RQST)
             {
-                if (msg.Data == "password")
+                if (msg.Data == "CXR1TECG01")
                 {
                     SendData(MsgHelper.LoginAcept());
                     Thread.Sleep(2000);

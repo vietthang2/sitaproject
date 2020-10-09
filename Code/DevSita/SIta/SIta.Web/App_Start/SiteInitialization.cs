@@ -12,6 +12,7 @@
     using MyRepository = Sita.Default.Endpoints.TblConfigSyncDataController;
     using System.Linq;
     using Sita.Modules.SyncData;
+    using global::Modules.Common;
 
     public static partial class SiteInitialization
     {
@@ -36,6 +37,7 @@
                     registrar.RegisterInstance<IDirectoryService>(new ActiveDirectoryService());
 
                 InitializeExceptionLog();
+                Logging.InitLogging();
             }
             catch (Exception ex)
             {
@@ -48,7 +50,7 @@
                 EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
-            CheckSyncData();
+           // CheckSyncData();
         }
 
         public static void ApplicationEnd()
@@ -56,7 +58,8 @@
         }
         public static void CheckSyncData()
         {
-            
+            (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
+
             var connection = SqlConnections.NewFor<MyRow>();
             var request = new ListRequest();
 
@@ -68,8 +71,15 @@
             var config = rows.Entities[0];
             if (config.SynchronizeLogWhenReturns == true)
             {
-                SyncData.Run();
+                if (SyncData.isPorcess == false)
+                {
+                    SyncData.Run();
+                    config.LastSyncDate = DateTime.Now;
+                    connection.UpdateById<MyRow>(config);
+                }
+                    
             }
+            (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
         }
     }
 }

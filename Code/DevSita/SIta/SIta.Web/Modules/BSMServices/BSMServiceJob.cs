@@ -31,8 +31,8 @@ namespace Sita.Modules.BSMServices
 
                 _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
             }
-            //else if (_BSMServices.ThreadState == ThreadState.Unstarted)
-            //    _BSMServices.Start();
+            else if (_BSMServices.ThreadState == ThreadState.Unstarted)
+                _BSMServices.Start();
 
 
         }
@@ -51,16 +51,17 @@ namespace Sita.Modules.BSMServices
 
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 bool isConnected = false;
-                BsmDriver driver = new BsmDriver();
-                var bsmServer = BSMServer();
-                driver.IP = bsmServer.BSMServer.Ip;
-                driver.Port = bsmServer.BSMServer.Port;
-                driver.ClientPort = bsmServer.BSMServer.ClientPort;
+               
                 while (true && !isConnected)
                 {
                    
                         Thread.Sleep(5000); // 10 sec
-                       
+                        BsmDriver driver = new BsmDriver();
+                        var bsmServer = BSMServer();
+                        driver.IP = bsmServer.BSMServer.Ip;
+                        driver.Port = bsmServer.BSMServer.Port;
+                        driver.ClientPort = bsmServer.BSMServer.ClientPort;
+
                         driver.StartListening(ref isConnected);
                     
                     

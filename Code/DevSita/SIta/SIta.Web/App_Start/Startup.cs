@@ -7,6 +7,7 @@ using Serenity;
 using Serenity.Data;
 using Sita.Modules.BSMServices;
 using Sita.Modules.MSMQServices;
+using Sita.Modules.SyncData;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -57,24 +58,27 @@ namespace Sita
 
             app.UseHangfireAspNet(GetHangfireServers);
             app.UseHangfireDashboard("/jobs", options);
-            Logging.InitLogging();
+            
             Sita.Modules.RabbitMQ.RabbitSubscribe.StartSubscribeThread();
 
             // Sita.Modules.RabbitMQ.RabbitRemoteSubscribe.StartSubscribeThread();
             // Setting up some example jobs
             BackgroundJob.Enqueue<MSMQServices>(job => job.Run());
             RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), Cron.Hourly);
-            RecurringJob.AddOrUpdate<MSMQServices>(job => job.Run(), "0 * * * *");
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "*/5 * * * *");
 
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
-            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Hourly);
-            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "0 * * * *");
-
-            BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
-            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);
-            
-
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "*/3 * * * *");
            
+            BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), "0 0 * * *");
+            //Sync Data
+            //BackgroundJob.Enqueue<SyncData>(job => job.RunSchedule());
+            //RecurringJob.AddOrUpdate<SyncData>(job => job.RunSchedule(), "0 1-2 * * *");
+
+
+
 
         }
     }
