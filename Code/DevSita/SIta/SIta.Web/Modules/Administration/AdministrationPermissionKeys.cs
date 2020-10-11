@@ -55,5 +55,26 @@ namespace Sita.Administration
         }
         [Description("[General]")]
         public const string General = "Sita:General";
+
+        [DisplayName("SyncData")]
+        public class SyncData
+        {
+            [ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Sita:dbo.tblConfigSyncData:Delete";
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Sita:dbo.tblConfigSyncData:Modify";
+            public const string View = "Sita:dbo.tblConfigSyncData:View";
+
+        }
+        [DisplayName("CutData")]
+        public class CutData
+        {
+            [ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Sita:dbo.TblScheduleCutBag:Delete";
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Sita:dbo.TblScheduleCutBag:Modify";
+            public const string View = "Sita:dbo.TblScheduleCutBag:View";
+
+        }
     }
 }

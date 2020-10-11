@@ -237,3 +237,8 @@ D:\Sita\sitaproject-dev\sitaproject.git\branches\dev\Code\DevSita\SIta\SIta.Web\
 D:\Sita\sitaproject-dev\sitaproject.git\branches\dev\Code\DevSita\SIta\SIta.Web\obj\Release\Sita.Web.csproj.CopyComplete
 D:\Sita\sitaproject-dev\sitaproject.git\branches\dev\Code\DevSita\SIta\SIta.Web\obj\Release\Sita.Web.dll
 D:\Sita\sitaproject-dev\sitaproject.git\branches\dev\Code\DevSita\SIta\SIta.Web\obj\Release\Sita.Web.pdb
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Microsoft.Synchronization.Data.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Microsoft.Synchronization.Data.Server.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Microsoft.Synchronization.Data.SqlServer.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Microsoft.Synchronization.Data.SqlServerCe.dll
+E:\Project\Sita\Code\DevSita\Sita\Sita.Web\bin\Microsoft.Synchronization.dll

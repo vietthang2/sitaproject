@@ -39,7 +39,7 @@ namespace Sita.Modules.RabbitMQ
                                          basicProperties: null,
                                          body: body);
                     //Console.WriteLine(" [x] Sent {0} to server remote {1}", message, RabbitServer.RabbitIp);
-                    Logging.Logger.Information(" [x] Sent Rabbit to server remote  {0} Data: {1}", RabbitServer.RabbitIp, message );
+                    Logging.Logger.Information(" [x] Sent Rabbit to server remote  {0} Data: {1}", RabbitServerRemote.RabbitIp, message );
                     connection.Close();
 
                 }

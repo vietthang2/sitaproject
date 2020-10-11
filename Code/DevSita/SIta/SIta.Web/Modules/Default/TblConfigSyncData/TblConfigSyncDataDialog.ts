@@ -16,6 +16,7 @@ namespace Sita.Default {
             super();
         }
         afterLoadEntity() {
+            super.afterLoadEntity();
             this.deleteButton.addClass('disabled');
         }
     }

@@ -202,7 +202,7 @@ namespace Sita.Modules.SyncData
                 {
                     var days = config.Period.Value;
                     var lastSyncDate = config.LastSyncDate==null? DateTime.Now: config.LastSyncDate.Value;
-                    if (lastSyncDate >= DateTime.Now.AddDays(days))
+                    if (lastSyncDate.AddDays(days) >= DateTime.Now)
                     {
                         SyncData.Run();
                         config.LastSyncDate = DateTime.Now;

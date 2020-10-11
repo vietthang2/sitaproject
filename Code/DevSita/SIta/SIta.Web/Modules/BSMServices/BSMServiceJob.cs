@@ -20,20 +20,30 @@ namespace Sita.Modules.BSMServices
 
         public static void StartBSMServicesThread()
         {
-            if (_BSMServices == null)
+            try
             {
-                _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
-                _BSMServices.Priority = ThreadPriority.Lowest;
-                _BSMServices.Start();
+                if (_BSMServices == null)
+                {
+                    _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
+                    _BSMServices.Priority = ThreadPriority.Lowest;
+                    _BSMServices.Start();
+                }
+                else if (_BSMServices.ThreadState == ThreadState.Stopped)
+                {
+
+                    _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
+                    _BSMServices.Start();
+                }
+                else if (_BSMServices.ThreadState == ThreadState.Unstarted)
+                    _BSMServices.Start();
+
             }
-            else if (_BSMServices.ThreadState == ThreadState.Stopped)
+            catch (Exception)
             {
+                _BSMServices.DisableComObjectEagerCleanup();
+                StartBSMServicesThread();
 
-                _BSMServices = new Thread(new ThreadStart(BSMServicesRun));
             }
-            else if (_BSMServices.ThreadState == ThreadState.Unstarted)
-                _BSMServices.Start();
-
 
         }
         public static void EndBSMServicesThread()
@@ -52,10 +62,10 @@ namespace Sita.Modules.BSMServices
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 bool isConnected = false;
                
-                while (true && !isConnected)
-                {
+                //while (true && !isConnected)
+               // {
                    
-                        Thread.Sleep(5000); // 10 sec
+                        Thread.Sleep(1000); // 10 sec
                         BsmDriver driver = new BsmDriver();
                         var bsmServer = BSMServer();
                         driver.IP = bsmServer.BSMServer.Ip;
@@ -68,7 +78,7 @@ namespace Sita.Modules.BSMServices
                     
 
 
-                }
+               // }
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }

@@ -5,14 +5,15 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Administration;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[TblScheduleCutBag]")]
-    [DisplayName("Tbl Schedule Cut Bag"), InstanceName("Tbl Schedule Cut Bag")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [DisplayName("Schedule Cut Bag"), InstanceName("Schedule Cut Bag")]
+    [ReadPermission(PermissionKeys.CutData.View)]
+    [ModifyPermission(PermissionKeys.CutData.Modify)]
     public sealed class TblScheduleCutBagRow : Row, IIdRow
     {
         [DisplayName("Id"), Column("ID"), Identity]

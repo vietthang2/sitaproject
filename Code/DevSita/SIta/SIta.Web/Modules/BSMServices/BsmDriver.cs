@@ -124,14 +124,13 @@ ENDBSM",
             
             try
             {
+                
                 if (listener == null )
                 {
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
-
+                    
                     listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     listener.Bind(new IPEndPoint(IPAddress.Any, ClientPort));
-                    //listener.Listen(20);
-                    // Connect to the remote endpoint.  
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
                     _statusConnect = statusConnect;
@@ -145,22 +144,26 @@ ENDBSM",
                 else
                 {
                     
-                    // Logging.Logger.Information("StartListening : listener != null");
-                   // listener.Dispose();
-                    //listener.Listen(20);
-                    listener.BeginAccept(OnSocketAccepted, null);
+                    Logging.Logger.Information("Start Listening again....");
+                    
+                    listener.BeginConnect(remoteEP,
+                        new AsyncCallback(OnSocketAccepted), client);
+
                     return;
-                    //SendData(MsgHelper.LoginRequest());
+                    
                 }
                 
             }
             catch (Exception e)
             {
-                
-                Log.Error("StartListening Error:"+e.Message + e.StackTrace + e.Source);
-                // listener.Close();
-                //Logging.Logger.Information($"Time:{DateTime.Now} :StartListening: Can not connect to server! ");
-                listener = null;
+                if (e.Message== "Only one usage of each socket address (protocol/network address/port) is normally permitted") 
+                    return;
+                if(e.Message== "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
+                    Log.Error("Start Listening Error:"+e.Message + e.StackTrace + e.Source);
+                Logging.Logger.Warning("Start Listening again fail!");
+                Thread T = new Thread(checkTimeOut);
+                T.IsBackground = true;
+                T.Start();
                 return;
                 
             }
@@ -177,27 +180,15 @@ ENDBSM",
                 if (client.Connected)
                 {
                     statusConnect = true;
-                    //Console.WriteLine("Socket connected to {0}",
-                    //client.RemoteEndPoint.ToString());
-                    Logging.Logger.Information("Socket connected to {0}",
+                    Logging.Logger.Information("OnSocketAccepted: Successfully connected to the server {0}",
                     client.RemoteEndPoint.ToString());
-
-                    Console.WriteLine($"OnSocketAccepted");
-                    Logging.Logger.Information($"Time:{DateTime.Now} : OnSocketAccepted");
-                    
                     client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
-                    Console.WriteLine("Send data....");
                     SendData(MsgHelper.LoginRequest());
                 }
                 else
                 {
-                    // client.Listen(20);
                     Logging.Logger.Information($"Time:{DateTime.Now} :StartListening: Can not connect to server! ");
-                    //Logging.Logger.Information("Can not connect to Socket : ") ;
-                    listener = null;
-                    client = null;
-                    statusConnect = false;
-                    //client.Close();
+                    
                 }
                     
             }
@@ -205,8 +196,7 @@ ENDBSM",
             { 
 
                 Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
-                listener.Dispose();
-                client.Dispose();
+                
             }
         }
         
@@ -248,6 +238,7 @@ ENDBSM",
 
         private void DataProc(object obj)
         {
+            if (obj == null) return;
             string bag = DateTime.Now.ToString("0hhmmssfff");
 
             byte[] recData = (byte[])obj;
@@ -260,46 +251,46 @@ ENDBSM",
 
             if (msg.Type == MsgType.LOGIN_RQST)
             {
-                if (msg.Data == "CXR1TECG01")
-                {
-                    SendData(MsgHelper.LoginAcept());
-                    Thread.Sleep(2000);
-                    if (msg_ack)
-                    {
-                        s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
-                        Thread.Sleep(10);
-                        s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
-                        Thread.Sleep(10);
-                        s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
-                        Thread.Sleep(10);
-                        s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
-                    }
-                    SendData(MsgHelper.AckDataMsg(s_msg));
-                    msg_ack = false;
-                    timeOut = 0;
-                }
-                else
-                {
-                    SendData(MsgHelper.LoginReject());
-                }
+                //if (msg.Data == "CXR1TECG01")
+                //{
+                //    SendData(MsgHelper.LoginAcept());
+                //    Thread.Sleep(2000);
+                //    if (msg_ack)
+                //    {
+                //        s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
+                //        Thread.Sleep(10);
+                //        s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
+                //        Thread.Sleep(10);
+                //        s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
+                //        Thread.Sleep(10);
+                //        s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
+                //    }
+                //    SendData(MsgHelper.AckDataMsg(s_msg));
+                //    msg_ack = false;
+                //    timeOut = 0;
+                //}
+                //else
+                //{
+                //    SendData(MsgHelper.LoginReject());
+                //}
             }
 
             if (msg.Type == MsgType.ACK_MSG)
             {
-                if (msg_ack)
-                {
-                    s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
-                    Thread.Sleep(10);
-                    s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
-                    Thread.Sleep(10);
-                    s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
-                    Thread.Sleep(10);
-                    s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
-                }
-                Thread.Sleep(500);
-                SendData(MsgHelper.AckDataMsg(s_msg));
-                msg_ack = false;
-                timeOut = 0;
+                //if (msg_ack)
+                //{
+                //    s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
+                //    Thread.Sleep(10);
+                //    s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
+                //    Thread.Sleep(10);
+                //    s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
+                //    Thread.Sleep(10);
+                //    s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
+                //}
+                //Thread.Sleep(500);
+                //SendData(MsgHelper.AckDataMsg(s_msg));
+                //msg_ack = false;
+                //timeOut = 0;
             }
 
             if (msg.Type == MsgType.NAK_MSG)
@@ -319,11 +310,13 @@ ENDBSM",
                     var keyRabbit2 = DataObject.Where(i => i.Substring(0, 1) == "N").FirstOrDefault();
                     string _keyQueue = (keyRabbit1 + "_" + keyRabbit2).Replace(@"\", "").Replace(System.Environment.NewLine, "");
                     RabbitPublish.Publish(_keyQueue, msg.Data.ToString());
+                    SendData(MsgHelper.Ack_Msg());
                 }
                 catch (Exception ex)
                 {
+                    Logging.Logger.Error("Not parse and send to Rabbit server");
 
-                    
+
                 }
                
             }
@@ -343,8 +336,10 @@ ENDBSM",
         int timeOut = 0;
         private void checkTimeOut()
         {
+            int firstTime = 0;
             while (true)
             {
+                firstTime++;
                 if (client != null)
                 {
                     if (client.Connected)
@@ -360,6 +355,31 @@ ENDBSM",
                             timeOut = 0;
                         }
                     }
+                    else
+                    {
+                        if (firstTime > 1)
+                        {
+                            Logging.Logger.Warning("Close connection!");
+                            client.Dispose();
+                            listener.Dispose();
+                            listener = null;
+                            Thread.Sleep(5000);
+                            StartListening(ref statusConnect);
+                            break;
+                        }
+                        
+                        
+                            
+                    }
+                        
+                }
+                else
+                {
+                    Logging.Logger.Warning("Can not connect!");
+                    Thread.Sleep(3000);
+                    
+                    StartListening(ref statusConnect);
+                    break;
                 }
                 Thread.Sleep(100);
             }

@@ -5,14 +5,15 @@ namespace Sita.Default.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Sita.Administration;
     using System;
     using System.ComponentModel;
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[dbo].[tblConfigSyncData]")]
-    [DisplayName("Tbl Config Sync Data"), InstanceName("Tbl Config Sync Data")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [DisplayName("Config Sync Data"), InstanceName("Config Sync Data")]
+    [ReadPermission(PermissionKeys.SyncData.View)]
+    [ModifyPermission(PermissionKeys.SyncData.Modify)]
     public sealed class TblConfigSyncDataRow : Row, IIdRow
     {
         [DisplayName("Id"), PrimaryKey]

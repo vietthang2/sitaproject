@@ -15,11 +15,11 @@ namespace Sita.Default.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 Id { get; set; }
-        [Width(100)]
+        [Width(300)]
         public Boolean SynchronizeOnlyPeriod { get; set; }
-        [Width(40)]
+        [Width(300)]
         public Int32 Period { get; set; }
-        [Width(100)]
+        [Width(300)]
         public Boolean SynchronizeLogWhenReturns { get; set; }
     }
 }

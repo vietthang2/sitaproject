@@ -3499,6 +3499,7 @@ var Sita;
             TblConfigSyncDataDialog.prototype.getInsertPermission = function () { return Default.TblConfigSyncDataRow.insertPermission; };
             TblConfigSyncDataDialog.prototype.getUpdatePermission = function () { return Default.TblConfigSyncDataRow.updatePermission; };
             TblConfigSyncDataDialog.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
                 this.deleteButton.addClass('disabled');
             };
             TblConfigSyncDataDialog = __decorate([
