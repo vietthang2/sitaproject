@@ -128,6 +128,17 @@ namespace Sita.Modules.Default.TblFlight
                         }
 
                     }
+                    else if (dailyModel.Connect.Daily.Action == "Delete")
+                    {
+                        DeleteRequest deleteRequest = new DeleteRequest();
+                        deleteRequest.EntityId = newFlight.Identify;
+                        var request = new ListRequest();
+                        request.Criteria = new Criteria("Identify") == newFlight.Identify;
+                        ListResponse<MyRow> rows = new MyRepository().List(connection, request);
+                        if (rows.TotalCount > 0)
+                            new TblFlightController().Delete(unitOfWork, deleteRequest);
+
+                    }
                     else
                     {
                         newFlight.DateCreated = DateTime.Now;
