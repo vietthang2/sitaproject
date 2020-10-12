@@ -48,7 +48,7 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.DateBoundảy = dailyModel.Connect.Daily.DateBoundary;
                 newFlight.DateCreated = DateTime.Now;
                 newFlight.UserCreated = "Admin";
-                //newFlight.Chute = dailyModel.Connect.Daily;
+                //newFlight.Chute = dailyModel.Connect.Daily
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
 
 
@@ -90,6 +90,7 @@ namespace Sita.Modules.Default.TblFlight
                     {
                         //newFlight.UserUpdate = dailyModel.Connect.Daily.Linecode;
                         newFlight.DateUpdated = DateTime.Now;
+                        newFlight.LastChanged= DateTime.Now;
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Update(unitOfWork, saveRequest);
 

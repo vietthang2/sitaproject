@@ -214,6 +214,8 @@ ENDBSM",
                     return;
                 }
                 int received = client.EndReceive(result);
+                if (received <= 0)
+                    return;
                 //Copy the recieved data into new buffer , to avoid null bytes
                 byte[] recData = new byte[received];
                 Buffer.BlockCopy(buffer, 0, recData, 0, received);

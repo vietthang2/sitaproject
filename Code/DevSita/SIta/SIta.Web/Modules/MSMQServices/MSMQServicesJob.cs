@@ -23,19 +23,27 @@ namespace Sita.Modules.MSMQServices
 
         public static void StartMSMQServicesThread()
         {
-            if (_MSMQServices == null)
+            try
             {
-                _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
-                _MSMQServices.Priority = ThreadPriority.Lowest;
-                _MSMQServices.Start();
-            }
-            else if (_MSMQServices.ThreadState == ThreadState.Stopped)
-            {
+                if (_MSMQServices == null)
+                {
+                    _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
+                    _MSMQServices.Priority = ThreadPriority.Lowest;
+                    _MSMQServices.Start();
+                }
+                else if (_MSMQServices.ThreadState == ThreadState.Stopped)
+                {
 
-                _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
+                    _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
+                }
+                else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
+                    _MSMQServices.Start();
             }
-            //else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
-            //    _MSMQServices.Start();
+            catch (Exception)
+            {
+                _MSMQServices.DisableComObjectEagerCleanup();
+                StartMSMQServicesThread();
+            }
 
 
         }
@@ -78,12 +86,19 @@ namespace Sita.Modules.MSMQServices
                                 // chuyển xml về json sau đó chuyển về model
                                 message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
                                 Logging.Logger.Information("MSMQ: messages  " + message.Body.ToString());
-                                XmlDocument doc = new XmlDocument();
-                                doc.LoadXml(message.Body.ToString());
-                                //doc.RemoveChild(doc.FirstChild);
-                                string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
-                                var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
-                                StoreFlight.Save(dailyModel);
+                                try
+                                {
+                                    XmlDocument doc = new XmlDocument();
+                                    doc.LoadXml(message.Body.ToString());
+                                    //doc.RemoveChild(doc.FirstChild);
+                                    string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
+                                    var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
+                                    StoreFlight.Save(dailyModel);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logging.Logger.Error("MSMQ: can not parse and save mess");
+                                }
                             }
 
                             messageQueue.Purge();
@@ -94,7 +109,7 @@ namespace Sita.Modules.MSMQServices
                     }
                     catch (Exception ex)
                     {
-                      //  Logging.Logger.Error("MSMQ Error:" + ex.Message);
+                        Logging.Logger.Error("MSMQ Error:" + ex.Message);
                     }
 
                 }
