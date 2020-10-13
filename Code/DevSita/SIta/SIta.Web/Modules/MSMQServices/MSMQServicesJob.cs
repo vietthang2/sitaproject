@@ -35,6 +35,7 @@ namespace Sita.Modules.MSMQServices
                 {
 
                     _MSMQServices = new Thread(new ThreadStart(MSMQServicesRun));
+                    _MSMQServices.Start();
                 }
                 else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
                     _MSMQServices.Start();
@@ -63,7 +64,7 @@ namespace Sita.Modules.MSMQServices
                 (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 while (true)
                 {
-                    Thread.Sleep(100000); // 1 min
+                    
                     try
                     {
                         var path = BuildPath();
@@ -72,14 +73,17 @@ namespace Sita.Modules.MSMQServices
                         {
                             
                             Logging.Logger.Information("MSMQ Not exist path: " + path);
-                            var msgQueue = MessageQueue.Create(path);
-                        //    msgQueue.Send("Test ");
+                            //var msgQueue = MessageQueue.Create(path);
+                            //msgQueue.Send("Test ");
                         }
                         else
                         {
                             MessageQueue messageQueue = new MessageQueue(path);
+                           // messageQueue.Send("MSMQ: Test data send","Test");
+                           // Logging.Logger.Information("MSMQ: Test data send");
+
                             System.Messaging.Message[] messages = messageQueue.GetAllMessages();
-                            Logging.Logger.Information("MSMQ: Begin Get data  " + path);
+                            Logging.Logger.Information("MSMQ: Begin get data, number:  " + messages.Length);
                             //Nhận tin nhắn
                             foreach (System.Messaging.Message message in messages)
                             {
@@ -103,6 +107,7 @@ namespace Sita.Modules.MSMQServices
 
                             messageQueue.Purge();
                             Logging.Logger.Information("MSMQ: Get all data " + path);
+                            messageQueue.Close();
                         }
                         
                        
@@ -111,6 +116,7 @@ namespace Sita.Modules.MSMQServices
                     {
                         Logging.Logger.Error("MSMQ Error:" + ex.Message);
                     }
+                    Thread.Sleep(100000); // 1 min
 
                 }
                 (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
@@ -125,7 +131,7 @@ namespace Sita.Modules.MSMQServices
                 {
                     var appSettings = JsonConvert.DeserializeObject<ServerModel>(reader.ReadToEnd());
 
-                    string path = String.Format("{0}\\Private$\\{1}", appSettings.MsmqServer.Ip, appSettings.MsmqServer.QueueName);
+                    string path = String.Format("{0}\\private$\\{1}", appSettings.MsmqServer.Ip, appSettings.MsmqServer.QueueName);
                     appSettings.MsmqServer.QueuePath = path;
                     return path;
                 }
