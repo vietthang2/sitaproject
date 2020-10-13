@@ -114,6 +114,11 @@ namespace MVC
                 public const string TblBagsHistoryIndex = "~/Modules/Default/TblBagsHistory/TblBagsHistoryIndex.cshtml";
             }
 
+            public static class TblConfigSyncData
+            {
+                public const string TblConfigSyncDataIndex = "~/Modules/Default/TblConfigSyncData/TblConfigSyncDataIndex.cshtml";
+            }
+
             public static class TblField
             {
                 public const string TblFieldIndex = "~/Modules/Default/TblField/TblFieldIndex.cshtml";
@@ -122,6 +127,11 @@ namespace MVC
             public static class TblFlight
             {
                 public const string TblFlightIndex = "~/Modules/Default/TblFlight/TblFlightIndex.cshtml";
+            }
+
+            public static class TblScheduleCutBag
+            {
+                public const string TblScheduleCutBagIndex = "~/Modules/Default/TblScheduleCutBag/TblScheduleCutBagIndex.cshtml";
             }
         }
 

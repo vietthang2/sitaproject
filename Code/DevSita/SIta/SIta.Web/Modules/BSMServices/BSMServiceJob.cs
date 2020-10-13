@@ -98,7 +98,8 @@ namespace Sita.Modules.BSMServices
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw;
+                return null;
+                
             }
         }
 

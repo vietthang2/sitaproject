@@ -20,12 +20,19 @@ namespace Sita.Default.Forms
         public String ScheduleDate { get; set; }
         public String SoftReplace { get; set; }
         public String SiteIata { get; set; }
-        public String DateBoundảy { get; set; }
+        public String DateBoundary { get; set; }
+        
         public Int32 Chute { get; set; }
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime LastChanged { get; set; }
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime DateCreated { get; set; }
         public String UserCreated { get; set; }
         public String UserUpdate { get; set; }
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime DateUpdated { get; set; }
         [Tab("Field")]
         [FieldDetailEditor]

@@ -140,9 +140,9 @@ namespace Sita.Modules.SyncData
 
             SyncOrchestrator syncOrchestrator = new SyncOrchestrator();
 
-            syncOrchestrator.LocalProvider = new SqlSyncProvider(sScope, clientConn);
+            syncOrchestrator.LocalProvider = new SqlSyncProvider(sScope, serverConn);
 
-            syncOrchestrator.RemoteProvider = new SqlSyncProvider(sScope, serverConn);
+            syncOrchestrator.RemoteProvider = new SqlSyncProvider(sScope, clientConn);
 
             syncOrchestrator.Direction = SyncDirectionOrder.Upload;
 
@@ -217,7 +217,7 @@ namespace Sita.Modules.SyncData
             catch (Exception ex)
             {
                 Logging.Logger.Error("SyncData: Error when run RunSchedule: " + ex.Message);
-                throw;
+                
             }
         }
     }

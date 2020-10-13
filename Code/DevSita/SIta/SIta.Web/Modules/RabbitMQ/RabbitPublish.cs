@@ -195,7 +195,7 @@ namespace Sita.Modules.RabbitMQ
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw;
+                return null;
             }
         }
     }

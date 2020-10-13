@@ -45,7 +45,7 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.ScheduleDate = dailyModel.Connect.Daily.ScheduleDate;
                 newFlight.SoftReplace = dailyModel.Connect.Daily.Softreplace;
                 newFlight.SiteIata = dailyModel.Connect.Daily.SiteIata;
-                newFlight.DateBoundảy = dailyModel.Connect.Daily.DateBoundary;
+                newFlight.DateBoundary = dailyModel.Connect.Daily.DateBoundary;
                 newFlight.DateCreated = DateTime.Now;
                 newFlight.UserCreated = "Admin";
                 //newFlight.Chute = dailyModel.Connect.Daily

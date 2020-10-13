@@ -14,6 +14,8 @@ using System.Threading;
 using System.Web;
 using System.Xml;
 using Sita.Modules.Default.TblFlight;
+using System.Text;
+
 
 namespace Sita.Modules.MSMQServices
 {
@@ -55,12 +57,13 @@ namespace Sita.Modules.MSMQServices
                 _MSMQServices.Abort();
             }
         }
+        
         private static void MSMQServicesRun()
          {
             bool enableEmailService = true;//Convert.ToBoolean(ConfigurationManager.AppSettings["EnableEmailService"]);
             if (enableEmailService)
             {
-
+                
                 (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 while (true)
                 {
@@ -68,6 +71,7 @@ namespace Sita.Modules.MSMQServices
                     try
                     {
                         var path = BuildPath();
+                        System.Xml.XmlDocument xmlDoc = new XmlDocument();
                         Logging.Logger.Information("MSMQ Begin connect to: "+ path);
                         if (MessageQueue.Exists(path) == false)
                         {
@@ -85,27 +89,30 @@ namespace Sita.Modules.MSMQServices
                             System.Messaging.Message[] messages = messageQueue.GetAllMessages();
                             Logging.Logger.Information("MSMQ: Begin get data, number:  " + messages.Length);
                             //Nhận tin nhắn
+                            var isCheckAll = true;
                             foreach (System.Messaging.Message message in messages)
                             {
                                 // chuyển xml về json sau đó chuyển về model
-                                message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
-                                Logging.Logger.Information("MSMQ: messages  " + message.Body.ToString());
+                                message.Formatter = new System.Messaging.XmlMessageFormatter(new Type[] { typeof(string) });
+                                
+                                xmlDoc.Load(message.BodyStream);
+                                var mess = xmlDoc.ToString();
+                                
                                 try
                                 {
-                                    XmlDocument doc = new XmlDocument();
-                                    doc.LoadXml(message.Body.ToString());
-                                    //doc.RemoveChild(doc.FirstChild);
-                                    string json = JsonConvert.SerializeXmlNode(doc.FirstChild.NextSibling);
+                                    string json = JsonConvert.SerializeXmlNode(xmlDoc.FirstChild.NextSibling);
                                     var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
+                                    Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
                                     StoreFlight.Save(dailyModel);
                                 }
                                 catch (Exception ex)
                                 {
                                     Logging.Logger.Error("MSMQ: can not parse and save mess");
+                                    isCheckAll = false;
                                 }
                             }
-
-                            messageQueue.Purge();
+                            if(isCheckAll)
+                                messageQueue.Purge();
                             Logging.Logger.Information("MSMQ: Get all data " + path);
                             messageQueue.Close();
                         }
@@ -122,6 +129,7 @@ namespace Sita.Modules.MSMQServices
                 (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }
+        
         public static string BuildPath()
         {
             //Doc cau hình MSMQ Server từ file config
@@ -139,7 +147,7 @@ namespace Sita.Modules.MSMQServices
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw;
+                return null;
             }
         }
 

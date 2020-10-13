@@ -32,7 +32,8 @@ namespace Sita.Modules.Default.Common
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw;
+                return null;
+                
             }
         }
     }

@@ -746,31 +746,6 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
-}
-declare namespace Sita.Default {
-    interface TblFlightForm {
-        Adi: Serenity.LookupEditor;
-        LineCode: Serenity.StringEditor;
-        Number: Serenity.StringEditor;
-        ScheduleDate: Serenity.StringEditor;
-        SoftReplace: Serenity.StringEditor;
-        SiteIata: Serenity.StringEditor;
-        DateBoundảy: Serenity.StringEditor;
-        Chute: Serenity.IntegerEditor;
-        LastChanged: Serenity.DateEditor;
-        DateCreated: Serenity.DateEditor;
-        UserCreated: Serenity.StringEditor;
-        UserUpdate: Serenity.StringEditor;
-        DateUpdated: Serenity.DateEditor;
-        ListField: FieldDetailEditor;
-    }
-    class TblFlightForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Sita.Default {
     interface TblFlightRow {
         Identify?: string;
         Adi?: string;
@@ -779,7 +754,7 @@ declare namespace Sita.Default {
         ScheduleDate?: string;
         SoftReplace?: string;
         SiteIata?: string;
-        DateBoundảy?: string;
+        DateBoundary?: string;
         Chute?: number;
         LastChanged?: string;
         DateCreated?: string;
@@ -808,7 +783,7 @@ declare namespace Sita.Default {
             ScheduleDate = "ScheduleDate",
             SoftReplace = "SoftReplace",
             SiteIata = "SiteIata",
-            DateBoundảy = "DateBound\u1EA3y",
+            DateBoundary = "DateBoundary",
             Chute = "Chute",
             LastChanged = "LastChanged",
             DateCreated = "DateCreated",
@@ -818,23 +793,6 @@ declare namespace Sita.Default {
             DDMM = "DDMM",
             YYYY = "YYYY",
             ListField = "ListField"
-        }
-    }
-}
-declare namespace Sita.Default {
-    namespace TblFlightService {
-        const baseUrl = "Default/TblFlight";
-        function Create(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Default/TblFlight/Create",
-            Update = "Default/TblFlight/Update",
-            Delete = "Default/TblFlight/Delete",
-            Retrieve = "Default/TblFlight/Retrieve",
-            List = "Default/TblFlight/List"
         }
     }
 }
@@ -1598,15 +1556,15 @@ declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     class TblFlightDialog extends Serenity.EntityDialog<TblFlightRow, any> {
-        protected getFormKey(): string;
+        protected getFormKey(): any;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
-        protected getService(): string;
+        protected getService(): any;
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        protected form: TblFlightForm;
+        protected form: any;
     }
 }
 declare namespace Sita.Default {
@@ -1616,7 +1574,7 @@ declare namespace Sita.Default {
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
-        protected getService(): string;
+        protected getService(): any;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];

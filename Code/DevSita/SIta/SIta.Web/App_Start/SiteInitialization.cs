@@ -42,7 +42,7 @@
             catch (Exception ex)
             {
                 ex.Log();
-                throw;
+                
             }
 
             foreach (var databaseKey in databaseKeys)
@@ -50,7 +50,7 @@
                 EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
-       //    CheckSyncData();
+           CheckSyncData();
         }
 
         public static void ApplicationEnd()

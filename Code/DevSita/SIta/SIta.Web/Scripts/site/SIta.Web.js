@@ -724,47 +724,6 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
-        var TblFlightForm = /** @class */ (function (_super) {
-            __extends(TblFlightForm, _super);
-            function TblFlightForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!TblFlightForm.init) {
-                    TblFlightForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.LookupEditor;
-                    var w1 = s.StringEditor;
-                    var w2 = s.IntegerEditor;
-                    var w3 = s.DateEditor;
-                    var w4 = Default.FieldDetailEditor;
-                    Q.initFormType(TblFlightForm, [
-                        'Adi', w0,
-                        'LineCode', w1,
-                        'Number', w1,
-                        'ScheduleDate', w1,
-                        'SoftReplace', w1,
-                        'SiteIata', w1,
-                        'DateBoundảy', w1,
-                        'Chute', w2,
-                        'LastChanged', w3,
-                        'DateCreated', w3,
-                        'UserCreated', w1,
-                        'UserUpdate', w1,
-                        'DateUpdated', w3,
-                        'ListField', w4
-                    ]);
-                }
-                return _this;
-            }
-            TblFlightForm.formKey = 'Default.TblFlight';
-            return TblFlightForm;
-        }(Serenity.PrefixedContext));
-        Default.TblFlightForm = TblFlightForm;
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
         var TblFlightRow;
         (function (TblFlightRow) {
             TblFlightRow.idProperty = 'Identify';
@@ -780,27 +739,6 @@ var Sita;
             TblFlightRow.readPermission = 'Administration:General';
             TblFlightRow.updatePermission = 'Administration:General';
         })(TblFlightRow = Default.TblFlightRow || (Default.TblFlightRow = {}));
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
-        var TblFlightService;
-        (function (TblFlightService) {
-            TblFlightService.baseUrl = 'Default/TblFlight';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                TblFlightService[x] = function (r, s, o) {
-                    return Q.serviceRequest(TblFlightService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(TblFlightService = Default.TblFlightService || (Default.TblFlightService = {}));
     })(Default = Sita.Default || (Sita.Default = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -1009,7 +947,7 @@ var Sita;
 (function (Sita) {
     var Texts;
     (function (Texts) {
-        Sita['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Default: { TblAdiType: { Code: 1, Name: 1 }, TblBags: { BaggageTag: 1, Bpm: 1, Bsm: 1, DDMM: 1, FlightRef: 1, Id: 1, Processed: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, YYYY: 1 }, TblBagsHistory: { BaggageTag: 1, Bpm: 1, Bsm: 1, Ddmm: 1, FlightRef: 1, Id: 1, Processed: 1, TblBagsId: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, Yyyy: 1 }, TblField: { FlightIndentify: 1, FlightRef: 1, Id: 1, Instance: 1, Name: 1, Value: 1 }, TblFlight: { Adi: 1, Chute: 1, DDMM: 1, DateBoundảy: 1, DateCreated: 1, DateUpdated: 1, Identify: 1, LastChanged: 1, LineCode: 1, ListField: 1, Number: 1, ScheduleDate: 1, SiteIata: 1, SoftReplace: 1, UserCreated: 1, UserUpdate: 1, YYYY: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        Sita['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Default: { TblAdiType: { Code: 1, Name: 1 }, TblBags: { BaggageTag: 1, Bpm: 1, Bsm: 1, DDMM: 1, FlightRef: 1, Id: 1, Processed: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, YYYY: 1 }, TblBagsHistory: { BaggageTag: 1, Bpm: 1, Bsm: 1, Ddmm: 1, FlightRef: 1, Id: 1, Processed: 1, TblBagsId: 1, TimeRcvBpm: 1, TimeRcvBsm: 1, Yyyy: 1 }, TblField: { FlightIndentify: 1, FlightRef: 1, Id: 1, Instance: 1, Name: 1, Value: 1 }, TblFlight: { Adi: 1, Chute: 1, DDMM: 1, DateBoundary: 1, DateCreated: 1, DateUpdated: 1, Identify: 1, LastChanged: 1, LineCode: 1, ListField: 1, Number: 1, ScheduleDate: 1, SiteIata: 1, SoftReplace: 1, UserCreated: 1, UserUpdate: 1, YYYY: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = Sita.Texts || (Sita.Texts = {}));
 })(Sita || (Sita = {}));
 var Sita;
@@ -3628,14 +3566,14 @@ var Sita;
             __extends(TblFlightDialog, _super);
             function TblFlightDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Default.TblFlightForm(_this.idPrefix);
+                _this.form = new TblFlightForm(_this.idPrefix);
                 return _this;
             }
-            TblFlightDialog.prototype.getFormKey = function () { return Default.TblFlightForm.formKey; };
+            TblFlightDialog.prototype.getFormKey = function () { return TblFlightForm.formKey; };
             TblFlightDialog.prototype.getIdProperty = function () { return Default.TblFlightRow.idProperty; };
             TblFlightDialog.prototype.getLocalTextPrefix = function () { return Default.TblFlightRow.localTextPrefix; };
             TblFlightDialog.prototype.getNameProperty = function () { return Default.TblFlightRow.nameProperty; };
-            TblFlightDialog.prototype.getService = function () { return Default.TblFlightService.baseUrl; };
+            TblFlightDialog.prototype.getService = function () { return TblFlightService.baseUrl; };
             TblFlightDialog.prototype.getDeletePermission = function () { return Default.TblFlightRow.deletePermission; };
             TblFlightDialog.prototype.getInsertPermission = function () { return Default.TblFlightRow.insertPermission; };
             TblFlightDialog.prototype.getUpdatePermission = function () { return Default.TblFlightRow.updatePermission; };
@@ -3661,7 +3599,7 @@ var Sita;
             TblFlightGrid.prototype.getIdProperty = function () { return Default.TblFlightRow.idProperty; };
             TblFlightGrid.prototype.getInsertPermission = function () { return Default.TblFlightRow.insertPermission; };
             TblFlightGrid.prototype.getLocalTextPrefix = function () { return Default.TblFlightRow.localTextPrefix; };
-            TblFlightGrid.prototype.getService = function () { return Default.TblFlightService.baseUrl; };
+            TblFlightGrid.prototype.getService = function () { return TblFlightService.baseUrl; };
             TblFlightGrid.prototype.getButtons = function () {
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);

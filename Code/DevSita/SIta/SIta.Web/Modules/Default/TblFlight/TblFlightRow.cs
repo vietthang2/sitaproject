@@ -71,11 +71,11 @@ namespace Sita.Default.Entities
             set { Fields.SiteIata[this] = value; }
         }
 
-        [DisplayName("Date Boundảy"), Column("Date_Boundảy"), Size(50)]
-        public String DateBoundảy
+        [DisplayName("Date Boundary"), Column("Date_Boundary"), Size(50)]
+        public String DateBoundary
         {
-            get { return Fields.DateBoundảy[this]; }
-            set { Fields.DateBoundảy[this] = value; }
+            get { return Fields.DateBoundary[this]; }
+            set { Fields.DateBoundary[this] = value; }
         }
 
         [DisplayName("Chute")]
@@ -92,14 +92,14 @@ namespace Sita.Default.Entities
             set { Fields.LastChanged[this] = value; }
         }
 
-        [DisplayName("Date Created")]
+        [DisplayName("Date Created"), DateTimeFormatter]
         public DateTime? DateCreated
         {
             get { return Fields.DateCreated[this]; }
             set { Fields.DateCreated[this] = value; }
         }
 
-        [DisplayName("User Created"), Size(50)]
+        [DisplayName("User Created"), Size(50) ]
         public String UserCreated
         {
             get { return Fields.UserCreated[this]; }
@@ -113,7 +113,7 @@ namespace Sita.Default.Entities
             set { Fields.UserUpdate[this] = value; }
         }
 
-        [DisplayName("Date Updated")]
+        [DisplayName("Date Updated"), DateTimeFormatter]
         public DateTime? DateUpdated
         {
             get { return Fields.DateUpdated[this]; }
@@ -166,7 +166,7 @@ namespace Sita.Default.Entities
             public StringField ScheduleDate;
             public StringField SoftReplace;
             public StringField SiteIata;
-            public StringField DateBoundảy;
+            public StringField DateBoundary;
             public Int32Field Chute;
             public DateTimeField LastChanged;
             public DateTimeField DateCreated;
