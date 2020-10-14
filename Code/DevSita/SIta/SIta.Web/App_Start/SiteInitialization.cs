@@ -50,7 +50,7 @@
                 EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
-           CheckSyncData();
+          // CheckSyncData();
         }
 
         public static void ApplicationEnd()

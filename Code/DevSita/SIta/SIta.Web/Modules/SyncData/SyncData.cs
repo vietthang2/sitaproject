@@ -171,7 +171,8 @@ namespace Sita.Modules.SyncData
             Console.WriteLine(e.Conflict.Type);
 
             Console.WriteLine(e.Error);
-
+            Logging.Logger.Information("SyncData: Error " + e.Error);
+            isPorcess = false;
         }
         public static void Run()
         {
