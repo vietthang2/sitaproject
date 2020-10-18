@@ -36,14 +36,14 @@ namespace Sita.Default.Entities
             set { Fields.Adi[this] = value; }
         }
 
-        [DisplayName("Line Code"), Size(50), LookupInclude]
+        [DisplayName("Line Code"), Size(50), LookupInclude, QuickSearch]
         public String LineCode
         {
             get { return Fields.LineCode[this]; }
             set { Fields.LineCode[this] = value; }
         }
 
-        [DisplayName("Number"), Size(50), LookupInclude]
+        [DisplayName("Number"), Size(50), LookupInclude, QuickSearch]
         public String Number
         {
             get { return Fields.Number[this]; }

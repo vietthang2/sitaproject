@@ -1913,6 +1913,12 @@
     <Compile Include="Modules\AdminLTE\Tables\TablesController.cs" />
     <Compile Include="Modules\AdminLTE\Forms\FormsController.cs" />
     <Compile Include="Modules\AdminLTE\UIElements\UIElementsController.cs" />
+    <Compile Include="Modules\BPMServices\BpmDriver.cs" />
+    <Compile Include="Modules\BPMServices\BPMServiceJob.cs" />
+    <Compile Include="Modules\BPMServices\BPMServices.cs" />
+    <Compile Include="Modules\BPMServices\DTO\BPMServerModel.cs" />
+    <Compile Include="Modules\BPMServices\ErrorCode.cs" />
+    <Compile Include="Modules\BPMServices\MsgHelper.cs" />
     <Compile Include="Modules\BSMServices\BsmDriver.cs" />
     <Compile Include="Modules\BSMServices\BSMServices.cs" />
     <Compile Include="Modules\BSMServices\BSMServiceJob.cs" />

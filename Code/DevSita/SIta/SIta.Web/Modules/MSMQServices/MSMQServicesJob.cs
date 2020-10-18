@@ -15,7 +15,7 @@ using System.Web;
 using System.Xml;
 using Sita.Modules.Default.TblFlight;
 using System.Text;
-
+using System.Collections.Generic;
 
 namespace Sita.Modules.MSMQServices
 {
@@ -101,9 +101,14 @@ namespace Sita.Modules.MSMQServices
                                 try
                                 {
                                     string json = JsonConvert.SerializeXmlNode(xmlDoc.FirstChild.NextSibling);
-                                    var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
                                     Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
-                                    StoreFlight.Save(dailyModel);
+                                    var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
+                                    foreach (var item in dailyModel.Connect.Daily)
+                                    {
+                                        
+                                        StoreFlight.Save(item);
+                                    }
+                                    messageQueue.ReceiveById(message.Id);
                                 }
                                 catch (Exception ex)
                                 {

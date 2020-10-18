@@ -5,6 +5,7 @@ using Modules.Common;
 using Owin;
 using Serenity;
 using Serenity.Data;
+using Sita.Modules.BPMServices;
 using Sita.Modules.BSMServices;
 using Sita.Modules.MSMQServices;
 using Sita.Modules.SyncData;
@@ -70,8 +71,13 @@ namespace Sita
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "*/1 * * * *");
-           
+
+            BackgroundJob.Enqueue<BPMServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<BPMServices>(job => job.Run(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<BPMServices>(job => job.Run(), "*/1 * * * *");
+
             BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);
             RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), "0 0 * * *");
             //Sync Data
             //BackgroundJob.Enqueue<SyncData>(job => job.RunSchedule());

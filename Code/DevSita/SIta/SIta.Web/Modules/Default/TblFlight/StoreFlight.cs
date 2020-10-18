@@ -25,7 +25,7 @@ namespace Sita.Modules.Default.TblFlight
     using MyFieldRow = Sita.Default.Entities.TblFieldRow;
     public class StoreFlight
     {
-        public static void Save(DailyModel dailyModel)
+        public static void Save(Daily dailyModel)
         {
             // //Vi luu data manual dạng http request không có chứng thực nên cần đoạn này
              (Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
@@ -38,22 +38,31 @@ namespace Sita.Modules.Default.TblFlight
                 
                 var newFlight = new TblFlightRow()  ;
 
-                newFlight.Identify = Encrypte(dailyModel.Connect.Daily.Adi.ToString() + dailyModel.Connect.Daily.Linecode.ToString() + dailyModel.Connect.Daily.Number.ToString() + dailyModel.Connect.Daily.ScheduleDate.ToString());
-                newFlight.Adi = dailyModel.Connect.Daily.Adi;
-                newFlight.LineCode = dailyModel.Connect.Daily.Linecode;
-                newFlight.Number = dailyModel.Connect.Daily.Number;
-                newFlight.ScheduleDate = dailyModel.Connect.Daily.ScheduleDate;
-                newFlight.SoftReplace = dailyModel.Connect.Daily.Softreplace;
-                newFlight.SiteIata = dailyModel.Connect.Daily.SiteIata;
-                newFlight.DateBoundary = dailyModel.Connect.Daily.DateBoundary;
+                newFlight.Identify = Encrypte(dailyModel.Adi.ToString() + dailyModel.Linecode.ToString() + dailyModel.Number.ToString() + dailyModel.ScheduleDate.ToString());
+                newFlight.Adi = dailyModel.Adi;
+                newFlight.LineCode = dailyModel.Linecode;
+                newFlight.Number = dailyModel.Number;
+                newFlight.ScheduleDate = dailyModel.ScheduleDate;
+                newFlight.SoftReplace = dailyModel.Softreplace;
+                newFlight.SiteIata = dailyModel.SiteIata;
+                newFlight.DateBoundary = dailyModel.DateBoundary;
                 newFlight.DateCreated = DateTime.Now;
                 newFlight.UserCreated = "Admin";
-                //newFlight.Chute = dailyModel.Connect.Daily
+                try
+                {
+                    newFlight.Chute = (int)dailyModel.Field.Where(s => s.Name == "chutes").FirstOrDefault().Value;
+                }
+                catch (Exception)
+                {
+
+                    newFlight.Chute = null;
+                }
+                
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
 
 
-                newFlight.DDMM = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("ddMM");
-                newFlight.YYYY = Convert.ToDateTime(dailyModel.Connect.Daily.Field[0].Value).ToString("yyyy");
+                newFlight.DDMM = Convert.ToDateTime(dailyModel.Field[0].Value).ToString("ddMM");
+                newFlight.YYYY = Convert.ToDateTime(dailyModel.Field[0].Value).ToString("yyyy");
 
                 
 
@@ -64,14 +73,14 @@ namespace Sita.Modules.Default.TblFlight
                     SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
                     SaveRequest<MyFieldRow> saveRequestField = new SaveRequest<MyFieldRow>();
 
-                    if (dailyModel.Connect.Daily.Action == "Insert")
+                    if (dailyModel.Action == "Insert")
                     {
                         
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Create(unitOfWork, saveRequest);
 
                         
-                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        foreach (var Field in dailyModel.Field)
                         {
                             var newField = new TblFieldRow();
                             newField.Id = Guid.NewGuid();
@@ -86,7 +95,7 @@ namespace Sita.Modules.Default.TblFlight
                             new TblFieldController().Create(unitOfWork, saveRequestField);
                         }
                     }
-                    else if (dailyModel.Connect.Daily.Action == "Update")
+                    else if (dailyModel.Action == "Update")
                     {
                         //newFlight.UserUpdate = dailyModel.Connect.Daily.Linecode;
                         newFlight.DateUpdated = DateTime.Now;
@@ -94,7 +103,7 @@ namespace Sita.Modules.Default.TblFlight
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Update(unitOfWork, saveRequest);
 
-                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        foreach (var Field in dailyModel.Field)
                         {
                             var newField = new TblFieldRow();
                             newField.Name = Field.Name;
@@ -113,7 +122,7 @@ namespace Sita.Modules.Default.TblFlight
                             break;
                         }
 
-                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        foreach (var Field in dailyModel.Field)
                         {
                             var newField = new TblFieldRow();
                             newField.Id = Guid.NewGuid();
@@ -128,15 +137,24 @@ namespace Sita.Modules.Default.TblFlight
                         }
 
                     }
-                    else if (dailyModel.Connect.Daily.Action == "Delete")
+                    else if (dailyModel.Action == "Delete")
                     {
-                        DeleteRequest deleteRequest = new DeleteRequest();
-                        deleteRequest.EntityId = newFlight.Identify;
+                     
                         var request = new ListRequest();
                         request.Criteria = new Criteria("Identify") == newFlight.Identify;
                         ListResponse<MyRow> rows = new MyRepository().List(connection, request);
                         if (rows.TotalCount > 0)
-                            new TblFlightController().Delete(unitOfWork, deleteRequest);
+                        {
+                            for (int i = 0; i < rows.TotalCount; i++)
+                            {
+                                DeleteRequest deleteRequest = new DeleteRequest();
+                                deleteRequest.EntityId = rows.Entities[i];
+                                new TblFlightController().Delete(unitOfWork, deleteRequest);
+                                Logging.Logger.Information("MSMQ: delete Flight :" + deleteRequest.EntityId);
+                            }
+                            
+                        }
+                            
 
                     }
                     else
@@ -153,7 +171,7 @@ namespace Sita.Modules.Default.TblFlight
                         if (rows.TotalCount > 0)
                             new TblFlightController().Delete(unitOfWork, deleteRequest);
                         
-                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        foreach (var Field in dailyModel.Field)
                         {
                             var newField = new TblFieldRow();
                             newField.Name = Field.Name;
@@ -174,6 +192,7 @@ namespace Sita.Modules.Default.TblFlight
                                 {
                                     deleteRequestField.EntityId = item.Id;
                                     new TblFieldController().Delete(unitOfWork, deleteRequestField);
+                                    
                                 }
                                
                             }
@@ -185,7 +204,7 @@ namespace Sita.Modules.Default.TblFlight
                         saveRequest.Entity = newFlight;
                         new TblFlightController().Create(unitOfWork, saveRequest);
 
-                        foreach (var Field in dailyModel.Connect.Daily.Field)
+                        foreach (var Field in dailyModel.Field)
                         {
                             var newField = new TblFieldRow();
                             newField.Id = Guid.NewGuid();
