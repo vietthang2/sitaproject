@@ -19,6 +19,17 @@
     "ClientPort": 1201
 
   },
+  "BPMServer": {
+    "Ip": "27.71.237.68",
+    "Port": 2625,
+    "application": "BHS_CXR",
+    "version": 2,
+    "username": "",
+    "password": "password",
+    "msg_id": 1,
+    "ClientPort": 1201
+
+  },
   "RabbitServerRemote": {
     "RabbitIp": "171.244.18.171",
     "RabbitUsername": "admin",

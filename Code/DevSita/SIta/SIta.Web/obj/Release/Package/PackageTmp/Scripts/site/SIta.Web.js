@@ -660,91 +660,6 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
-        var TblFieldForm = /** @class */ (function (_super) {
-            __extends(TblFieldForm, _super);
-            function TblFieldForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!TblFieldForm.init) {
-                    TblFieldForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    Q.initFormType(TblFieldForm, [
-                        'Name', w0,
-                        'Instance', w0,
-                        'Value', w0,
-                        'FlightRef', w0
-                    ]);
-                }
-                return _this;
-            }
-            TblFieldForm.formKey = 'Default.TblField';
-            return TblFieldForm;
-        }(Serenity.PrefixedContext));
-        Default.TblFieldForm = TblFieldForm;
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
-        var TblFieldRow;
-        (function (TblFieldRow) {
-            TblFieldRow.idProperty = 'Id';
-            TblFieldRow.nameProperty = 'Name';
-            TblFieldRow.localTextPrefix = 'Default.TblField';
-            TblFieldRow.deletePermission = 'Administration:General';
-            TblFieldRow.insertPermission = 'Administration:General';
-            TblFieldRow.readPermission = 'Administration:General';
-            TblFieldRow.updatePermission = 'Administration:General';
-        })(TblFieldRow = Default.TblFieldRow || (Default.TblFieldRow = {}));
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
-        var TblFieldService;
-        (function (TblFieldService) {
-            TblFieldService.baseUrl = 'Default/TblField';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                TblFieldService[x] = function (r, s, o) {
-                    return Q.serviceRequest(TblFieldService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(TblFieldService = Default.TblFieldService || (Default.TblFieldService = {}));
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
-        var TblFlightRow;
-        (function (TblFlightRow) {
-            TblFlightRow.idProperty = 'Identify';
-            TblFlightRow.nameProperty = 'Identify';
-            TblFlightRow.localTextPrefix = 'Default.TblFlight';
-            TblFlightRow.lookupKey = 'dbo.tblFlight';
-            function getLookup() {
-                return Q.getLookup('dbo.tblFlight');
-            }
-            TblFlightRow.getLookup = getLookup;
-            TblFlightRow.deletePermission = 'Administration:General';
-            TblFlightRow.insertPermission = 'Administration:General';
-            TblFlightRow.readPermission = 'Administration:General';
-            TblFlightRow.updatePermission = 'Administration:General';
-        })(TblFlightRow = Default.TblFlightRow || (Default.TblFlightRow = {}));
-    })(Default = Sita.Default || (Sita.Default = {}));
-})(Sita || (Sita = {}));
-var Sita;
-(function (Sita) {
-    var Default;
-    (function (Default) {
         var TblScheduleCutBagForm = /** @class */ (function (_super) {
             __extends(TblScheduleCutBagForm, _super);
             function TblScheduleCutBagForm() {
@@ -3319,7 +3234,7 @@ var Sita;
                         e.preventDefault();
                         var dialog_ = new Default.TblFlightDialog();
                         //Tìm kiếm chuyến bay
-                        var fligth = Default.TblFlightRow.getLookup().items.filter(function (k) { return k.DDMM === item.DDMM && k.YYYY === item.YYYY && (k.LineCode + k.Number) === item.FlightRef; });
+                        var fligth = TblFlightRow.getLookup().items.filter(function (k) { return k.DDMM === item.DDMM && k.YYYY === item.YYYY && (k.LineCode + k.Number) === item.FlightRef; });
                         if (fligth.length === 0) {
                             Q.alert('Not found flight');
                             return;
@@ -3489,7 +3404,7 @@ var Sita;
             FieldDetailEditor.prototype.getColumnsKey = function () { return 'Default.TblField'; };
             //protected getDialogType() { return TblContractItemsDialog; }
             FieldDetailEditor.prototype.getDialogType = function () { return Default.TblFieldDialog; };
-            FieldDetailEditor.prototype.getLocalTextPrefix = function () { return Default.TblFieldRow.localTextPrefix; };
+            FieldDetailEditor.prototype.getLocalTextPrefix = function () { return TblFieldRow.localTextPrefix; };
             FieldDetailEditor.prototype.getButtons = function () {
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
@@ -3511,17 +3426,17 @@ var Sita;
             __extends(TblFieldDialog, _super);
             function TblFieldDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Default.TblFieldForm(_this.idPrefix);
+                _this.form = new TblFieldForm(_this.idPrefix);
                 return _this;
             }
-            TblFieldDialog.prototype.getFormKey = function () { return Default.TblFieldForm.formKey; };
-            TblFieldDialog.prototype.getIdProperty = function () { return Default.TblFieldRow.idProperty; };
-            TblFieldDialog.prototype.getLocalTextPrefix = function () { return Default.TblFieldRow.localTextPrefix; };
-            TblFieldDialog.prototype.getNameProperty = function () { return Default.TblFieldRow.nameProperty; };
-            TblFieldDialog.prototype.getService = function () { return Default.TblFieldService.baseUrl; };
-            TblFieldDialog.prototype.getDeletePermission = function () { return Default.TblFieldRow.deletePermission; };
-            TblFieldDialog.prototype.getInsertPermission = function () { return Default.TblFieldRow.insertPermission; };
-            TblFieldDialog.prototype.getUpdatePermission = function () { return Default.TblFieldRow.updatePermission; };
+            TblFieldDialog.prototype.getFormKey = function () { return TblFieldForm.formKey; };
+            TblFieldDialog.prototype.getIdProperty = function () { return TblFieldRow.idProperty; };
+            TblFieldDialog.prototype.getLocalTextPrefix = function () { return TblFieldRow.localTextPrefix; };
+            TblFieldDialog.prototype.getNameProperty = function () { return TblFieldRow.nameProperty; };
+            TblFieldDialog.prototype.getService = function () { return TblFieldService.baseUrl; };
+            TblFieldDialog.prototype.getDeletePermission = function () { return TblFieldRow.deletePermission; };
+            TblFieldDialog.prototype.getInsertPermission = function () { return TblFieldRow.insertPermission; };
+            TblFieldDialog.prototype.getUpdatePermission = function () { return TblFieldRow.updatePermission; };
             TblFieldDialog = __decorate([
                 Serenity.Decorators.panel()
             ], TblFieldDialog);
@@ -3541,10 +3456,10 @@ var Sita;
             }
             TblFieldGrid.prototype.getColumnsKey = function () { return 'Default.TblField'; };
             TblFieldGrid.prototype.getDialogType = function () { return Default.TblFieldDialog; };
-            TblFieldGrid.prototype.getIdProperty = function () { return Default.TblFieldRow.idProperty; };
-            TblFieldGrid.prototype.getInsertPermission = function () { return Default.TblFieldRow.insertPermission; };
-            TblFieldGrid.prototype.getLocalTextPrefix = function () { return Default.TblFieldRow.localTextPrefix; };
-            TblFieldGrid.prototype.getService = function () { return Default.TblFieldService.baseUrl; };
+            TblFieldGrid.prototype.getIdProperty = function () { return TblFieldRow.idProperty; };
+            TblFieldGrid.prototype.getInsertPermission = function () { return TblFieldRow.insertPermission; };
+            TblFieldGrid.prototype.getLocalTextPrefix = function () { return TblFieldRow.localTextPrefix; };
+            TblFieldGrid.prototype.getService = function () { return TblFieldService.baseUrl; };
             TblFieldGrid.prototype.getButtons = function () {
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
@@ -3570,13 +3485,13 @@ var Sita;
                 return _this;
             }
             TblFlightDialog.prototype.getFormKey = function () { return TblFlightForm.formKey; };
-            TblFlightDialog.prototype.getIdProperty = function () { return Default.TblFlightRow.idProperty; };
-            TblFlightDialog.prototype.getLocalTextPrefix = function () { return Default.TblFlightRow.localTextPrefix; };
-            TblFlightDialog.prototype.getNameProperty = function () { return Default.TblFlightRow.nameProperty; };
+            TblFlightDialog.prototype.getIdProperty = function () { return TblFlightRow.idProperty; };
+            TblFlightDialog.prototype.getLocalTextPrefix = function () { return TblFlightRow.localTextPrefix; };
+            TblFlightDialog.prototype.getNameProperty = function () { return TblFlightRow.nameProperty; };
             TblFlightDialog.prototype.getService = function () { return TblFlightService.baseUrl; };
-            TblFlightDialog.prototype.getDeletePermission = function () { return Default.TblFlightRow.deletePermission; };
-            TblFlightDialog.prototype.getInsertPermission = function () { return Default.TblFlightRow.insertPermission; };
-            TblFlightDialog.prototype.getUpdatePermission = function () { return Default.TblFlightRow.updatePermission; };
+            TblFlightDialog.prototype.getDeletePermission = function () { return TblFlightRow.deletePermission; };
+            TblFlightDialog.prototype.getInsertPermission = function () { return TblFlightRow.insertPermission; };
+            TblFlightDialog.prototype.getUpdatePermission = function () { return TblFlightRow.updatePermission; };
             TblFlightDialog = __decorate([
                 Serenity.Decorators.panel()
             ], TblFlightDialog);
@@ -3589,6 +3504,7 @@ var Sita;
 (function (Sita) {
     var Default;
     (function (Default) {
+        var fld = Sita.Default.TblFlightRow.Fields;
         var TblFlightGrid = /** @class */ (function (_super) {
             __extends(TblFlightGrid, _super);
             function TblFlightGrid(container) {
@@ -3596,9 +3512,9 @@ var Sita;
             }
             TblFlightGrid.prototype.getColumnsKey = function () { return 'Default.TblFlight'; };
             TblFlightGrid.prototype.getDialogType = function () { return Default.TblFlightDialog; };
-            TblFlightGrid.prototype.getIdProperty = function () { return Default.TblFlightRow.idProperty; };
-            TblFlightGrid.prototype.getInsertPermission = function () { return Default.TblFlightRow.insertPermission; };
-            TblFlightGrid.prototype.getLocalTextPrefix = function () { return Default.TblFlightRow.localTextPrefix; };
+            TblFlightGrid.prototype.getIdProperty = function () { return TblFlightRow.idProperty; };
+            TblFlightGrid.prototype.getInsertPermission = function () { return TblFlightRow.insertPermission; };
+            TblFlightGrid.prototype.getLocalTextPrefix = function () { return TblFlightRow.localTextPrefix; };
             TblFlightGrid.prototype.getService = function () { return TblFlightService.baseUrl; };
             TblFlightGrid.prototype.getButtons = function () {
                 var buttons = _super.prototype.getButtons.call(this);
@@ -3620,12 +3536,12 @@ var Sita;
             TblFlightGrid.prototype.getQuickFilters = function () {
                 // get quick filter list from base class, e.g. columns
                 var filters = _super.prototype.getQuickFilters.call(this);
-                var filter = Q.first(filters, function (x) { return x.field == "ScheduleDate" /* ScheduleDate */; });
+                var filter = Q.first(filters, function (x) { return x.field == fld.ScheduleDate; });
                 filter.title = "Schedule Date";
                 filter.type = Serenity.DateEditor;
                 filter.handler = function (h) {
                     if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["ScheduleDate" /* ScheduleDate */], '=', h.value]);
+                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ScheduleDate], '=', h.value]);
                     }
                 };
                 return filters;
