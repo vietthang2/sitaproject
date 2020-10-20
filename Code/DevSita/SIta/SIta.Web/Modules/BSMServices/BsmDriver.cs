@@ -19,7 +19,14 @@ namespace Sita.Modules.BSMServices
         private int writeTimeout = System.Threading.Timeout.Infinite;
         private Socket listener;
         private byte[] buffer = new byte[8192]; // Buffer to store data from clients.
-
+        string bpmdemo = "BPM " +
+            ".V/1TORD " +
+            ".J/R/4567/381761/13JAN/183551L/R " +
+            ".F/BA296/13JAN/ORD/J " +
+            ".B/OFF/00/16986470001 " +
+            ".S/N//N .P/1MASON/R " +
+            ".L/YX476A6 " +
+            "ENDBPM";
         List<string> bsm_demo = new List<string>()
         {
             @"BSM
@@ -134,8 +141,8 @@ ENDBSM",
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
                     _statusConnect = statusConnect;
-                    Logging.Logger.Information($"Begin connect to server Ip: {IP} and port:{Port}");
-                    Logging.Logger.Information($"Time:{DateTime.Now} :StartListening");
+                    Logging.Logger.Information($"BSM: Begin connect to server Ip: {IP} and port:{Port}");
+                    Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening");
 
                     Thread T = new Thread(checkTimeOut);
                     T.IsBackground = true;
@@ -144,7 +151,7 @@ ENDBSM",
                 else
                 {
                     
-                    Logging.Logger.Information("Start Listening again....");
+                    Logging.Logger.Information("BSM: Start Listening again....");
                     
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), client);
@@ -160,7 +167,7 @@ ENDBSM",
                     return;
                 if(e.Message== "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
                     Log.Error("Start Listening Error:"+e.Message + e.StackTrace + e.Source);
-                Logging.Logger.Warning("Start Listening again fail!");
+                Logging.Logger.Warning("BSM: Start Listening again fail!");
                 Thread T = new Thread(checkTimeOut);
                 T.IsBackground = true;
                 T.Start();
@@ -180,14 +187,14 @@ ENDBSM",
                 if (client.Connected)
                 {
                     statusConnect = true;
-                    Logging.Logger.Information("OnSocketAccepted: Successfully connected to the server {0}",
+                    Logging.Logger.Information("BSM: OnSocketAccepted: Successfully connected to the server {0}",
                     client.RemoteEndPoint.ToString());
                     client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
                     SendData(MsgHelper.LoginRequest());
                 }
                 else
                 {
-                    Logging.Logger.Information($"Time:{DateTime.Now} :StartListening: Can not connect to server! ");
+                    Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening: Can not connect to server! ");
                     
                 }
                     
@@ -195,7 +202,7 @@ ENDBSM",
             catch (Exception ex)
             { 
 
-                Logging.Logger.Error("OnSocketAccepted :" + ex.Message);
+                Logging.Logger.Error("BSM: OnSocketAccepted :" + ex.Message);
                 
             }
         }
@@ -247,7 +254,7 @@ ENDBSM",
             SitaMsg msg = new SitaMsg();
             msg.PraseData(recData);
             Console.WriteLine($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()} - Raw Data: {msg.HexString}");
-            Logging.Logger.Information($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
+            Logging.Logger.Information($"BSM: Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
             
 
 
@@ -316,7 +323,7 @@ ENDBSM",
                 }
                 catch (Exception ex)
                 {
-                    Logging.Logger.Error("Not parse and send to Rabbit server");
+                    Logging.Logger.Error("BSM: Not parse and send to Rabbit server");
 
 
                 }
@@ -326,6 +333,7 @@ ENDBSM",
             {
                 Thread.Sleep(500);
                 SendData(MsgHelper.DataOnMsg());
+                SendData(MsgHelper.DataMsg(bpmdemo));
                 timeOut = 0;
             }
             msgidx++;
@@ -361,7 +369,7 @@ ENDBSM",
                     {
                         if (firstTime > 1)
                         {
-                            Logging.Logger.Warning("Close connection!");
+                            Logging.Logger.Warning("BSM: Close connection!");
                             client.Dispose();
                             listener.Dispose();
                             listener = null;
@@ -377,8 +385,8 @@ ENDBSM",
                 }
                 else
                 {
-                    Logging.Logger.Warning("Can not connect!");
-                    Thread.Sleep(3000);
+                    Logging.Logger.Warning("BSM: Can not connect!");
+                    Thread.Sleep(5000);
                     
                     StartListening(ref statusConnect);
                     break;
@@ -400,7 +408,7 @@ ENDBSM",
             socketAsyncData.SetBuffer(data, 0, data.Length);
             client.SendAsync(socketAsyncData);
             Console.WriteLine($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
-            Logging.Logger.Information($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
+            Logging.Logger.Information($"BSM: Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
         }
     }
 }

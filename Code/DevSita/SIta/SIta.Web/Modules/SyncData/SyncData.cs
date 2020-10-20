@@ -75,7 +75,7 @@ namespace Sita.Modules.SyncData
 
             //create new SelectChanges SPs for selecting changes for the new scope
             //the new SelectChanges SPs will have a guid suffix
-            clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.Create);
+            clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.CreateOrUseExisting);
 
 
             clientProvision.Apply();

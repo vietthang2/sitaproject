@@ -19,7 +19,14 @@ namespace Sita.Modules.BPMServices
         private int writeTimeout = System.Threading.Timeout.Infinite;
         private Socket listener;
         private byte[] buffer = new byte[8192]; // Buffer to store data from clients.
-
+        string bpmdemo = "BPM " +
+            ".V/1TORD " +
+            ".J/R/4567/381761/13JAN/183551L/R " +
+            ".F/BA296/13JAN/ORD/J " +
+            ".B/OFF/00/16986470001 " +
+            ".S/N//N .P/1MASON/R " +
+            ".L/YX476A6 " +
+            "ENDBPM";
         List<string> bsm_demo = new List<string>()
         {
             @"BSM
@@ -160,7 +167,11 @@ ENDBSM",
                     return;
                 if(e.Message== "BPM: BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
                     Log.Error("BPM: Start Listening Error:" + e.Message + e.StackTrace + e.Source);
+                //else {
+                //    Logging.Logger.Warning("BPM: Start Listening again fail!"+ e.Message+ e.Source);
+                //}
                 Logging.Logger.Warning("BPM: Start Listening again fail!");
+
                 Thread T = new Thread(checkTimeOut);
                 T.IsBackground = true;
                 T.Start();
@@ -326,6 +337,8 @@ ENDBSM",
             {
                 Thread.Sleep(500);
                 SendData(MsgHelper.DataOnMsg());
+                SendData(MsgHelper.DataMsg(bpmdemo));
+                
                 timeOut = 0;
             }
             msgidx++;
