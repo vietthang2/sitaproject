@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export namespace TblScheduleCutBagService {
         export const baseUrl = 'Default/TblScheduleCutBag';
 
@@ -9,12 +8,12 @@ namespace Sita.Default {
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
-        export namespace Methods {
-            export declare const Create: string;
-            export declare const Update: string;
-            export declare const Delete: string;
-            export declare const Retrieve: string;
-            export declare const List: string;
+        export declare const enum Methods {
+            Create = "Default/TblScheduleCutBag/Create",
+            Update = "Default/TblScheduleCutBag/Update",
+            Delete = "Default/TblScheduleCutBag/Delete",
+            Retrieve = "Default/TblScheduleCutBag/Retrieve",
+            List = "Default/TblScheduleCutBag/List"
         }
 
         [
@@ -24,10 +23,10 @@ namespace Sita.Default {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>TblScheduleCutBagService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>TblScheduleCutBagService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
-            (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }
+

@@ -1,32 +1,27 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export interface TblConfigSyncDataRow {
         Id?: number;
         SynchronizeOnlyPeriod?: boolean;
         Period?: number;
         SynchronizeLogWhenReturns?: boolean;
+        LastSyncDate?: string;
     }
 
     export namespace TblConfigSyncDataRow {
         export const idProperty = 'Id';
         export const localTextPrefix = 'Default.TblConfigSyncData';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Sita:dbo.tblConfigSyncData:Modify';
+        export const insertPermission = 'Sita:dbo.tblConfigSyncData:Modify';
+        export const readPermission = 'Sita:dbo.tblConfigSyncData:View';
+        export const updatePermission = 'Sita:dbo.tblConfigSyncData:Modify';
 
-        export namespace Fields {
-            export declare const Id;
-            export declare const SynchronizeOnlyPeriod;
-            export declare const Period;
-            export declare const SynchronizeLogWhenReturns;
+        export declare const enum Fields {
+            Id = "Id",
+            SynchronizeOnlyPeriod = "SynchronizeOnlyPeriod",
+            Period = "Period",
+            SynchronizeLogWhenReturns = "SynchronizeLogWhenReturns",
+            LastSyncDate = "LastSyncDate"
         }
-
-        [
-            'Id',
-            'SynchronizeOnlyPeriod',
-            'Period',
-            'SynchronizeLogWhenReturns'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

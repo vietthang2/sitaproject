@@ -49,7 +49,7 @@ namespace Sita.Modules.SyncData
             tables.Add("Users");
             tables.Add("Roles");
             tables.Add("RolePermissions");
-            tables.Add("UserPermissions");
+            
 
 
             var scopeDesc = new DbSyncScopeDescription("MainScope");
@@ -85,6 +85,19 @@ namespace Sita.Modules.SyncData
         {
 
             SqlConnection serverConn = new SqlConnection(sServerConnection);
+            List<string> tables = new List<string>();
+            tables.Add("tblField");
+            tables.Add("tblFlight");
+            tables.Add("tblBags");
+            tables.Add("Users");
+            tables.Add("Roles");
+            tables.Add("RolePermissions");
+            var scopeDesc = new DbSyncScopeDescription("MainScope");
+            foreach (var tbl in tables)
+            {
+                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
+            }
+            //RemoveScope(serverConn, scopeDesc);
 
             string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
                    WHERE TABLE_NAME='scope_info') DROP table scope_info";
@@ -93,25 +106,14 @@ namespace Sita.Modules.SyncData
             cmd.ExecuteScalar();
             serverConn.Close();
 
-            List<string> tables = new List<string>();
-            tables.Add("tblField");
-            tables.Add("tblFlight");
-            tables.Add("tblBags");
-            tables.Add("Users");
-            tables.Add("Roles");
-            tables.Add("RolePermissions");
-            tables.Add("UserPermissions");
+            
             
 
 
 
 
-        var scopeDesc = new DbSyncScopeDescription("MainScope");
-            foreach (var tbl in tables)
-            {
-                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
-            }
-
+       
+            
             SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
 
             //skip creating the user tables
@@ -221,6 +223,88 @@ namespace Sita.Modules.SyncData
                 
             }
         }
+        public static void RemoveScope(SqlConnection Conn, DbSyncScopeDescription scope)
+        {
+            Conn.Open();
+            foreach (var table in scope.Tables)
+            {
+                SqlCommand dropTracking = new SqlCommand(@"
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_tracking]') AND type in (N'U'))
+            DROP TABLE [dbo].[" + table.UnquotedLocalName + "_tracking]", Conn);
+                dropTracking.ExecuteNonQuery();
+
+                SqlCommand dropTriggers = new SqlCommand(@"
+            IF  EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_delete_trigger]'))
+            DROP TRIGGER [dbo].[" + table.UnquotedLocalName + @"_delete_trigger];
+
+            IF  EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_insert_trigger]'))
+            DROP TRIGGER [dbo].[" + table.UnquotedLocalName + @"_insert_trigger];
+
+            IF  EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_update_trigger]'))
+            DROP TRIGGER [dbo].[" + table.UnquotedLocalName + @"_update_trigger];
+        ", Conn);
+                dropTriggers.ExecuteNonQuery();
+
+                SqlCommand dropStoredProc = new SqlCommand(@"
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_delete]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_delete];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_deletemetadata]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_deletemetadata];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_insert]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_insert];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_insertmetadata]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_insertmetadata];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_selectchanges]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_selectchanges];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_selectrow]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_selectrow];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_update]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_update];
+
+            IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + table.UnquotedLocalName + @"_updatemetadata]') AND type in (N'P', N'PC'))
+            DROP PROCEDURE [dbo].[" + table.UnquotedLocalName + @"_updatemetadata];
+        ", Conn);
+                dropStoredProc.ExecuteNonQuery();
+            }
+
+            //SqlCommand getScopeGuid = new SqlCommand(@"
+            //USE [" + Conn.Database + @"]
+            //SELECT scope_config_id FROM scope_info WHERE scope_name = '" + scope.ScopeName + "'", Conn);
+            //try
+            //{
+            //    var reader = getScopeGuid.ExecuteReader();
+
+            //    if (reader.HasRows)
+            //    {
+            //        reader.Read();
+
+            //        var id = reader.GetGuid(0);
+
+            //        reader.Close();
+
+            //        SqlCommand deleteScope = new SqlCommand(@"
+            //    DELETE FROM scope_info WHERE scope_config_id = '" + id + @"';
+            //    DELETE FROM scope_config WHERE config_id = '" + id + @"';
+            //", Conn);
+            //        deleteScope.ExecuteNonQuery();
+            //    }
+
+            //}
+            //catch (Exception)
+            //{
+
+                
+            //}
+            
+            Conn.Close();
+        }
+        
     }
 
 }

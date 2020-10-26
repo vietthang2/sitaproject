@@ -19,14 +19,15 @@ namespace Sita.Modules.BSMServices
         private int writeTimeout = System.Threading.Timeout.Infinite;
         private Socket listener;
         private byte[] buffer = new byte[8192]; // Buffer to store data from clients.
-        string bpmdemo = "BPM " +
-            ".V/1TORD " +
-            ".J/R/4567/381761/13JAN/183551L/R " +
-            ".F/BA296/13JAN/ORD/J " +
-            ".B/OFF/00/16986470001 " +
-            ".S/N//N .P/1MASON/R " +
-            ".L/YX476A6 " +
-            "ENDBPM";
+        string bpmdemo = @"BPM
+.V/1TORD
+.J/R/4567/381761/13JAN/183551L/R
+.F/BA296/13JAN/ORD/J
+.B/OFF/00/16986470001
+.S/N//N 
+.P/1MASON/R
+.L/YX{num}6A6
+ENDBPM";
         List<string> bsm_demo = new List<string>()
         {
             @"BSM
@@ -191,6 +192,10 @@ ENDBSM",
                     client.RemoteEndPoint.ToString());
                     client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
                     SendData(MsgHelper.LoginRequest());
+                    //var test = bpmdemo.Replace("{num}", new Random().Next(99).ToString());
+                    //SendData(MsgHelper.DataMsg(test));
+                    //var testHex = string.Join("", test.Select(c => ((int)c).ToString("X2")));
+                    //Logging.Logger.Information("BSM: hex: {0}", testHex);
                 }
                 else
                 {
@@ -333,7 +338,7 @@ ENDBSM",
             {
                 Thread.Sleep(500);
                 SendData(MsgHelper.DataOnMsg());
-                SendData(MsgHelper.DataMsg(bpmdemo));
+                
                 timeOut = 0;
             }
             msgidx++;

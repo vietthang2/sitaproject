@@ -16,10 +16,10 @@
         export const idProperty = 'Id';
         export const nameProperty = 'BaggageTag';
         export const localTextPrefix = 'Default.TblBags';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Sita:dbo.tblBags:Modify';
+        export const insertPermission = 'Sita:dbo.tblBags:Modify';
+        export const readPermission = 'Sita:dbo.tblBags:View';
+        export const updatePermission = 'Sita:dbo.tblBags:Modify';
 
         export declare const enum Fields {
             BaggageTag = "BaggageTag",

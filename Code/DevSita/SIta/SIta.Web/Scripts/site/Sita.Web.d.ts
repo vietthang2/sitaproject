@@ -549,10 +549,10 @@ declare namespace Sita.Default {
         const idProperty = "Id";
         const nameProperty = "BaggageTag";
         const localTextPrefix = "Default.TblBagsHistory";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Sita:dbo.tblBagsHistory:Modify";
+        const insertPermission = "Sita:dbo.tblBagsHistory:Modify";
+        const readPermission = "Sita:dbo.tblBagsHistory:View";
+        const updatePermission = "Sita:dbo.tblBagsHistory:Modify";
         const enum Fields {
             BaggageTag = "BaggageTag",
             FlightRef = "FlightRef",
@@ -602,10 +602,10 @@ declare namespace Sita.Default {
         const idProperty = "Id";
         const nameProperty = "BaggageTag";
         const localTextPrefix = "Default.TblBags";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Sita:dbo.tblBags:Modify";
+        const insertPermission = "Sita:dbo.tblBags:Modify";
+        const readPermission = "Sita:dbo.tblBags:View";
+        const updatePermission = "Sita:dbo.tblBags:Modify";
         const enum Fields {
             BaggageTag = "BaggageTag",
             FlightRef = "FlightRef",
@@ -638,13 +638,17 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
-    class TblConfigSyncDataForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
+}
+declare namespace Sita.Default {
     interface TblConfigSyncDataForm {
         SynchronizeOnlyPeriod: Serenity.BooleanEditor;
         Period: Serenity.IntegerEditor;
         SynchronizeLogWhenReturns: Serenity.BooleanEditor;
+    }
+    class TblConfigSyncDataForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace Sita.Default {
@@ -653,19 +657,21 @@ declare namespace Sita.Default {
         SynchronizeOnlyPeriod?: boolean;
         Period?: number;
         SynchronizeLogWhenReturns?: boolean;
+        LastSyncDate?: string;
     }
     namespace TblConfigSyncDataRow {
         const idProperty = "Id";
         const localTextPrefix = "Default.TblConfigSyncData";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        namespace Fields {
-            const Id: any;
-            const SynchronizeOnlyPeriod: any;
-            const Period: any;
-            const SynchronizeLogWhenReturns: any;
+        const deletePermission = "Sita:dbo.tblConfigSyncData:Modify";
+        const insertPermission = "Sita:dbo.tblConfigSyncData:Modify";
+        const readPermission = "Sita:dbo.tblConfigSyncData:View";
+        const updatePermission = "Sita:dbo.tblConfigSyncData:Modify";
+        const enum Fields {
+            Id = "Id",
+            SynchronizeOnlyPeriod = "SynchronizeOnlyPeriod",
+            Period = "Period",
+            SynchronizeLogWhenReturns = "SynchronizeLogWhenReturns",
+            LastSyncDate = "LastSyncDate"
         }
     }
 }
@@ -677,12 +683,12 @@ declare namespace Sita.Default {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblConfigSyncDataRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblConfigSyncDataRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Default/TblConfigSyncData/Create",
+            Update = "Default/TblConfigSyncData/Update",
+            Delete = "Default/TblConfigSyncData/Delete",
+            Retrieve = "Default/TblConfigSyncData/Retrieve",
+            List = "Default/TblConfigSyncData/List"
         }
     }
 }
@@ -714,10 +720,10 @@ declare namespace Sita.Default {
         const idProperty = "Id";
         const nameProperty = "Name";
         const localTextPrefix = "Default.TblField";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Sita:dbo.tblField:Modify";
+        const insertPermission = "Sita:dbo.tblField:Modify";
+        const readPermission = "Sita:dbo.tblField:View";
+        const updatePermission = "Sita:dbo.tblField:Modify";
         const enum Fields {
             Id = "Id",
             Name = "Name",
@@ -746,6 +752,31 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
+}
+declare namespace Sita.Default {
+    interface TblFlightForm {
+        Adi: Serenity.LookupEditor;
+        LineCode: Serenity.StringEditor;
+        Number: Serenity.StringEditor;
+        ScheduleDate: Serenity.StringEditor;
+        SoftReplace: Serenity.StringEditor;
+        SiteIata: Serenity.StringEditor;
+        DateBoundary: Serenity.StringEditor;
+        Chute: Serenity.IntegerEditor;
+        LastChanged: Serenity.DateTimeEditor;
+        DateCreated: Serenity.DateTimeEditor;
+        UserCreated: Serenity.StringEditor;
+        UserUpdate: Serenity.StringEditor;
+        DateUpdated: Serenity.DateTimeEditor;
+        ListField: FieldDetailEditor;
+    }
+    class TblFlightForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Sita.Default {
     interface TblFlightRow {
         Identify?: string;
         Adi?: string;
@@ -771,10 +802,10 @@ declare namespace Sita.Default {
         const localTextPrefix = "Default.TblFlight";
         const lookupKey = "dbo.tblFlight";
         function getLookup(): Q.Lookup<TblFlightRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Sita:dbo.tblFlight:Modify";
+        const insertPermission = "Sita:dbo.tblFlight:Modify";
+        const readPermission = "Sita:dbo.tblFlight:View";
+        const updatePermission = "Sita:dbo.tblFlight:Modify";
         const enum Fields {
             Identify = "Identify",
             Adi = "Adi",
@@ -797,11 +828,32 @@ declare namespace Sita.Default {
     }
 }
 declare namespace Sita.Default {
-    class TblScheduleCutBagForm extends Serenity.PrefixedContext {
-        static formKey: string;
+    namespace TblFlightService {
+        const baseUrl = "Default/TblFlight";
+        function Create(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TblFlightRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblFlightRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Default/TblFlight/Create",
+            Update = "Default/TblFlight/Update",
+            Delete = "Default/TblFlight/Delete",
+            Retrieve = "Default/TblFlight/Retrieve",
+            List = "Default/TblFlight/List"
+        }
     }
+}
+declare namespace Sita.Default {
+}
+declare namespace Sita.Default {
     interface TblScheduleCutBagForm {
         ScheduleCutDate: Serenity.IntegerEditor;
+    }
+    class TblScheduleCutBagForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace Sita.Default {
@@ -812,13 +864,13 @@ declare namespace Sita.Default {
     namespace TblScheduleCutBagRow {
         const idProperty = "Id";
         const localTextPrefix = "Default.TblScheduleCutBag";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        namespace Fields {
-            const Id: any;
-            const ScheduleCutDate: any;
+        const deletePermission = "Sita:dbo.TblScheduleCutBag:Modify";
+        const insertPermission = "Sita:dbo.TblScheduleCutBag:Modify";
+        const readPermission = "Sita:dbo.TblScheduleCutBag:View";
+        const updatePermission = "Sita:dbo.TblScheduleCutBag:Modify";
+        const enum Fields {
+            Id = "Id",
+            ScheduleCutDate = "ScheduleCutDate"
         }
     }
 }
@@ -830,12 +882,12 @@ declare namespace Sita.Default {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TblScheduleCutBagRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Default/TblScheduleCutBag/Create",
+            Update = "Default/TblScheduleCutBag/Update",
+            Delete = "Default/TblScheduleCutBag/Delete",
+            Retrieve = "Default/TblScheduleCutBag/Retrieve",
+            List = "Default/TblScheduleCutBag/List"
         }
     }
 }
@@ -1556,15 +1608,15 @@ declare namespace Sita.Default {
 }
 declare namespace Sita.Default {
     class TblFlightDialog extends Serenity.EntityDialog<TblFlightRow, any> {
-        protected getFormKey(): any;
+        protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
-        protected getService(): any;
+        protected getService(): string;
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        protected form: any;
+        protected form: TblFlightForm;
     }
 }
 declare namespace Sita.Default {
@@ -1574,7 +1626,7 @@ declare namespace Sita.Default {
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
-        protected getService(): any;
+        protected getService(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];

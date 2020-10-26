@@ -1,5 +1,4 @@
-﻿
-namespace Sita.Default {
+﻿namespace Sita.Default {
     export interface TblScheduleCutBagRow {
         Id?: number;
         ScheduleCutDate?: number;
@@ -8,19 +7,15 @@ namespace Sita.Default {
     export namespace TblScheduleCutBagRow {
         export const idProperty = 'Id';
         export const localTextPrefix = 'Default.TblScheduleCutBag';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Sita:dbo.TblScheduleCutBag:Modify';
+        export const insertPermission = 'Sita:dbo.TblScheduleCutBag:Modify';
+        export const readPermission = 'Sita:dbo.TblScheduleCutBag:View';
+        export const updatePermission = 'Sita:dbo.TblScheduleCutBag:Modify';
 
-        export namespace Fields {
-            export declare const Id;
-            export declare const ScheduleCutDate;
+        export declare const enum Fields {
+            Id = "Id",
+            ScheduleCutDate = "ScheduleCutDate"
         }
-
-        [
-            'Id',
-            'ScheduleCutDate'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+
