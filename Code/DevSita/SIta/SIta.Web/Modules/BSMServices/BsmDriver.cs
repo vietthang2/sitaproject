@@ -127,14 +127,21 @@ ENDBSM",
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         IPEndPoint remoteEP;
         bool statusConnect = false;
+        Socket client;
         public void StartListening(ref bool _statusConnect)
         {
             
             try
             {
                 
-                if (listener == null )
+
+                if (client== null  )
                 {
+                    if (CommonSocket.IsConnected(client))
+                    {
+                        //Thread.Sleep(30000);
+                        return;
+                    }
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
                     
                     listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -164,6 +171,7 @@ ENDBSM",
             }
             catch (Exception e)
             {
+                _statusConnect = false;
                 if (e.Message== "Only one usage of each socket address (protocol/network address/port) is normally permitted") 
                     return;
                 if(e.Message== "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
@@ -213,7 +221,7 @@ ENDBSM",
         }
         
 
-        Socket client;
+        
         private void OnDataReceived(IAsyncResult result)
         {
             try
@@ -265,46 +273,12 @@ ENDBSM",
 
             if (msg.Type == MsgType.LOGIN_RQST)
             {
-                //if (msg.Data == "CXR1TECG01")
-                //{
-                //    SendData(MsgHelper.LoginAcept());
-                //    Thread.Sleep(2000);
-                //    if (msg_ack)
-                //    {
-                //        s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
-                //        Thread.Sleep(10);
-                //        s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
-                //        Thread.Sleep(10);
-                //        s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
-                //        Thread.Sleep(10);
-                //        s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
-                //    }
-                //    SendData(MsgHelper.AckDataMsg(s_msg));
-                //    msg_ack = false;
-                //    timeOut = 0;
-                //}
-                //else
-                //{
-                //    SendData(MsgHelper.LoginReject());
-                //}
+               
             }
 
             if (msg.Type == MsgType.ACK_MSG)
             {
-                //if (msg_ack)
-                //{
-                //    s_msg = (bsm_demo[msgidx]).Replace("{flight}", $"VN{DateTime.Now.ToString("ddHH")}").Replace("{bag_number}", DateTime.Now.ToString("0hhmmssfff"));
-                //    Thread.Sleep(10);
-                //    s_msg = s_msg.Replace("{bag_number_1}", DateTime.Now.ToString("0hhmmssfff"));
-                //    Thread.Sleep(10);
-                //    s_msg = s_msg.Replace("{bag_number_2}", DateTime.Now.ToString("0hhmmssfff"));
-                //    Thread.Sleep(10);
-                //    s_msg = s_msg.Replace("{bag_number_3}", DateTime.Now.ToString("0hhmmssfff"));
-                //}
-                //Thread.Sleep(500);
-                //SendData(MsgHelper.AckDataMsg(s_msg));
-                //msg_ack = false;
-                //timeOut = 0;
+               
             }
 
             if (msg.Type == MsgType.NAK_MSG)
@@ -374,11 +348,16 @@ ENDBSM",
                     {
                         if (firstTime > 1)
                         {
+                            if (CommonSocket.IsConnected(client))
+                            {
+                                Thread.Sleep(30000);
+                                break;
+                            }
                             Logging.Logger.Warning("BSM: Close connection!");
                             client.Dispose();
                             listener.Dispose();
                             listener = null;
-                            Thread.Sleep(5000);
+                            Thread.Sleep(30000);
                             StartListening(ref statusConnect);
                             break;
                         }
@@ -391,7 +370,7 @@ ENDBSM",
                 else
                 {
                     Logging.Logger.Warning("BSM: Can not connect!");
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
                     
                     StartListening(ref statusConnect);
                     break;
@@ -414,6 +393,39 @@ ENDBSM",
             client.SendAsync(socketAsyncData);
             Console.WriteLine($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
             Logging.Logger.Information($"BSM: Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
+        }
+        
+    }
+    public static class CommonSocket
+    {
+        public static bool IsConnected(this Socket client)
+        {
+            bool blockingState = client.Blocking;
+
+            try
+            {
+                byte[] tmp = new byte[1];
+
+                client.Blocking = false;
+                client.Send(tmp, 0, 0);
+                return true;
+            }
+            catch (SocketException e)
+            {
+                // 10035 == WSAEWOULDBLOCK
+                if (e.NativeErrorCode.Equals(10035))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            finally
+            {
+                client.Blocking = blockingState;
+            }
         }
     }
 }

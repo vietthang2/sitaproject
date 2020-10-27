@@ -65,7 +65,7 @@ namespace Sita.Modules.BSMServices
                 //while (true && !isConnected)
                // {
                    
-                        Thread.Sleep(1000); // 10 sec
+                        Thread.Sleep(10000); // 10 sec
                         BsmDriver driver = new BsmDriver();
                         var bsmServer = BSMServer();
                         driver.IP = bsmServer.BSMServer.Ip;

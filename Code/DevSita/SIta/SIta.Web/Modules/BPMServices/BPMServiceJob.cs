@@ -61,25 +61,16 @@ namespace Sita.Modules.BPMServices
 
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 bool isConnected = false;
-               
-                //while (true && !isConnected)
-               // {
-                   
-                        Thread.Sleep(1000); // 10 sec
-                        BpmDriver driver = new BpmDriver();
-                        var bpmServer = BPMServer();
-                        driver.IP = bpmServer.BPMServer.Ip;
-                        driver.Port = bpmServer.BPMServer.Port;
-                        driver.ClientPort = bpmServer.BPMServer.ClientPort;
 
-                        driver.StartListening(ref isConnected);
-                    
-                    
-                    
+                //Thread.Sleep(1000); // 10 sec
+                //BpmDriver driver = new BpmDriver();
+                //var bpmServer = BPMServer();
+                //driver.IP = bpmServer.BPMServer.Ip;
+                //driver.Port = bpmServer.BPMServer.Port;
+                //driver.ClientPort = bpmServer.BPMServer.ClientPort;
 
+                //driver.StartListening(ref isConnected);
 
-               // }
-                //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }
         public static BPMServerModel BPMServer()

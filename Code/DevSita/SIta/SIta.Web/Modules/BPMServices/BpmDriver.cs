@@ -374,7 +374,7 @@ ENDBSM",
                     {
                         if (firstTime > 1)
                         {
-                            Logging.Logger.Warning("Close connection!");
+                            Logging.Logger.Warning("BPM: Close connection!");
                             client.Dispose();
                             listener.Dispose();
                             listener = null;
@@ -390,7 +390,7 @@ ENDBSM",
                 }
                 else
                 {
-                    Logging.Logger.Warning("Can not connect!");
+                    Logging.Logger.Warning("BPM: Can not connect!");
                     Thread.Sleep(3000);
                     
                     StartListening(ref statusConnect);
