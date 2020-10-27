@@ -241,3 +241,4 @@ E:\Project\Sita\Code\DevSita\Sita\SIta.Web\bin\zh-TW\Hangfire.Core.resources.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\Sita.Web.csproj.CopyComplete
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\Sita.Web.dll
 E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\Sita.Web.pdb
+E:\Project\Sita\Code\DevSita\Sita\SIta.Web\obj\Release\Sita.Web.csprojAssemblyReference.cache

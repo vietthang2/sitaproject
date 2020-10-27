@@ -9,7 +9,7 @@
 
   },
   "BSMServer": {
-    "Ip": "27.71.237.68",
+    "Ip": "192.168.1.1",
     "Port": 1000,
     "application": "BHS_CXR",
     "version": 2,
