@@ -61,24 +61,25 @@ namespace Sita.Modules.BSMServices
 
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
                 bool isConnected = false;
-               
+
                 //while (true && !isConnected)
-               // {
-                   
-                        Thread.Sleep(10000); // 10 sec
-                        BsmDriver driver = new BsmDriver();
-                        var bsmServer = BSMServer();
-                        driver.IP = bsmServer.BSMServer.Ip;
-                        driver.Port = bsmServer.BSMServer.Port;
-                        driver.ClientPort = bsmServer.BSMServer.ClientPort;
+                // {
 
-                        driver.StartListening(ref isConnected);
-                    
-                    
-                    
+                Thread.Sleep(10000); // 10 sec
+                BsmDriver driver = new BsmDriver();
+                var bsmServer = BSMServer();
+                driver.IP = bsmServer.BSMServer.Ip;
+                driver.Port = bsmServer.BSMServer.Port;
+                driver.ClientPort = bsmServer.BSMServer.ClientPort;
+                driver.LocalIP = bsmServer.BSMServer.LocalIp;
+
+                driver.StartListening(ref isConnected);
 
 
-               // }
+
+
+
+                // }
                 //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }
@@ -99,7 +100,7 @@ namespace Sita.Modules.BSMServices
             {
                 Log.Error(ex.Message);
                 return null;
-                
+
             }
         }
 

@@ -120,7 +120,7 @@ ENDBSM",
         {
             //IPHostEntry host = Dns.GetHostEntry("27.71.237.68");
             //IPAddress ipAddress = host.AddressList[0];
-            remoteEP = new IPEndPoint(IPAddress.Parse("27.71.237.68"), 1000);
+            remoteEP = new IPEndPoint(IPAddress.Parse("57.1.26.25"), 9211);
 
             listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, 1200));

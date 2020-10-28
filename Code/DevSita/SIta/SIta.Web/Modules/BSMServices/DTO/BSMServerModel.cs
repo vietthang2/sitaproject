@@ -13,6 +13,7 @@ namespace Sita.Modules.BSMServices.DTO
     public class BSMServer
     {
         public string Ip { get; set; }
+        public string LocalIp { get; set; }
         public int Port { get; set; }
         public int ClientPort { get; set; }
         public string Application { get; set; }

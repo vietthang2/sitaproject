@@ -16,7 +16,8 @@
     "username": "",
     "password": "password",
     "msg_id": 1,
-    "ClientPort": 1201
+    "ClientPort": 1201,
+    "LocalIp": "192.168.1.1"
 
   },
   "BPMServer": {
@@ -27,7 +28,8 @@
     "username": "",
     "password": "password",
     "msg_id": 1,
-    "ClientPort": 1201
+    "ClientPort": 1201,
+    "LocalIp": "192.168.1.1"
 
   },
   "RabbitServerRemote": {

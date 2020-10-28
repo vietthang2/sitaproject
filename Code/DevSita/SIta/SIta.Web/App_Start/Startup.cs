@@ -70,7 +70,7 @@ namespace Sita
 
             BackgroundJob.Enqueue<BSMServices>(job => job.Run());
             RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), Cron.Minutely);
-            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "*/5 * * * *");
+            RecurringJob.AddOrUpdate<BSMServices>(job => job.Run(), "*/2 * * * *");
 
             //BackgroundJob.Enqueue<BPMServices>(job => job.Run());
             //RecurringJob.AddOrUpdate<BPMServices>(job => job.Run(), Cron.Minutely);

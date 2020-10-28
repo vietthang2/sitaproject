@@ -28,94 +28,12 @@ namespace Sita.Modules.BSMServices
 .P/1MASON/R
 .L/YX{num}6A6
 ENDBPM";
-        List<string> bsm_demo = new List<string>()
-        {
-            @"BSM
-.V/1TZRH
-.F/{flight}/18APR/JFK/F
-.N/{bag_number}003
-ENDBSM",
-             @"BSM
-.V/1TZRH//6543210014/A/123ABC456Z
-.F/{flight}/18APR/JFK/F
-.I/AZ318/18 APR/FCO/J
-.N/{bag_number}003
-.S/Y/3A/C
-.P/SMITH/TOM
-.L/XY1C3P
-.T/321A4C
-.E/RUSH
-.R/VIP
-.X/XRAY
-ENDBSM",
-              @"BSM
-.V/1LPIT////123ABC456Z
-.F/{flight}/05DEC/LGW/C
-.N/{bag_number}002
-.S/N//S
-.P/WEIL/W
-.L/H8J47X
-.T/4F0C32
-.X/XRAY
-ENDBSM",
-               @"BSM
-.V/1TZRH
-.F/{flight}/18APR/JFK/F
-.I/AZ318/18APR/FCO/J
-.N/{bag_number}002
-.N/{bag_number_1}001
-.S/Y/3A/C
-.P/SMITH/TOM
-.L/XY1C3P
-.T/321A4C
-.F/{flight}/18APR/JFK/F
-.O/DL671/18APR/ATL/C
-.O/DL281/18APR/MYS/C
-.N/{bag_number_2}002
-.N/{bag_number_3}002
-.S/Y/3A/C
-.P/BROWN/JIM
-.L/SAB4KP
-.T/321A44
-ENDBSM",
-                @"BSM
-.V/1RLHR
-.F/{flight}/0/8MAY/FRA/J
-.N/{bag_number}005
-.D/HOME/TW149NT/07MAY084502L/CO/FEDEXVAN45
-.H/T1/CENTRAL/E20
-.P/2PAGE/L/B
-.L/XSEA7B
-ENDBSM",
-                 @"BSM
-.V/1RLHR
-.F/{flight}/08MAY/FRA/J
-.N/{bag_number}005
-.D/TRST/QQP0/7MAY0/84512L
-.H/HEX/P1/E20/
-.P/2PAGE/L/B
-.L/XSEA7B
-ENDBSM",
-                  @"BSM
-.V/1RLAX
-.F/{flight}/0/7MAY/LHR/F
-.N/{bag_number}035
-.D/PORT/LXS/07MAY/084512L/CS/POV23684
-.S/Y/3A/C
-.H/INT/GROUP/46
-.P/SMITH/TOM
-.C/ROYAL PRINCESS
-.L/XY1C3P
-.T/321A4C
-.R/CRUISE
-.X/XRAY
-ENDBSM",
-        };
-
+        
         /// <summary>
         /// IP address of the PLC
         /// </summary>
         public string IP { get; set; }
+        public string LocalIP { get; set; }
 
         /// <summary>
         /// PORT Number of the PLC, default is 102
@@ -135,17 +53,14 @@ ENDBSM",
             {
                 
 
-                if (client== null  )
+                //if (client== null  )
+                if (!CommonSocket.SocketConnected(listener))
                 {
-                    if (CommonSocket.IsConnected(client))
-                    {
-                        //Thread.Sleep(30000);
-                        return;
-                    }
+                    
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
                     
                     listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    listener.Bind(new IPEndPoint(IPAddress.Any, ClientPort));
+                    listener.Bind(new IPEndPoint(IPAddress.Parse(LocalIP), ClientPort));
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
                     _statusConnect = statusConnect;
@@ -158,13 +73,13 @@ ENDBSM",
                 }
                 else
                 {
-                    
+                    return;
                     Logging.Logger.Information("BSM: Start Listening again....");
                     
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), client);
 
-                    return;
+                    
                     
                 }
                 
@@ -176,7 +91,7 @@ ENDBSM",
                     return;
                 if(e.Message== "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
                     Log.Error("Start Listening Error:"+e.Message + e.StackTrace + e.Source);
-                Logging.Logger.Warning("BSM: Start Listening again fail!");
+                Logging.Logger.Warning("BSM: Start Listening fail!");
                 Thread T = new Thread(checkTimeOut);
                 T.IsBackground = true;
                 T.Start();
@@ -187,7 +102,6 @@ ENDBSM",
 
         private void OnSocketAccepted(IAsyncResult result)
         {
-            // This is the client socket, where you send/receive data from after accepting. Keep it in a List<Socket> collection if you need to.
             try
             {
                 client = (Socket)result.AsyncState;
@@ -348,7 +262,7 @@ ENDBSM",
                     {
                         if (firstTime > 1)
                         {
-                            if (CommonSocket.IsConnected(client))
+                            if (CommonSocket.SocketConnected(client))
                             {
                                 Thread.Sleep(30000);
                                 break;
@@ -425,6 +339,28 @@ ENDBSM",
             finally
             {
                 client.Blocking = blockingState;
+            }
+        }
+        public static bool SocketConnected(Socket s)
+        {
+            // Exit if socket is null
+            if (s == null)
+                return false;
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+            {
+                try
+                {
+                    int sentBytesCount = s.Send(new byte[1], 1, 0);
+                    return sentBytesCount == 1;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
     }
