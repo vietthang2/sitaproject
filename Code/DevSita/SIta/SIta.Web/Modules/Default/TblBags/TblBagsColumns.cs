@@ -24,8 +24,12 @@ namespace Sita.Default.Columns
         public String Bsm { get; set; }
         public String Bpm { get; set; }
         [QuickFilter(CssClass = "hidden-xs")]
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime TimeRcvBsm { get; set; }
         [QuickFilter(CssClass = "hidden-xs")]
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime TimeRcvBpm { get; set; }
         
         public String DDMM { get; set; }

@@ -23,8 +23,12 @@ namespace Sita.Default.Forms
         [TextAreaEditor(Rows = 5)]
         public String Bpm { get; set; }
         [HalfWidth, ReadOnly(true)]
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime TimeRcvBsm { get; set; }
         [HalfWidth, ReadOnly(true)]
+        [DateTimeFormatter]
+        [DateTimeEditor(IntervalMinutes = 1)]
         public DateTime TimeRcvBpm { get; set; }
         [HalfWidth, ReadOnly(true)]
         public String DDMM { get; set; }

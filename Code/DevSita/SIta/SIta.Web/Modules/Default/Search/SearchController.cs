@@ -23,21 +23,21 @@ namespace Sita.Default.Pages
         [Route("SearchGrid")]
         public ActionResult SearchGrid(RequestSearch req)
         {
-            //var proName2 = "PR_SEARCH_FLIGHT_BAGTAG";
-            //var connect = SqlConnections.NewByKey("Default");
+            var proName2 = "PR_SEARCH_FLIGHT_BAGTAG";
+            var connect = SqlConnections.NewByKey("Default");
 
-            //var records = connect.Query<FlightBagModel>(proName2,
-            //     param: new {Flight= req.flight,Bagtag= req.bagtag },
-            //     commandType: System.Data.CommandType.StoredProcedure).ToList();
+            var records = connect.Query<FlightBagModel>(proName2,
+                 param: new { Flight = req.flight, Bagtag = req.bagtag },
+                 commandType: System.Data.CommandType.StoredProcedure).ToList();
 
-            var modelTesst = new List<FlightBagModel>();
-            modelTesst= A.ListOf<FlightBagModel>();
+            //var modelTesst = new List<FlightBagModel>();
+            //modelTesst= A.ListOf<FlightBagModel>();
 
 
             if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
-                return PartialView("_SearchGrid", modelTesst);// records);
+                return PartialView("_SearchGrid", records);// records);
             //return View(records);
-            return View(modelTesst);
+            return View(records);
 
         }
     }

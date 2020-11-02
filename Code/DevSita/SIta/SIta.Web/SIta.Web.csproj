@@ -963,7 +963,7 @@
     <Content Include="Scripts\serenity\slick\serenity-slick.min.js" />
     <Content Include="Scripts\serenity\widget\serenity-widget.js" />
     <Content Include="Scripts\serenity\widget\serenity-widget.min.js" />
-    <Content Include="Modules\Default\TblFlight\TblFlightDialog.Template.html" />
+    <Content Include="Modules\Default\TblFlight\TblFlightDialog.Template_bk.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <Content Include="ServerConfig.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

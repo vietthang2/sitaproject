@@ -61,8 +61,8 @@ namespace Sita.Modules.Default.TblFlight
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
 
 
-                newFlight.DDMM = Convert.ToDateTime(dailyModel.Field[0].Value).ToString("ddMM");
-                newFlight.YYYY = Convert.ToDateTime(dailyModel.Field[0].Value).ToString("yyyy");
+                newFlight.DDMM = Convert.ToDateTime(dailyModel.ScheduleDate).ToString("ddMM");
+                newFlight.YYYY = Convert.ToDateTime(dailyModel.ScheduleDate).ToString("yyyy");
 
                 
 

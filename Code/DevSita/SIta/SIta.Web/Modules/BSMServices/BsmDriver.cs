@@ -12,7 +12,7 @@ using Sita.Modules.RabbitMQ;
 
 namespace Sita.Modules.BSMServices
 {
-  
+
     public class BsmDriver
     {
         private int readTimeout = System.Threading.Timeout.Infinite;
@@ -28,7 +28,7 @@ namespace Sita.Modules.BSMServices
 .P/1MASON/R
 .L/YX{num}6A6
 ENDBPM";
-        
+
         /// <summary>
         /// IP address of the PLC
         /// </summary>
@@ -44,26 +44,36 @@ ENDBPM";
        new ManualResetEvent(false);
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         IPEndPoint remoteEP;
-        bool statusConnect = false;
+        static bool statusConnect;
         Socket client;
+        //public bool CheckStatus()
+        //{
+        //    remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
+        //    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //    //CommonSocket.IsConnected();
+        //}
         public void StartListening(ref bool _statusConnect)
         {
-            
+
             try
             {
-                
 
-                //if (client== null  )
-                if (!CommonSocket.SocketConnected(listener))
+
+                if (client == null)
+                //if (!statusConnect)
                 {
-                    
+
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
-                    
+
                     listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    listener.Bind(new IPEndPoint(IPAddress.Parse(LocalIP), ClientPort));
+                    //CommonSocket.SocketConnected(client);
+                    Logging.Logger.Information($"BSM: Status connetion: " + (statusConnect==true?"Connected":"Disconnected"));
+                    if (statusConnect) return;
+                    listener.Bind(new IPEndPoint(IPAddress.Parse(LocalIP), Port));
+                    Logging.Logger.Information($"BSM: Begin Bind to server LocalIp: {LocalIP} and port:{ClientPort}");
                     listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
-                    _statusConnect = statusConnect;
+
                     Logging.Logger.Information($"BSM: Begin connect to server Ip: {IP} and port:{Port}");
                     Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening");
 
@@ -73,30 +83,37 @@ ENDBPM";
                 }
                 else
                 {
-                    return;
-                    Logging.Logger.Information("BSM: Start Listening again....");
                     
-                    listener.BeginConnect(remoteEP,
-                        new AsyncCallback(OnSocketAccepted), client);
+                    
+                    if (client.Connected)
+                    {
+                        statusConnect = true;
+                        Logging.Logger.Information("BSM: Connected! ....");
+                        SendData(MsgHelper.DataOnMsg());
+                        return;
+                    }
+                    client.Disconnect(true);
+                    client.Dispose();
+                    statusConnect = false;
+                    Thread.Sleep(10000);
+                    StartListening(ref statusConnect);
 
-                    
-                    
+
+
                 }
-                
+
             }
             catch (Exception e)
             {
-                _statusConnect = false;
-                if (e.Message== "Only one usage of each socket address (protocol/network address/port) is normally permitted") 
+                statusConnect = false;
+                if (e.Message == "Only one usage of each socket address (protocol/network address/port) is normally permitted")
                     return;
-                if(e.Message== "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
-                    Log.Error("Start Listening Error:"+e.Message + e.StackTrace + e.Source);
+                if (e.Message == "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
+                    Log.Error("Start Listening Error:" + e.Message + e.StackTrace + e.Source);
                 Logging.Logger.Warning("BSM: Start Listening fail!");
-                Thread T = new Thread(checkTimeOut);
-                T.IsBackground = true;
-                T.Start();
-                return;
                 
+                return;
+
             }
         }
 
@@ -106,7 +123,7 @@ ENDBPM";
             {
                 client = (Socket)result.AsyncState;
 
-            
+
                 if (client.Connected)
                 {
                     statusConnect = true;
@@ -121,30 +138,34 @@ ENDBPM";
                 }
                 else
                 {
-                    Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening: Can not connect to server! ");
-                    
+                    Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening: OnSocketAccepted, But can not connect to server! ");
+                    statusConnect = false;
+                    Thread.Sleep(10000);
+                    StartListening(ref statusConnect);
                 }
-                    
+
             }
             catch (Exception ex)
-            { 
+            {
 
                 Logging.Logger.Error("BSM: OnSocketAccepted :" + ex.Message);
-                
+
             }
         }
-        
 
-        
+
+
         private void OnDataReceived(IAsyncResult result)
         {
             try
             {
+                statusConnect = true;
                 msg_ack = true;
                 // This is the client that sent you data. AsyncState is exactly what you passed into the state parameter in BeginReceive
                 client = result.AsyncState as Socket;
                 if (!client.Connected)
                 {
+                    statusConnect = false;
                     return;
                 }
                 int received = client.EndReceive(result);
@@ -158,6 +179,7 @@ ENDBPM";
                 T.Start(recData);
                 // Start a new async receive on the client to receive more data.
                 client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+                statusConnect = true;
             }
             catch (Exception ex)
             {
@@ -182,17 +204,17 @@ ENDBPM";
             msg.PraseData(recData);
             Console.WriteLine($"Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()} - Raw Data: {msg.HexString}");
             Logging.Logger.Information($"BSM: Time:{DateTime.Now} - RCV- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}- Raw Data: {msg.HexString}");
-            
 
 
+            statusConnect = true;
             if (msg.Type == MsgType.LOGIN_RQST)
             {
-               
+
             }
 
             if (msg.Type == MsgType.ACK_MSG)
             {
-               
+
             }
 
             if (msg.Type == MsgType.NAK_MSG)
@@ -220,13 +242,20 @@ ENDBPM";
 
 
                 }
-               
+
             }
             if (msg.Type == MsgType.STATUS)
             {
                 Thread.Sleep(500);
                 SendData(MsgHelper.DataOnMsg());
-                
+                statusConnect = true;
+                timeOut = 0;
+            }
+            if (msg.Type == MsgType.LOGIN_REJECT)
+            {
+                Thread.Sleep(5000);
+                SendData(MsgHelper.LoginRequest());
+                statusConnect = true;
                 timeOut = 0;
             }
             msgidx++;
@@ -239,57 +268,107 @@ ENDBPM";
         int timeOut = 0;
         private void checkTimeOut()
         {
-            int firstTime = 0;
-            while (true)
+            try
             {
-                firstTime++;
-                if (client != null)
+                int firstTime = 0;
+                while (true)
                 {
-                    if (client.Connected)
-                    {
-                        timeOut++;
+                    firstTime++;
+                    //if (client != null)
+                    //{
+                    //    if (client.Connected)
+                    //    {
+                    //        timeOut++;
+                    //        statusConnect = true;
+                    //        if (timeOut >= 50)
+                    //        {
+                    //            if (!msg_ack)
+                    //            {
+                    //                SendData(MsgHelper.LastAckDataMsg(s_msg));
+                    //            }
+                    //            timeOut = 0;
+                    //        }
+                    //        if (firstTime == 10 || firstTime == 40)
+                    //            Logging.Logger.Information("BSM Is connected?:" + statusConnect);
+                    //    }
+                    //    else
+                    //    {
+                    //        statusConnect = false;
+                    //        Logging.Logger.Warning("BSM: client ! null, Can not connect!");
+                    //        if (firstTime > 1)
+                    //        {
 
-                        if (timeOut >= 50)
+                    //            Logging.Logger.Warning("BSM: Close connection!");
+
+                    //            //client.Dispose();
+                    //            //listener.Dispose();
+                    //            //listener = null;
+                    //            Thread.Sleep(1000);
+                    //            StartListening(ref statusConnect);
+                    //            break;
+                    //        }
+
+
+
+                    //    }
+
+                    //}
+                    //else
+                    //{
+                    //    statusConnect = false;
+                    //    Logging.Logger.Warning("BSM: client == null, Can not connect!");
+                    //    Thread.Sleep(1000);
+
+                    //    StartListening(ref statusConnect);
+                    //    break;
+                    //}
+                    //Thread.Sleep(100);
+                    if (client != null)
+                    {
+                        if (client.Connected)
                         {
-                            if (!msg_ack)
-                            {
-                                SendData(MsgHelper.LastAckDataMsg(s_msg));
-                            }
-                            timeOut = 0;
+                            statusConnect=true;
+                            continue;
                         }
+                        else//if (!CommonSocket.SocketConnected(client))
+                        {
+                            Logging.Logger.Warning("BSM: disconnected!"+ client.Connected);
+                            client.Close();
+                            client.Dispose();
+                            listener.Dispose();
+                            Thread.Sleep(10000);
+                            //SendData(MsgHelper.DataOnMsg());
+                            statusConnect = false;
+                            StartListening(ref statusConnect);
+                            
+                            break;
+
+                        }
+                        //else
+                        //{
+                        //    Logging.Logger.Warning("BSM: connected!");
+                        //    SendData(MsgHelper.DataOnMsg());
+                        //    Thread.Sleep(10000);
+                        //}
+
                     }
                     else
                     {
-                        if (firstTime > 1)
-                        {
-                            if (CommonSocket.SocketConnected(client))
-                            {
-                                Thread.Sleep(30000);
-                                break;
-                            }
-                            Logging.Logger.Warning("BSM: Close connection!");
-                            client.Dispose();
-                            listener.Dispose();
-                            listener = null;
-                            Thread.Sleep(30000);
-                            StartListening(ref statusConnect);
-                            break;
-                        }
-                        
-                        
-                            
+                        Logging.Logger.Warning("BSM: client == null, Can not connect!");
+                        statusConnect = false;
+                        Thread.Sleep(20000);
+                        StartListening(ref statusConnect);
+                        //break;
                     }
-                        
+
+
+
                 }
-                else
-                {
-                    Logging.Logger.Warning("BSM: Can not connect!");
-                    Thread.Sleep(10000);
-                    
-                    StartListening(ref statusConnect);
-                    break;
-                }
-                Thread.Sleep(100);
+            }
+            catch (Exception e1)
+            {
+
+                Logging.Logger.Error("BSM: error"+ e1.Message);
             }
         }
 
@@ -299,8 +378,10 @@ ENDBPM";
         {
             if (!client.Connected)
             {
+
                 return;
             }
+            statusConnect = true;
             byte[] data = msg.ToByteArray();
             SocketAsyncEventArgs socketAsyncData = new SocketAsyncEventArgs();
             socketAsyncData.SetBuffer(data, 0, data.Length);
@@ -308,7 +389,7 @@ ENDBPM";
             Console.WriteLine($"Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
             Logging.Logger.Information($"BSM: Time:{DateTime.Now} - SND- MsgType: {msg.Type.ToString()} - MsgId  : {msg.Message_id_number.ToString()}- MsgData: {msg.Data.ToString()}");
         }
-        
+
     }
     public static class CommonSocket
     {
@@ -344,24 +425,42 @@ ENDBPM";
         public static bool SocketConnected(Socket s)
         {
             // Exit if socket is null
-            if (s == null)
-                return false;
-            bool part1 = s.Poll(1000, SelectMode.SelectRead);
-            bool part2 = (s.Available == 0);
-            if (part1 && part2)
-                return false;
-            else
+            Logging.Logger.Warning("BSM: Check connecting...!");
+            bool rs;
+            try
             {
-                try
+                if (s == null)
                 {
-                    int sentBytesCount = s.Send(new byte[1], 1, 0);
-                    return sentBytesCount == 1;
+                    Logging.Logger.Warning("BSM: Check connecting... false!");
+                    rs = false;
+                    return rs;
                 }
-                catch
+
+                bool part1 = s.Poll(1000, SelectMode.SelectRead);
+                bool part2 = (s.Available == 0);
+                if (part1 && part2)
+                    rs = false;
+                else
                 {
-                    return false;
+                    try
+                    {
+                        int sentBytesCount = s.Send(new byte[1], 1, 0);
+                        rs = sentBytesCount == 1;
+                    }
+                    catch
+                    {
+                        rs = false;
+                    }
                 }
+                
             }
+            catch (Exception ex)
+            {
+                Logging.Logger.Warning("BSM: Check connecting... !" + ex.Message);
+                rs = false;
+            }
+            Logging.Logger.Warning("BSM: Check connecting... !" + rs);
+            return rs;
         }
     }
 }

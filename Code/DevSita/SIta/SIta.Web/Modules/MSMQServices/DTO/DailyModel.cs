@@ -63,7 +63,7 @@ namespace Sita.Modules.MSMQServices.DTO
         public string Name { get; set; }
 
         [JsonProperty("daily")]
-        public List<Daily> Daily { get; set; }
+        public Daily Daily { get; set; }
     }
 
     public class Root

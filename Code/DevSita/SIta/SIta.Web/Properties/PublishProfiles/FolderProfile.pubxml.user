@@ -190,10 +190,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2020 20:44:18</publishTime>
     </File>
     <File Include="bin/SIta.Web.dll">
-      <publishTime>10/28/2020 22:00:13</publishTime>
+      <publishTime>11/01/2020 18:15:33</publishTime>
     </File>
     <File Include="bin/SIta.Web.pdb">
-      <publishTime>10/28/2020 22:00:13</publishTime>
+      <publishTime>11/01/2020 18:15:33</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
       <publishTime>08/30/2020 20:15:25</publishTime>
@@ -2410,6 +2410,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/14/2020 19:51:01</publishTime>
     </File>
     <File Include="Modules/Default/TblFlight/TblFlightDialog.Template.html">
+      <publishTime>10/18/2020 20:44:15</publishTime>
+    </File>
+    <File Include="Modules/Default/TblFlight/TblFlightDialog.Template_bk.html">
       <publishTime>10/18/2020 20:44:15</publishTime>
     </File>
     <File Include="Modules/Default/TblFlight/TblFlightIndex.cshtml">

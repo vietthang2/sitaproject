@@ -92,27 +92,32 @@ namespace Sita.Modules.MSMQServices
                             var isCheckAll = true;
                             foreach (System.Messaging.Message message in messages)
                             {
-                                // chuyển xml về json sau đó chuyển về model
-                                message.Formatter = new System.Messaging.XmlMessageFormatter(new Type[] { typeof(string) });
                                 
-                                xmlDoc.Load(message.BodyStream);
-                                var mess = xmlDoc.ToString();
                                 
                                 try
                                 {
-                                    string json = JsonConvert.SerializeXmlNode(xmlDoc.FirstChild.NextSibling);
+                                    // chuyển xml về json sau đó chuyển về model
+                                    message.Formatter = new System.Messaging.XmlMessageFormatter(new Type[] { typeof(string) });
+
+                                    xmlDoc.Load(message.BodyStream);
+                                    var mess = xmlDoc.ToString();
+
+                                    string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
+                                    Logging.Logger.Information("MSMQ: messages  " + json);
                                     Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
                                     var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
-                                    foreach (var item in dailyModel.Connect.Daily)
-                                    {
-                                        
-                                        StoreFlight.Save(item);
-                                    }
+                                    //foreach (var item in dailyModel.Connect.Daily)
+                                    //{
+
+                                    //    StoreFlight.Save(item);
+                                    //}
+                                    StoreFlight.Save(dailyModel.Connect.Daily);
                                     messageQueue.ReceiveById(message.Id);
                                 }
                                 catch (Exception ex)
                                 {
-                                    Logging.Logger.Error("MSMQ: can not parse and save mess");
+                                    Logging.Logger.Error("MSMQ: can not parse and save mess"+ ex.Message);
+                                    //messageQueue.ReceiveById(message.Id);
                                     isCheckAll = false;
                                 }
                             }
@@ -127,6 +132,7 @@ namespace Sita.Modules.MSMQServices
                     catch (Exception ex)
                     {
                         Logging.Logger.Error("MSMQ Error:" + ex.Message);
+                        
                     }
                     Thread.Sleep(100000); // 1 min
 
