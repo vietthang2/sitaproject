@@ -12,6 +12,12 @@ namespace Sita.Modules.MSMQServices.DTO
         public Connect Connect { get; set; }
 
     }
+    public class DailyModelList
+    {
+        [JsonProperty("connect")]
+        public ConnectList Connect { get; set; }
+
+    }
     public class Field
     {
         [JsonProperty("name")]
@@ -65,7 +71,17 @@ namespace Sita.Modules.MSMQServices.DTO
         [JsonProperty("daily")]
         public Daily Daily { get; set; }
     }
+    public class ConnectList
+    {
+        [JsonProperty("version")]
+        public string Version { get; set; }
 
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("daily")]
+        public List<Daily> Daily { get; set; }
+    }
     public class Root
     {
         //[JsonProperty("connect")]

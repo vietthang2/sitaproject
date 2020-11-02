@@ -48,15 +48,30 @@ namespace Sita.Modules.Default.TblFlight
                 newFlight.DateBoundary = dailyModel.DateBoundary;
                 newFlight.DateCreated = DateTime.Now;
                 newFlight.UserCreated = "Admin";
-                try
+                var objectChute = dailyModel.Field.Where(s => s.Name == "chutes").ToList();
+                foreach (var item in objectChute)
                 {
-                    newFlight.Chute = (int)dailyModel.Field.Where(s => s.Name == "chutes").FirstOrDefault().Value;
+                    try
+                    {
+                        if (item.Value.ToString().Length > 0)
+                        {
+                            newFlight.Chute = int.Parse(item.Value.ToString());
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        newFlight.Chute = null;
+                    }
                 }
-                catch (Exception)
-                {
-
-                    newFlight.Chute = null;
-                }
+                //try
+                //{
+                //    newFlight.Chute = int.Parse(dailyModel.Field.Where(s => s.Name == "chutes" && s.Value.ToString().Length>0).FirstOrDefault().Value.ToString());
+                //}
+                //catch (Exception ex)
+                //{
+                //    Logging.Logger.Information("MSMQ: chutes erros :" + ex);
+                //    newFlight.Chute = 0;
+                //}
                 
                 //newFlight.LastChanged = dailyModel.Connect.Daily.Linecode;
 

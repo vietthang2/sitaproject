@@ -60,7 +60,7 @@ ENDBPM";
 
 
                 if (client == null)
-                //if (!statusConnect)
+                
                 {
 
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
@@ -344,13 +344,7 @@ ENDBPM";
                             break;
 
                         }
-                        //else
-                        //{
-                        //    Logging.Logger.Warning("BSM: connected!");
-                        //    SendData(MsgHelper.DataOnMsg());
-                        //    Thread.Sleep(10000);
-                        //}
-
+                       
                     }
                     else
                     {

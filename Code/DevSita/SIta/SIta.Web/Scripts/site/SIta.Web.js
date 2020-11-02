@@ -3364,7 +3364,7 @@ var Sita;
                             return;
                         }
                         //End
-                        dialog_.loadEntityAndOpenDialog(fligth[0]);
+                        dialog_.loadByIdAndOpenDialog(fligth[0].Identify);
                         Serenity.SubDialogHelper.bindToDataChange(dialog_, this, function (e, dci) {
                             _this.refresh();
                         }, true);

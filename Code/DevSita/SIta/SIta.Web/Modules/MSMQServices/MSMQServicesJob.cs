@@ -4,18 +4,12 @@ using Serenity;
 using Serenity.Abstractions;
 using Serenity.Web;
 using Sita.Modules.MSMQServices.DTO;
-using Sita.Modules.RabbitMQ;
-using Sita.Modules.MSMQServices.DTO;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Messaging;
 using System.Threading;
-using System.Web;
 using System.Xml;
 using Sita.Modules.Default.TblFlight;
-using System.Text;
-using System.Collections.Generic;
 
 namespace Sita.Modules.MSMQServices
 {
@@ -117,8 +111,31 @@ namespace Sita.Modules.MSMQServices
                                 catch (Exception ex)
                                 {
                                     Logging.Logger.Error("MSMQ: can not parse and save mess"+ ex.Message);
-                                    //messageQueue.ReceiveById(message.Id);
-                                    isCheckAll = false;
+                                    try
+                                    {
+                                        //try convert list
+                                        var mess = xmlDoc.ToString();
+
+                                        string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
+                                        Logging.Logger.Information("MSMQ: messages  " + json);
+                                        Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
+                                        var dailyModel = JsonConvert.DeserializeObject<DailyModelList>(json.Replace("@", ""));
+                                        foreach (var item in dailyModel.Connect.Daily)
+                                        {
+
+                                            StoreFlight.Save(item);
+                                        }
+
+                                        messageQueue.ReceiveById(message.Id);
+                                        //end try
+                                    }
+                                    catch (Exception ex1)
+                                    {
+                                        Logging.Logger.Error("MSMQ: can not try parse and save mess" + ex1.Message);
+                                        isCheckAll = false;
+                                    }
+                                    
+                                    
                                 }
                             }
                             if(isCheckAll)

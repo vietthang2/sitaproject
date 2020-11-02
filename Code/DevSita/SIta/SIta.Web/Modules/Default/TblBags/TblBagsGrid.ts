@@ -79,10 +79,10 @@ namespace Sita.Default {
                     var fligth = TblFlightRow.getLookup().items.filter(k => k.DDMM === item.DDMM && k.YYYY === item.YYYY && (k.LineCode + k.Number) === item.FlightRef);
                     if (fligth.length === 0) {
                         Q.alert('Not found flight');
-                        return
+                        return;
                     }
                     //End
-                    dialog_.loadEntityAndOpenDialog(fligth[0]);
+                    dialog_.loadByIdAndOpenDialog(fligth[0].Identify);
                     Serenity.SubDialogHelper.bindToDataChange(dialog_, this, (e, dci) => {
                         this.refresh();
                     }, true);
