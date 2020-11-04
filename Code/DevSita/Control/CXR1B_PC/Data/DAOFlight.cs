@@ -22,6 +22,8 @@ namespace CXR1BSAC.Data
 		protected string _softReplace;
 		protected string _siteIata;
 		protected string _dateBoundary;
+		protected string _YYYY;
+		protected string _DDMM;
 		protected Int32? _chute;
 		protected DateTime? _lastChanged;
 		#endregion
@@ -303,6 +305,8 @@ namespace CXR1BSAC.Data
 				command.Parameters.Add(new SqlParameter("@Date_boundary", SqlDbType.NVarChar, 50, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoFlight.DateBoundary?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@Chute", SqlDbType.Int, 4, ParameterDirection.Input, true, 10, 0, "", DataRowVersion.Proposed, (object)daoFlight.Chute?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@LastChanged", SqlDbType.DateTime, 8, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoFlight.LastChanged?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@YYYY", SqlDbType.NVarChar, 50, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoFlight.YYYY ?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@DDMM", SqlDbType.NVarChar, 50, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoFlight.DDMM ?? (object)DBNull.Value));
 
 				staticConnection.Open();
 				sqlAdapter.Fill(dt);
@@ -318,7 +322,7 @@ namespace CXR1BSAC.Data
 						retObj._linecode					 = Convert.IsDBNull(row["Linecode"]) ? null : (string)row["Linecode"];
 						retObj._number					 = Convert.IsDBNull(row["Number"]) ? null : (string)row["Number"];
 						retObj._scheduleDate					 = Convert.IsDBNull(row["Schedule_date"]) ? null : (string)row["Schedule_date"];
-						retObj._schedule					 = Convert.IsDBNull(row["Schedule"]) ? null : (string)row["Schedule"];
+						
 						retObj._softReplace					 = Convert.IsDBNull(row["SoftReplace"]) ? null : (string)row["SoftReplace"];
 						retObj._siteIata					 = Convert.IsDBNull(row["Site_iata"]) ? null : (string)row["Site_iata"];
 						retObj._dateBoundary					 = Convert.IsDBNull(row["Date_boundary"]) ? null : (string)row["Date_boundary"];
@@ -329,7 +333,7 @@ namespace CXR1BSAC.Data
 				}
 				return objList;
 			}
-			catch
+			catch (Exception ex)
 			{
 				throw;
 			}
@@ -578,7 +582,28 @@ namespace CXR1BSAC.Data
 				_lastChanged = value;
 			}
 		}
-
+		public string YYYY
+		{
+			get
+			{
+				return _YYYY;
+			}
+			set
+			{
+				_YYYY = value;
+			}
+		}
+		public string DDMM
+		{
+			get
+			{
+				return _DDMM;
+			}
+			set
+			{
+				_DDMM = value;
+			}
+		}
 		#endregion
 	}
 }
@@ -698,12 +723,14 @@ namespace CXR1BSAC.Data
 			[Linecode],
 			[Number],
 			[Schedule_date],
-			[Schedule],
+			
 			[SoftReplace],
 			[Site_iata],
 			[Date_boundary],
 			[Chute],
-			[LastChanged]
+			[LastChanged],
+			[YYYY],
+			[DDMM]
 			FROM [dbo].[tblFlight]
 			WHERE 
 			([Identify] LIKE @Identify OR @Identify is null)
@@ -711,12 +738,14 @@ namespace CXR1BSAC.Data
 			AND ([Linecode] LIKE @Linecode OR @Linecode is null)
 			AND ([Number] LIKE @Number OR @Number is null)
 			AND ([Schedule_date] LIKE @Schedule_date OR @Schedule_date is null)
-			AND ([Schedule] LIKE @Schedule OR @Schedule is null)
+			
 			AND ([SoftReplace] LIKE @SoftReplace OR @SoftReplace is null)
 			AND ([Site_iata] LIKE @Site_iata OR @Site_iata is null)
 			AND ([Date_boundary] LIKE @Date_boundary OR @Date_boundary is null)
 			AND ([Chute] LIKE @Chute OR @Chute is null)
 			AND ([LastChanged] LIKE @LastChanged OR @LastChanged is null)
+			AND ([YYYY] LIKE @YYYY OR @YYYY is null)
+			AND ([DDMM] LIKE @DDMM OR @DDMM is null)
 			";
 
 		internal static string ctprtblFlight_SelectAllBySearchFieldsCount = @"

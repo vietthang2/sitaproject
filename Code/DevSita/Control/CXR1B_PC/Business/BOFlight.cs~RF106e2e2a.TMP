@@ -77,8 +77,6 @@ namespace CXR1BSAC.Business
 				_dateBoundary = daoFlight.DateBoundary;
 				_chute = daoFlight.Chute;
 				_lastChanged = daoFlight.LastChanged;
-				_YYYY = daoFlight.YYYY;
-				_DDMM = daoFlight.DDMM;
 			}
 			catch
 			{
@@ -162,8 +160,6 @@ namespace CXR1BSAC.Business
 				_dateBoundary = daoFlight.DateBoundary;
 				_chute = daoFlight.Chute;
 				_lastChanged = daoFlight.LastChanged;
-				_YYYY = daoFlight.YYYY;
-				_DDMM = daoFlight.DDMM;
 				_isDirty = false;
 			}
 			catch
@@ -201,7 +197,6 @@ namespace CXR1BSAC.Business
 				daoFlight.DateBoundary = _dateBoundary;
 				daoFlight.Chute = _chute;
 				daoFlight.LastChanged = _lastChanged;
-
 				daoFlight.Update();
 				CommitTransaction();
 				
@@ -374,8 +369,6 @@ namespace CXR1BSAC.Business
 				daoFlight.DateBoundary = boFlight.DateBoundary;
 				daoFlight.Chute = boFlight.Chute;
 				daoFlight.LastChanged = boFlight.LastChanged;
-				daoFlight.YYYY = boFlight.YYYY;
-				daoFlight.DDMM = boFlight.DDMM;
 				Int32 objCount = DAOFlight.SelectAllBySearchFieldsCount(daoFlight);
 				return objCount;
 			}
@@ -625,7 +618,7 @@ namespace CXR1BSAC.Business
 				_isDirty = true;
 			}
 		}
-		public  string YYYY
+		public virtual string YYYY
 		{
 			get
 			{
@@ -637,7 +630,7 @@ namespace CXR1BSAC.Business
 				
 			}
 		}
-		public  string DDMM
+		public virtual string DDMM
 		{
 			get
 			{

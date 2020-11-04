@@ -17,10 +17,12 @@ namespace CXR1BSAC.Business
 	{
 		#region member variables
 		protected string _baggageTag;
-		protected string _flight;
+		protected string _flightRef;
 		protected bool? _processed;
 		protected string _bsm;
 		protected string _bpm;
+		protected string _YYYY;
+		protected string _DDMM;
 		protected DateTime? _timeRcvBSM;
 		protected DateTime? _timeSendBPM;
 		protected bool _isDirty = false;
@@ -59,12 +61,14 @@ namespace CXR1BSAC.Business
 			{
 				DAOBags daoBags = DAOBags.SelectOne(baggageTag);
 				_baggageTag = daoBags.BaggageTag;
-				_flight = daoBags.Flight;
+				_flightRef = daoBags.FlightRef;
 				_processed = daoBags.Processed;
 				_bsm = daoBags.Bsm;
 				_bpm = daoBags.Bpm;
 				_timeRcvBSM = daoBags.TimeRcvBSM;
 				_timeSendBPM = daoBags.TimeSendBPM;
+				_YYYY = daoBags.YYYY;
+				_DDMM = daoBags.DDMM;
 			}
 			catch
 			{
@@ -87,12 +91,14 @@ namespace CXR1BSAC.Business
 			try
 			{
 				_baggageTag = daoBags.BaggageTag;
-				_flight = daoBags.Flight;
+				_flightRef = daoBags.FlightRef;
 				_processed = daoBags.Processed;
 				_bsm = daoBags.Bsm;
 				_bpm = daoBags.Bpm;
 				_timeRcvBSM = daoBags.TimeRcvBSM;
 				_timeSendBPM = daoBags.TimeSendBPM;
+				_YYYY = daoBags.YYYY;
+				_DDMM = daoBags.DDMM;
 			}
 			catch
 			{
@@ -118,7 +124,7 @@ namespace CXR1BSAC.Business
 			try
 			{
 				daoBags.BaggageTag = _baggageTag;
-				daoBags.Flight = _flight;
+				daoBags.FlightRef = _flightRef;
 				daoBags.Processed = _processed;
 				daoBags.Bsm = _bsm;
 				daoBags.Bpm = _bpm;
@@ -128,7 +134,7 @@ namespace CXR1BSAC.Business
 				CommitTransaction();
 				
 				_baggageTag = daoBags.BaggageTag;
-				_flight = daoBags.Flight;
+				_flightRef = daoBags.FlightRef;
 				_processed = daoBags.Processed;
 				_bsm = daoBags.Bsm;
 				_bpm = daoBags.Bpm;
@@ -161,7 +167,7 @@ namespace CXR1BSAC.Business
 			try
 			{
 				daoBags.BaggageTag = _baggageTag;
-				daoBags.Flight = _flight;
+				daoBags.FlightRef = _flightRef;
 				daoBags.Processed = _processed;
 				daoBags.Bsm = _bsm;
 				daoBags.Bpm = _bpm;
@@ -171,7 +177,7 @@ namespace CXR1BSAC.Business
 				CommitTransaction();
 				
 				_baggageTag = daoBags.BaggageTag;
-				_flight = daoBags.Flight;
+				_flightRef = daoBags.FlightRef;
 				_processed = daoBags.Processed;
 				_bsm = daoBags.Bsm;
 				_bpm = daoBags.Bpm;
@@ -283,12 +289,14 @@ namespace CXR1BSAC.Business
 				IList<BOBags> boBagsCollection = new List<BOBags>();
 				DAOBags daoBags = new DAOBags();
 				daoBags.BaggageTag = boBags.BaggageTag;
-				daoBags.Flight = boBags.Flight;
+				daoBags.FlightRef = boBags.FlightRef;
 				daoBags.Processed = boBags.Processed;
 				daoBags.Bsm = boBags.Bsm;
 				daoBags.Bpm = boBags.Bpm;
 				daoBags.TimeRcvBSM = boBags.TimeRcvBSM;
 				daoBags.TimeSendBPM = boBags.TimeSendBPM;
+				daoBags.YYYY = boBags.YYYY;
+				daoBags.DDMM = boBags.DDMM;
 				IList<DAOBags> daoBagsCollection = DAOBags.SelectAllBySearchFields(daoBags);
 			
 				foreach(DAOBags resdaoBags in daoBagsCollection)
@@ -296,7 +304,7 @@ namespace CXR1BSAC.Business
 			
 				return boBagsCollection;
 			}
-			catch
+			catch (Exception ex)
 			{
 				throw;
 			}
@@ -319,7 +327,7 @@ namespace CXR1BSAC.Business
 			{
 				DAOBags daoBags = new DAOBags();
 				daoBags.BaggageTag = boBags.BaggageTag;
-				daoBags.Flight = boBags.Flight;
+				daoBags.FlightRef = boBags._flightRef;
 				daoBags.Processed = boBags.Processed;
 				daoBags.Bsm = boBags.Bsm;
 				daoBags.Bpm = boBags.Bpm;
@@ -350,16 +358,39 @@ namespace CXR1BSAC.Business
 				_isDirty = true;
 			}
 		}
-		
-		public virtual string Flight
+		public virtual string YYYY
 		{
 			get
 			{
-				 return _flight;
+				return _YYYY;
 			}
 			set
 			{
-				_flight = value;
+				_YYYY = value;
+				
+			}
+		}
+		public virtual string DDMM
+		{
+			get
+			{
+				return _DDMM;
+			}
+			set
+			{
+				_DDMM = value;
+
+			}
+		}
+		public virtual string FlightRef
+		{
+			get
+			{
+				 return _flightRef;
+			}
+			set
+			{
+				_flightRef = value;
 				_isDirty = true;
 			}
 		}

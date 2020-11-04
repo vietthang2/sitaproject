@@ -27,7 +27,7 @@ namespace CXR1BSAC.Data
 		private void Init()
 		{
 			_txConnection = new SqlConnection();
-			_txConnection.ConnectionString = ConnectionString;
+			_txConnection.ConnectionString = "Server=171.244.18.171\\SQL2K14;Database=Sita_Default_v1;Integrated Security=false;User=sa;Password=P@ssw0rd";// ConnectionString;
 			_currTransaction = null;
 			_isDisposed = false;
 		}

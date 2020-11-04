@@ -14,10 +14,12 @@ namespace CXR1BSAC.Data
 	{
 		#region member variables
 		protected string _baggageTag;
-		protected string _flight;
+		protected string _FlightRef;
 		protected bool? _processed;
 		protected string _bsm;
 		protected string _bpm;
+		protected string _YYYY;
+		protected string _DDMM;
 		protected DateTime? _timeRcvBSM;
 		protected DateTime? _timeSendBPM;
 		#endregion
@@ -58,7 +60,7 @@ namespace CXR1BSAC.Data
 				{
 					retObj = new DAOBags();
 					retObj._baggageTag					 = Convert.IsDBNull(dt.Rows[0]["Baggage_Tag"]) ? null : (string)dt.Rows[0]["Baggage_Tag"];
-					retObj._flight					 = Convert.IsDBNull(dt.Rows[0]["Flight"]) ? null : (string)dt.Rows[0]["Flight"];
+					retObj._FlightRef					 = Convert.IsDBNull(dt.Rows[0]["FlightRef"]) ? null : (string)dt.Rows[0]["FlightRef"];
 					retObj._processed					 = Convert.IsDBNull(dt.Rows[0]["Processed"]) ? (bool?)null : (bool?)dt.Rows[0]["Processed"];
 					retObj._bsm					 = Convert.IsDBNull(dt.Rows[0]["BSM"]) ? null : (string)dt.Rows[0]["BSM"];
 					retObj._bpm					 = Convert.IsDBNull(dt.Rows[0]["BPM"]) ? null : (string)dt.Rows[0]["BPM"];
@@ -134,7 +136,7 @@ namespace CXR1BSAC.Data
 			try
 			{
 				command.Parameters.Add(new SqlParameter("@Baggage_Tag", SqlDbType.NVarChar, 50, ParameterDirection.InputOutput, false, 0, 0, "", DataRowVersion.Proposed, (object)_baggageTag?? (object)DBNull.Value));
-				command.Parameters.Add(new SqlParameter("@Flight", SqlDbType.NVarChar, 200, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_flight?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@FlightRef", SqlDbType.NVarChar, 200, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_FlightRef?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@Processed", SqlDbType.Bit, 1, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_processed?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BSM", SqlDbType.NVarChar, 4000, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_bsm?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BPM", SqlDbType.NVarChar, 4000, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_bpm?? (object)DBNull.Value));
@@ -144,7 +146,7 @@ namespace CXR1BSAC.Data
 				command.ExecuteNonQuery();
 
 				_baggageTag					 = Convert.IsDBNull(command.Parameters["@Baggage_Tag"].Value) ? null : (string)command.Parameters["@Baggage_Tag"].Value;
-				_flight					 = Convert.IsDBNull(command.Parameters["@Flight"].Value) ? null : (string)command.Parameters["@Flight"].Value;
+				_FlightRef					 = Convert.IsDBNull(command.Parameters["@FlightRef"].Value) ? null : (string)command.Parameters["@FlightRef"].Value;
 				_processed					 = Convert.IsDBNull(command.Parameters["@Processed"].Value) ? (bool?)null : (bool?)command.Parameters["@Processed"].Value;
 				_bsm					 = Convert.IsDBNull(command.Parameters["@BSM"].Value) ? null : (string)command.Parameters["@BSM"].Value;
 				_bpm					 = Convert.IsDBNull(command.Parameters["@BPM"].Value) ? null : (string)command.Parameters["@BPM"].Value;
@@ -195,7 +197,7 @@ namespace CXR1BSAC.Data
 					{
 						DAOBags retObj = new DAOBags();
 						retObj._baggageTag					 = Convert.IsDBNull(row["Baggage_Tag"]) ? null : (string)row["Baggage_Tag"];
-						retObj._flight					 = Convert.IsDBNull(row["Flight"]) ? null : (string)row["Flight"];
+						retObj._FlightRef					 = Convert.IsDBNull(row["FlightRef"]) ? null : (string)row["FlightRef"];
 						retObj._processed					 = Convert.IsDBNull(row["Processed"]) ? (bool?)null : (bool?)row["Processed"];
 						retObj._bsm					 = Convert.IsDBNull(row["BSM"]) ? null : (string)row["BSM"];
 						retObj._bpm					 = Convert.IsDBNull(row["BPM"]) ? null : (string)row["BPM"];
@@ -265,20 +267,24 @@ namespace CXR1BSAC.Data
 			SqlCommand	command = new SqlCommand();
 			command.CommandText = InlineProcs.ctprtblBags_SelectAllBySearchFields;
 			command.CommandType = CommandType.Text;
+			//System.Windows.Forms.MessageBox.Show(StaticSqlConnection.ConnectionString.Trim());
+			//SqlConnection conn = new SqlConnection("Server=171.244.18.171\\SQL2K14;Database=Sita_Default_v1;Integrated Security=false;User=sa;Password=P@ssw0rd");
 			SqlConnection staticConnection = StaticSqlConnection;
-			command.Connection = staticConnection;
+			command.Connection = staticConnection;//staticConnection;
 
 			DataTable dt = new DataTable("tblBags");
 			SqlDataAdapter sqlAdapter = new SqlDataAdapter(command);
 			try
 			{
 				command.Parameters.Add(new SqlParameter("@Baggage_Tag", SqlDbType.NVarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.BaggageTag?? (object)DBNull.Value));
-				command.Parameters.Add(new SqlParameter("@Flight", SqlDbType.NVarChar, 200, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Flight?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@FlightRef", SqlDbType.NVarChar, 200, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.FlightRef?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@Processed", SqlDbType.Bit, 1, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Processed?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BSM", SqlDbType.NVarChar, 4000, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Bsm?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BPM", SqlDbType.NVarChar, 4000, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Bpm?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@TimeRcvBSM", SqlDbType.DateTime, 8, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.TimeRcvBSM?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@TimeSendBPM", SqlDbType.DateTime, 8, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.TimeSendBPM?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@YYYY", SqlDbType.NVarChar, 8, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.YYYY ?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@DDMM", SqlDbType.NVarChar, 8, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.DDMM ?? (object)DBNull.Value));
 
 				staticConnection.Open();
 				sqlAdapter.Fill(dt);
@@ -290,12 +296,14 @@ namespace CXR1BSAC.Data
 					{
 						DAOBags retObj = new DAOBags();
 						retObj._baggageTag					 = Convert.IsDBNull(row["Baggage_Tag"]) ? null : (string)row["Baggage_Tag"];
-						retObj._flight					 = Convert.IsDBNull(row["Flight"]) ? null : (string)row["Flight"];
+						retObj._FlightRef					 = Convert.IsDBNull(row["FlightRef"]) ? null : (string)row["FlightRef"];
 						retObj._processed					 = Convert.IsDBNull(row["Processed"]) ? (bool?)null : (bool?)row["Processed"];
 						retObj._bsm					 = Convert.IsDBNull(row["BSM"]) ? null : (string)row["BSM"];
 						retObj._bpm					 = Convert.IsDBNull(row["BPM"]) ? null : (string)row["BPM"];
 						retObj._timeRcvBSM					 = Convert.IsDBNull(row["TimeRcvBSM"]) ? (DateTime?)null : (DateTime?)row["TimeRcvBSM"];
 						retObj._timeSendBPM					 = Convert.IsDBNull(row["TimeSendBPM"]) ? (DateTime?)null : (DateTime?)row["TimeSendBPM"];
+						retObj.YYYY = Convert.IsDBNull(row["YYYY"]) ? null : (string)row["YYYY"];
+						retObj.DDMM = Convert.IsDBNull(row["DDMM"]) ? null : (string)row["DDMM"];
 						objList.Add(retObj);
 					}
 				}
@@ -331,7 +339,7 @@ namespace CXR1BSAC.Data
 			try
 			{
 				command.Parameters.Add(new SqlParameter("@Baggage_Tag", SqlDbType.NVarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.BaggageTag?? (object)DBNull.Value));
-				command.Parameters.Add(new SqlParameter("@Flight", SqlDbType.NVarChar, 200, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Flight?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@FlightRef", SqlDbType.NVarChar, 200, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.FlightRef?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@Processed", SqlDbType.Bit, 1, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Processed?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BSM", SqlDbType.NVarChar, 4000, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Bsm?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BPM", SqlDbType.NVarChar, 4000, ParameterDirection.Input, true, 0, 0, "", DataRowVersion.Proposed, (object)daoBags.Bpm?? (object)DBNull.Value));
@@ -375,7 +383,7 @@ namespace CXR1BSAC.Data
 			try
 			{
 				command.Parameters.Add(new SqlParameter("@Baggage_Tag", SqlDbType.NVarChar, 50, ParameterDirection.InputOutput, false, 0, 0, "", DataRowVersion.Proposed, (object)_baggageTag?? (object)DBNull.Value));
-				command.Parameters.Add(new SqlParameter("@Flight", SqlDbType.NVarChar, 200, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_flight?? (object)DBNull.Value));
+				command.Parameters.Add(new SqlParameter("@FlightRef", SqlDbType.NVarChar, 200, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_FlightRef?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@Processed", SqlDbType.Bit, 1, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_processed?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BSM", SqlDbType.NVarChar, 4000, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_bsm?? (object)DBNull.Value));
 				command.Parameters.Add(new SqlParameter("@BPM", SqlDbType.NVarChar, 4000, ParameterDirection.InputOutput, true, 0, 0, "", DataRowVersion.Proposed, (object)_bpm?? (object)DBNull.Value));
@@ -385,7 +393,7 @@ namespace CXR1BSAC.Data
 				command.ExecuteNonQuery();
 
 				_baggageTag					 = Convert.IsDBNull(command.Parameters["@Baggage_Tag"].Value) ? null : (string)command.Parameters["@Baggage_Tag"].Value;
-				_flight					 = Convert.IsDBNull(command.Parameters["@Flight"].Value) ? null : (string)command.Parameters["@Flight"].Value;
+				_FlightRef					 = Convert.IsDBNull(command.Parameters["@FlightRef"].Value) ? null : (string)command.Parameters["@FlightRef"].Value;
 				_processed					 = Convert.IsDBNull(command.Parameters["@Processed"].Value) ? (bool?)null : (bool?)command.Parameters["@Processed"].Value;
 				_bsm					 = Convert.IsDBNull(command.Parameters["@BSM"].Value) ? null : (string)command.Parameters["@BSM"].Value;
 				_bpm					 = Convert.IsDBNull(command.Parameters["@BPM"].Value) ? null : (string)command.Parameters["@BPM"].Value;
@@ -418,16 +426,37 @@ namespace CXR1BSAC.Data
 				_baggageTag = value;
 			}
 		}
-
-		public string Flight
+		public string YYYY
 		{
 			get
 			{
-				return _flight;
+				return _YYYY;
 			}
 			set
 			{
-				_flight = value;
+				_YYYY = value;
+			}
+		}
+		public string DDMM
+		{
+			get
+			{
+				return _DDMM;
+			}
+			set
+			{
+				_DDMM = value;
+			}
+		}
+		public string FlightRef
+		{
+			get
+			{
+				return _FlightRef;
+			}
+			set
+			{
+				_FlightRef = value;
 			}
 		}
 
@@ -505,7 +534,7 @@ namespace CXR1BSAC.Data
 			-- selects all rows from the table
 			SELECT 
 			[Baggage_Tag]
-			,[Flight]
+			,[FlightRef]
 			,[Processed]
 			,[BSM]
 			,[BPM]
@@ -530,7 +559,7 @@ namespace CXR1BSAC.Data
 			INSERT [dbo].[tblBags]
 			(
 			[Baggage_Tag]
-			,[Flight]
+			,[FlightRef]
 			,[Processed]
 			,[BSM]
 			,[BPM]
@@ -540,7 +569,7 @@ namespace CXR1BSAC.Data
 			VALUES
 			(
 			@Baggage_Tag
-			,@Flight
+			,@FlightRef
 			,@Processed
 			,@BSM
 			,@BPM
@@ -549,7 +578,7 @@ namespace CXR1BSAC.Data
 			)
 			SELECT 
 			@Baggage_Tag = [Baggage_Tag]
-			,@Flight = [Flight]
+			,@FlightRef = [FlightRef]
 			,@Processed = [Processed]
 			,@BSM = [BSM]
 			,@BPM = [BPM]
@@ -565,7 +594,7 @@ namespace CXR1BSAC.Data
 			-- selects all rows from the table
 			SELECT 
 			[Baggage_Tag]
-			,[Flight]
+			,[FlightRef]
 			,[Processed]
 			,[BSM]
 			,[BPM]
@@ -586,16 +615,18 @@ namespace CXR1BSAC.Data
 			-- selects all rows from the table according to search criteria
 			SELECT 
 			[Baggage_Tag],
-			[Flight],
+			[FlightRef],
 			[Processed],
 			[BSM],
 			[BPM],
 			[TimeRcvBSM],
-			[TimeSendBPM]
+			[TimeSendBPM],
+			[YYYY],
+			[DDMM]
 			FROM [dbo].[tblBags]
 			WHERE 
 			([Baggage_Tag] LIKE @Baggage_Tag OR @Baggage_Tag is null)
-			AND ([Flight] LIKE @Flight OR @Flight is null)
+			AND ([FlightRef] LIKE @FlightRef OR @FlightRef is null)
 			AND ([Processed] LIKE @Processed OR @Processed is null)
 			AND ([BSM] LIKE @BSM OR @BSM is null)
 			AND ([BPM] LIKE @BPM OR @BPM is null)
@@ -610,7 +641,7 @@ namespace CXR1BSAC.Data
 			FROM [dbo].[tblBags]
 			WHERE 
 			([Baggage_Tag] LIKE @Baggage_Tag OR @Baggage_Tag is null)
-			AND ([Flight] LIKE @Flight OR @Flight is null)
+			AND ([FlightRef] LIKE @FlightRef OR @FlightRef is null)
 			AND ([Processed] LIKE @Processed OR @Processed is null)
 			AND ([BSM] LIKE @BSM OR @BSM is null)
 			AND ([BPM] LIKE @BPM OR @BPM is null)
@@ -624,7 +655,7 @@ namespace CXR1BSAC.Data
 			
 			UPDATE [dbo].[tblBags]
 			SET
-			[Flight] = @Flight
+			[FlightRef] = @FlightRef
 			,[Processed] = @Processed
 			,[BSM] = @BSM
 			,[BPM] = @BPM
@@ -634,7 +665,7 @@ namespace CXR1BSAC.Data
 			[Baggage_Tag] = @Baggage_Tag
 			SELECT 
 			@Baggage_Tag = [Baggage_Tag]
-			,@Flight = [Flight]
+			,@FlightRef = [FlightRef]
 			,@Processed = [Processed]
 			,@BSM = [BSM]
 			,@BPM = [BPM]

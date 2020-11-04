@@ -6,7 +6,6 @@ E:\01.PROJECT\2019\07.Cam Ranh\CXR1B_PC\obj\Debug\CXR1B_PC.csproj.GenerateResour
 E:\01.PROJECT\2019\07.Cam Ranh\CXR1B_PC\obj\Debug\CXR1B_PC.csproj.CoreCompileInputs.cache
 E:\01.PROJECT\2019\07.Cam Ranh\CXR1B_PC\obj\Debug\CXR1B_PC.dll
 E:\01.PROJECT\2019\07.Cam Ranh\CXR1B_PC\obj\Debug\CXR1B_PC.pdb
-D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.csprojAssemblyReference.cache
 D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.Properties.Resources.resources
 D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.Logo.resources
 D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.csproj.GenerateResource.cache
@@ -15,11 +14,12 @@ D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.dll
 D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.pdb
 D:\Gif Hub\Code\DevSita\CXR1B_PC\bin\Debug\CXR1B_PC.dll
 D:\Gif Hub\Code\DevSita\CXR1B_PC\bin\Debug\CXR1B_PC.pdb
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\bin\Debug\CXR1B_PC.dll
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\bin\Debug\CXR1B_PC.pdb
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.csprojAssemblyReference.cache
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.Properties.Resources.resources
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.Logo.resources
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.csproj.GenerateResource.cache
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.dll
-E:\Project\Sita\Code\DevSita\Control\CXR1B_PC\obj\Debug\CXR1B_PC.pdb
+D:\Gif Hub\Code\DevSita\CXR1B_PC\obj\Debug\CXR1B_PC.csprojAssemblyReference.cache
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\bin\Debug\CXR1B_PC.dll
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\bin\Debug\CXR1B_PC.pdb
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.Properties.Resources.resources
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.Logo.resources
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.csproj.GenerateResource.cache
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.dll
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.pdb
+C:\Users\Administrator\Downloads\CXR1B_PC_p\CXR1B_PC\obj\Debug\CXR1B_PC.csprojAssemblyReference.cache

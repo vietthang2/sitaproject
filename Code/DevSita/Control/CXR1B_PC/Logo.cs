@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CXR1BSAC.Business;
+using CXR1B_PC.Business;
 
 namespace CXR1B_PC
 {
@@ -21,6 +22,7 @@ namespace CXR1B_PC
         public Logo()
         {
             InitializeComponent();
+           
         }
 
         public string Request
@@ -29,38 +31,14 @@ namespace CXR1B_PC
             set 
             { 
                 request = value;
-                BOBags bag = BOBags.BagsCollectionFromSearchFields(new BOBags() { BaggageTag = request }).FirstOrDefault();
-                if (bag != null)
+                var rs = SearchBagtags.Search(request);
+                Response = request + (rs);
+                Invalidate();
+                if (ProcessCompleted != null)
                 {
-                    BOFlight flight = BOFlight.FlightCollectionFromSearchFields(new BOFlight() { Identify = bag.Flight }).FirstOrDefault();
-                    if(flight != null)
-                    {
-                        Response = request + (flight.Chute==null?"0": flight.Chute.ToString());
-                        Invalidate();
-                        if (ProcessCompleted != null)
-                        {
-                            ProcessCompleted();
-                        }
-                    }
-                    else
-                    {
-                        Response = request + (flight.Chute == null ? "0" : flight.Chute.ToString());
-                        Invalidate();
-                        if (ProcessCompleted != null)
-                        {
-                            ProcessCompleted();
-                        }
-                    }
+                    ProcessCompleted();
                 }
-                else
-                {
-                    Response = request + "0";
-                    Invalidate();
-                    if (ProcessCompleted != null)
-                    {
-                        ProcessCompleted();
-                    }
-                }
+                
                 Invalidate();
             }
         }

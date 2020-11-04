@@ -12,10 +12,10 @@ namespace CXR1B_PC
     {
         public static string mPathServerFile = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + @"\SearchBagTag\ConfigServer.ini";
 
-        public static string Server = ReadValue(mPathServerFile, "F", "F1");
-        public static string Database = ReadValue(mPathServerFile ,"F", "F2");
-        public static string UserName = ReadValue(mPathServerFile, "F", "F3");
-        public static string PassWord = ReadValue(mPathServerFile, "F", "F4");
+        public static string Server = "171.244.18.171\\SQL2K14";// ReadValue(mPathServerFile, "F", "F1");
+        public static string Database = "Sita_Default_v1";// ReadValue(mPathServerFile ,"F", "F2");
+        public static string UserName = "sa";////ReadValue(mPathServerFile, "F", "F3");
+        public static string PassWord = "P@ssw0rd";// ReadValue(mPathServerFile, "F", "F4");
         public static string Conn = CreateConnectString(UserName, PassWord, Database, Server, 120);
 
 
@@ -32,15 +32,13 @@ namespace CXR1B_PC
         {
             return string.Concat(new string[]
             {
-                "Provider=sqloledb; Data Source=",
-                pServer,
-                "; Initial Catalog=",
-                pDatabase,
-                "; User Id=",
+                "Server=",
+                pServer+";Database="+pDatabase,
+                "; User=",
                 pUserName,
                 "; Password=",
                 pPassword,
-                "; Connect Timeout=",
+                ";Integrated Security=false; Connect Timeout=",
                 pTimeOut.ToString()
             });
         }

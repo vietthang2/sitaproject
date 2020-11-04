@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +48,7 @@
     <Compile Include="Business\BOBags.cs" />
     <Compile Include="Business\BOField.cs" />
     <Compile Include="Business\BOFlight.cs" />
+    <Compile Include="Business\SearchBagtags.cs" />
     <Compile Include="Business\Conn_BaseBusiness.cs" />
     <Compile Include="Conn.cs" />
     <Compile Include="Data\Conn_BaseData.cs" />
