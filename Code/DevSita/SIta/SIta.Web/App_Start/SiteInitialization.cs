@@ -13,6 +13,7 @@
     using System.Linq;
     using Sita.Modules.SyncData;
     using global::Modules.Common;
+    using System.Threading;
 
     public static partial class SiteInitialization
     {
@@ -50,7 +51,8 @@
                 EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
-         //  CheckSyncData();
+            Thread _SyncDataThread = new Thread(CheckSyncData);
+            _SyncDataThread.Start();
         }
 
         public static void ApplicationEnd()

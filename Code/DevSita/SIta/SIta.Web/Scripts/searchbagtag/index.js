@@ -14,14 +14,14 @@
             return;
         }
         var param = {
-            'flight': flight,
-            'bagtag': bag
+            "flight": flight,
+            "bagtag": bag
         };
         $.ajax({
             url: '/Default/Search/SearchGrid',
             type: 'post',
             dataType: 'html',
-            para: param,
+            data: param,
             success: function (data) {
                 $("#data-grid").html("").html(data);
                 $('[data-toggle="popover"]').popover(); 

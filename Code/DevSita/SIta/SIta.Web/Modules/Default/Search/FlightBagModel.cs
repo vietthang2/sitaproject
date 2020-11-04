@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,8 +15,8 @@ namespace Sita.Modules.Default.SearchBagtag
         public String ScheduleDate { get; set; }
         public String SoftReplace { get; set; }
         public String SiteIata { get; set; }
-        public String DateBounday { get; set; }
-        public Int32 Chute { get; set; }
+        public String DateBoundary { get; set; }
+        public Int32? Chute { get; set; }
         public DateTime LastChanged { get; set; }
         public DateTime DateCreated { get; set; }
         public String UserCreated { get; set; }
@@ -38,8 +39,11 @@ namespace Sita.Modules.Default.SearchBagtag
         public String DDMM { get; set; }
         public String YYYY { get; set; }
     }
-    public class RequestSearch{
-        public String flight { get; set; }
-        public String bagtag { get; set; }
+    public class RequestSearch 
+    {
+        [JsonProperty("flight")]
+        public String Flight { get; set; }
+        [JsonProperty("bagtag")]
+        public String Bagtag { get; set; }
     }
 }

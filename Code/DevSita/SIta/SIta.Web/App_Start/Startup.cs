@@ -76,12 +76,12 @@ namespace Sita
             RecurringJob.AddOrUpdate<BPMServices>(job => job.Run(), Cron.Minutely);
             RecurringJob.AddOrUpdate<BPMServices>(job => job.Run(), "*/1 * * * *");
 
-            //BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
-            //RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);
-            //RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), "0 0 * * *");
+            BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), "0 0 * * *");
             //Sync Data
-            //BackgroundJob.Enqueue<SyncData>(job => job.RunSchedule());
-            //RecurringJob.AddOrUpdate<SyncData>(job => job.RunSchedule(), "0 1-2 * * *");
+            BackgroundJob.Enqueue<SyncData>(job => job.RunSchedule());
+            RecurringJob.AddOrUpdate<SyncData>(job => job.RunSchedule(), "0 1-2 * * *");
 
 
 

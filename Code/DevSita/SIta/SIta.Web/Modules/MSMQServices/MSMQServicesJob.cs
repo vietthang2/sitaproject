@@ -97,7 +97,7 @@ namespace Sita.Modules.MSMQServices
                                     var mess = xmlDoc.ToString();
 
                                     string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
-                                    Logging.Logger.Information("MSMQ: messages  " + json);
+                                    //Logging.Logger.Information("MSMQ: messages  " + json);
                                     Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
                                     var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
                                     //foreach (var item in dailyModel.Connect.Daily)
@@ -117,7 +117,7 @@ namespace Sita.Modules.MSMQServices
                                         var mess = xmlDoc.ToString();
 
                                         string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
-                                        Logging.Logger.Information("MSMQ: messages  " + json);
+                                        //Logging.Logger.Information("MSMQ: messages  " + json);
                                         Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
                                         var dailyModel = JsonConvert.DeserializeObject<DailyModelList>(json.Replace("@", ""));
                                         foreach (var item in dailyModel.Connect.Daily)

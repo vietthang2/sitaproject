@@ -76,7 +76,7 @@ ENDBPM";
 
                     Logging.Logger.Information($"BSM: Begin connect to server Ip: {IP} and port:{Port}");
                     Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening");
-
+                    
                     Thread T = new Thread(checkTimeOut);
                     T.IsBackground = true;
                     T.Start();
@@ -116,7 +116,11 @@ ENDBPM";
 
             }
         }
-
+        public void SocketDisconnect(SocketAsyncEventArgs e)
+        {
+            StartListening(ref statusConnect);
+            Logging.Logger.Warning("BSM: Socket disconnect"); 
+        }
         private void OnSocketAccepted(IAsyncResult result)
         {
             try
@@ -147,7 +151,7 @@ ENDBPM";
             }
             catch (Exception ex)
             {
-
+                statusConnect = false;
                 Logging.Logger.Error("BSM: OnSocketAccepted :" + ex.Message);
 
             }

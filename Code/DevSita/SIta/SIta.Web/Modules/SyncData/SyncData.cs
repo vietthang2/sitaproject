@@ -26,7 +26,7 @@ namespace Sita.Modules.SyncData
 
         static string sClientConnection = SqlConnections.NewByKey("Client").ConnectionString;
 
-        static string sScope = "MainScope";
+        static string sScope = "MainScope2";
         //Get Data From Client Provision
         public static void ProvisionClient()
         {
@@ -52,7 +52,7 @@ namespace Sita.Modules.SyncData
             
 
 
-            var scopeDesc = new DbSyncScopeDescription("MainScope");
+            var scopeDesc = new DbSyncScopeDescription("MainScope2");
             foreach (var tbl in tables) //Add Tables in Scope
             {
                 scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, clientConn));
@@ -75,7 +75,7 @@ namespace Sita.Modules.SyncData
 
             //create new SelectChanges SPs for selecting changes for the new scope
             //the new SelectChanges SPs will have a guid suffix
-            clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.CreateOrUseExisting);
+            clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.Skip);
 
 
             clientProvision.Apply();
@@ -92,7 +92,7 @@ namespace Sita.Modules.SyncData
             tables.Add("Users");
             tables.Add("Roles");
             tables.Add("RolePermissions");
-            var scopeDesc = new DbSyncScopeDescription("MainScope");
+            var scopeDesc = new DbSyncScopeDescription("MainScope2");
             foreach (var tbl in tables)
             {
                 scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
@@ -106,13 +106,6 @@ namespace Sita.Modules.SyncData
             cmd.ExecuteScalar();
             serverConn.Close();
 
-            
-            
-
-
-
-
-       
             
             SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
 
@@ -136,31 +129,39 @@ namespace Sita.Modules.SyncData
 
         {
             isPorcess = true;
-            SqlConnection serverConn = new SqlConnection(sServerConnection);
+            try
+            {
+                SqlConnection serverConn = new SqlConnection(sServerConnection);
 
-            SqlConnection clientConn = new SqlConnection(sClientConnection);
+                SqlConnection clientConn = new SqlConnection(sClientConnection);
 
-            SyncOrchestrator syncOrchestrator = new SyncOrchestrator();
+                SyncOrchestrator syncOrchestrator = new SyncOrchestrator();
 
-            syncOrchestrator.LocalProvider = new SqlSyncProvider(sScope, serverConn);
+                syncOrchestrator.LocalProvider = new SqlSyncProvider(sScope, serverConn);
 
-            syncOrchestrator.RemoteProvider = new SqlSyncProvider(sScope, clientConn);
+                syncOrchestrator.RemoteProvider = new SqlSyncProvider(sScope, clientConn);
 
-            syncOrchestrator.Direction = SyncDirectionOrder.Upload;
+                syncOrchestrator.Direction = SyncDirectionOrder.Download;
 
-            ((SqlSyncProvider)syncOrchestrator.LocalProvider).ApplyChangeFailed += new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
+                ((SqlSyncProvider)syncOrchestrator.LocalProvider).ApplyChangeFailed += new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
 
-            SyncOperationStatistics syncStats = syncOrchestrator.Synchronize();
+                SyncOperationStatistics syncStats = syncOrchestrator.Synchronize();
 
-            Logging.Logger.Information("SyncData: Start Time: " + syncStats.SyncStartTime);
+                Logging.Logger.Information("SyncData: Start Time: " + syncStats.SyncStartTime);
 
-            Logging.Logger.Information("SyncData: Total Changes Uploaded: " + syncStats.UploadChangesTotal);
+                Logging.Logger.Information("SyncData: Total Changes Uploaded: " + syncStats.UploadChangesTotal);
 
-            //Console.WriteLine("Total Changes Downloaded: " + syncStats.DownloadChangesTotal);
+                //Console.WriteLine("Total Changes Downloaded: " + syncStats.DownloadChangesTotal);
 
-            Logging.Logger.Information("SyncData: Complete Time: " + syncStats.SyncEndTime);
+                Logging.Logger.Information("SyncData: Complete Time: " + syncStats.SyncEndTime);
 
-            isPorcess = false;
+                isPorcess = false;
+            }
+            catch (Exception ex)
+            {
+
+                isPorcess = false;
+            }
 
 
 
@@ -179,8 +180,9 @@ namespace Sita.Modules.SyncData
         public static void Run()
         {
             Logging.Logger.Information("SyncData: Begining.....: ");
-            ProvisionClient();
             ProvisionServer();
+            ProvisionClient();
+            
             Sync();
         }
         public  void RunSchedule()
