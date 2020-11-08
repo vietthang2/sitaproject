@@ -59,11 +59,8 @@ namespace Sita.Modules.BSMServices
             if (enableEmailService)
             {
 
-                //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).Impersonate("admin");
+                
                 bool isConnected = false;
-
-                //while (true && !isConnected)
-                // {
 
                 Thread.Sleep(10000); // 10 sec
                 BsmDriver driver = new BsmDriver();
@@ -75,12 +72,6 @@ namespace Sita.Modules.BSMServices
 
                 driver.StartListening(ref isConnected);
 
-
-
-
-
-                // }
-                //(Dependency.Resolve<IAuthorizationService>() as ImpersonatingAuthorizationService).UndoImpersonate();
             }
         }
         public static BSMServerModel BSMServer()

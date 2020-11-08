@@ -10,6 +10,8 @@ using System.Messaging;
 using System.Threading;
 using System.Xml;
 using Sita.Modules.Default.TblFlight;
+using System.Text;
+using System.Xml.Serialization;
 
 namespace Sita.Modules.MSMQServices
 {
@@ -77,8 +79,7 @@ namespace Sita.Modules.MSMQServices
                         else
                         {
                             MessageQueue messageQueue = new MessageQueue(path);
-                           // messageQueue.Send("MSMQ: Test data send","Test");
-                           // Logging.Logger.Information("MSMQ: Test data send");
+                          
 
                             System.Messaging.Message[] messages = messageQueue.GetAllMessages();
                             Logging.Logger.Information("MSMQ: Begin get data, number:  " + messages.Length);
@@ -92,30 +93,45 @@ namespace Sita.Modules.MSMQServices
                                 {
                                     // chuyển xml về json sau đó chuyển về model
                                     message.Formatter = new System.Messaging.XmlMessageFormatter(new Type[] { typeof(string) });
-
-                                    xmlDoc.Load(message.BodyStream);
-                                    var mess = xmlDoc.ToString();
-
-                                    string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
-                                    //Logging.Logger.Information("MSMQ: messages  " + json);
-                                    Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
-                                    var dailyModel = JsonConvert.DeserializeObject<DailyModel>(json.Replace("@", ""));
-                                    //foreach (var item in dailyModel.Connect.Daily)
-                                    //{
-
-                                    //    StoreFlight.Save(item);
+                                    Connect dailyModel = new Connect();
+                                    StreamReader reader = new StreamReader(message.BodyStream);
+                                   // using (XmlReader reader = XmlReader.Create()
+                                   // {
+                                        //xmlDoc.Load(reader);
+                                        
+                                        try
+                                        {
+                                            Logging.Logger.Information("MSMQ: step 1  " );
+                                            XmlSerializer serial = new XmlSerializer(typeof(Connect));
+                                            dailyModel = (Connect)serial.Deserialize(reader);
+                                        } 
+                                        catch (Exception e1)
+                                        {
+                                            Logging.Logger.Information("MSMQ: step 1.2  "+e1.ToString());
+                                            xmlDoc.Load(message.BodyStream);
+                                            Logging.Logger.Information("MSMQ: out xml  " + xmlDoc.OuterXml);
+                                            string json = JsonConvert.SerializeXmlNode(xmlDoc);
+                                            Logging.Logger.Information("MSMQ: messages  " + json);
+                                            dailyModel = JsonConvert.DeserializeObject<Connect>(json.Replace("@", ""));
+                                        }
+                                        
                                     //}
-                                    StoreFlight.Save(dailyModel.Connect.Daily);
+                                    
+                                    Logging.Logger.Information("MSMQ: messages  " + dailyModel.ToJson());
+                                    
+                                    StoreFlight.Save(dailyModel.Daily);
                                     messageQueue.ReceiveById(message.Id);
                                 }
                                 catch (Exception ex)
                                 {
-                                    Logging.Logger.Error("MSMQ: can not parse and save mess"+ ex.Message);
+                                    Logging.Logger.Error("MSMQ: can not parse and save mess: "+ ex.ToString());
                                     try
                                     {
                                         //try convert list
+                                        xmlDoc.Load(message.BodyStream);
+                                        Logging.Logger.Information("MSMQ: try out xml  " + xmlDoc.OuterXml);
                                         var mess = xmlDoc.ToString();
-
+                                        
                                         string json = JsonConvert.SerializeXmlNode(xmlDoc);//.FirstChild.NextSibling);
                                         //Logging.Logger.Information("MSMQ: messages  " + json);
                                         Logging.Logger.Information("MSMQ: messages  " + json.Replace("@", ""));
@@ -131,7 +147,7 @@ namespace Sita.Modules.MSMQServices
                                     }
                                     catch (Exception ex1)
                                     {
-                                        Logging.Logger.Error("MSMQ: can not try parse and save mess" + ex1.Message);
+                                        Logging.Logger.Error("MSMQ: can not try parse and save mess " + ex1.Message);
                                         isCheckAll = false;
                                     }
                                     

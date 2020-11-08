@@ -1,8 +1,5 @@
 ﻿using Serenity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sita.Modules.MSMQServices
 {
@@ -12,6 +9,11 @@ namespace Sita.Modules.MSMQServices
         {
             new Exception("StartScheduleThread").Log();
             Sita.Modules.MSMQServices.Schedule.StartScheduleServicesThread();
+        }
+        public void RunMerge()
+        {
+            new Exception("RunMerge").Log();
+            Sita.Modules.MSMQServices.Schedule.StartMergeTableManualThread();
         }
     }
 }

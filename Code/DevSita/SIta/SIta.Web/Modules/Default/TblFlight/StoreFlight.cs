@@ -53,14 +53,14 @@ namespace Sita.Modules.Default.TblFlight
                 {
                     try
                     {
-                        if (item.Value.ToString().Length > 0)
+                        if (!String.IsNullOrEmpty(item.Value))
                         {
                             newFlight.Chute = int.Parse(item.Value.ToString());
                         }
                     }
                     catch (Exception)
                     {
-                        newFlight.Chute = null;
+                        dailyModel.Field.Where(s => s.Name == "chutes" && s.Value !="").Select(k=> k.Value);
                     }
                 }
                 //try

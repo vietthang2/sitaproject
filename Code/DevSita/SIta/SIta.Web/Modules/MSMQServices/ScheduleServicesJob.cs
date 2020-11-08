@@ -1,19 +1,6 @@
 ﻿using Modules.Common;
-using Newtonsoft.Json;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.Web;
-using Sita.Modules.MSMQServices.DTO;
-using Sita.Modules.RabbitMQ;
-using Sita.Modules.MSMQServices.DTO;
 using System;
-using System.ComponentModel;
-using System.IO;
-using System.Messaging;
 using System.Threading;
-using System.Web;
-using System.Xml;
-using Sita.Modules.Default.TblFlight;
 using Serenity.Data;
 using System.Data;
 
@@ -22,22 +9,31 @@ namespace Sita.Modules.MSMQServices
     public static class Schedule
     {
         private static Thread _ScheduleServices = null;
+        private static Thread _MergeServices = null;
 
         public static void StartScheduleServicesThread()
         {
-            if (_ScheduleServices == null)
+            try
             {
-                _ScheduleServices = new Thread(new ThreadStart(ScheduleServicesRun));
-                _ScheduleServices.Priority = ThreadPriority.Lowest;
-                _ScheduleServices.Start();
-            }
-            else if (_ScheduleServices.ThreadState == ThreadState.Stopped)
-            {
+                if (_ScheduleServices == null)
+                {
+                    _ScheduleServices = new Thread(new ThreadStart(ScheduleServicesRun));
+                    _ScheduleServices.Priority = ThreadPriority.Lowest;
+                    _ScheduleServices.Start();
+                }
+                else if (_ScheduleServices.ThreadState == ThreadState.Stopped)
+                {
 
-                _ScheduleServices = new Thread(new ThreadStart(ScheduleServicesRun));
+                    _ScheduleServices = new Thread(new ThreadStart(ScheduleServicesRun));
+                }
+                else if (_ScheduleServices.ThreadState == ThreadState.Unstarted)
+                    _ScheduleServices.Start();
             }
-            //else if (_MSMQServices.ThreadState == ThreadState.Unstarted)
-            //    _MSMQServices.Start();
+            catch (Exception)
+            {
+                _ScheduleServices.DisableComObjectEagerCleanup();
+                StartScheduleServicesThread();
+            }
 
 
         }
@@ -63,26 +59,47 @@ namespace Sita.Modules.MSMQServices
                 Logging.Logger.Error("Schedule Error:" + ex.Message);
             }
         }
-        //public static string BuildPath()
-        //{
-        //    ////Doc cau hình MSMQ Server từ file config
-        //    try
-        //    {
-        //        using (var reader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "ServerConfig.json"))
-        //        {
-        //            var appSettings = JsonConvert.DeserializeObject<ServerModel>(reader.ReadToEnd());
+        public static void StartMergeTableManualThread()
+        {
+            try
+            {
+                if (_MergeServices == null)
+                {
+                    _MergeServices = new Thread(new ThreadStart(MergeTableManual));
+                    _MergeServices.Priority = ThreadPriority.Lowest;
+                    _MergeServices.Start();
+                }
+                else if (_MergeServices.ThreadState == ThreadState.Stopped)
+                {
 
-        //            string path = String.Format("FormatName:Direct = TCP:{0}\\private$\\{1}", appSettings.MsmqServer.Ip, appSettings.MsmqServer.QueueName);
-        //            appSettings.MsmqServer.QueuePath = path;
-        //            return path;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Log.Error(ex.Message);
-        //        throw;
-        //    }
-        //}
+                    _MergeServices = new Thread(new ThreadStart(MergeTableManual));
+                }
+                else if (_MergeServices.ThreadState == ThreadState.Unstarted)
+                    _MergeServices.Start();
+            }
+            catch (Exception)
+            {
+                _MergeServices.DisableComObjectEagerCleanup();
+                StartMergeTableManualThread();
+            }
+
+
+        }
+        private static void MergeTableManual()
+        {
+
+            try
+            {
+                var connection = SqlConnections.NewByKey("Default");
+                UnitOfWork unitOfWork = new UnitOfWork(connection);
+                connection.Execute("ST_MERGE_DATA", CommandType.StoredProcedure);
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                Logging.Logger.Error("Merge table Error:" + ex.Message);
+            }
+        }
 
     }
 }

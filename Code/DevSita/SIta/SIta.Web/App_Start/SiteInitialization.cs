@@ -14,6 +14,7 @@
     using Sita.Modules.SyncData;
     using global::Modules.Common;
     using System.Threading;
+    using Sita.Modules.BSMServices;
 
     public static partial class SiteInitialization
     {
@@ -53,6 +54,9 @@
             }
             Thread _SyncDataThread = new Thread(CheckSyncData);
             _SyncDataThread.Start();
+
+            //Thread _BSMThread = new Thread(BSMServiceJob.StartBSMServicesThread);
+            //_BSMThread.Start();
         }
 
         public static void ApplicationEnd()

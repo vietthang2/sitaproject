@@ -1,9 +1,7 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.Owin;
-using Modules.Common;
 using Owin;
-using Serenity;
 using Serenity.Data;
 using Sita.Modules.BPMServices;
 using Sita.Modules.BSMServices;
@@ -11,7 +9,6 @@ using Sita.Modules.MSMQServices;
 using Sita.Modules.SyncData;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Web;
 
 
@@ -79,6 +76,10 @@ namespace Sita
             BackgroundJob.Enqueue<ScheduleServices>(job => job.Run());
             RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), Cron.Daily);
             RecurringJob.AddOrUpdate<ScheduleServices>(job => job.Run(), "0 0 * * *");
+
+            BackgroundJob.Enqueue<ScheduleServices>(job => job.RunMerge());
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.RunMerge(), Cron.Weekly);
+            RecurringJob.AddOrUpdate<ScheduleServices>(job => job.RunMerge(), "0 0 * * *");
             //Sync Data
             BackgroundJob.Enqueue<SyncData>(job => job.RunSchedule());
             RecurringJob.AddOrUpdate<SyncData>(job => job.RunSchedule(), "0 1-2 * * *");

@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Threading;
 using Microsoft.Synchronization;
 using Microsoft.Synchronization.Data;
 using Microsoft.Synchronization.Data.SqlServer;
@@ -30,99 +27,115 @@ namespace Sita.Modules.SyncData
         //Get Data From Client Provision
         public static void ProvisionClient()
         {
-            SqlConnection serverConn = new SqlConnection(sServerConnection);
-            SqlConnection clientConn = new SqlConnection(sClientConnection);
-
-            //Drop scope_Info Table
-            string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
-                   WHERE TABLE_NAME='scope_info') DROP table scope_info";
-            clientConn.Open();
-            SqlCommand cmd = new SqlCommand(cmdText, clientConn);
-            cmd.ExecuteScalar();
-            clientConn.Close();
-
-
-            List<string> tables = new List<string>();
-            tables.Add("tblField");
-            tables.Add("tblFlight");
-            tables.Add("tblBags");
-            tables.Add("Users");
-            tables.Add("Roles");
-            tables.Add("RolePermissions");
-            
-
-
-            var scopeDesc = new DbSyncScopeDescription("MainScope2");
-            foreach (var tbl in tables) //Add Tables in Scope
+            try
             {
-                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, clientConn));
+                SqlConnection serverConn = new SqlConnection(sServerConnection);
+                SqlConnection clientConn = new SqlConnection(sClientConnection);
+
+                //Drop scope_Info Table
+                string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
+                   WHERE TABLE_NAME='scope_info') DROP table scope_info";
+                clientConn.Open();
+                SqlCommand cmd = new SqlCommand(cmdText, clientConn);
+                cmd.ExecuteScalar();
+                clientConn.Close();
+
+
+                List<string> tables = new List<string>();
+                //tables.Add("tblField");
+                tables.Add("tblFlight");
+                //tables.Add("tblBags");
+                //tables.Add("Users");
+                //tables.Add("Roles");
+                //tables.Add("RolePermissions");
+
+
+
+                var scopeDesc = new DbSyncScopeDescription("MainScope2");
+                foreach (var tbl in tables) //Add Tables in Scope
+                {
+                    scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, clientConn));
+                }
+
+                SqlSyncScopeProvisioning clientProvision = new SqlSyncScopeProvisioning(clientConn, scopeDesc); //Provisioning
+
+                //skip creating the user tables
+                clientProvision.SetCreateTableDefault(DbSyncCreationOption.Skip);
+
+
+                //skip creating the change tracking tables
+                clientProvision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
+
+                //skip creating the change tracking triggers
+                clientProvision.SetCreateTriggersDefault(DbSyncCreationOption.Skip);
+
+                //skip creating the insert/update/delete/selectrow SPs including those for metadata
+                clientProvision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
+
+                //create new SelectChanges SPs for selecting changes for the new scope
+                //the new SelectChanges SPs will have a guid suffix
+                clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.CreateOrUseExisting);
+
+
+                clientProvision.Apply();
             }
+            catch (Exception ex)
+            {
 
-            SqlSyncScopeProvisioning clientProvision = new SqlSyncScopeProvisioning(clientConn, scopeDesc); //Provisioning
-
-            //skip creating the user tables
-            clientProvision.SetCreateTableDefault(DbSyncCreationOption.Skip);
-            
-
-            //skip creating the change tracking tables
-            clientProvision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
-
-            //skip creating the change tracking triggers
-            clientProvision.SetCreateTriggersDefault(DbSyncCreationOption.Skip);
-
-            //skip creating the insert/update/delete/selectrow SPs including those for metadata
-            clientProvision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
-
-            //create new SelectChanges SPs for selecting changes for the new scope
-            //the new SelectChanges SPs will have a guid suffix
-            clientProvision.SetCreateProceduresForAdditionalScopeDefault(DbSyncCreationOption.Skip);
-
-
-            clientProvision.Apply();
+                Log.Error(ex.Message);
+            }
         }
         //Set Data To Server Provision
         public static void ProvisionServer()
         {
-
-            SqlConnection serverConn = new SqlConnection(sServerConnection);
-            List<string> tables = new List<string>();
-            tables.Add("tblField");
-            tables.Add("tblFlight");
-            tables.Add("tblBags");
-            tables.Add("Users");
-            tables.Add("Roles");
-            tables.Add("RolePermissions");
-            var scopeDesc = new DbSyncScopeDescription("MainScope2");
-            foreach (var tbl in tables)
+            try
             {
-                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
-            }
-            //RemoveScope(serverConn, scopeDesc);
 
-            string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
+                SqlConnection serverConn = new SqlConnection(sServerConnection);
+                List<string> tables = new List<string>();
+                //tables.Add("tblBags");
+                tables.Add("tblFlight");
+                //tables.Add("tblField");
+                
+                //tables.Add("Users");
+                //tables.Add("Roles");
+                //tables.Add("RolePermissions");
+                var scopeDesc = new DbSyncScopeDescription("MainScope2");
+                foreach (var tbl in tables)
+                {
+                    scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
+                }
+                //RemoveScope(serverConn, scopeDesc);
+
+                string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
                    WHERE TABLE_NAME='scope_info') DROP table scope_info";
-            serverConn.Open();
-            SqlCommand cmd = new SqlCommand(cmdText, serverConn);
-            cmd.ExecuteScalar();
-            serverConn.Close();
+                serverConn.Open();
+                SqlCommand cmd = new SqlCommand(cmdText, serverConn);
+                cmd.ExecuteScalar();
+                serverConn.Close();
 
-            
-            SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
 
-            //skip creating the user tables
-            serverProvision.SetCreateTableDefault(DbSyncCreationOption.Skip);
-            
-            //skip creating the change tracking tables
-            serverProvision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
+                SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
 
-            //skip creating the change tracking triggers
-            serverProvision.SetCreateTriggersDefault(DbSyncCreationOption.Skip);
+                //skip creating the user tables
+                serverProvision.SetCreateTableDefault(DbSyncCreationOption.Skip);
 
-            //skip creating the insert/update/delete/selectrow SPs including those for metadata
-            serverProvision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
+                //skip creating the change tracking tables
+                serverProvision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
 
-            serverProvision.Apply();
+                //skip creating the change tracking triggers
+                serverProvision.SetCreateTriggersDefault(DbSyncCreationOption.Skip);
 
+                //skip creating the insert/update/delete/selectrow SPs including those for metadata
+                serverProvision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
+
+                serverProvision.Apply();
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+            }
 
         }
         public static void Sync()
@@ -137,11 +150,22 @@ namespace Sita.Modules.SyncData
 
                 SyncOrchestrator syncOrchestrator = new SyncOrchestrator();
 
-                syncOrchestrator.LocalProvider = new SqlSyncProvider(sScope, serverConn);
+                SqlSyncProvider LocalProvider = new SqlSyncProvider(sScope, serverConn);
 
-                syncOrchestrator.RemoteProvider = new SqlSyncProvider(sScope, clientConn);
+                SqlSyncProvider RemoteProvider = new SqlSyncProvider(sScope, clientConn);
 
-                syncOrchestrator.Direction = SyncDirectionOrder.Download;
+                LocalProvider.MemoryDataCacheSize = 100000;
+                RemoteProvider.MemoryDataCacheSize = 100000;
+
+                //Set application transaction size on destination provider.
+                RemoteProvider.ApplicationTransactionSize = 50000;
+                syncOrchestrator.LocalProvider = LocalProvider;
+                syncOrchestrator.RemoteProvider = RemoteProvider;
+                //Count transactions
+
+
+
+                syncOrchestrator.Direction = SyncDirectionOrder.DownloadAndUpload;
 
                 ((SqlSyncProvider)syncOrchestrator.LocalProvider).ApplyChangeFailed += new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
 
@@ -149,7 +173,9 @@ namespace Sita.Modules.SyncData
 
                 Logging.Logger.Information("SyncData: Start Time: " + syncStats.SyncStartTime);
 
-                Logging.Logger.Information("SyncData: Total Changes Uploaded: " + syncStats.UploadChangesTotal);
+                Logging.Logger.Information("SyncData: Total Changes Uploaded: " + syncStats.UploadChangesApplied);
+                Logging.Logger.Information("SyncData: Total Changes Download: " + syncStats.DownloadChangesApplied);
+                Logging.Logger.Information("SyncData: Total Changes fail: " + syncStats.DownloadChangesFailed);
 
                 //Console.WriteLine("Total Changes Downloaded: " + syncStats.DownloadChangesTotal);
 
@@ -173,7 +199,7 @@ namespace Sita.Modules.SyncData
 
             Console.WriteLine(e.Conflict.Type);
 
-            Console.WriteLine(e.Error);
+            
             Logging.Logger.Information("SyncData: Error " + e.Error);
             isPorcess = false;
         }

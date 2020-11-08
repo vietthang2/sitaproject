@@ -3,72 +3,88 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Sita.Modules.MSMQServices.DTO
 {
     public class DailyModel
     {
         [JsonProperty("connect")]
+        [XmlAttribute(AttributeName = "connect")]
         public Connect Connect { get; set; }
 
     }
     public class DailyModelList
     {
         [JsonProperty("connect")]
+        [XmlAttribute(AttributeName = "connect")]
         public ConnectList Connect { get; set; }
 
     }
+    [XmlRoot(ElementName = "field")]
     public class Field
     {
+        [XmlAttribute(AttributeName = "name")]
         [JsonProperty("name")]
         public string Name { get; set; }
-
+        [XmlAttribute(AttributeName = "instance")]
         [JsonProperty("instance")]
         public string Instance { get; set; }
-
+        [XmlAttribute(AttributeName = "value")]
         [JsonProperty("value")]
-        public object Value { get; set; }
+        public string Value { get; set; }
     }
-
+    [XmlRoot(ElementName = "daily")]
     public class Daily
     {
+        [XmlAttribute(AttributeName = "action")]
         [JsonProperty("action")]
         public string Action { get; set; }
+        [XmlAttribute(AttributeName = "adi")]
 
         [JsonProperty("adi")]
         public string Adi { get; set; }
+        [XmlAttribute(AttributeName = "linecode")]
 
         [JsonProperty("linecode")]
         public string Linecode { get; set; }
+        [XmlAttribute(AttributeName = "number")]
 
         [JsonProperty("number")]
         public string Number { get; set; }
+        [XmlAttribute(AttributeName = "schedule_date")]
 
         [JsonProperty("schedule_date")]
         public string ScheduleDate { get; set; }
+        [XmlAttribute(AttributeName = "softreplace")]
 
         [JsonProperty("softreplace")]
         public string Softreplace { get; set; }
-
+        [XmlAttribute(AttributeName = "site_iata")]
         [JsonProperty("site_iata")]
         public string SiteIata { get; set; }
+        [XmlAttribute(AttributeName = "date_boundary")]
 
         [JsonProperty("date_boundary")]
         public string DateBoundary { get; set; }
+        [XmlElement(ElementName = "field")]
 
         [JsonProperty("field")]
         public List<Field> Field { get; set; }
     }
-
+    [XmlRoot(ElementName = "connect")]
     public class Connect
     {
+        [XmlAttribute(AttributeName = "version")]
         [JsonProperty("version")]
         public string Version { get; set; }
+        [XmlAttribute(AttributeName = "name")]
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("daily")]
+        [XmlElement(ElementName = "daily")]
         public Daily Daily { get; set; }
     }
     public class ConnectList
@@ -84,8 +100,8 @@ namespace Sita.Modules.MSMQServices.DTO
     }
     public class Root
     {
-        //[JsonProperty("connect")]
-        //public Connect Connect { get; set; }
+        [JsonProperty("connect")]
+        public Connect Connect { get; set; }
     }
 }
 //sample
