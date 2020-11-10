@@ -25,12 +25,13 @@ namespace Sita.Modules.Default.TblBags
             var ObjectData=mess.Length>0 ? mess.Split(Convert.ToChar(".")): null;
             if (ObjectData.Length > 0)
             {
+                var rs = ObjectData[0].Contains("DEL");
                 var connection = SqlConnections.NewFor<MyRow>();
                 UnitOfWork unitOfWork = new UnitOfWork(connection);
                 for (int i = 0; i < ObjectData.Length; i++)
                 {
 
-
+                    
                     if (ObjectData[i].Substring(0, 2) == "N/")
                     {
                         var newBagtag = new TblBagsRow();
@@ -41,12 +42,30 @@ namespace Sita.Modules.Default.TblBags
                         newBagtag.TimeRcvBsm = DateTime.Now;
                         newBagtag.DDMM = DateTime.Now.ToString("ddMM");
                         newBagtag.YYYY = DateTime.Now.Year.ToString();
-
+                       
                         try
                         {
-                            SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
-                            saveRequest.Entity = newBagtag;
-                            new TblBagsController().Create(unitOfWork, saveRequest);
+                            if (rs)
+                            {
+                                var requestField = new ListRequest();
+                                requestField.Criteria = new Criteria("Baggage_Tag") == newBagtag.BaggageTag;
+                                ListResponse<MyRow> rowsField = new MyRepository().List(connection, requestField);
+                                if (rowsField.TotalCount > 0)
+                                {
+                                    var requestDelete = new DeleteRequest();
+                                    requestDelete.EntityId = rowsField.Entities;
+                                    new MyRepository().Delete(unitOfWork, requestDelete);
+                                    Logging.Logger.Error("BSM: Deleted Bagtag:" + newBagtag.BaggageTag);
+                                }
+
+                            }
+                            else
+                            {
+                                SaveRequest<MyRow> saveRequest = new SaveRequest<MyRow>();
+                                saveRequest.Entity = newBagtag;
+                                new TblBagsController().Create(unitOfWork, saveRequest);
+                            }
+                            
                            
                             //connection.Insert<MyRow>(newBagtag);
                         }

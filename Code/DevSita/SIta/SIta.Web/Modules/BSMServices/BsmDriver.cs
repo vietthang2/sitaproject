@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -20,6 +22,7 @@ namespace Sita.Modules.BSMServices
         private int writeTimeout = System.Threading.Timeout.Infinite;
         private Socket listener;
         private byte[] buffer = new byte[8192]; // Buffer to store data from clients.
+        static int beginStart = 0;
         string bpmdemo = @"BPM
 .V/1TORD
 .J/R/4567/381761/13JAN/183551L/R
@@ -47,12 +50,8 @@ ENDBPM";
         IPEndPoint remoteEP;
         static bool statusConnect;
         Socket client;
-        //public bool CheckStatus()
-        //{
-        //    remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
-        //    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        //    //CommonSocket.IsConnected();
-        //}
+        LingerOption myOpts;
+        
         public void StartListening(ref bool _statusConnect)
         {
 
@@ -61,26 +60,39 @@ ENDBPM";
 
 
                 if (client == null)
-                
                 {
 
                     remoteEP = new IPEndPoint(IPAddress.Parse(IP), Port);
-
-                    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     //CommonSocket.SocketConnected(client);
-                    Logging.Logger.Information($"BSM: Status connetion: " + (statusConnect==true?"Connected":"Disconnected"));
-                    if (statusConnect) return;
-                    listener.Bind(new IPEndPoint(IPAddress.Parse(LocalIP), Port));
+                    Logging.Logger.Information($"BSM: Status connetion: " + statusConnect + " beginStart: "+ beginStart);
+                    if (statusConnect==true) 
+                        return;
+                    if (beginStart > 30)
+                        beginStart = 0;
+                    beginStart++;
+                   
+                    Logging.Logger.Information($"BSM: listener : begin create listener");
+                    
+                    listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                    myOpts = new LingerOption(true, 10);
+                    listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger, myOpts);
+                    
+                    listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, true);
+                    listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.NoDelay, true);
+                    listener.Bind(new IPEndPoint(IPAddress.Parse(LocalIP), ClientPort+ beginStart));
+
                     Logging.Logger.Information($"BSM: Begin Bind to server LocalIp: {LocalIP} and port:{ClientPort}");
-                    listener.BeginConnect(remoteEP,
+
+                    IAsyncResult result = listener.BeginConnect(remoteEP,
                         new AsyncCallback(OnSocketAccepted), listener);
 
                     Logging.Logger.Information($"BSM: Begin connect to server Ip: {IP} and port:{Port}");
-                    Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening");
                     
-                    Thread T = new Thread(checkTimeOut);
-                    T.IsBackground = true;
-                    T.Start();
+                    checkTimeOut();
+                    //Thread T = new Thread(checkTimeOut);
+                    //T.IsBackground = true;
+                    //T.Start();
                 }
                 else
                 {
@@ -90,11 +102,11 @@ ENDBPM";
                     {
                         statusConnect = true;
                         Logging.Logger.Information("BSM: Connected! ....");
-                        SendData(MsgHelper.DataOnMsg());
+                        //SendData(MsgHelper.DataOnMsg());
                         return;
                     }
                     client.Disconnect(true);
-                    client.Dispose();
+                    //client.Dispose();
                     statusConnect = false;
                     Thread.Sleep(10000);
                     StartListening(ref statusConnect);
@@ -107,13 +119,17 @@ ENDBPM";
             catch (Exception e)
             {
                 statusConnect = false;
-                if (e.Message == "Only one usage of each socket address (protocol/network address/port) is normally permitted")
-                    return;
-                if (e.Message == "BeginConnect cannot be called while another asynchronous operation is in progress on the same Socket")
-                    Log.Error("Start Listening Error:" + e.Message + e.StackTrace + e.Source);
+                if (e.Message == "Only one usage of each socket address (protocol/network address/port) is normally permitted") {
+                    listener.BeginConnect(remoteEP,
+                          new AsyncCallback(OnSocketAccepted), listener);
+                }
+
                 Logging.Logger.Warning("BSM: Start Listening fail!"+e.ToString());
                 FlushReceiveBuffer();
+                listener.Dispose();
+                listener = null;
                 
+
                 return;
 
             }
@@ -130,28 +146,33 @@ ENDBPM";
             {
                 client = (Socket)result.AsyncState;
 
+                
 
                 if (client.Connected)
                 {
                     statusConnect = true;
+
                     Logging.Logger.Information("BSM: OnSocketAccepted: Successfully connected to the server {0}",
+                    
                     client.RemoteEndPoint.ToString());
                     client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnDataReceived, client);
+                    client.EndConnect(result);
                     SendData(MsgHelper.LoginRequest());
-                    
+                    //client.BeginDisconnect(false, new AsyncCallback(OnDisconnected), client);
                     //var test = bpmdemo.Replace("{num}", new Random().Next(99).ToString());
                     //SendData(MsgHelper.DataMsg(test));
                     //var testHex = string.Join("", test.Select(c => ((int)c).ToString("X2")));
                     //Logging.Logger.Information("BSM: hex: {0}", testHex);
+
                 }
                 else
                 {
-                    SendData(MsgHelper.LoginRequest());
+                    
                     Logging.Logger.Information($"BSM: Time:{DateTime.Now} :StartListening: OnSocketAccepted, But can not connect to server! ");
-                    statusConnect = true;
-                    //statusConnect = false;
-                    //Thread.Sleep(10000);
-                    //StartListening(ref statusConnect);
+                    statusConnect = false;
+                    client.Close();
+                
+
                 }
 
             }
@@ -159,12 +180,12 @@ ENDBPM";
             {
                 statusConnect = false;
                 Logging.Logger.Error("BSM: OnSocketAccepted :" + ex.Message);
+                client.Close();
+                
 
             }
         }
-
-
-
+        
         private void OnDataReceived(IAsyncResult result)
         {
             try
@@ -199,7 +220,6 @@ ENDBPM";
         }
 
         Random rnd = new Random();
-        int flight_nbr = 1;
         int msgidx = 0;
         string s_msg = String.Empty;
         bool msg_ack = true;
@@ -297,11 +317,7 @@ ENDBPM";
                                 statusConnect = false;
                                 Logging.Logger.Warning("BSM: disconnected!");
                                 timeOut = 0;
-                                FlushReceiveBuffer();
-                                client.Shutdown(SocketShutdown.Both);
-                                client.Dispose();
-                                listener.Dispose();
-                                //SendData(MsgHelper.DataOnMsg());
+                               
                                 break;
                             }
                             
@@ -310,27 +326,25 @@ ENDBPM";
                         else
                         {
                             Logging.Logger.Warning("BSM: disconnected!"+ client.Connected);
-                            listener.BeginConnect(remoteEP,
-                                    new AsyncCallback(OnSocketAccepted), listener);
-                            //FlushReceiveBuffer();
-                                                     
-                            
-                            //SendData(MsgHelper.DataOnMsg());
+                            Thread.Sleep(1000);
                             statusConnect = false;
-                            //StartListening(ref statusConnect);
-                            
-                            //break;
+                            break;
 
                         }
                        
                     }
                     else
                     {
-                        Logging.Logger.Warning("BSM: client == null, Can not connect!");
-                        statusConnect = false;
-                        Thread.Sleep(20000);
-                        StartListening(ref statusConnect);
-                        //break;
+                        Thread.Sleep(10000);
+                        if (firstTime > 1)
+                        {
+                            Logging.Logger.Warning("BSM: client == null, Can not connect!");
+                            statusConnect = false;
+                            
+                            break;
+                        }
+                        
+
                     }
 
 
@@ -340,7 +354,8 @@ ENDBPM";
             catch (Exception e1)
             {
                 statusConnect = false;
-                Logging.Logger.Error("BSM: error"+ e1.Message);
+                Logging.Logger.Error("BSM: error "+ e1.Message);
+                
             }
         }
 
@@ -367,11 +382,11 @@ ENDBPM";
             byte[] outval = new byte[2000];
             try
             {
-                client.IOControl(IOControlCode.DataToRead, info, outval);
+                listener.IOControl(IOControlCode.DataToRead, info, outval);
                 uint bytesAvailable = BitConverter.ToUInt32(outval, 0);
                 if (bytesAvailable != 0 && bytesAvailable < 2000)
                 {
-                    int len = client.Receive(outval); //Flush buffer
+                    int len = listener.Receive(outval); //Flush buffer
                 }
             }
             catch
@@ -480,6 +495,46 @@ ENDBPM";
             }
             Logging.Logger.Warning("BSM: Check connecting... !" + rs);
             return rs;
+        }
+        public static bool PingSocket(string Ip)
+        {
+            try
+            {
+                Ping pingSender = new Ping();
+                PingOptions options = new PingOptions();
+
+                // Use the default Ttl value which is 128,
+                // but change the fragmentation behavior.
+                options.DontFragment = true;
+
+                // Create a buffer of 32 bytes of data to be transmitted.
+                string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+                byte[] buffer = Encoding.ASCII.GetBytes(data);
+                int timeout = 120;
+                PingReply reply = pingSender.Send(Ip, timeout, buffer, options);
+                if (reply.Status == IPStatus.Success)
+                {
+                    Logging.Logger.Warning("BSM: ping true!");
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception k1)
+            {
+
+                Logging.Logger.Warning("BSM: ping error!" + k1.ToString());
+                return false;
+            }
+        }
+        public static void DoIISReset()
+        {
+            Process iisReset = new Process();
+            iisReset.StartInfo.FileName = "iisreset.exe";
+            iisReset.StartInfo.RedirectStandardOutput = true;
+            iisReset.StartInfo.UseShellExecute = false;
+            iisReset.Start();
+            iisReset.WaitForExit();
         }
     }
 }
